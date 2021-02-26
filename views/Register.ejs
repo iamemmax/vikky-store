@@ -1,0 +1,37 @@
+<%- include("./partials/_header") %> 
+
+
+<div class="form-container">
+  
+
+    <form action="/users/Register" method="POST">
+
+        <div class="username">
+            <input type="text" name="username" placeholder="username">
+        </div>
+        <div class="email">
+            <input type="email" name="email" required placeholder="Email">
+
+        </div>
+        <div class="password">
+            <input type="password" name="password" placeholder="password">
+        </div>
+        <div class="password">
+
+            <input type="password" name="password2" placeholder="password2">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<style>
+    .form-container{
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        padding: 10px;
+        flex-wrap: wrap;
+        
+    }
+</style>
+<%- include("./partials/_footer") %> 
