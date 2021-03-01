@@ -6,8 +6,10 @@ require("colors")
 const session = require("express-session")
 const flash = require("connect-flash")
 const User = require("./model/UserSchema")
+const Product = require("./model/productSchema")
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
+const productSchema = require("./model/productSchema")
 const app = express()
 
 
@@ -44,11 +46,18 @@ mongoose.connect(process.env.db_url, {
         console.log("database connected successfully".red);
     }
 })
-app.get("/", (req, res) =>{
+app.get("/", async (req, res) =>{
+    let products =  await productSchema.find((err, data) =>{
+        
+        if(err)throw err
+    })
     res.render("index", {
         title:"Homepage",
-        user:req.user
+        user:req.user,
+        products,
+       
     })
+    // console.log(products);
 })
 
 

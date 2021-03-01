@@ -1,0 +1,99 @@
+.mostPouplar_container{
+    width: 90%;
+    margin: 0px auto;
+    /* border: 2px solid red; */
+    height: auto;    
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+.mostPouplar_container h2{
+
+        padding: 40px;
+        top: 2rem;
+        font-size: 25px;
+        font-weight: 600;
+    }
+    .mostPouplar_container > span{
+        border: 2px #ff4a57 solid;
+        position: absolute;
+        width: 70px;
+        top: 4.5rem;
+        margin-left: -2rem;
+        margin-top: 10px;
+    }
+.mostPouplar_container .popular{
+    /* border: 2px solid blue; */
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.mostPouplar_container .popular div{
+    box-shadow: 0px 1px 20px  10px #eee;
+    width: 230px;
+    margin: 15px;
+    height: 270px;
+    /* border: 1px solid rgb(180, 180, 180); */
+    object-fit: cover;
+    border-radius: 10px;
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+
+    
+    
+}
+
+.popular h2{
+    padding: 5px 40px 0px;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 16px;
+    
+}
+.popular p{
+    padding: 10px 40px;
+    font-size: 14px;
+    font-weight: 400;
+    /* border: 2px solid red; */
+    margin-top: -5px;
+    text-align: left !important;
+}
+.popular a{
+    text-decoration: none;
+    color: #222;
+}
+.popular div img{
+    width: 250px;
+    height: 160px;
+}
+.popular div button{
+    /* margin-top: 1rem; */
+    text-decoration: none;
+    background-color: #ff4a57;
+    width: 100px;
+    padding: 7px 10px;
+    text-align: center;
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: -.5rem;
+    
+}
+.popular  button:hover{
+    background-color: #222;
+    color: #eee;
+    transition: background .5s ease;
+    
+}

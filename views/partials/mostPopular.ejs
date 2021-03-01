@@ -1,0 +1,26 @@
+<div class="mostPouplar_container">
+    <h2>Most Popular</h2>
+    <span></span>
+    <div class="popular">
+
+        <% products.forEach(product => { %>
+            
+            <div class="pro_img">
+                
+                <a href="/product/<%= product.slug %> ">
+                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="">
+                    
+                    <h2><%= product.productName %> </h2>
+                </a>
+            </form>
+          
+               <p id="amount">&#8358 <%= product.amount %> </p>
+                <button type="submit" id="button">Add to cart</button>
+            </div>
+            <% }) %>       
+</div>
+</div>
+
+
+
+

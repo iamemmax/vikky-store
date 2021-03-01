@@ -1,0 +1,52 @@
+.Top_advert_container{
+    /* border: 2px solid red; */
+    height: 300px;
+    width: 90%;
+    margin: 0px auto;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+}
+
+.adwrappper{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    background-color: #ff4a57;
+}
+.adwrappper > div{
+    width: 600px;
+    overflow: hidden;
+    /* border: 2px solid blue; */
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    flex-direction: column;
+}
+
+.imgAdvert{
+   
+}
+.adwrappper  img{
+    width:350px;
+}
+
+.adwrappper > div p{
+    font-size: 25px;
+    width: 60%;
+    color: #eee;
+}
+.adwrappper > div h2{
+    text-align: left;
+    font-size: 35px;
+    padding: 10px;
+    text-transform: capitalize;
+}
+.adwrappper div span{
+    width: 60%;
+    line-height: 30px;
+    color: #ddd;
+}

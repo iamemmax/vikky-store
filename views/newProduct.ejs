@@ -3,7 +3,9 @@
 <div class="uploadProduct">
     <h2>Upload product</h2>
     <form action="/product/new" method="POST" enctype="multipart/form-data">
-    <input type="file" name="productImg" accept="image/png, image/jpg, image/jpeg, image/PNG, image/jpeg, image/jpg"  id="">
+        <input type="text" name="productName" id="" placeholder="product Name">
+        <input type="text" name="amount" id="" placeholder=" Amount">
+        <input type="file" name="myfiles"  multiple>
         
     <button type="submit">Upload product</button>
 </form>

@@ -19,7 +19,7 @@ UserRouter.get("/register",  (req, res) =>{
         
     })
 })
-UserRouter.get("/Login",  (req, res) =>{
+UserRouter.get("/Login", (req, res) =>{
     res.render("Login",{
         title:"Login Account",
         user:req.user,
