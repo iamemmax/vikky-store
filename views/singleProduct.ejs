@@ -1,0 +1,29 @@
+<%- include("./partials/_header") %> 
+<div class="singleProduct">
+    <div class="showImg">
+        <div class="singleImg">
+        <img src="../img/upload/<%= single.myfiles[0].filename %> " alt="<%= single.myfiles[0].filename %>" id="show_img">
+        </div>
+    <div class="selectImg">
+        <% single.myfiles.map(selectedImg =>{ %>
+            <img src="../img/upload/<%= selectedImg.filename %> " class="select_img" alt="<%= selectedImg.filename %> ">
+            
+            <%  }) %> 
+    </div>
+    </div>
+
+    <div class="productInfo">
+        <h2 id="title"><%= single.productName %> </h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, voluptatem officiis! Hic mollitia iste modi provident recusandae placeat natus quo sit quas consequatur? Dolores ducimus assumenda voluptate dolore facilis quisquam.</p>
+
+        <p>Brand: <span>Hp</span></p>
+        <div class="color">
+            <span id="red"></span>
+            <span id="blue"></span>
+            <span id="black"></span>
+            <span id="green"></span>
+        </div>
+    </div>
+</div>
+
+<%- include("./partials/_footer") %> 

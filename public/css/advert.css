@@ -6,6 +6,7 @@
     justify-content: space-around;
     display: flex;
     align-items: center;
+    flex-flow: row wrap;
 }
 
 .adwrappper{
@@ -14,6 +15,7 @@
     align-items: center;
     flex-flow: row wrap;
     background-color: #ff4a57;
+    width: 100%;
 }
 .adwrappper > div{
     width: 600px;

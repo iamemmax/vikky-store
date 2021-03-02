@@ -31,12 +31,20 @@ const upload = multer({storage:storage}).array("myfiles", 5)
 productRouter.post("/new", upload, async (req, res) =>{
     let {productName, amount} = req.body
     let myfiles = req.files
-    // console.log(myfiles);
-   
+    // let {filename:myfiles} = req.files
+    
     
     try {
         let myfileArray = [];
-         myfiles.forEach(element => {
+        myfiles.forEach(element => {
+             sharp(element.path)
+             .resize(200, 300, {
+                kernel: sharp.kernel.nearest,
+                fit: 'contain',
+                position: 'right top',
+                background: { r: 255, g: 255, b: 255, alpha: 0.5 }
+              })
+              .toFile('e-shop.png')
              
              const dbFile ={
                  filename : element.filename,
@@ -60,8 +68,8 @@ productRouter.post("/new", upload, async (req, res) =>{
             await product.save((err, data) =>{
                 if(err)throw err
                 if(data){
-                   console.log( req.files);
-                    console.log(data);
+                //    console.log( req.files);
+                    // console.log(data);
                     res.redirect("/")
                 }
             })
@@ -81,6 +89,9 @@ productRouter.get("/:slug", async(req, res) =>{
     res.render("singleProduct", {
         title: single.productName.slug,
         single,
+        user:req.user
           })
+
+        // console.log(single);
 })
 module.exports = productRouter

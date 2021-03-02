@@ -1,5 +1,5 @@
 .topSelling_container{
-    /* border: 2px solid red; */
+    border: 2px solid red;
     height:400px;
     width: 100%;
     column-count: 5;
@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    flex-flow: row wrap;
 
 }
 .topSelling_container h2{
@@ -25,6 +26,7 @@
     /* border: 2px solid #333; */
     height: 250px;
     margin-top: 4rem;
+    pointer-events: visible;
     width: 225px;
     background-color: rgba(231, 228, 228, 0.877);
     display: flex;

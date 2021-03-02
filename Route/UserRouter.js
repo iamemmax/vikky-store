@@ -12,15 +12,15 @@ const auth = require("../config/auth")
 
 
 
-UserRouter.get("/register",  (req, res) =>{
+UserRouter.get("/register",   (req, res) =>{
     res.render("Register",{
         title:"Join E-shop",
         user:req.user,
         
     })
 })
-UserRouter.get("/Login", (req, res) =>{
-    res.render("Login",{
+UserRouter.get("/login",  (req, res) =>{
+    res.render("login",{
         title:"Login Account",
         user:req.user,
 
@@ -131,7 +131,7 @@ UserRouter.post("/Login", (req, res, next) =>{
 }
 })
 
-UserRouter.get("/logout", (req, res)=>{
+UserRouter.get("/logout", auth, (req, res)=>{
     req.logout()
     req.flash("logout", "you have successfully logout")
     res.redirect("/users/Login")

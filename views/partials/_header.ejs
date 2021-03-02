@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/topselling.css">
     <link rel="stylesheet" href="/css/advert.css">
     <link rel="stylesheet" href="/css/mostPopular.css">
+    <link rel="stylesheet" href="/css/singleProduct.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 </head>
@@ -23,7 +24,7 @@
         </div>
         <div class="navigation">
                 <nav>
-            <ul>
+            <ul class="nav-ul">
                 <li><a href="javascript:void()">Home</a></li>
                 <li><a href="javascript:void()">Shop</a></li>
                 <li><a href="javascript:void()">Computer</a></li>
@@ -45,7 +46,7 @@
             <% if(!user){ %> 
                 <li><a href="javascript:void()"><i class="fas fa-user"></i></a>
                     <% }else{ %> 
-                    <img src="/img/<%= user.userImg %> " alt="" style="width: 40px;position: absolute;right: 6.6rem;top: 0;">
+                    <img src="/img/<%= user.userImg %> " alt="" style="width: 30px;position: absolute;right: 6.6rem;top: 0;">
                     <li><a href="javascript:void()"></a>
                         <% } %> 
                     <ul id="pages">
@@ -64,8 +65,62 @@
            
             </div>
 
+            
+                <div class="navbar">
+                    <div class="bar1"></div>
+                    <div class="bar1"></div>
+                    <div class="bar1"></div>
+                </div>
+    
+            
+            
+            <div class="removeNav">
+                <i class="fas fa-times"></i>
+            </div>
+
     </div>
 
 </section>
+<div class="removeOnclick">
 
+</div>
+
+<script>
+    const ul = document.querySelector('.nav-ul') 
+    const navbar = document.querySelector(".navbar")
+    const removeOnclick = document.querySelector(".removeOnclick")
+
+    navbar.addEventListener("click", (e)=>{
+        ul.classList.add("showNav")
+        navbar.style.display = "none"
+        removeNav.classList.add("removeNavbar")
+        removeOnclick.style.display = "block"
+
+    })
+    const removeNav = document.querySelector('.removeNav')
+        removeNav.addEventListener("click", (e)=>{
+        ul.classList.remove("showNav")
+        navbar.style.display = "flex"
+        removeNav.classList.remove("removeNavbar")
+        removeOnclick.style.display = "none"
+
+
+        }) 
+   
+        removeOnclick.addEventListener("click", (e)=>{
+        ul.classList.remove("showNav")
+        navbar.style.display = "flex"
+        removeNav.classList.remove("removeNavbar")
+        removeOnclick.style.display = "none"
+
+
+
+
+        }) 
+
+    
+        // removeNav.classList.add("removeNavbar")
+
+    
+</script>
     
