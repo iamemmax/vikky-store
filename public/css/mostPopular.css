@@ -33,13 +33,13 @@
 }
 
 .mostPouplar_container .popular div{
-    box-shadow: 0px 1px 20px  10px #eee;
-    width: 230px;
-    margin: 15px;
+    box-shadow: 0px 1px 5px  2px #eee;
+    width: 220px;
+    margin: 10px;
     height: 270px;
     /* border: 1px solid rgb(180, 180, 180); */
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     max-width: 100%;
     justify-content: center;

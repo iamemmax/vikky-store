@@ -5,18 +5,27 @@ const passport = require("passport")
 const bcrypt = require("bcryptjs")
 const User = require("../model/UserSchema")
 
-module.exports =  function (){
+module.exports =   function passportAuth (res){
 
     passport.use(
         new LocalStrategy({
             usernameField:"email"}, (email, password, done) =>{
     
+                let error = []
             User.findOne({email:email})
             .then(user =>{
                 console.log(user);
                 if(!user){
+                    error.push({msg: "incorrect username or password"})
+                    res.render("login", {
+                        title:"Login Account",
+                        error,
+                        email,
+                        password
+                    })
                     console.log("incorrect username or password");
-                    return done(null, false, {msg: "incorrect username or password"})
+                    // return done(null, false, {msg: "incorrect username or password"})
+                   
 
                 }else{
 
@@ -24,14 +33,17 @@ module.exports =  function (){
                         if(err)throw err
                         if(isMatch){
                             return done(null, user)
-                            
-                        
+
                     }else{
-                        console.log("incorrect username or password");
-                        
-                
-                    return done(null, false, {msg: "incorrect username or password"})
-                        
+                    error.push({msg: "incorrect username or password"})
+                    res.render("login", {
+                        title:"Login Account",
+                        error,
+                        email,
+                        password
+                    })
+                    console.log("incorrect username or password");
+                        // return done(null, false, {msg: "incorrect username or password"})
                     }
                 })
             }
@@ -39,16 +51,4 @@ module.exports =  function (){
    
     })       
     )
-
-
-     passport.serializeUser(function(user, done) {
-         done(null, user.id);
-     });
-     
-     passport.deserializeUser(function(id, done) {
-         User.findById(id, function(err, user) {
-             done(err, user);
-            });
-        });
-    
 }

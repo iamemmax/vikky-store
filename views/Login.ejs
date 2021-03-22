@@ -1,23 +1,75 @@
-<%- include("./partials/_header") %> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+
+</head>
+<body>
+    
+
 
 
 <div class="form-container">
-    <form action="/users/login" method="POST">
+  <div class="left-form">
 
-        <input type="email" name="email" required placeholder="Email">
-        <input type="password" name="password" placeholder="password">
+      <form action="/users/login" method="POST">
+        <h2>Login Account</h2>
+
+        <% if (typeof error !== "undefined") { %>
+         
+            <% error.forEach(errors => { %>
+                <div class="alert alert-warning alert-dismissible fade show" id="error" role="alert">
+                    <%= errors.msg %> 
+                    <button type="button"  class="btn-close" data-bs-dismiss="alert" aria-label="Close" id="close"></button>
+                  </div>
+                
+                <% }) %>
+                <% } %>
+
+
+
+             
+        <div class="email">
+            <input type="text" name="email" required  value="<%=typeof email !='undefined'?email: "" %> ">
+            <label for="username" class="label-name">
+                Email
+            </label>
+        </div>
+        <div class="password">
+            <input type="password" name="password" required autocomplete="off" value="">
+            <label for="password" class="label-name">
+                Password
+            </label>
+        </div>
+        
         <button type="submit">Login</button>
+       
+        <a href="/users/Register" id="already_member"> Not yet a member</a>
+      
+                <div class="social_media">
+                 
+                    <div class="social_top">
+                        <p>or</p>
+    
+                     <span>Continue with Social media</span>
+                    </div>
+                    <div class="icons">
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-google"></i></a>
+                    </div>
+                </div>
     </form>
 </div>
 
-<style>
-    .form-container{
-        display: flex;
-        flex-direction: column;
-        width: 200px;
-        padding: 10px;
-        flex-wrap: wrap;
-        
-    }
-</style>
+<div class="right-wrapper"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <%- include("./partials/_footer") %> 

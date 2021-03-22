@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/css/advert.css">
     <link rel="stylesheet" href="/css/mostPopular.css">
     <link rel="stylesheet" href="/css/singleProduct.css">
+    <link rel="stylesheet" href="/css/shoppingcart.css">
+    <!-- <link rel="stylesheet" href="/css/form.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 </head>
@@ -25,7 +27,7 @@
         <div class="navigation">
                 <nav>
             <ul class="nav-ul">
-                <li><a href="javascript:void()">Home</a></li>
+                <li class="active"><a href="javascript:void()">Home</a></li>
                 <li><a href="javascript:void()">Shop</a></li>
                 <li><a href="javascript:void()">Computer</a></li>
                 <li><a href="javascript:void()">Shoe</a></li>
@@ -57,12 +59,26 @@
                         <li><a href="/users/logout">Logout</a></li>
                         <% } %> 
                     </ul>
-                
+                    
                 </li>
-
+                
                 <li><a href="javascript:void()"><i class="fas fa-heart"></i></a></li>
-                <li><a href="javascript:void()"><i class="fas fa-shopping-cart"></i><span id="cart">0</span></a> </li>
-           
+                <% if(user){%> 
+                    
+                   
+                     
+                        <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
+                            
+                        </i><span id="cart">    </span></a> </li>
+                        
+                    
+                        
+                        <!-- <li><a href="javascript:void()"><i class="fas fa-shopping-cart"></i><span id="cart">0</span></a> </li> -->
+                        
+
+                    <% } %> 
+                    
+                    
             </div>
 
             
@@ -81,12 +97,11 @@
     </div>
 
 </section>
-<div class="removeOnclick">
-
-</div>
+<div class="removeOnclick"></div>
 
 <script>
     const ul = document.querySelector('.nav-ul') 
+    const li = document.querySelectorAll("li")
     const navbar = document.querySelector(".navbar")
     const removeOnclick = document.querySelector(".removeOnclick")
 
@@ -114,10 +129,14 @@
         removeOnclick.style.display = "none"
 
 
-
-
         }) 
 
+        li.forEach(el =>{
+           el.addEventListener("click", e =>{
+            ul.querySelector(".active").classList.remove("active")
+            el.classList.add("active")
+           })
+        })
     
         // removeNav.classList.add("removeNavbar")
 

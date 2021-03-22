@@ -1,6 +1,20 @@
 <div class="mostPouplar_container">
     <h2>Most Popular</h2>
     <span></span>
+
+ 
+        
+    <div class="categories">
+
+        <button type="submit">All</button>
+        <button type="submit">Shoe</button>
+        <button type="submit">Wares</button>
+        <button type="submit">Laptop</button>
+        <button type="submit">Phones</button>
+
+</div>
+    
+
     <div class="popular">
 
         <% products.forEach(product => { %>
@@ -12,10 +26,17 @@
                     
                     <h2><%= product.productName %> </h2>
                 </a>
-            </form>
+            
           
                <p id="amount">&#8358 <%= product.amount %> </p>
-                <button type="submit" id="button">Add to cart</button>
+
+               <form action="/users/cart/<%= product.id %> " method="POST">
+                        <input type="hidden"  name="price"  value="<%= product.amount %> ">
+                        <input type="hidden" name="quantity" value="1" id="">
+                    
+                   <button type="submit" id="button">Add to cart</button>
+
+               </form>
             </div>
             <% }) %>       
 </div>

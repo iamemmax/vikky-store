@@ -1,15 +1,12 @@
 .topSelling_container{
-    border: 2px solid red;
     height:400px;
     width: 100%;
-    column-count: 5;
-    column-gap: 20px;
-    display: flex;
-    justify-content: center;
+    display: flex; 
+     justify-content: center;
     align-items: center;
     position: relative;
     flex-flow: row wrap;
-
+    
 }
 .topSelling_container h2{
     position: absolute;
@@ -22,7 +19,19 @@
     width: 70px;
     top: 4.5rem;
 }
-.topSelling_container > div{
+.topImgCon{
+    display: flex;
+    column-count: 5;
+    column-gap: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+    flex-flow: row wrap;
+    position: absolute;
+    /* left: 0; */
+}
+.topImgCon > div{
     /* border: 2px solid #333; */
     height: 250px;
     margin-top: 4rem;
@@ -37,34 +46,33 @@
     box-shadow: 0px 0px 2px #ecebebd5;
     
 }
-.topSelling_container div  img{
+.topImgCon div  img{
     width: 180px;
     height: 180px;
-    /* border: 2px solid red; */
 }
 
-.topSelling_container  .moreInfo{
+.topImgCon  .moreInfo{
     display: none;
 }
-.topSelling_container > div:hover img{
+.topImgCon > div:hover img{
     width: 200px;
     /* height: 220px;  */
     transform:translateY(-30%) ;
 }
-.topSelling_container > div h3{
+.topImgCon > div h3{
     font-weight: 500;
     font-size: 16px;
     text-transform: capitalize;
     
 }
-.topSelling_container > div:hover  h3{
+.topImgCon > div:hover  h3{
 margin-top: -5rem;  
 font-weight: 500;   
 
 
 }
 
-.topSelling_container > div:hover .moreInfo{
+.topImgCon > div:hover .moreInfo{
     display: block;
     margin-top: 0rem;
     width: 60%;
@@ -90,4 +98,81 @@ font-weight: 500;
 .moreInfo a:hover{
     background-color: #333;
     color: #eee;
+}
+
+
+@media (max-width:768px){
+   
+    .topSelling_container{
+        height: auto;
+        /* border: 2px solid red; */
+        margin-top: 24rem;
+    }
+    .topSelling_container h2{
+        position: absolute;
+        top: -23rem;
+        font-size: 30px;
+    }
+    .topSelling_container > span{
+        
+        top: -20.4rem;
+    }
+    .topImgCon{
+        column-count: 2;
+        column-gap: 10px;
+        width: 100%;
+      
+    }
+    .topImgCon > div{
+        /* border: 2px solid #333; */
+        width: 220px;
+        height: 200px;
+        margin-top: 10px;
+       
+    }
+    .topImgCon div  img{
+        width: 180px;
+        height: 180px;
+    }
+    
+    .topImgCon  .moreInfo{
+        display: none;
+    }
+    .topImgCon > div:hover img{
+        width: 200px;
+        /* height: 220px;  */
+        transform:translateY(-30%) ;
+    }
+    .topImgCon > div h3{
+        font-weight: 500;
+        font-size: 16px;
+        margin-top: -2rem;
+        text-transform: capitalize;
+        
+    }
+    .topImgCon > div:hover  h3{
+    margin-top: -5.3rem;  
+    font-weight: 500;   
+    
+    
+    }
+    
+    .topImgCon > div:hover .moreInfo{
+        display: block;
+        margin-top: -.8rem;
+        padding: 5px;
+      
+    }
+    .moreInfo p{
+        font-size: 16px;
+        padding-bottom: 10px;
+    }
+    .moreInfo a{
+        padding: 5px 10px;
+        font-size: 16px;
+        color: #eee;
+       
+    }
+    
+    
 }

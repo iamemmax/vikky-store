@@ -1,16 +1,22 @@
 const express = require("express")
-const  mongose  = require("mongoose") 
+const  mongoose  = require("mongoose") 
 const multer = require("multer")
 const productSchema = require("../model/productSchema")
+const cartSchema = require("../model/CartSchema")
 const sharp = require("sharp")
 const productRouter = express.Router()
 const Auth  = require("../config/auth")
 
 
-productRouter.get("/new", Auth,(req, res) =>{
+productRouter.get("/new", Auth, async(req, res) =>{
+    let cart = await cartSchema.findOne({userId:req.user.id}).populate("productId")
+    let mycart = await cart.userCart.map(c => c.quantity)
+
     res.render("newProduct", {
         title: "Upload new product",
-        user:req.user
+        user:req.user,
+        cart,
+        mycart
     })
 })
 
@@ -86,12 +92,26 @@ productRouter.post("/new", upload, async (req, res) =>{
 
 productRouter.get("/:slug", async(req, res) =>{
     let single = await productSchema.findOne({slug:req.params.slug})
+
+    let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+      let mycart = cart.userCart.map(da =>da.quantity);
+    
     res.render("singleProduct", {
         title: single.productName.slug,
         single,
-        user:req.user
+        user:req.user,
+        cart,
+        mycart
           })
 
         // console.log(single);
 })
+
+
+
+         
 module.exports = productRouter
+

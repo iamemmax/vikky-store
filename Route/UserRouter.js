@@ -3,6 +3,8 @@ const UserRouter = express.Router()
 const bcrypt = require("bcryptjs")
 const mongoose = require("mongoose")
 const User = require("../model/UserSchema")
+const cartSchema = require("../model/CartSchema") 
+const productSchema = require("../model/productSchema")
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 const auth = require("../config/auth")
@@ -12,7 +14,9 @@ const auth = require("../config/auth")
 
 
 
-UserRouter.get("/register",   (req, res) =>{
+UserRouter.get("/register",  (req, res) =>{
+    let {username, email, password, password2} = req.body
+
     res.render("Register",{
         title:"Join E-shop",
         user:req.user,
@@ -28,50 +32,94 @@ UserRouter.get("/login",  (req, res) =>{
 })
 
 UserRouter.post("/register", (req, res) =>{
+    let error = [];
     let {username, email, password, password2} = req.body
     try {
-       let error = [];
-       if(!username || !email || !password || !password2){
-           error.push({msg: "Please fill all field"})
-       }
-        
-       if(username.length < 5){
-           error.push({msg: "username to weak"})
-       }
-        if(password !== password2){
+        if(!username || !email || !password || !password2){
+            error.push({msg: "all field are required"})
+              
+         }
+            if(password !== password2){
                 error.push({msg: "password not match"})
-        }
-        if(password.length < 3 ){
-            error.push({msg: "please choose a strong password"})
-        }
+               
+            }
+            if(password.length > 0 && password.length < 5){
+                error.push({msg: "password too weak"})
 
-        // check if email exist
+            }
+            if(username.length > 0 && username.length < 5){
+                error.push({msg: "choose a username"})
+              
+
+                console.log("choose a username")
+                
+            }
+            // check if email exist
        User.findOne({email:email}, (err, result) =>{
-        if(err) throw err
-           if(result){   
-               console.log(email + " already exist");
-            error.push({msg: "email already  exist"})
-            res.redirect("/users/register")
-
-           }
-       })
-       User.findOne({username:username}, (err, result) =>{
            if(err) throw err
            if(result){   
-               console.log(username + " already exist");
-            error.push({msg: "username already  exist"})
-            res.redirect("/users/register")
+               error.push({msg: "email already  exist"})
+               
+               res.render("register", {
+                title:"Register user",
+                error,
+                username,
+                email,
+                password,
+                user:req.user,
+                
+            })
+    
+    
 
-           }
+            }
+        })
+
+        User.findOne({username:username}, (err, result) =>{
+            if(err) {
+               console.log(err);
+            }
+            if(result){
+          
+              
+                error.push({msg: "username already exist"})
+                
+                res.render("register", {
+                    title:"Register user",
+                    error,
+                    username,
+                    email,
+                    password,
+                    user:req.user,
+                    
+                })
+        
+        
+
+            }
        })
-
+       
        
        if(error.length > 0){
-        error.push({msg: "sorry something went wrong"})
-        res.redirect("/users/register")
+          
+        res.render("register", {
+            title:"Register user",
+            error,
+            username,
+            email,
+            password,
+            user:req.user,
+            
+            // layout:false,
+            
+            
+            
+        })
 
 
-       }else{
+        
+        
+    }else{
         const salt = 10;
         bcrypt.genSalt(salt,  function(err, salt) {
             bcrypt.hash(password, salt,   function(err, hash) {
@@ -85,29 +133,29 @@ UserRouter.post("/register", (req, res) =>{
              regUser.save((err, result)=>{
                  if(err){
                      console.log(err);
-                 res.redirect("/users/Register")
+                     res.redirect("/users/Register")
 
                  }
-                 console.log(result);
+                //  console.log(result);
                  res.redirect("/users/Login")
              })
 
             })
           })
     
-       }
-
-           
+          
+          
+        }
+        // console.log(req.body);
     } catch (error) {
         console.log(error);
     }
-    console.log(req.body);
 })
 
 
 
 
-UserRouter.post("/Login", (req, res, next) =>{
+UserRouter.post("/login", (req, res, next) =>{
     let {email, password } = req.body
     let error = [];
     if(!email || !password ){
@@ -116,16 +164,69 @@ UserRouter.post("/Login", (req, res, next) =>{
        
     }
     if(error.length > 0){
-        res.redirect("/users/Login")
+        res.render("login", {
+            title:"Login Account",
+            error,
+            email,
+            password
+        })
+
     }else{
- 
+        passport.use(
+            new LocalStrategy({
+                usernameField:"email"}, (email, password, done) =>{
+        
+                    let error = []
+                User.findOne({email:email})
+                .then(user =>{
+                    console.log(user);
+                    if(!user){
+                        error.push({msg: "incorrect username or password"})
+                        res.render("login", {
+                            title:"Login Account",
+                            error,
+                            email,
+                            password
+                        })
+                        console.log("incorrect username or password");
+                        // return done(null, false, {msg: "incorrect username or password"})
+                       
+    
+                    }else{
+    
+                        bcrypt.compare(password, user.password, (err, isMatch) =>{
+                            if(err)throw err
+                            if(isMatch){
+                                return done(null, user)
+    
+                        }else{
+                        error.push({msg: "incorrect username or password"})
+                        res.render("login", {
+                            title:"Login Account",
+                            error,
+                            email,
+                            password
+                        })
+                        console.log("incorrect username or password");
+                            // return done(null, false, {msg: "incorrect username or password"})
+                        }
+                    })
+                }
+                }).catch(err => console.log(err))
+       
+        })       
+        )
+    
+    
+         
+     
     passport.authenticate("local",{
         failureFlash: true})(req, res, function(err){
         if(err){
-            res.redirect("/users/Login")
+            res.redirect("/users/login")
 
         }else{
-            res.redirect("/users/dashboard")
+            res.redirect("/")
         }
     })
 }
@@ -140,10 +241,18 @@ UserRouter.get("/logout", auth, (req, res)=>{
 
 
 
-UserRouter.get("/dashboard", auth, (req, res) =>{
+UserRouter.get("/dashboard", auth, async (req, res) =>{
+    let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+      let mycart = cart.userCart.map(da =>da.quantity);
+
     res.render("dashboard",{
         title:"dashboard",
-        user:req.user
+        user:req.user,
+        cart,
+        mycart
     })
 })
 

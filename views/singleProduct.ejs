@@ -14,16 +14,73 @@
 
     <div class="productInfo">
         <h2 id="title"><%= single.productName %> </h2>
+        <div class="amount">
+           <h3>Amount: &#x20A6 <%= single.amount %></h3> 
+        </div>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, voluptatem officiis! Hic mollitia iste modi provident recusandae placeat natus quo sit quas consequatur? Dolores ducimus assumenda voluptate dolore facilis quisquam.</p>
 
         <p>Brand: <span>Hp</span></p>
-        <div class="color">
-            <span id="red"></span>
-            <span id="blue"></span>
-            <span id="black"></span>
-            <span id="green"></span>
+
+        <div class="color"> 
+            <h2>Color:</h2> 
+            <label for="black">
+              <input type="radio" name="black" value="black" checked id="black">
+              <span id="black"></span>
+
+
+            </label>
+            <label for="red">
+                <input type="radio" name="red" value="red" id="red">
+                <span id="red"> </span>
+
+            </label>
+            <label for="blue">
+                <input type="radio" name="blue" value="blue" id="blue">
+                
+                <span id="blue"></span>
+
+            </label>
+            <label for="green">
+              <input type="radio" name="green" value="green" id="green">
+              <span id="green"></span>
+            </label>
+
+           
+           
+        </div>
+        <div class="quantity">
+            <h2>Quantity: </h2>
+            <button type="submit" id="add">+</button>
+                <span id="qty" name="quantity">0</span>
+            <button type="submit" id="sub">-</button>
+        </div>
+        
+        <div class="submitBtn">
+            <button type="submit">Add to cart</button>
+            <button type="submit">Buy Now</button>
         </div>
     </div>
 </div>
+
+<script>
+    const add = document.getElementById("add")
+    const sub = document.getElementById("sub")
+    const qty = document.getElementById("qty")
+
+    let click = 0;
+    add.addEventListener("click", (e)=>{
+        qty.innerHTML = click +=1
+    })
+
+    sub.addEventListener("click", (e)=>{
+        qty.innerHTML = click -- ;
+        
+        if(qty.innerHTML < 1){
+            click = 0;
+            
+        }
+    })
+    
+</script>
 
 <%- include("./partials/_footer") %> 

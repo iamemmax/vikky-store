@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+body{
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+
+.form-container{
+    /* border: 2px solid red; */
+    position: relative;
+    width: 100% !important;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.form-container > div{
+    width: 400px;
+    /* border: 1px solid red; */
+    height: 100%;
+    max-width: 100%;
+}
+
+.left-form{
+    border: 2px solid #eee;
+}
+
+.left-form > form{
+    position: relative;
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.left-form form h2{
+    font-weight: 700;
+    font-size: 25px;
+    padding: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.left-form > form input{
+    width: 100% !important;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    margin-top: 25px;
+    height: 45px;
+    border-radius: 3px;
+    background-color: rgb(238, 240, 238);
+  
+    
+}
+.left-form > form label{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /* background-color: red; */
+    padding: 10px 35px;
+    height: 45px;
+    margin-top: 30px;
+    font-size: 14px;
+    pointer-events: none;
+    transition: transform .5s ease;
+}
+
+form label::after{
+    /* border-bottom: 1px solid red; */
+    content: "";
+    position: absolute;
+    margin-top: 24px;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+}
+.form-container form input:is(:focus, :valid) ~ label{
+    transform: translateY(-74%);
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 14px;
+
+
+   
+}
+button[type="submit"]{
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #ff4a57;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    /* border-radius: 20px; */
+}
+button[type="submit"]:hover{
+    background-color: #eb414cd7;
+    color: #eee;
+    transition: all .5s ease;
+}
+
+
+form #already_member{
+    text-decoration: none;
+    padding: 10px 0;
+    font-size: 14px;
+    opacity: .7;
+    font-weight: 600;
+    color: #333;
+    transition: all .5s ease;
+    text-align: right;
+    width: 42%;
+    /* border: 2px solid red; */
+    margin-left: 12.5rem;
+
+}
+
+#already_member:hover{
+    opacity: 1;
+    text-decoration: underline;
+    transition: all .5s ease;
+
+}
+.social_media{
+    /* border: 2px solid red; */
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.social_media p{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    
+}
+.social_media p::before, .social_media p::after{
+    content: "";
+    border-bottom: 1px solid #333;
+    position: absolute;
+    bottom: 14px;
+    width: 45%;
+    right: 0;
+    padding: 0;
+}
+.social_media p::before{
+    left: 0;
+}
+
+.social_media  span{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.right-wrapper{
+    flex: 2;
+    background:linear-gradient(to right, rgba(68, 9, 9, 0.356), black),url(../img/banner2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: color;
+}
+
+
+#error{
+  padding: 7px;
+  display: flex;
+}
+
+#close{
+    /* border: 2px solid red; */
+    font-size: 14px;
+    height: .2px;
+ 
+}

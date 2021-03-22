@@ -1,0 +1,58 @@
+<%- include("./partials/_header") %> 
+
+
+<div class="cart">
+    <% if(cart.length > 0) {%> 
+    <h2>My Shopping cart</h2>
+<table>
+
+            
+                <th>S/n</th>
+                <th>Items</th>
+                <th>name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Edit</th>
+                <th>remove</th>
+          
+            <% cart.map(carts => { %>
+                <% let mycart = carts.userCart %> 
+                
+                
+                <%  mycart.map(c =>{ %>
+                    
+                    <tr>
+                        <td></td>
+                        <td><img src="/img/upload/<%= c.productId.myfiles[0].filename %> " id="cartImg" alt=""></td> 
+                    
+                        <td> <%= c.productId.productName %> </td>
+                        
+                        <td>  &#8358 <%=c.price %> </td>
+                        <td>  <%= c.quantity %> </td>
+                        <td><a href=""><i class="fa fa-edit"></i></a></td>
+                        <td><a href=""><i class="fa fa-times"></i></a></td>
+                        
+                    </tr> 
+                        <% }) %> 
+                        
+                        
+                        <tr>
+                            <th>Total price</th>
+                            <td></td>
+                            
+                        </tr>
+                        <tr>
+                        </tr>
+                        <% }) %>
+                    
+                    </table>
+<% }else{ %> 
+        
+    <h2>No Item found</h2>
+    <% } %> 
+</div>
+
+
+
+
+<%- include("./partials/_footer") %> 

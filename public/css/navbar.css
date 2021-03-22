@@ -64,6 +64,14 @@ body{
     display: block !important;
     transition: all .5s ease;
 }
+.header ul .active{
+   
+
+   border-bottom: 3px solid #ff4a57 !important;
+   padding-bottom: 10px;
+   /* width: 10%; */
+    
+}
 .container .header .navigation a, .last a{
     color: #eee;
     text-decoration: none;
