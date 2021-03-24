@@ -31,7 +31,15 @@ addedAt:{
 },
 
         }
-    ]
+
+    ],
+
+    totalPrice: {
+        type:Number,
+        default: "0",
+
+    }
+    
 
     
         

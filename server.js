@@ -25,6 +25,7 @@ app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(methodOverride("_method"))
 
+
 app.use(session({
     secret: 'iam untouchable',
     resave: false,
@@ -69,21 +70,8 @@ app.get("/",   auth, async(req, res) =>{
         if(err)throw err
     })
 
-    let cart =  await CartSchema.find({userId:req.user.id}).exec((err,data)=>{
-    
-        if(err){
-            console.log(err)
-        }
-        if(!data){
-            res.render("index", {
-                title:"Homepage",
-                user:req.user,
-                products,
-                
-    
-            })
-        }
-    })
+  let cart = await CartSchema.findOne({userId:req.user.id})
+// console.log(cart);
 
   
     res.render("index", {

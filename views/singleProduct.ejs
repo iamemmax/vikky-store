@@ -48,15 +48,22 @@
            
            
         </div>
+        <form action="" method="POST">
         <div class="quantity">
             <h2>Quantity: </h2>
             <button type="submit" id="add">+</button>
-                <span id="qty" name="quantity">0</span>
+
+                <input type="text"  name="quantity"   id="qty">
             <button type="submit" id="sub">-</button>
+
         </div>
+        <input type="hidden" value="<%= single.amount %> " name="price" id="">
         
         <div class="submitBtn">
             <button type="submit">Add to cart</button>
+        </form>
+
+
             <button type="submit">Buy Now</button>
         </div>
     </div>
@@ -69,13 +76,13 @@
 
     let click = 0;
     add.addEventListener("click", (e)=>{
-        qty.innerHTML = click +=1
+        qty.value = click +=1
     })
 
     sub.addEventListener("click", (e)=>{
-        qty.innerHTML = click -- ;
+        qty.value = click -- ;
         
-        if(qty.innerHTML < 1){
+        if(qty.value <= 1){
             click = 0;
             
         }

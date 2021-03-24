@@ -29,3 +29,22 @@ table, td, th {
 tr, td img{
     width: 30px ;
 }
+tr, td button{
+  background: unset;
+  border: none;
+  outline: none;
+}
+td i{
+  font-size: 16px;
+  cursor: pointer;
+  color: #ff4a57;
+}
+td select{
+ 
+  outline: none;
+  width: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  border: 1px solid #222;
+  border-radius: 3px;
+}
