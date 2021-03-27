@@ -6,12 +6,12 @@
         
     <div class="categories">
 
-        <button type="submit">All</button>
-        <button type="submit">Shoe</button>
-        <button type="submit">Wares</button>
-        <button type="submit">Laptop</button>
-        <button type="submit">Phones</button>
-
+        <div class="cart active">All</div> 
+        <div class="cart">Shoe</div> 
+        <div class="cart">Wares</div> 
+        <div class="cart">Laptop</div> 
+        <div class="cart">Phones</div> 
+    
 </div>
     
 
@@ -45,3 +45,14 @@
 
 
 
+
+<script>
+    const catBtn = document.querySelectorAll(".cart")
+    const category = document.querySelector(".categories")
+    catBtn.forEach(categBtn =>{
+        categBtn.addEventListener("click", (e)=>{
+            category.querySelector(".active").classList.remove("active")
+            categBtn.classList.add("active")
+        })
+    })
+</script>

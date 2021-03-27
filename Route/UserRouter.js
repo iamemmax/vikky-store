@@ -8,10 +8,7 @@ const productSchema = require("../model/productSchema")
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 const auth = require("../config/auth")
-
-
-
-
+const UserSchema = require("../model/UserSchema")
 
 
 UserRouter.get("/register",  (req, res) =>{
@@ -258,4 +255,75 @@ UserRouter.get("/dashboard", auth, async (req, res) =>{
 
 
 
+// change password
+
+UserRouter.get("/change-pass/:id", auth, (req, res) =>{
+    
+let error  = []
+    res.render("change-pass", {
+        title : "change password",
+        user:req.user,
+        error
+    })
+})
+
+UserRouter.post("/change-pass/:id", async(req, res)=>{
+    let error = []
+    let user =  await UserSchema.findOne({_id:req.params.id}).populate("postedBy product")
+    let {old, password, password2} = req.body
+
+    if(!old || !password || !password2){
+        error.push({msg: "all field are required"})
+          
+     }
+        if(password !== password2){
+            error.push({msg: "password not match"})
+            console.log("pass1 and pass 2 not match");
+           
+        }
+        if(error.length > 0){
+            res.render("change-pass", {
+                title:"change password",
+                user:req.user.id,
+                error,
+                old,
+                password,
+                password2
+           })
+        }else{
+            if(user){
+                 const salt = 10;
+                bcrypt.genSalt(salt,  function(err, salt) {
+                    bcrypt.hash(password, salt,   function(err, hash) {
+                   
+                        bcrypt.compare(old, user.password, (err, isMatch) =>{
+                            if(err)throw err
+                    if(isMatch){
+                       
+                            UserSchema.findOneAndUpdate({_id:req.user.id}, {$set:{password:hash}},(err, data) =>{
+                                if(err)console.log(err);
+                                if(data){
+                                    res.redirect("/")
+                                    console.log("password changed successfully");
+                                }
+                            }, {new:true})
+                            
+                        
+                    
+       
+                
+                }else{
+                    error.push({msg: "user not found"})
+                    
+                }
+                        })
+                })
+          
+            
+        
+    })
+
+            }}
+    })
+        
 module.exports = UserRouter

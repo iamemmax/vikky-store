@@ -7,9 +7,36 @@
     overflow: hidden;
     text-align: center;
 }
+.mostPouplar_container .categories{
+    padding: 10px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.categories > div{
+    border: 1px solid rgba(218, 215, 215, 0.603);
+
+    margin: 10px;
+    outline: none;
+    font-weight: 600;
+    /* background-color: #ff4a57; */
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+.mostPouplar_container >.categories div:is(:hover, .active){
+    background-color: #ff4a57;
+    color: #eee;
+    transition: all .5s ease-in;
+}
+
 .mostPouplar_container h2{
 
         padding: 40px;
+        padding-bottom: 20px;
         top: 2rem;
         font-size: 25px;
         font-weight: 600;
@@ -33,11 +60,11 @@
 }
 
 .mostPouplar_container .popular div{
-    box-shadow: 0px 1px 5px  2px #eee;
-    width: 220px;
-    margin: 10px;
+    box-shadow: 0px 1px 1px  2px #eee;
+    width: 225px;
+    border-radius: 5px;
+    margin: 8px;
     height: 270px;
-    /* border: 1px solid rgb(180, 180, 180); */
     object-fit: cover;
     border-radius: 5px;
     display: flex;
@@ -71,7 +98,7 @@
     color: #222;
 }
 .popular div img{
-    width: 250px;
+    width: 220px;
     height: 160px;
 }
 .popular div button{

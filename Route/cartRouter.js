@@ -116,7 +116,7 @@ CartSchema.findOne({userId:req.user._id}).exec((err, cart)=>{
                     "userCart.$":{
                         ...createCart,
                         quantity:existingProduct.quantity +1,
-                        price:existingProduct.quantity * existingProduct.price,
+                        price:existingProduct.quantity * existingProduct.price ,
                         totalPrice:existingProduct.price + existingProduct.price
                     },
               },

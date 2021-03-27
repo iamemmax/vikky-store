@@ -6,11 +6,33 @@ const productSchema = new mongoose.Schema({
         type: String,
         require:true
     },
+    categories:{
+        type: String,
+        require:true
+    },
+    color:{
+        type: String,
+        require:true
+    },
+    brand:{
+        type: String,
+        require:true
+    },
+    sizes:{
+        type: String,
+        require:true
+    },
+    description:{
+        type: String,
+        require:true
+    },
+
 
     amount:{
         type: Number,
         require:true
     },
+    
 
     myfiles:[],
         

@@ -17,44 +17,41 @@
         <div class="amount">
            <h3>Amount: &#x20A6 <%= single.amount %></h3> 
         </div>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, voluptatem officiis! Hic mollitia iste modi provident recusandae placeat natus quo sit quas consequatur? Dolores ducimus assumenda voluptate dolore facilis quisquam.</p>
+        <p><%= single.description %> </p>
+        <p>Brand: <span><%= single.brand %> </span></p>
 
-        <p>Brand: <span>Hp</span></p>
-
-        <div class="color"> 
-            <h2>Color:</h2> 
-            <label for="black">
-              <input type="radio" name="black" value="black" checked id="black">
-              <span id="black"></span>
-
-
-            </label>
-            <label for="red">
-                <input type="radio" name="red" value="red" id="red">
-                <span id="red"> </span>
-
-            </label>
-            <label for="blue">
-                <input type="radio" name="blue" value="blue" id="blue">
+    
+        <form action="/users/cart/<%= single.id %> " method="POST">
+            <div class="color"> 
+                <h2>Color:</h2> 
                 
-                <span id="blue"></span>
-
-            </label>
-            <label for="green">
-              <input type="radio" name="green" value="green" id="green">
-              <span id="green"></span>
-            </label>
-
-           
-           
-        </div>
-        <form action="" method="POST">
-        <div class="quantity">
+                <select name="color" id="">
+    
+                    <option value="default">default</option>
+                    <option value="red">red</option>
+                    <option value="blue">blue</option>
+                    <option value="green">green</option>
+                    <option value="pink">pink</option>
+            
+                </select>
+    
+            </div>
+            
+            <div class="quantity">
             <h2>Quantity: </h2>
-            <button type="submit" id="add">+</button>
+            <select name="quantity" id="">
 
-                <input type="text"  name="quantity"   id="qty">
-            <button type="submit" id="sub">-</button>
+                <option value="1" <%= single.quantity == '1' ? 'selected' : ""%>>1</option>
+                <option value="2" <%= single.quantity == "2" ? 'selected' : "" %> >2</option>
+                <option value="3" <%= single.quantity == "3" ? 'selected' : "" %> >3</option>
+                <option value="4" ><%= single.quantity == "4" ? 'selected' : "" %> 4</option>
+                <option value="5" <%= single.quantity == "5" ? 'selected' : "" %> >5</option>
+                <option value="6" <%= single.quantity == "6" ? 'selected' : "" %> >6</option>
+                <option value="7"  <%= single.quantity == "7" ? 'selected' : "" %> >7</option>
+                <option value="8" <%= single.quantity == "8" ? 'selected' : "" %> >8</option>
+                <option value="9" <%= single.quantity == "9" ? 'selected' : "" %> >9</option>
+                <option value="10" <%= single.quantity == "10" ? 'selected' : "" %>  >10</option>
+            </select>
 
         </div>
         <input type="hidden" value="<%= single.amount %> " name="price" id="">

@@ -1,0 +1,30 @@
+<%- include("./partials/_header") %> 
+
+
+
+
+<div class="change-password uploadProduct">
+    <form action="/users/change-pass/<%= user.id %> " method="POST">
+        
+
+        <% if (typeof error !== "undefined") { %>
+         
+            <% error.forEach(errors => { %>
+                <div class="alert alert-warning alert-dismissible fade show" id="error" role="alert">
+                    <%= errors.msg %> 
+                    <button type="button"  class="btn-close" data-bs-dismiss="alert" aria-label="Close" id="close"></button>
+                  </div>
+                
+                <% }) %>
+                <% } %>
+
+
+        <h2>change password</h2>
+        <input type="password" name="old" id="" placeholder="Old password">
+        <input type="password" name="password" id="" placeholder="New password">
+        <input type="password" name="password2" id="" placeholder="Confirm password">
+        <button type="submit">change password</button>
+    </form>
+</div>
+
+<%- include("./partials/_footer") %> 

@@ -5,10 +5,10 @@ const productSchema = require("../model/productSchema")
 const cartSchema = require("../model/CartSchema")
 const sharp = require("sharp")
 const productRouter = express.Router()
-const Auth  = require("../config/auth")
+const auth  = require("../config/auth")
 
 
-productRouter.get("/new", Auth, async(req, res) =>{
+productRouter.get("/new", auth, async(req, res) =>{
     let cart = await cartSchema.findOne({userId:req.user.id}).populate("productId")
     let mycart = await cart.userCart.map(c => c.quantity)
 
@@ -35,7 +35,7 @@ const upload = multer({storage:storage}).array("myfiles", 5)
 
 
 productRouter.post("/new", upload, async (req, res) =>{
-    let {productName, amount} = req.body
+    let {productName, amount, brand, description, categories, sizes, color} = req.body
     let myfiles = req.files
     // let {filename:myfiles} = req.files
     
@@ -63,6 +63,11 @@ productRouter.post("/new", upload, async (req, res) =>{
             let product = new productSchema({
                 productName,
                 amount,
+                description,
+                categories,
+                sizes,
+                color,
+                brand,
                 myfiles: myfileArray,
                 postedBy:req.user.id,
                
@@ -90,10 +95,10 @@ productRouter.post("/new", upload, async (req, res) =>{
 
 // get single product
 
-productRouter.get("/:slug", async(req, res) =>{
+productRouter.get("/:slug", auth, async(req, res) =>{
     let single = await productSchema.findOne({slug:req.params.slug})
 
-    let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
+    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
         if(err)throw err
       }).populate("postedBy product")
      
@@ -104,7 +109,7 @@ productRouter.get("/:slug", async(req, res) =>{
         single,
         user:req.user,
         cart,
-        mycart
+        
           })
 
         // console.log(single);
