@@ -107,6 +107,7 @@
     <li><a href="/product/new">New product</a></li>
     <li><a href="/users/logout">Logout</a></li>
 </div>
+<div class="removeRightNav"></div>
 
 
 
@@ -156,7 +157,7 @@
     
     const userImg = document.getElementById("userImg")
     const rightNavInfo = document.querySelector(".rightNavInfo")
-    userImg.addEventListener("mouseover", (e)=>{
+    userImg.addEventListener("click", (e)=>{
         rightNavInfo.classList.toggle("show")
     })
 </script>
