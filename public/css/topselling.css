@@ -37,7 +37,8 @@
     margin-top: 4rem;
     pointer-events: visible;
     width: 225px;
-    background-color: rgba(231, 228, 228, 0.877);
+    background-color: rgb(243, 243, 243);
+    
     display: flex;
     justify-content: center;
     align-items: center;

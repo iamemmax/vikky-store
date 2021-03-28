@@ -290,6 +290,7 @@ UserRouter.post("/change-pass/:id", async(req, res)=>{
                 password,
                 password2
            })
+           
         }else{
             if(user){
                  const salt = 10;

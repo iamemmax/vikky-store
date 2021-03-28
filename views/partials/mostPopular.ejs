@@ -6,11 +6,12 @@
         
     <div class="categories">
 
-        <div class="cart active">All</div> 
-        <div class="cart">Shoe</div> 
-        <div class="cart">Wares</div> 
-        <div class="cart">Laptop</div> 
-        <div class="cart">Phones</div> 
+        <div class="cart active" data-name="all">All</div> 
+        <div class="cart" data-name="shoe">Shoe</div> 
+        <div class="cart" data-name="wares">Wares</div> 
+        <div class="cart" data-name="computer">computer</div> 
+        <div class="cart" data-name="phone">Phones</div> 
+        <div class="cart" data-name="electronic">electronic</div> 
     
 </div>
     
@@ -19,12 +20,12 @@
 
         <% products.forEach(product => { %>
             
-            <div class="pro_img">
+            <div class="pro_img mycategory" data-name="<%= product.categories %>">
                 
                 <a href="/product/<%= product.slug %> ">
                     <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="">
                     
-                    <h2><%= product.productName %> </h2>
+                    <h2><%= product.productName.substr(0,20) %> </h2>
                 </a>
             
           
@@ -48,11 +49,29 @@
 
 <script>
     const catBtn = document.querySelectorAll(".cart")
+    const cartItem = document.querySelectorAll(".mycategory")
     const category = document.querySelector(".categories")
+    
     catBtn.forEach(categBtn =>{
         categBtn.addEventListener("click", (e)=>{
             category.querySelector(".active").classList.remove("active")
             categBtn.classList.add("active")
+
+           let cateAttribute = categBtn.getAttribute("data-name")
+           
+           cartItem.forEach(items =>{
+               let myItemAttrribute = items.getAttribute("data-name")
+               if(cateAttribute == myItemAttrribute || cateAttribute === "all"){
+               
+                items.classList.remove("hide")
+                items.classList.add("show")
+               }else{
+                items.classList.remove("show")
+                items.classList.add("hide")
+
+
+               }
+           })
         })
     })
 </script>

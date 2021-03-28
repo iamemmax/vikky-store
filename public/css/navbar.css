@@ -284,3 +284,31 @@ body{
         height: 86vh;
     }
 }
+
+.rightNavInfo{
+    position: fixed;
+    right: 7rem;
+    padding: 10px;
+    top: 4rem;
+    z-index: 9999;
+    width: 120px;
+    background-color: #eee;
+    border-radius: 5px;
+    transform: scale(0);
+    
+}
+.rightNavInfo a{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    line-height: 30px;
+}
+.rightNavInfo a:hover{
+    color: #ff4a57;
+}
+
+.show{
+    transform: scale(1) !important;
+    transition: transform .5s ease-in;
+}

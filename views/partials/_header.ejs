@@ -49,16 +49,15 @@
             <% if(!user){ %> 
                 <li><a href="javascript:void()"><i class="fas fa-user"></i></a>
                     <% }else{ %> 
-                    <img src="/img/<%= user.userImg %> " alt="" style="width: 30px;position: absolute;right: 6.6rem;top: 0;">
+                    <img src="/img/<%= user.userImg %> " alt="" style="width: 30px;position: absolute;right: 6.6rem;top: 0;" id="userImg">
                     <li><a href="javascript:void()"></a>
                         <% } %> 
                     <ul id="pages">
                         <% if(!user){ %> 
                         <li><a href="/users/Register">Register</a></li>
                         <li><a href="/users/Login">Login</a></li>
-                        <% }else{ %> 
-                        <li><a href="/users/logout">Logout</a></li>
                         <% } %> 
+                         
                     </ul>
                     
                 </li>
@@ -98,8 +97,20 @@
 
     </div>
 
+
+
 </section>
 <div class="removeOnclick"></div>
+
+<div class="rightNavInfo">
+    <li><a href="#">Account</a></li>
+    <li><a href="/product/new">New product</a></li>
+    <li><a href="/users/logout">Logout</a></li>
+</div>
+
+
+
+
 
 <script>
     const ul = document.querySelector('.nav-ul') 
@@ -143,5 +154,10 @@
         // removeNav.classList.add("removeNavbar")
 
     
+    const userImg = document.getElementById("userImg")
+    const rightNavInfo = document.querySelector(".rightNavInfo")
+    userImg.addEventListener("mouseover", (e)=>{
+        rightNavInfo.classList.toggle("show")
+    })
 </script>
     

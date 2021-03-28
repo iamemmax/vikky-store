@@ -71,27 +71,39 @@
     max-width: 100%;
     justify-content: center;
     flex-direction: column;
+    background-color: rgb(243, 243, 243);
     align-items: center;
 
+    
+}
+.popular .hide{
+    display: none !important;
+    transition: all .5s ease-in;
+}
+.popular .show{
+    display: flex !important ;
+    transition: all .5s ease-in;
 
-    
-    
 }
 
 .popular h2{
-    padding: 5px 40px 0px;
+    padding: 5px;
+    width: 96%;
+    margin: 0px auto;
     font-weight: 600;
     text-transform: capitalize;
     font-size: 16px;
+    text-align: center;
     
 }
 .popular p{
-    padding: 10px 40px;
+    /* border: 2px solid red; */
+    padding:  10px;
+    width: 100%;
+    text-align: center;
     font-size: 14px;
     font-weight: 400;
-    /* border: 2px solid red; */
     margin-top: -5px;
-    text-align: left !important;
 }
 .popular a{
     text-decoration: none;
@@ -99,7 +111,9 @@
 }
 .popular div img{
     width: 220px;
-    height: 160px;
+    height: 150px;
+    object-fit: scale-down;
+    /* border: 2px solid red; */
 }
 .popular div button{
     /* margin-top: 1rem; */
