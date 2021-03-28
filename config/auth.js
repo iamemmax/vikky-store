@@ -5,7 +5,7 @@
         return next()
         
     }else{
-        res.redirect("/users/login")
+        res.redirect("/users/Login")
     }
  }
 
