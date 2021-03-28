@@ -20,13 +20,17 @@ UserRouter.get("/register",  (req, res) =>{
         
     })
 })
-UserRouter.get("/login",  (req, res) =>{
-    res.render("login",{
-        title:"Login Account",
-        user:req.user,
 
+UserRouter.get("/login",  (req, res) =>{
+    
+
+    res.render("login",{
+        title:"Join E-shop",
+        user:req.user,
+        
     })
 })
+
 
 UserRouter.post("/register", (req, res) =>{
     let error = [];
