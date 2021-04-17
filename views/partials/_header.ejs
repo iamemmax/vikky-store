@@ -32,79 +32,85 @@
                 <li><a href="javascript:void()">Computer</a></li>
                 <li><a href="javascript:void()">Shoe</a></li>
                 <li><a href="javascript:void()">Phones</a></li>
-                <li><a href="/users/change-pass/<%= user.id %> ">cp</a></li>
                 
             </ul>
         </nav>
-        </div>
+    </div>
         
-        <div class="search">
-            <form action="">
-                <input type="text" placeholder="Search anything here .....">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
+    <div class="search">
+        <form action="/search">
+            <input type="text" name="q" placeholder="Search anything here .....">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
         </div>
         <div class="last">
-                
+            
             <% if(!user){ %> 
-                <li><a href="javascript:void()"><i class="fas fa-user"></i></a>
-                    <% }else{ %> 
-                    <img src="/img/<%= user.userImg %> " alt="" style="width: 30px;position: absolute;right: 6.6rem;top: 0;" id="userImg">
-                    <li><a href="javascript:void()"></a>
+                <li><a href="/"><i class="fas fa-user"></i></a> </li>
+                <% }else{ %> 
+                    
+                    <li><a href="/"></a></li>
+                    <img src="/img/<%= user.userImg %>" alt="<%= user.userImg %>" style="width: 30px;position: absolute;right: 6.6rem;top: 0;cursor: pointer;"  id="userImg" >
+                    
+                    
                         <% } %> 
-                    <ul id="pages">
-                        <% if(!user){ %> 
-                        <li><a href="/users/Register">Register</a></li>
-                        <li><a href="/users/Login">Login</a></li>
+                        <ul id="pages">
+                            <% if(!user){ %> 
+                                <li><a href="/users/Register">Register</a></li>
+                                <li><a href="/users/Login">Login</a></li>
                         <% } %> 
-                         
+                        
                     </ul>
                     
                 </li>
                 
-                <li><a href="javascript:void()"><i class="fas fa-heart"></i></a></li>
+                <li><a href="/"><i class="fas fa-heart"></i></a></li>
                 <% if(user){%> 
                     
               
-                   
-                     
+                   <% if(cart != undefined){%> 
+                
                         <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
                             
-                        </i><span id="cart">    </span></a> </li>
+                        </i><span id="cart"> <%= cart.length %>   </span></a> </li>
                         
+            <% }else{ %> 
+                     
+                <li><a href="javascript:void()"><i class="fas fa-shopping-cart"></i><span id="cart">0</span></a> </li>
+            <% } %> 
                     
-                        
-                        <!-- <li><a href="javascript:void()"><i class="fas fa-shopping-cart"></i><span id="cart">0</span></a> </li> -->
-                        
 
-                    <% } %> 
+                       
+                        
+                        <% } %> 
+                        
+                        
+                    </div>
                     
                     
-            </div>
-
-            
-                <div class="navbar">
-                    <div class="bar1"></div>
-                    <div class="bar1"></div>
+                    <div class="navbar">
+                        <div class="bar1"></div>
+                        <div class="bar1"></div>
                     <div class="bar1"></div>
                 </div>
     
-            
-            
-            <div class="removeNav">
-                <i class="fas fa-times"></i>
-            </div>
-
+                
+                
+                <div class="removeNav">
+                    <i class="fas fa-times"></i>
+                </div>
+                
     </div>
-
-
-
+    
+    
+    
 </section>
 <div class="removeOnclick"></div>
 
 <div class="rightNavInfo">
-    <li><a href="#">Account</a></li>
+    <li><a href="/">Account</a></li>
     <li><a href="/product/new">New product</a></li>
+    <li><a href="/users/change-pass/<%= user.id %> ">change password</a></li>
     <li><a href="/users/logout">Logout</a></li>
 </div>
 <div class="removeRightNav"></div>
@@ -132,6 +138,8 @@
         navbar.style.display = "flex"
         removeNav.classList.remove("removeNavbar")
         removeOnclick.style.display = "none"
+        rightNavInfo.style.display = "none"
+
 
 
         }) 
@@ -155,10 +163,27 @@
         // removeNav.classList.add("removeNavbar")
 
     
-    const userImg = document.getElementById("userImg")
-    const rightNavInfo = document.querySelector(".rightNavInfo")
-    userImg.addEventListener("click", (e)=>{
-        rightNavInfo.classList.toggle("show")
-    })
+        let openRightNav = document.querySelector("#userImg")
+let rightNavInfo = document.querySelector(".rightNavInfo")
+let removeRightNav = document.querySelector(".removeRightNav")
+
+    openRightNav.addEventListener("click", (e) =>{
+    e.preventDefault()
+    rightNavInfo.classList.toggle("show")
+    removeRightNav.style.display = "block"
+    
+})
+removeRightNav.addEventListener("click", (e) =>{
+    removeRightNav.style.display = "none"
+    rightNavInfo.classList.remove("show")
+
+
+})
+
 </script>
+
+
+    
+    
+
     

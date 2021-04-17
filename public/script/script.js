@@ -7,3 +7,5 @@ selectImg.forEach(myImg =>{
        displayImg.className = "animateImg"
     })
 })
+
+

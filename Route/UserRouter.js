@@ -12,8 +12,6 @@ const UserSchema = require("../model/UserSchema")
 
 
 UserRouter.get("/register",  (req, res) =>{
-    let {username, email, password, password2} = req.body
-
     res.render("Register",{
         title:"Join E-shop",
         user:req.user,
@@ -23,7 +21,7 @@ UserRouter.get("/register",  (req, res) =>{
 
 
 UserRouter.get("/login", (req, res)=>{
-    res.render("Login", {
+    res.render("login", {
         title:"Login Account",
         user: req.user
     })
@@ -108,10 +106,7 @@ UserRouter.post("/register", (req, res) =>{
             email,
             password,
             user:req.user,
-            
-            // layout:false,
-            
-            
+          
             
         })
 
@@ -135,8 +130,9 @@ UserRouter.post("/register", (req, res) =>{
                      res.redirect("/users/Register")
 
                  }
-                //  console.log(result);
-                 res.redirect("/users/Login")
+                if(result){
+                    res.redirect("/users/login")
+                }
              })
 
             })
@@ -178,7 +174,6 @@ UserRouter.post("/login", (req, res, next) =>{
                     let error = []
                 User.findOne({email:email})
                 .then(user =>{
-                    console.log(user);
                     if(!user){
                         error.push({msg: "incorrect username or password"})
                         res.render("login", {
@@ -187,14 +182,14 @@ UserRouter.post("/login", (req, res, next) =>{
                             email,
                             password
                         })
-                        console.log("incorrect username or password");
+                        // /console.log("incorrect username or password");
                         // return done(null, false, {msg: "incorrect username or password"})
                        
     
                     }else{
     
                         bcrypt.compare(password, user.password, (err, isMatch) =>{
-                            if(err)throw err
+                           if(err)console.log(err);
                             if(isMatch){
                                 return done(null, user)
     
@@ -279,9 +274,7 @@ UserRouter.post("/change-pass/:id", async(req, res)=>{
           
      }
         if(password !== password2){
-            error.push({msg: "password not match"})
-            console.log("pass1 and pass 2 not match");
-           
+            error.push({msg: "password not match"})  
         }
         if(error.length > 0){
             res.render("change-pass", {

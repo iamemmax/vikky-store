@@ -48,7 +48,7 @@ mongoose.connect(process.env.db_url, {
     if(err){
         console.log(err);
     }else{
-        console.log("database connected successfully".red);
+        console.log("database connected successfully");
     }
 })
 
@@ -69,8 +69,10 @@ app.get("/",   auth, async(req, res) =>{
         if(err)throw err
     })
 
-  let cart = await CartSchema.findOne({userId:req.user.id})
-// console.log(cart);
+  let cart = await CartSchema.findOne({userId:req.user.id}).exec()
+    // let product = cart.userCart.find(c => c.quantity)
+
+  
 
   
     res.render("index", {
@@ -78,14 +80,24 @@ app.get("/",   auth, async(req, res) =>{
         user:req.user,
         products,
         cart,
- 
-        
-        
-        
-       
-       
+        // product
     })
    
+})
+
+app.get("/:q", auth, async(req, res) =>{
+   let query = req.query.q
+
+    let regex = new RegExp(query, "i")
+    let search =  await productSchema.find({productName:regex})
+
+    res.render("search", {
+        user:req.user,
+        title: "search",
+        search,
+        query
+    })
+    
 })
 
 
@@ -94,7 +106,7 @@ app.use("/users", require("./Route/UserRouter"))
 app.use("/product", require("./Route/productRouter"))
 app.use("/users/cart", require("./Route/cartRouter"))
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 5050
 app.listen(PORT, () =>{
     console.log(`server started at port ${PORT}`);
 })

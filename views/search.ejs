@@ -1,0 +1,85 @@
+<%- include("./partials/_header") %> 
+<div class="mostPouplar_container">
+    <% if(search){%> 
+            <h2 style="padding:20px; width:100%;text-align:center;font-size:16px"> <%= search.length%> result found for <%= query%>
+            </h2>
+    
+
+ 
+        
+    <div class="categories">
+
+        <div class="cart active" data-name="all">All</div> 
+        <div class="cart" data-name="shoe">Shoe</div> 
+        <div class="cart" data-name="wares">Wares</div> 
+        <div class="cart" data-name="computer">computer</div> 
+        <div class="cart" data-name="phone">Phones</div> 
+        <div class="cart" data-name="electronic">electronic</div> 
+    
+</div>
+    
+
+    <div class="popular">
+        
+
+        <% search.forEach(product => { %>
+            
+            <div class="pro_img mycategory" data-name="<%= product.categories %>">
+                
+                <a href="/product/<%= product.slug %> ">
+                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="">
+                    
+                    <h2><%= product.productName.substr(0,20) %> </h2>
+                </a>
+            
+          
+               <p id="amount">&#8358 <%= product.amount %> </p>
+
+               <form action="/users/cart/<%= product.id %> " method="POST">
+                        <input type="hidden"  name="price"  value="<%= product.amount %> ">
+                        <input type="hidden" name="quantity" value="1" id="">
+                    
+                   <button type="submit" id="button">Add to cart</button>
+
+               </form>
+            </div>
+            <%  }) %> 
+            <%  } else{ %>
+              <p>Search not found </p>
+            <% } %> 
+                
+</div>
+</div>
+
+
+
+
+
+<script>
+    const catBtn = document.querySelectorAll(".cart")
+    const cartItem = document.querySelectorAll(".mycategory")
+    const category = document.querySelector(".categories")
+    
+    catBtn.forEach(categBtn =>{
+        categBtn.addEventListener("click", (e)=>{
+            category.querySelector(".active").classList.remove("active")
+            categBtn.classList.add("active")
+
+           let cateAttribute = categBtn.getAttribute("data-name")
+           
+           cartItem.forEach(items =>{
+               let myItemAttrribute = items.getAttribute("data-name")
+               if(cateAttribute == myItemAttrribute || cateAttribute === "all"){
+               
+                items.classList.remove("hide")
+                items.classList.add("show")
+               }else{
+                items.classList.remove("show")
+                items.classList.add("hide")
+
+
+               }
+           })
+        })
+    })
+</script>

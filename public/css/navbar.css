@@ -285,17 +285,25 @@ body{
     }
 }
 
+
 .rightNavInfo{
     position: fixed;
     right: 7rem;
     padding: 10px;
     top: 4rem;
     z-index: 9999;
-    width: 120px;
-    background-color: #eee;
+    width: 140px;
+    background-color: #fff;
     border-radius: 5px;
     transform: scale(0);
+    /* display: none; */
+    transition: transform .5s ease-in;
+    box-shadow: 0px 0px 2px 1px #eee;
     
+}
+.show{
+    transform: scale(1);
+
 }
 .rightNavInfo a{
     text-decoration: none;
@@ -308,7 +316,15 @@ body{
     color: #ff4a57;
 }
 
-.show{
-    transform: scale(1) !important;
-    transition: transform .5s ease-in;
+.removeRightNav{
+    /* border: 2px solid red; */
+    width: 100%;
+    z-index: 999;
+    position: fixed;    
+    right: 0;
+    top: 10vh;
+    width: 100%;
+    display: none;
+    /* border: blue 2px solid; */
+    height: 90vh;
 }
