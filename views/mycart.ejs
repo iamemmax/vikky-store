@@ -9,9 +9,10 @@
             
                 <!-- <th>S/n</th> -->
                 <th>Items</th>
-                <th>name</th>
+                <th id="name">name</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <th>Qty</th>
+                <th>Update</th>
                 <th>remove</th>
           
             <% cart.map(carts => { %>
@@ -28,51 +29,53 @@
                         
                         <td>  &#8358 <%=c.price %> </td>
                         <td> 
-                          <form action="/users/cart/edit/<%=c._id %>?_method=PUT" method="POST">
-                            <button type="submit" >
-                            <select name="quantity"   id="">
-                            <option value="1" <%= c.quantity == '1' ? 'selected' : ""%>>1</option>
-                            <option value="2" <%= c.quantity == "2" ? 'selected' : "" %> >2</option>
-                            <option value="3" <%= c.quantity == "3" ? 'selected' : "" %> >3</option>
-                            <option value="4" ><%= c.quantity == "4" ? 'selected' : "" %> 4</option>
-                            <option value="5" <%= c.quantity == "5" ? 'selected' : "" %> >5</option>
-                            <option value="6" <%= c.quantity == "6" ? 'selected' : "" %> >6</option>
-                            <option value="7"  <%= c.quantity == "7" ? 'selected' : "" %> >7</option>
-                            <option value="8" <%= c.quantity == "8" ? 'selected' : "" %> >8</option>
-                            <option value="9" <%= c.quantity == "9" ? 'selected' : "" %> >9</option>
-                            <option value="10" <%= c.quantity == "10" ? 'selected' : "" %>  >10</option>
-                        </select>
-                    </button>
+                        
+                           
+                            <form action="/users/cart/update/<%= c._id %>?_method=PUT" method="POST">
+                    <div class="count">
+                        <input type="button"  class="add" value="+">
+                           <input type="text"  value="<%= c.quantity %> " name="quantity" class="show-count">
+                           <input type="button"  class="sub" value="-">
+                       </div>
+
                         <input type="hidden" name="id" value="<%= c.productId.id %> ">
-                            <input type="hidden" name="price" value="<%= c.price %> ">
+                            <input type="hidden" name="price" value="<%= c.productId.amount %> ">
 
                         <!-- <button type="submit" id="sub">-</button> -->
-                    </form>
+                   
                      </td>
             
                      
                     <td> 
-                        
-                      <form action="/users/cart/delete/<%= c._id%>?_method=PUT" method="POST">
-                        <input type="hidden" name="id" value="<%= c._id %> ">
-                        <input type="hidden" name="productId" value="<%= c.productId.id %> ">
-                        <input type="hidden" name="price" value="<%= c.price %> ">
-                        <input type="hidden" name="quantity" value="<%= c.quantity %>">
-                        <button type="submit"><i class="fa fa-times"></i></button>
+                         <button type="submit"><i class="fa fa-edit" data-id="<%= c._id %> "></i></button>
                         </form>
+                     
+                    </td>
+                    <td>
+                            <form action="/users/cart/delete/<%= c._id%>?_method=PUT" method="POST">
+                                <input type="hidden" name="id" value="<%= c._id %> ">
+                                <input type="hidden" name="productId" value="<%= c.productId.id %> ">
+                                <input type="hidden" name="price" value="<%= c.price %> ">
+                                <input type="hidden" name="quantity" value="<%= c.quantity %>">
+                                <button type="submit"><i class="fa fa-times"></i></button>
+                        </form>
+                        
                     </td>
                 </tr> 
-                        <% }) %> 
-                        
-                        
-                        <tr>
-                            <th>Total price</th>
-                            <td></td>
-                            
-                        </tr>
-                        <tr>
-                        </tr>
-                        <% }) %>
+                
+                <% }) %>
+                <tr>
+                    <th>Total price</th>
+                    <td><% let total = mycart.reduce((a, b) => a + b.price, 0)%> 
+                       
+                      <h3>  &#8358 <%= total %> </h3>
+
+                    <% }) %> 
+                    
+                    
+                </tr>
+                <tr>
+                </tr>
                     
                     </table>
 <% }else{ %> 
@@ -85,30 +88,42 @@
 
 
 <script>
-    const add = document.querySelector("#add")
-    const sub = document.querySelector("#sub")
+    const addUp = document.querySelectorAll(".add")
+    const subUp = document.querySelectorAll(".sub")
     const qty = document.querySelector("#qty")
-
-    let click = 0;
-                
-             add.addEventListener("click", (e)=>{
-                    qty.value = click +=1
-                // alert("eeeeee")
-            
-            })
-
-   
-
     
-
-        sub.addEventListener("click", (e)=>{
-        qty.value = click -- ;
-        if(qty.value <= 0){
-            click = 1;
+    addUp.forEach(add =>{
+        add.addEventListener("click", (e)=>{
             
-        }
-    })
+            let input = e.target.parentElement.children[1];
+             let inputValue = input.value
+             let newValue = parseInt(inputValue) + 1
+             input.value = newValue
+            
 
+           })
+           
+            
+            
+        })
+
+        subUp.forEach(sub =>{
+            sub.addEventListener("click", (e)=>{
+           
+         let input = e.target.parentElement.children[1];
+         let inputValue = input.value
+         let newValue = parseInt(inputValue) - 1
+         input.value = newValue
+                
+         if(newValue < 1){
+         input.value = 1
+
+         }
+           })
+           
+            
+            
+        })
     
 </script>
 

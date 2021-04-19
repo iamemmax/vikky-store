@@ -52,3 +52,49 @@
     line-height: 30px;
     color: #ddd;
 }
+@media screen and (max-width:768px) {
+    .adwrappper
+    {
+        margin-top: 21rem !important;
+    height: 220px;
+    position: relative;
+
+    }
+
+
+    .adwrappper > div{
+        width: 200px;
+        
+    }
+    .adwrappper  img{
+        width:200px;
+    }
+
+    .adwrappper > div p{
+        font-size: 16px;
+        width: 100%;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        text-align: center;
+    }
+    .adwrappper > div h2{
+        text-align: center;
+        width: 100%;
+        font-size: 20px;
+        padding: 10px;
+        text-transform: capitalize;
+        position: absolute;
+        top: 40px;
+        left: 0;
+    }
+
+    .adwrappper div span{
+        width: 50%;
+        line-height: 30px;
+        color: #ddd;
+        position: absolute;
+        left: 50%;
+        margin-top: -1rem;
+    }
+}

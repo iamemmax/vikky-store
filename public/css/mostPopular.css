@@ -138,3 +138,45 @@
     transition: background .5s ease;
     
 }
+
+
+@media screen and (max-width:768px) {
+    .mostPouplar_container{
+        margin-top: 17rem;
+    }
+
+    
+    .categories > div{
+       font-size: 14px;
+        margin: 3px;
+
+    }
+    .mostPouplar_container .popular div{
+        box-shadow: 0px 1px 1px  2px #eee;
+        width: 200px;
+        margin: 8px;
+        height: 240px;
+    
+    }
+
+    .popular p{
+        /* border: 2px solid red; */
+        font-size: 14px;
+        margin-top: -5px;
+    }
+    .popular a{
+        text-decoration: none;
+        color: #222;
+    }
+    .popular h2{
+        margin-top: -10px;
+        font-size: 14px;
+       
+    }
+    .popular div img{
+        width: 200px;
+        height: 150px;
+        object-fit: scale-down;
+        /* border: 2px solid red; */
+    }
+}

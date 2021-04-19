@@ -18,7 +18,7 @@ cartRouter.get("/:id", auth, async(req, res)=>{
         cart,
        
     })
-    
+    console.log(cart);
 })
 
 // remove items from cart
@@ -51,16 +51,16 @@ cartRouter.put("/delete/:id", auth,  async (req, res) =>{
    
    
 })
-cartRouter.put("/edit/:id/",  async(req, res) =>{
+cartRouter.put("/update/:id",  async(req, res) =>{
   
-      const  productId = req.params.id
-    const price = parseInt(req.body.price)
-       const quantity = req.body.quantity
+      let  productId = req.params.id
+    let price = req.body.price
+       let quantity = req.body.quantity
     
     let cart = await CartSchema.findOne({userId:req.user.id}, (err, data)=>{
         if(err)console.log(err);
         if(data){
-            let editproduct = data.userCart.find(c => c.id == req.params.id)
+            let editproduct = data.userCart.find(c => c.id == productId)
             if(editproduct){
                 
                 CartSchema.findOneAndUpdate({userId:req.user.id, "userCart.productId":editproduct.productId}, {
@@ -68,8 +68,8 @@ cartRouter.put("/edit/:id/",  async(req, res) =>{
                         "userCart.$":{
                             quantity:quantity,
                             productId:editproduct.productId,
-                            price:parseInt(quantity * price)
-                            
+                            price:parseInt(price * quantity),
+                            totalPrice: price += price
 
                         }
                 }
@@ -92,7 +92,7 @@ cartRouter.put("/edit/:id/",  async(req, res) =>{
 
 
 
-
+// add to cart
 cartRouter.post("/:id", auth,(req, res)=>{
     
     const createCart = {
@@ -116,9 +116,9 @@ CartSchema.findOne({userId:req.user._id}).exec((err, cart)=>{
                     "userCart.$":{
                         ...createCart,
                         quantity:existingProduct.quantity +1,
-                        price:existingProduct.quantity * existingProduct.price ,
-                        totalPrice:existingProduct.price + existingProduct.price
-                    },
+                        price:createCart.price * (existingProduct.quantity +1),
+                    }
+                   
               },
               }, (err, _cart)=>{
                 if(err){

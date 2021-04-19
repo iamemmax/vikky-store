@@ -65,25 +65,21 @@
                 </li>
                 
                 <li><a href="/"><i class="fas fa-heart"></i></a></li>
-                <% if(user){%> 
-                    
               
-                   <% if(cart != undefined){%> 
-                
+                    
+         
+              
                         <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
                             
-                        </i><span id="cart"> <%= cart.length %>   </span></a> </li>
-                        
-            <% }else{ %> 
-                     
-                <li><a href="javascript:void()"><i class="fas fa-shopping-cart"></i><span id="cart">0</span></a> </li>
-            <% } %> 
-                    
+                            <!-- <if (cart[0] != null) { %> -->
+                             
+                            <!-- </i><span id="cart"> <=cart[0].userCart.length%>   </span></a> </li> -->
+                            <!-- < }else{ %> -->
+                             
+                            </i><span id="cart"> 0   </span></a> </li>
+                
 
-                       
-                        
-                        <% } %> 
-                        
+                           
                         
                     </div>
                     

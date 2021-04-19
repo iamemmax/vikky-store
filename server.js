@@ -69,19 +69,18 @@ app.get("/",   auth, async(req, res) =>{
         if(err)throw err
     })
 
-  let cart = await CartSchema.findOne({userId:req.user.id}).exec()
-    // let product = cart.userCart.find(c => c.quantity)
-
-  
-
+  let cart = await CartSchema.find({userId:req.user.id}).populate("productId")
+    
+   
   
     res.render("index", {
         title:"Homepage",
         user:req.user,
         products,
         cart,
-        // product
+      
     })
+
    
 })
 
@@ -90,10 +89,13 @@ app.get("/:q", auth, async(req, res) =>{
 
     let regex = new RegExp(query, "i")
     let search =  await productSchema.find({productName:regex})
+  let cart = await CartSchema.find({userId:req.user.id}).populate("productId")
+
 
     res.render("search", {
         user:req.user,
         title: "search",
+        cart,
         search,
         query
     })
