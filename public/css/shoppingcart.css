@@ -23,8 +23,8 @@ table, td, th {
   th{
     background-color: #f2f2f2;
     text-transform: uppercase;
+    font-weight: 700;
     font-family: 'Roboto', sans-serif;
-
 
   }
   
@@ -35,6 +35,7 @@ table, td, th {
     
     
   }
+  
   
   #name{
     width: 300px;
@@ -85,4 +86,10 @@ input[type="button"]{
   cursor: pointer;
   font-size: 20px;
   align-self: center;
+}
+
+@media screen and (max-width:768px) {
+  table{
+    width: 100%;
+  }
 }

@@ -10,10 +10,10 @@
                 <!-- <th>S/n</th> -->
                 <th>Items</th>
                 <th id="name">name</th>
-                <th>Price</th>
+                <th>Amt</th>
                 <th>Qty</th>
                 <th>Update</th>
-                <th>remove</th>
+                <th>Clear</th>
           
             <% cart.map(carts => { %>
                 <% let mycart = carts.userCart %> 
@@ -47,7 +47,7 @@
             
                      
                     <td> 
-                         <button type="submit"><i class="fa fa-edit" data-id="<%= c._id %> "></i></button>
+                         <button type="submit"><i class="fa fa-pen" data-id="<%= c._id %> "></i></button>
                         </form>
                      
                     </td>
@@ -65,7 +65,7 @@
                 
                 <% }) %>
                 <tr>
-                    <th>Total price</th>
+                    <th id="totalPrice">Total price</th>
                     <td><% let total = mycart.reduce((a, b) => a + b.price, 0)%> 
                        
                       <h3>  &#8358 <%= total %> </h3>
