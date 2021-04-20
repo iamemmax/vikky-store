@@ -153,7 +153,7 @@
     }
     .categories > div{
        font-size: 14px;
-        margin: 1px;
+        margin: 3px;
        
 
     }
@@ -162,8 +162,8 @@
     }
     .mostPouplar_container .popular div{
         box-shadow: 0px 1px 1px  2px #eee;
-        width: 130px;
-        margin: 5px;
+        width: 140px;
+        margin: 10px;
         height: 240px;
     
     }
@@ -183,7 +183,7 @@
        
     }
     .popular div img{
-        width: 130px;
+        width: 135px;
         height: 150px;
         object-fit: scale-down;
         /* border: 2px solid red; */

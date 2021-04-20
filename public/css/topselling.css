@@ -119,13 +119,13 @@ font-weight: 500;
         top: -20.4rem;
     }
     .topImgCon{
-        column-count: 2;
-        column-gap: 10px;
+        column-count: 4;
+        column-gap: 12px;
         width: 100%;
       
     }
     .topImgCon > div{
-        width: 140px;
+        width: 160px;
         height: 200px;
         margin-top: 10px;
         
