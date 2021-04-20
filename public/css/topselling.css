@@ -21,8 +21,8 @@
 }
 .topImgCon{
     display: flex;
-    column-count: 5;
-    column-gap: 20px;
+    column-count: 6;
+    column-gap: 10px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -36,7 +36,7 @@
     height: 250px;
     margin-top: 4rem;
     pointer-events: visible;
-    width: 225px;
+    width: 200px;
     background-color: rgb(243, 243, 243);
     
     display: flex;
@@ -125,43 +125,47 @@ font-weight: 500;
       
     }
     .topImgCon > div{
-        /* border: 2px solid #333; */
-        width: 220px;
+        width: 140px;
         height: 200px;
         margin-top: 10px;
-       
+        
     }
     .topImgCon div  img{
-        width: 180px;
-        height: 180px;
+        width: 120px;
+        height: 140px;
+        margin-top: -10px;
+        
     }
     
     .topImgCon  .moreInfo{
         display: none;
     }
     .topImgCon > div:hover img{
-        width: 200px;
-        /* height: 220px;  */
-        transform:translateY(-30%) ;
+        width: 120px;
+        height: auto; 
+        transform:translateY(-15%) ;
     }
     .topImgCon > div h3{
         font-weight: 500;
         font-size: 16px;
-        margin-top: -2rem;
+        margin-top: -1rem;
         text-transform: capitalize;
+        /* border: 2px solid #333; */
         
     }
     .topImgCon > div:hover  h3{
-    margin-top: -5.3rem;  
-    font-weight: 500;   
-    
-    
+        margin-top: -1.5rem;  
+        font-weight: 500;   
+        
+        
     }
     
     .topImgCon > div:hover .moreInfo{
         display: block;
-        margin-top: -.8rem;
+        margin-top: -.2rem;
         padding: 5px;
+        /* border:2px solid red; */
+        width: 100%;
       
     }
     .moreInfo p{
@@ -170,8 +174,9 @@ font-weight: 500;
     }
     .moreInfo a{
         padding: 5px 10px;
-        font-size: 16px;
+        font-size: 14px;
         color: #eee;
+        
        
     }
     

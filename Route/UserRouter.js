@@ -151,7 +151,9 @@ UserRouter.post("/register", (req, res) =>{
 
 
 UserRouter.post("/login", (req, res, next) =>{
-    let {email, password } = req.body
+    // let {email, password } = req.body
+    let email = req.body.email.trim()
+    let password = req.body.password.trim()
     let error = [];
     if(!email || !password ){
         error.push({msg: "Please fill all field"})
