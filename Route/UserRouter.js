@@ -21,7 +21,7 @@ UserRouter.get("/register",  (req, res) =>{
 
 
 UserRouter.get("/login", (req, res)=>{
-    res.render("login", {
+    res.render("Login", {
         title:"Login Account",
         user: req.user
     })
@@ -159,7 +159,7 @@ UserRouter.post("/login", (req, res, next) =>{
        
     }
     if(error.length > 0){
-        res.render("login", {
+        res.render("Login", {
             title:"Login Account",
             error,
             email,
@@ -176,7 +176,7 @@ UserRouter.post("/login", (req, res, next) =>{
                 .then(user =>{
                     if(!user){
                         error.push({msg: "incorrect username or password"})
-                        res.render("login", {
+                        res.render("Login", {
                             title:"Login Account",
                             error,
                             email,
@@ -195,7 +195,7 @@ UserRouter.post("/login", (req, res, next) =>{
     
                         }else{
                         error.push({msg: "incorrect username or password"})
-                        res.render("login", {
+                        res.render("Login", {
                             title:"Login Account",
                             error,
                             email,
