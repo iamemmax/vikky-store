@@ -57,7 +57,7 @@ UserRouter.post("/register", (req, res) =>{
            if(result){   
                error.push({msg: "email already  exist"})
                
-               res.render("register", {
+               res.render("Register", {
                 title:"Register user",
                 error,
                 username,
@@ -81,7 +81,7 @@ UserRouter.post("/register", (req, res) =>{
               
                 error.push({msg: "username already exist"})
                 
-                res.render("register", {
+                res.render("Register", {
                     title:"Register user",
                     error,
                     username,
@@ -99,7 +99,7 @@ UserRouter.post("/register", (req, res) =>{
        
        if(error.length > 0){
           
-        res.render("register", {
+        res.render("Register", {
             title:"Register user",
             error,
             username,
@@ -127,7 +127,7 @@ UserRouter.post("/register", (req, res) =>{
              regUser.save((err, result)=>{
                  if(err){
                      console.log(err);
-                     res.redirect("/users/Register")
+                     res.redirect("/users/register")
 
                  }
                 if(result){
