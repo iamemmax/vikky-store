@@ -71,14 +71,14 @@
               
                         <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
                             
-                            <!-- <if (cart[0] != null) { %> -->
+                            <% if (cart.userCart !== null) { %>
                              
-                            <!-- </i><span id="cart"> <=cart[0].userCart.length%>   </span></a> </li> -->
-                            <!-- < }else{ %> -->
+                            </i><span id="cart"> <%=cart[0].userCart.length%>   </span></a> </li>
+                            <% }else{ %>
                              
                             </i><span id="cart"> 0   </span></a> </li>
                 
-
+                            <% } %> 
                            
                         
                     </div>
