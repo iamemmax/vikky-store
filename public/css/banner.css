@@ -138,8 +138,9 @@
     .banner_wrapper .banner_text{
         
         height: 300px;
-       
+       margin-top: 5rem !important;
         padding: 5px;
+        /* border: 2px solid red; */
     }
     
     .banner_text > h2{
