@@ -184,7 +184,7 @@ body{
     
     .container  .last {
         position: absolute;
-        right: 2rem;
+        right: 10px;
         background-color: #333;
         padding: 6px 0px;
         width: 140px;
@@ -288,7 +288,7 @@ body{
 
 .rightNavInfo{
     position: fixed;
-    right: 7rem;
+    right: 1rem;
     padding: 10px;
     top: 4rem;
     z-index: 9999;
