@@ -67,7 +67,7 @@
         
     }
     .adwrappper  img{
-        width:180px;
+        width:170px;
         position: absolute;
         left: 0;
     }
@@ -97,6 +97,6 @@
         color: #ddd;
         position: absolute;
         left: 50%;
-        top: 7rem;
+        top: 6rem;
     }
 }
