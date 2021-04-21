@@ -75,6 +75,8 @@ body{
     font-size: 14px;
     pointer-events: none;
     transition: transform .5s ease;
+    -webkit-transition: transform .5s ease;
+    -moz-transition: transform .5s ease;
 }
 
 form label::after{
@@ -88,6 +90,8 @@ form label::after{
 }
 .form-container form input:is(:focus, :valid) ~ label{
     transform: translateY(-74%);
+    -webkit-transform: translateY(-74%);
+    -moz-transform: translateY(-74%);    
     padding: 10px 20px;
     font-weight: 600;
     font-size: 14px;

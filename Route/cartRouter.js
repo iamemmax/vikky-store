@@ -7,19 +7,52 @@ const cartRouter = express.Router()
 const auth = require("../config/auth")
 
 
+const Publishable = process.env.Publishable
+const Secret_key = process.env.Secret
+
+const stripe = require("stripe")(Secret_key)
+
+
+
+
 // get cart items
 cartRouter.get("/:id", auth, async(req, res)=>{
-    let cart = await CartSchema.find({userId:req.user.id}).populate("userCart.productId userId")
+    let cart = await CartSchema.find({userId:req.user.id}, (err)=>{
+        console.log(err);
+    }).populate("userCart.productId userId")
+    if(cart){
+        let myCart = cart[0].userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+        res.render("mycart", {
+            title : "my Cart",
+            user: req.user,
+            cart,
+            key:Publishable,
+            layout: false,
+            totalQty
+           
+        })
+    }else{
+        res.render("index", {
+            title : "Homepage",
+            user: req.user,
+            cart,
+            
+            
+           
+        })
+    }
+    
    
 
-    res.render("mycart", {
-        title : "my Cart",
-        user: req.user,
-        cart,
-       
-    })
-    console.log(cart);
 })
+
+
+// purchase
+
+
+
 
 // remove items from cart
 
@@ -173,7 +206,35 @@ CartSchema.findOne({userId:req.user._id}).exec((err, cart)=>{
 
 
     
-       
+cartRouter.post("/:id/payment",   (req, res) =>{
+    let amount = req.body.amount
+   
+    stripe.customers.create({
+        email: req.body.stripeEmail,
+        source:req.body.stripeToken
+    })
+   
+    .then(customer =>{
+        stripe.charges.create({
+            amount,
+            description:"freaky store",
+            currency: "usd",
+            customer:customer.id
+        })
+    })
+   .then(charge =>{
+       console.log(charge);
+      res.render("payment",{
+          title:"success",
+          layout:false,
+          user:req.user,
+          id:charge.id
+      })
+   })
+   
+   
+})
+
 
 
 

@@ -10,13 +10,13 @@ const auth  = require("../config/auth")
 
 productRouter.get("/new", auth, async(req, res) =>{
     let cart = await cartSchema.findOne({userId:req.user.id}).populate("productId")
-    let mycart = await cart.userCart.map(c => c.quantity)
+    // let mycart = await cart.userCart.map(c => c.quantity)
 
     res.render("newProduct", {
         title: "Upload new product",
         user:req.user,
         cart,
-        mycart
+        // mycart
     })
 })
 
@@ -102,15 +102,33 @@ productRouter.get("/:slug", auth, async(req, res) =>{
         if(err)throw err
       }).populate("postedBy product")
      
-      let mycart = cart.userCart.map(da =>da.quantity);
-    
-    res.render("singleProduct", {
-        title: single.productName.slug,
-        single,
-        user:req.user,
-        cart,
+      if(cart){
+        let myCart = cart.userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+        res.render("singleProduct", {
+            title: single.productName.slug,
+            single,
+            user:req.user,
+            cart,
+            totalQty,
+            layout:false
+             
         
-          })
+        })
+
+      }else{
+        res.render("singleProduct", {
+            title: single.productName.slug,
+            single,
+            user:req.user,
+            cart,
+            layout:false
+              })
+      }
+     
+    
+    
 
         // console.log(single);
 })

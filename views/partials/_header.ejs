@@ -48,7 +48,6 @@
             <% if(!user){ %> 
                 <li><a href="/"><i class="fas fa-user"></i></a> </li>
                 <% }else{ %> 
-                    
                     <li><a href="/"></a></li>
                     <img src="/img/<%= user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" >
                     
@@ -67,18 +66,22 @@
                 <!-- <li><a href="/"><i class="fas fa-heart"></i></a></li> -->
               
                     
+                <% if(cart){ %> 
          
               
                         <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
                             
-                            <% if (cart.userCart !== null) { %>
+                            
                              
-                            </i><span id="cart"> <%=cart[0].userCart.length%>   </span></a> </li>
-                            <% }else{ %>
+                             </i><span id="cart"> <%= totalQty %> </span></a> </li> 
+                           
+                     <% }else{ %>         
+                        <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
+                            
+                            
                              
-                            </i><span id="cart"> 0   </span></a> </li>
-                
-                            <% } %> 
+                        </i><span id="cart"> 0 </span></a> </li> 
+                        <% } %> 
                            
                         
                     </div>
@@ -104,9 +107,9 @@
 <div class="removeOnclick"></div>
 
 <div class="rightNavInfo">
-    <li><a href="/">Account</a></li>
+    <li><a href="/users/dashboard/<%= user.id %> ">Account</a></li>
     <li><a href="/product/new">New product</a></li>
-    <li><a href="/users/change-pass/<%= user.id %> ">change password</a></li>
+    <li><a href="#">Order</a></li>
     <li><a href="/users/logout">Logout</a></li>
 </div>
 <div class="removeRightNav"></div>

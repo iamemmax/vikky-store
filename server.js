@@ -13,6 +13,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const productSchema = require("./model/productSchema")
 const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
+const Layout = require("express-layouts")
+
 const app = express()
 
 
@@ -35,7 +37,7 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(Layout)
 app.use(flash())
 
 
@@ -69,18 +71,43 @@ app.get("/",   auth, async(req, res) =>{
         if(err)throw err
     })
 
-  let cart = await CartSchema.find({userId:req.user.id}).populate("productId")
+  await CartSchema.findOne({userId:req.user.id}, (err, cart)=>{
+      if(err){
+          console.log(err);
+      }
+      if(cart){
+        let myCart = cart.userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+          
+        res.render("index", {
+            title:"Homepage",
+            user:req.user,
+            products,
+            cart,
+            layout: false,
+            totalQty
     
-   
-  
-    res.render("index", {
-        title:"Homepage",
-        user:req.user,
-        products,
-        cart,
-      
-    })
+        })
+      }else{
+        res.render("index", {
+            title:"Homepage",
+            user:req.user,
+            products,
+            cart,
+            layout: false,
+            
+    
+          
+        })
+    
+      }
+  }).populate("productId")
 
+  
+     
+  
+   
+    
    
 })
 
@@ -89,19 +116,45 @@ app.get("/:q", auth, async(req, res) =>{
 
     let regex = new RegExp(query, "i")
     let search =  await productSchema.find({productName:regex})
-  let cart = await CartSchema.find({userId:req.user.id}).populate("productId")
 
 
-    res.render("search", {
-        user:req.user,
-        title: "search",
-        cart,
-        search,
-        query
-    })
+    await CartSchema.findOne({userId:req.user.id}, (err, cart)=>{
+        if(err){
+            console.log(err);
+        }
+        if(cart){
+          let myCart = cart.userCart.map(c => c.quantity)
+          let totalQty = myCart.reduce((a, b) => a + b, 0)
+            
+          res.render("search", {
+            user:req.user,
+            title: "search",
+            cart,
+            search,
+            query,
+              layout: false,
+              totalQty
+      
+          })
+
+        }else{
+            res.render("search", {
+                user:req.user,
+                title: "search",
+                cart,
+                search,
+                query,
+                  layout: false,
+                  
+          
+              })
+     
+        }
+
     
 })
 
+})
 
 // routes
 app.use("/users", require("./Route/UserRouter"))

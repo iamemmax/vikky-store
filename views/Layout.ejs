@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/uploadform.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+</head>
+<body>
+
+
+    <div class="dashboard_container">
+        <div class="leftNav">
+            <div class="left_nav_con">
+                <div class="logo">
+                    <h1 id="logo">freaky-store</h1>
+                    <h1 id="short">Fs</h1>
+                    <nav>
+                        <ul class="navbar_container">
+                            <li><a href="/"><i class="icon fa fa-home"></i><strong>Home</strong></a></li>
+                            <li><a href="#"><i class="icon fas fa-tachometer-alt"></i><strong>Dashboard</strong></a></li>
+                            <li class=" icon1"><a href="#"><i class="icon fas fa-user"></i><strong>Profile <i class="fas fa-angle-right" id="show_icon"></i> </strong></strong></a>
+
+                                <ul class="showHidddenNav">
+                                    <li><a href="#"><i class="icon fas fa-edit"></i>  <strong>Edit profile</strong></a>
+                                    <li><a href="#"><i class="icon fas fa-upload"></i>  <strong>profile Image</strong></a>
+                            <li><a href="#"><i class="icon fas fa-map-marker"></i>  <strong>Delivery Address</strong></a>
+                            </ul>
+                            </li>
+                            <li><a href="#"> <i class="icon fas fa-shopping-bag"></i> <strong>Order</strong></a></li>
+                            <li><a href="#"><i class="icon fas fa-upload"></i> <strong>add product</strong></a></li>
+                                  
+                                    <li class="icon2"><a href="#"><i class="icon fas fa-cog icon2" id=""></i>  <strong>settings   <i class="fas fa-angle-right" id="show_iconn"></i></strong></a>
+
+                                        
+                                <ul class="showHidddenNav1">
+                                <li><a href="/users/change-pass/<%= user._id %>"><i class="icon fas fa-key"></i>  <strong>change password</strong></a>
+                                </ul>
+
+                            </li>
+                            <li><a href="/users/logout"><i class="icon fas fa-sign-out-alt"></i> <strong>Signout</strong></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>      
+
+        </div>
+        
+        <div class="rightNav">
+           
+              <div class="header">
+        
+                    <i class="fas fa-angle-left" id="toggle"></i>
+
+                    <div class="headerNav">
+                        <h2>Dashboard</h2>
+                        <div class="bar" >
+                            <i class="fas fa-bars"></i>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="container_body">
+           <%- body %> 
+                </div>
+        </div>
+    </div>
+    
+
+
+    <script>
+        const  leftNav = document.querySelector(".leftNav")
+        const  rightNav = document.querySelector(".rightNav")
+        const  toggle = document.querySelector("#toggle")
+        const  logo = document.querySelector("#logo")
+        const  short = document.querySelector("#short")
+        const  strong = document.querySelectorAll("strong")
+        const  showIcon = document.querySelector("#show_icon")
+        const  showIcon1 = document.querySelector("#show_iconn")
+        const  icon1 = document.querySelector(".icon1")
+        const  icon2 = document.querySelector(".icon2")
+        const  showHidddenNav = document.querySelector(".showHidddenNav")
+        const  showHidddenNav1 = document.querySelector(".showHidddenNav1")
+
+        // mobile toggle
+        const  ul = document.querySelector(".navbar_container")
+        const  bar = document.querySelector(".fa-bars")
+        toggle.addEventListener("click", (e)=>{
+
+            
+            leftNav.classList.toggle("toggle_left")
+            rightNav.classList.toggle("toggle_right")
+            toggle.classList.toggle("fa-angle-right")
+            logo.classList.toggle("toggle_link")
+            short.classList.toggle("toggle_short")
+            strong.forEach(link =>{
+                link.classList.toggle("toggle_link")
+            })
+
+           
+        })
+        
+        icon1.addEventListener("click", (e)=>{
+                showHidddenNav.classList.toggle("showAllHiddenNav")
+                if(showHidddenNav.classList.contains("showAllHiddenNav")){
+                    showIcon.className = "fas fa-angle-down"
+
+                }else{
+                    showIcon.className = "fas fa-angle-right"
+
+                }
+        })
+
+            icon2.addEventListener("click", (e)=>{
+                showHidddenNav1.classList.toggle("showAllHiddenNav1")
+                if(showHidddenNav1.classList.contains("showAllHiddenNav1")){
+                    showIcon1.className = "fas fa-angle-down"
+
+                }else{
+                    showIcon1.className = "fas fa-angle-right"
+
+                }
+        })
+// showAllHiddenNav
+
+
+bar.addEventListener("click", (e) =>{
+
+   ul.classList.toggle("showMobileNav")
+   if(ul.classList.contains("showMobileNav")){
+       bar.className = "fas fa-times"
+
+   }else{
+    bar.className = "fas fa-bars"
+
+   }
+  
+})
+
+    </script>
+</body>
+</html>

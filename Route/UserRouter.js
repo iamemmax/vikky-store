@@ -9,12 +9,15 @@ const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 const auth = require("../config/auth")
 const UserSchema = require("../model/UserSchema")
+const Layout = require("express-layouts")
 
 
 UserRouter.get("/register",  (req, res) =>{
     res.render("Register",{
         title:"Join E-shop",
         user:req.user,
+        layout: false,
+
         
     })
 })
@@ -23,7 +26,9 @@ UserRouter.get("/register",  (req, res) =>{
 UserRouter.get("/login", (req, res)=>{
     res.render("Login", {
         title:"Login Account",
-        user: req.user
+        user: req.user,
+        layout: false,
+        
     })
 })
 
@@ -64,6 +69,8 @@ UserRouter.post("/register", (req, res) =>{
                 email,
                 password,
                 user:req.user,
+                layout: false,
+
                 
             })
     
@@ -75,6 +82,19 @@ UserRouter.post("/register", (req, res) =>{
         User.findOne({username:username}, (err, result) =>{
             if(err) {
                console.log(err);
+               error.push({msg: "username already exist"})
+                
+                res.render("Register", {
+                    title:"Register user",
+                    error,
+                    username,
+                    email,
+                    password,
+                    user:req.user,
+                    layout: false,
+
+                    
+                })
             }
             if(result){
           
@@ -87,6 +107,7 @@ UserRouter.post("/register", (req, res) =>{
                     username,
                     email,
                     password,
+                    layout: false,
                     user:req.user,
                     
                 })
@@ -106,6 +127,8 @@ UserRouter.post("/register", (req, res) =>{
             email,
             password,
             user:req.user,
+            layout: false,
+
           
             
         })
@@ -165,7 +188,10 @@ UserRouter.post("/login", (req, res, next) =>{
             title:"Login Account",
             error,
             email,
-            password
+            password,
+            user:user.id,
+            layout: false,
+
         })
 
     }else{
@@ -182,7 +208,9 @@ UserRouter.post("/login", (req, res, next) =>{
                             title:"Login Account",
                             error,
                             email,
-                            password
+                            password,
+                                                        layout: false,
+
                         })
                         // /console.log("incorrect username or password");
                         // return done(null, false, {msg: "incorrect username or password"})
@@ -201,7 +229,10 @@ UserRouter.post("/login", (req, res, next) =>{
                             title:"Login Account",
                             error,
                             email,
-                            password
+                            password,
+                            user:user.id,
+                            layout: false,
+
                         })
                         console.log("incorrect username or password");
                             // return done(null, false, {msg: "incorrect username or password"})
@@ -237,18 +268,31 @@ UserRouter.get("/logout", auth, (req, res)=>{
 
 
 
-UserRouter.get("/dashboard", auth, async (req, res) =>{
+UserRouter.get("/layout/:id", auth, async (req, res) =>{
     let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
         if(err)throw err
       }).populate("postedBy product")
      
-      let mycart = cart.userCart.map(da =>da.quantity);
-
+     
+    res.render("Layout",{
+        title:"dashboard",
+        user:req.user,
+        cart,
+        layout:Layout,
+        layout: true,
+    })
+})
+UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
+    let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+     
     res.render("dashboard",{
         title:"dashboard",
         user:req.user,
         cart,
-        mycart
+        layout: true,
     })
 })
 
@@ -262,7 +306,9 @@ let error  = []
     res.render("change-pass", {
         title : "change password",
         user:req.user,
-        error
+        error,
+        layout: true,
+        user:req.user
     })
 })
 

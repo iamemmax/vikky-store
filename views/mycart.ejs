@@ -84,7 +84,28 @@
     <% } %> 
 </div>
 
+    <div class="paynow">
+        <% cart.map(carts => { %>
+            <% let mycart = carts.userCart %> 
+       <% let  total = mycart.reduce((a, b) => a + b.price, 0)%>
+          
+        <form action="/users/cart/<%= user.id %>/payment" method="POST">
+            <input type="hidden"  name="amount" value="<%=total %>">
+        <script
+            src="//checkout.stripe.com/v2/checkout.js"
+         class="stripe-button"
+         data-key="<%= key %>" 
+         data-currency ="usd"
+         data-name="<%= user.username %> "
+         data-description="purchase from freaky-store"
+         data-amount="<%=total %>"
+         data-Locale="auto">
+         
 
+         </script>
+         </form>  
+         <% }) %> 
+    </div>
 
 
 <script>
