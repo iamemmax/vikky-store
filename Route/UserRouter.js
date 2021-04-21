@@ -189,7 +189,6 @@ UserRouter.post("/login", (req, res, next) =>{
             error,
             email,
             password,
-            user:user.id,
             layout: false,
 
         })
@@ -274,8 +273,8 @@ UserRouter.get("/layout/:id", auth, async (req, res) =>{
       }).populate("postedBy product")
      
      
-    res.render("Layout",{
-        title:"dashboard",
+    res.render("layout",{
+        title:"User-dashboard",
         user:req.user,
         cart,
         layout:Layout,
