@@ -267,20 +267,6 @@ UserRouter.get("/logout", auth, (req, res)=>{
 
 
 
-UserRouter.get("/layout/:id", auth, async (req, res) =>{
-    let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
-        if(err)throw err
-      }).populate("postedBy product")
-     
-     
-    res.render("layout",{
-        title:"User-dashboard",
-        user:req.user,
-        cart,
-        layout:Layout,
-        layout: true,
-    })
-})
 UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
     let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
         if(err)throw err
@@ -291,9 +277,11 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         title:"dashboard",
         user:req.user,
         cart,
+        layout:Layout,
         layout: true,
     })
 })
+
 
 
 
