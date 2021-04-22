@@ -272,7 +272,6 @@ UserRouter.get("/dashboard/:id", (req, res) =>{
     res.render("dashboard", {
         title: "dashboard",
         user:req.user,
-        Layout:Layout,
         Layout:true
     })
 })
@@ -288,7 +287,7 @@ let error  = []
         title : "change password",
         user:req.user,
         error,
-        layout: true,
+        Layout: true,
         user:req.user
     })
 })
