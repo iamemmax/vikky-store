@@ -21,10 +21,12 @@ const app = express()
 require("./config/passport")(passport)
 
 app.set("view engine", "ejs")
+//app.set('layout', 'my-default-layout'); // defaults to 'layout'
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(methodOverride("_method"))
+app.use(Layout)
 
 
 app.use(session({
@@ -37,7 +39,6 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(Layout)
 app.use(flash())
 
 
