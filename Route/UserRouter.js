@@ -261,7 +261,7 @@ UserRouter.post("/login", (req, res, next) =>{
 UserRouter.get("/logout", auth, (req, res)=>{
     req.logout()
     req.flash("logout", "you have successfully logout")
-    res.redirect("/users/Login")
+    res.redirect("/users/login")
 })
 
 
@@ -276,8 +276,8 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         title:"dashboard",
         user:req.user,
         cart,
-        Layout:Layout,
-        Layout: true
+        layout:Layout,
+        layout: true
     })
 })
 
@@ -293,7 +293,7 @@ let error  = []
         title : "change password",
         user:req.user,
         error,
-        Layout: true,
+        layout: true,
         user:req.user
     })
 })
