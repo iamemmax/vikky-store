@@ -17,6 +17,7 @@ productRouter.get("/new", auth, async(req, res) =>{
         user:req.user,
         cart,
         // mycart
+        layout:true
     })
 })
 

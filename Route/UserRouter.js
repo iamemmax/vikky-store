@@ -293,7 +293,7 @@ let error  = []
     })
 })
 
-UserRouter.post("/change-pass/:id", async(req, res)=>{
+UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
     let error = []
     let user =  await UserSchema.findOne({_id:req.params.id}).populate("postedBy product")
     let {old, password, password2} = req.body
