@@ -80,9 +80,10 @@ body{
     text-decoration: none;
     line-height: 40px;
     text-align: left;
+    /* border: 2px solid #eee; */
 }
 .leftNav nav ul a:hover{
-    padding-left: 5px;
+    padding-left: 3px;
 }
 
 .leftNav nav ul li ul{
@@ -105,7 +106,7 @@ body{
 #show_icon, #show_iconn{
     position: absolute;
     /* top: -1rem; */
-    margin-top: 10px;
+    margin-top: 15px;
     right: 1rem;
 }
 .leftNav .icon{

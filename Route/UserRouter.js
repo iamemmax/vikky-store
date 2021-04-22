@@ -273,12 +273,12 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
       }).populate("postedBy product")
      
      
-    res.render("layout",{
+    res.render("dashboard",{
         title:"dashboard",
         user:req.user,
         cart,
         layout:Layout,
-        layout: true,
+        layout: true
     })
 })
 
