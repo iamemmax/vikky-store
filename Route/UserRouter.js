@@ -267,16 +267,15 @@ UserRouter.get("/logout", auth, (req, res)=>{
 
 
 
-UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
-    
-    res.render("dashboard",{
-        title:"dashboard",
+UserRouter.get("/dashboard/:id", (req, res) =>{
+
+    res.render("dashboard", {
+        title: "dashboard",
         user:req.user,
         layout:Layout,
-        layout: true
+        layout:true
     })
 })
-
 
 
 
