@@ -271,14 +271,13 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
     let cart =  await cartSchema.findOne({userId:req.user._id},(err, data) =>{
         if(err)throw err
       }).populate("postedBy product")
-     
-     
+    
     res.render("dashboard",{
         title:"dashboard",
         user:req.user,
         cart,
-        layout:Layout,
-        layout: true
+        Layout:Layout,
+        Layout: true
     })
 })
 
@@ -294,7 +293,7 @@ let error  = []
         title : "change password",
         user:req.user,
         error,
-        layout: true,
+        Layout: true,
         user:req.user
     })
 })
