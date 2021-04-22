@@ -1,5 +1,4 @@
 const express = require("express")
-const UserRouter = express.Router()
 const bcrypt = require("bcryptjs")
 const mongoose = require("mongoose")
 const User = require("../model/UserSchema")
@@ -10,6 +9,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const auth = require("../config/auth")
 const UserSchema = require("../model/UserSchema")
 const Layout = require("express-layouts")
+const UserRouter = express.Router()
 
 
 UserRouter.get("/register",  (req, res) =>{
