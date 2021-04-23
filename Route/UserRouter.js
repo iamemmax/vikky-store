@@ -277,9 +277,9 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         let totalQty = myCart.reduce((a, b) => a + b, 0)
 
             res.render("dashboard", {
-                title: "",
+                title: "user dashboard",
                 user:req.user,
-                layout:"layout",
+                layout:Layout,
                 layout:true,
                 cart,
                 totalQty
@@ -402,68 +402,68 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
 
     
 
-    UserRouter.get("/account/:id",  auth, async(req, res) =>{
+    // UserRouter.get("/account/:id",  auth, async(req, res) =>{
 
-        let error =  []
-        let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
-            if(err)console.log(err);
-         }).populate("userCart.productId userId")
-         if(cart){
-             let myCart = cart[0].userCart.map(c => c.quantity)
-             let totalQty = myCart.reduce((a, b) => a + b, 0)
+    //     let error =  []
+    //     let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+    //         if(err)console.log(err);
+    //      }).populate("userCart.productId userId")
+    //      if(cart){
+    //          let myCart = cart[0].userCart.map(c => c.quantity)
+    //          let totalQty = myCart.reduce((a, b) => a + b, 0)
 
-        res.render("edit", {
-            title: "Edit",
-            user:req.user,
-            error,
-            cart,
-            totalQty
-        })
+    //     res.render("edit", {
+    //         title: "Edit",
+    //         user:req.user,
+    //         error,
+    //         cart,
+    //         totalQty
+    //     })
 
-    }else{
-        res.render("edit", {
-            title: "Edit",
-            user:req.user,
-            layout: true,
-            error,
+    // }else{
+    //     res.render("edit", {
+    //         title: "Edit",
+    //         user:req.user,
+    //         layout: true,
+    //         error,
             
-        })
-    }
-    })
+    //     })
+    // }
+    // })
 
 
     
-    UserRouter.put("/account/:id",  auth, async(req, res) =>{
-        let error = [];
+    // UserRouter.put("/account/:id",  auth, async(req, res) =>{
+    //     let error = [];
 
-        let {firstname, lastname, email, phone, dob, gender} = req.body
-        if(!firstname || !lastname || !email || !phone || !gender){
-            error.push({msg: "please filled all field"})
-            res.render("edit", {
-                title: "Edit",
-                user:req.user,
-                 error,
+    //     let {firstname, lastname, email, phone, dob, gender} = req.body
+    //     if(!firstname || !lastname || !email || !phone || !gender){
+    //         error.push({msg: "please filled all field"})
+    //         res.render("edit", {
+    //             title: "Edit",
+    //             user:req.user,
+    //              error,
                 
-            })
-        }
+    //         })
+    //     }
 
-        if(error.length > 0){
-            error.push({msg: "unable to update account"})
+    //     if(error.length > 0){
+    //         error.push({msg: "unable to update account"})
 
-        }else{
-            await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{firstname, lastname:lastname, email:email, phone:phone, gender:gender, dob:dob}}, (err, data)=>{
-                if(err)console.log(err);
+    //     }else{
+    //         await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{firstname, lastname:lastname, email:email, phone:phone, gender:gender, dob:dob}}, (err, data)=>{
+    //             if(err)console.log(err);
 
-                if(data){
-                    res.redirect(`/users/dashboard/${req.user.id}`)
-                    console.log("success");
-                }
-            }, {new:true})
+    //             if(data){
+    //                 res.redirect(`/users/dashboard/${req.user.id}`)
+    //                 console.log("success");
+    //             }
+    //         }, {new:true})
 
-        }
-        console.log(req.body);
+    //     }
+    //     console.log(req.body);
 
-    })
+    // })
 
 
 
