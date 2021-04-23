@@ -322,7 +322,7 @@ UserRouter.get("/dashboard/change-pass/:id", auth, async (req, res) =>{
             title : "change password",
             user:req.user,
             error,
-            
+            layout: true,
             user:req.user,
             cart,
             totalQty
@@ -425,6 +425,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
         res.render("edit", {
             title: "Edit",
             user:req.user,
+            layout: true,
             error,
             
         })
