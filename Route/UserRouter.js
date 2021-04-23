@@ -8,7 +8,7 @@ const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 const auth = require("../config/auth")
 const UserSchema = require("../model/UserSchema")
-const Layout = require("express-layouts")
+const Layout = require("express-ejs-layouts")
 const UserRouter = express.Router()
 
 
@@ -276,9 +276,8 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         let myCart = cart[0].userCart.map(c => c.quantity)
         let totalQty = myCart.reduce((a, b) => a + b, 0)
 
-        
             res.render("dashboard", {
-                title: "dashboard",
+                title: "",
                 user:req.user,
                 layout:Layout,
                 layout:true,
