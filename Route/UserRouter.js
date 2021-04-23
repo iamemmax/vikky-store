@@ -8,7 +8,7 @@ const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 const auth = require("../config/auth")
 const UserSchema = require("../model/UserSchema")
-const Layout = require("express-ejs-layouts")
+const Layout = require("express-layouts")
 const UserRouter = express.Router()
 
 
@@ -279,7 +279,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
             res.render("dashboard", {
                 title: "",
                 user:req.user,
-                layout:Layout,
+                layout:"layout",
                 layout:true,
                 cart,
                 totalQty
