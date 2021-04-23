@@ -7,6 +7,7 @@
     <title><%- title %> </title>
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/uploadform.css">
+    <link rel="stylesheet" href="/css/editProfile.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -25,13 +26,13 @@
                     <nav>
                         <ul class="navbar_container">
                             <li><a href="/"><i class="icon fa fa-home"></i><strong>Home</strong></a></li>
-                            <li><a href="#"><i class="icon fas fa-tachometer-alt"></i><strong>Dashboard</strong></a></li>
+                            <li><a href="/users/dashboard/<%= user.id %> "><i class="icon fas fa-tachometer-alt"></i><strong>Dashboard</strong></a></li>
                             <li class=" icon1"><a href="#"><i class="icon fas fa-user"></i><strong>Profile <i class="fas fa-angle-right" id="show_icon"></i> </strong></strong></a>
 
                                 <ul class="showHidddenNav">
-                                    <li><a href="#"><i class="icon fas fa-edit"></i>  <strong>Edit profile</strong></a>
-                                    <li><a href="#"><i class="icon fas fa-upload"></i>  <strong>profile Image</strong></a>
-                            <li><a href="#"><i class="icon fas fa-map-marker"></i>  <strong>Delivery Address</strong></a>
+                                    <li><a href="/users/dashboard/<%=user.id%>/edit-profile "><i class="icon fas fa-edit"></i>  <strong>Edit profile</strong></a></li>
+                                    <li><a href="#"><i class="icon fas fa-upload"></i>  <strong>profile Image</strong></a></li>
+                            <li><a href="#"><i class="icon fas fa-map-marker"></i>  <strong>Delivery Address</strong></a></li>
                             </ul>
                             </li>
                             <li><a href="#"> <i class="icon fas fa-shopping-bag"></i> <strong>Order</strong></a></li>
@@ -41,7 +42,7 @@
 
                                         
                                 <ul class="showHidddenNav1">
-                                <li><a href="/users/dashboard/change-pass/<%= user.id %>"><i class="icon fas fa-key"></i>  <strong>change password</strong></a>
+                                <li><a href="/users/dashboard/change-pass/<%=user.id %>"><i class="icon fas fa-key"></i>  <strong>change password</strong></a></li>
                                 </ul>
 
                             </li>
@@ -61,11 +62,40 @@
 
                     <div class="headerNav">
                         <h2>Dashboard</h2>
+                        <div class="search">
+                            <form action="/search">
+                                <input type="text" name="q" placeholder="Search anything here .....">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                        <div class="welcomeUser">
+                            <img src="/img/<%= user.userImg %> " alt="" id="userImg">
+                            <p> <% if(user.firstname == "" || user.firstname == undefined){ %>  
+                                    <%= user.username %> 
+                                <% }else{ %> 
+                                    <%= user.firstname %> 
+                                    <% } %>  <i class="fas fa-angle-down"></i></p>
+                        </div>
+                        <div class="cart">
+                            <% if(cart){ %> 
+                           <li><a href="/users/cart/<%= user.id %>"> <i class="fa fa-shopping-cart"></i><span id="cart-no"> <%= totalQty %> </span></a></li>
+                        </div>
+
+                               
+                         <% }else{ %>         
+                            <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
+                                
+                                
+                                 
+                            </i><span id="cart"> 0 </span></a> </li> 
+                            <% } %> 
+
                         <div class="bar" >
                             <i class="fas fa-bars"></i>
                         </div>
                     </div>
                 </div>
+                
               </div>
               <div class="container_body">
            <%- body %> 

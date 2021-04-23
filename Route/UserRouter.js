@@ -267,29 +267,78 @@ UserRouter.get("/logout", auth, (req, res)=>{
 
 
 
-UserRouter.get("/dashboard/:id", (req, res) =>{
+UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
 
-    res.render("dashboard", {
-        title: "dashboard",
-        user:req.user,
-        Layout:true
-    })
+    let cart = await cartSchema.find({userId:req.user.id}, (err)=>{
+        
+    }).populate("userCart.productId userId")
+    if(cart){
+        let myCart = cart[0].userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+        
+            res.render("dashboard", {
+                title: "dashboard",
+                user:req.user,
+                layout:Layout,
+                layout:true,
+                cart,
+                totalQty
+           
+        })
+    }else{
+        res.render("dashboard", {
+            title: "dashboard",
+            user:req.user,
+            layout:Layout,
+            layout:true,
+            cart
+          
+        })
+    }
+    
+   
+
+
+
+
+
 })
 
 
 
 // change password
 
-UserRouter.get("/dashboard/change-pass/:id", auth, (req, res) =>{
+UserRouter.get("/dashboard/change-pass/:id", auth, async (req, res) =>{
+    let error  = []
+    let cart = await cartSchema.find({userId:req.user.id}, (err)=>{
     
-let error  = []
-    res.render("change-pass", {
-        title : "change password",
-        user:req.user,
-        error,
-        Layout: true,
-        user:req.user
-    })
+    }).populate("userCart.productId userId")
+    if(cart){
+        let myCart = cart[0].userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+        res.render("change-pass", {
+            title : "change password",
+            user:req.user,
+            error,
+            layout: true,
+            user:req.user,
+            cart,
+            totalQty
+
+        })
+    }else{
+
+        res.render("change-pass", {
+            title : "change password",
+            user:req.user,
+            error,
+            layout: true,
+            user:req.user,
+            cart
+        })
+    }
 })
 
 UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
@@ -349,5 +398,115 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
 
             }}
     })
+
+
+
+    
+
+    UserRouter.get("/account/:id",  auth, async(req, res) =>{
+
+        let error =  []
+        let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+            if(err)console.log(err);
+         }).populate("userCart.productId userId")
+         if(cart){
+             let myCart = cart[0].userCart.map(c => c.quantity)
+             let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+        res.render("edit", {
+            title: "Edit",
+            user:req.user,
+            layout: true,
+            error,
+            cart,
+            totalQty
+        })
+
+    }else{
+        res.render("edit", {
+            title: "Edit",
+            user:req.user,
+            layout: true,
+            error,
+            
+        })
+    }
+    })
+
+
+    
+    UserRouter.put("/account/:id",  auth, async(req, res) =>{
+        let error = [];
+
+        let {firstname, lastname, email, phone, dob, gender} = req.body
+        if(!firstname || !lastname || !email || !phone || !gender){
+            error.push({msg: "please filled all field"})
+            res.render("edit", {
+                title: "Edit",
+                user:req.user,
+                layout: true,
+                error,
+                
+            })
+        }
+
+        if(error.length > 0){
+            error.push({msg: "unable to update account"})
+
+        }else{
+            await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{firstname, lastname:lastname, email:email, phone:phone, gender:gender, dob:dob}}, (err, data)=>{
+                if(err)console.log(err);
+
+                if(data){
+                    res.redirect(`/users/dashboard/${req.user.id}`)
+                    console.log("success");
+                }
+            }, {new:true})
+
+        }
+        console.log(req.body);
+
+    })
+
+
+
+
+
+
+
+
+    UserRouter.get("/dashboard/:id/edit-profile", auth, async(req, res) =>{
+
+        let error  = []
+        let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+           if(err)console.log(err);
+        }).populate("userCart.productId userId")
+        if(cart){
+            let myCart = cart[0].userCart.map(c => c.quantity)
+            let totalQty = myCart.reduce((a, b) => a + b, 0)
+    
+            res.render("editProfile", {
+                title : "Edit",
+                user:req.user,
+                error,
+                layout: true,
+                user:req.user,
+                cart,
+                totalQty
+    
+            })
+
+        }
+        res.render("editProfile", {
+            title: "Edit",
+            user:req.user,
+            cart,
+            layout: true,
+            error
+        })
+    })
+
+
+    
         
 module.exports = UserRouter

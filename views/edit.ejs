@@ -1,0 +1,56 @@
+<div class="account_form">
+    <form action="/users/account/<%= user.id %>?_method=PUT" method="POST">
+        <h2>Account Information</h2>
+        <div class="firstname">
+            <input type="text" name="firstname" placeholder="firstname" value="<%= user.firstname%>"  required>
+            <label for="password" class="label-name">
+                Firstname
+            </label>
+        </div>
+
+        <div class="lastname">
+            <input type="text" name="lastname" placeholder="lastname" value="<%= user.lastname%>" required>
+            <label for="password" class="label-name">
+                lastname
+            </label>
+        </div>
+        <div class="username">
+            <input type="text" name="username" placeholder="username" value="<%= user.username%>" disabled required>
+            <label for="password" class="label-name">
+                username
+            </label>
+        </div>
+        <div class="email">
+            <input type="text" name="email" placeholder="email" value="<%= user.email%>" required>
+            <label for="password" class="label-name">
+                email
+            </label>
+        </div>
+        <div class="phone">
+            <input type="number" name="phone" placeholder="phone" value="<%= user.phone%>" required>
+            <label for="password" class="label-name">
+                phone
+            </label>
+        </div>
+        <div class="dob">
+           <select name="gender" id="">
+               <option value="none"<%= user.gender == 'none' ? 'selected' : ""%>>none</option>
+               <option value="male" <%= user.gender == 'male' ? 'selected' : ""%>>Male</option>
+               <option value="female" <%= user.gender == 'female' ? 'selected' : ""%>>Female</option>
+               <option value="others" <%= user.others == 'others' ? 'selected' : ""%>>others</option>
+           </select>
+           <label for="">gender</label>
+        </div>
+        <div class="dob">
+            <input type="date" name="dob"  value="<%= user.dob%>" required>
+            <label for="password" class="label-name">
+                Date of Birth
+            </label>
+        </div>
+
+        
+
+        <button type="submit">Save</button>
+
+    </form>
+</div>

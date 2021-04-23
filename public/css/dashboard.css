@@ -44,7 +44,7 @@ body{
 #short{
     color: #222;
     display: none;
-    padding-left: -5px;
+   
     
 }
 
@@ -148,7 +148,7 @@ body{
     color: #eee;
     position: absolute;
     
-    left: -1rem;
+    left: -.5rem;
     background: #222;
     width: 20px;
     height: 20px;
@@ -162,6 +162,9 @@ body{
 .toggle_left{
     transition: width .5s ease;
     width: 6% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .toggle_right{
     transition: width .5s ease;
@@ -172,10 +175,18 @@ body{
 }    
 .toggle_short{
     display: block !important;
+    text-align: center;
+    padding-right: 10px;
 }    
 .dashboard_container > .rightNav  div{
     position: relative;
-    border: none;
+}
+.logo{
+    margin: 0 !important;
+    padding: 0 !important;
+
+   
+
 }
 
 
@@ -183,6 +194,96 @@ body{
 .dashboard_container .rightNav .header{
     background: #fff;
     box-shadow: 0px 0px 3px 2px #eee;
+    position: relative;
+   
+}
+
+.dashboard_container .headerNav{
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.dashboard_container .headerNav > div{
+    /* width: 200px; */
+    display: flex;
+    align-items: center;
+    margin: 3px;
+}
+.headerNav .search{
+    width: 45%;
+    position: relative;
+    border: none !important;
+}
+.headerNav  input{
+    width: 100% !important;
+    padding: 12px;
+    /* height: 40px; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 5px;
+    overflow: none;
+}
+.headerNav .search button{
+    position: absolute;
+    outline: none;
+    border: none;
+    right: .8rem;
+    cursor: pointer;
+    background-color: unset;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+}
+.search button i{
+    font-size: 16px;
+}
+.welcomeUser{
+    display: flex;
+    cursor: pointer;
+}
+.welcomeUser p{
+    font-weight: 600;
+    font-size: 16px;
+}
+#userImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin-right:5px;
+}
+.cart {
+    position: relative;
+    padding: 5px;
+}
+.cart a{
+    text-decoration: none;
+    color: #222;
+}
+.cart span{
+    position: absolute;
+    top: 1rem;
+    background: #ff4a57;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 100%;
+    text-align: center;
+    color: #fff;
+
+   
+
+}
+.header h2{
+    margin: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    display: none;
 }
 
 .dashboard_container  .container_body{
@@ -190,21 +291,33 @@ body{
     position: absolute;
    display: grid;
    justify-content: center;
-    top: 11vh;
+    top: 11vh ;
     right: 0;
     height: auto;
-    left: 17%;
+    left: 17% ;
     
     
 
 }
 
 .bar{
-    display: none;
+    display: none !important;
  
 
 }
 @media screen and (max-width:768px) {
+    .dashboard_container  .container_body{
+   
+        position: absolute;
+      
+        left: 0;
+        
+        
+    
+    }
+    .logo h1{
+        display: none;
+    }
     .dashboard_container{
         height: auto;
         padding: 0;
@@ -240,7 +353,7 @@ body{
 
     .headerNav > .bar{
         display: block;
-        margin-left: 15rem;
+        /* margin-left: 15rem; */
         cursor: pointer;
         padding: 10px;
       
@@ -258,4 +371,12 @@ body{
         clip-path: circle(100% at 0% 90%) !important;
 
     }
+    .bar{
+        display: flex !important;
+    }
+
+
+
+
+    
 }
