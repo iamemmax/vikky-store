@@ -1,0 +1,46 @@
+
+
+<div class="uploadProduct">
+    <h2>Upload product</h2>
+    <form action="/product/edit/<%= products.id%>?_method=PUT" method="POST">
+        
+        <input type="text" name="productName" id="" placeholder="product Name" value="<%= products.productName %> ">
+        <input type="text" name="amount" id="" placeholder=" Amount" value="<%= products.amount %>">
+        <input type="text" name="brand" placeholder="brand" value="<%= products.brand %>">
+        <input type="file" name="myfiles"  multiple>
+        
+        <select name="categories" id="">
+            <option value="category" <%= products.categories === "category" ? 'selected' : ""%> >category</option>
+            <option value="shoe" <%= products.categories === "shoe" ? 'selected' : ""%>>Shoe</option>
+            <option value="wares" <%= products.categories === "wares" ? 'selected' : ""%>>wares</option>
+            <option value="phone" <%= products.categories === "phone" ? 'selected' : ""%>>phone</option>
+            <option value="electronic" <%= products.categories === "electronics" ? 'selected' : ""%>>electronic</option>
+            <option value="computer" <%= products.categories === "computer" ? 'selected' : ""%>>computer</option>
+        </select>
+
+        <select name="color" id="">
+            <option value="color" <%= products.color === "color" ? 'selected' : ""%>>color</option>
+            <option value="all" <%= products.color === "all" ? 'selected' : ""%>>all</option>
+            <option value="red" <%= products.color === "red" ? 'selected' : ""%>>red</option>
+            <option value="blue" <%= products.color === "blue" ? 'selected' : ""%>>blue</option>
+            <option value="pink" <%= products.color === "pink" ? 'selected' : ""%>>pink</option>
+            <option value="black" <%= products.color === "black" ? 'selected' : ""%>>black</option>
+            <option value="white" <%= products.color === "white" ? 'selected' : ""%>>white</option>
+            <option value="green" <%= products.color === "green" ? 'selected' : ""%>>green</option>
+        </select>
+
+
+        <select name="sizes" id="">
+            <option value="sizes" <%= products.sizes === "sizes" ? 'selected' : ""%>>sizes</option>
+            <option value="small" <%= products.sizes === "small" ? 'selected' : ""%>>small</option>
+            <option value="medium" <%= products.sizes === "medium" ? 'selected' : ""%>>medium</option>
+            <option value="large" <%= products.sizes === "large" ? 'selected' : ""%>>large</option>
+            <option value="extra-large" <%= products.sizes === "extra-large" ? 'selected' : ""%>>extra-large</option>
+           
+        </select>
+        <textarea name="description"   id="description" ><%= products.description %></textarea>
+        
+    <button type="submit">Upload product</button>
+</form>
+</div>
+

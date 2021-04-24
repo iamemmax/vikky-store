@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/uploadform.css">
     <link rel="stylesheet" href="/css/editProfile.css">
+    <link rel="stylesheet" href="/css/mostPopular.css">
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -27,7 +29,7 @@
                         <ul class="navbar_container">
                             <li><a href="/"><i class="icon fa fa-home"></i><strong>Home</strong></a></li>
                             <li><a href="/users/dashboard/<%= user.id %> "><i class="icon fas fa-tachometer-alt"></i><strong>Dashboard</strong></a></li>
-                            <li class=" icon1"><a href="#"><i class="icon fas fa-user"></i><strong>Profile <i class="fas fa-angle-right" id="show_icon"></i> </strong></strong></a>
+                            <li class=" icon1"><a href="#"><i class="icon fas fa-user"></i><strong>Profile <i class="fas fa-angle-right" id="show_icon"></i> </strong></a>
 
                                 <ul class="showHidddenNav">
                                     <li><a href="/users/dashboard/<%=user.id%>/edit-profile "><i class="icon fas fa-edit"></i>  <strong>Edit profile</strong></a></li>
@@ -36,7 +38,17 @@
                             </ul>
                             </li>
                             <li><a href="#"> <i class="icon fas fa-shopping-bag"></i> <strong>Order</strong></a></li>
-                            <li><a href="/product/new"><i class="icon fas fa-upload"></i> <strong>add product</strong></a></li>
+                          
+                          
+                            <li class="icon3"><a href="#"><i class="icon fab fa-product-hunt"></i> <strong>Product <i class="fas fa-angle-right" id="show_icon3"></i></strong></a>
+                            
+                                <ul class="showHiddenProduct">
+                                    <li><a href="/product/new"><i class="icon fas fa-upload"></i>  <strong>Add product</strong></a></li>
+                                    <li><a href="/product/myproduct/<%= user.id %> "><i class="icon fas fa-edit"></i>  <strong>My products</strong></a></li>
+
+                                    
+                                </ul>
+                            </li>
                                   
                                     <li class="icon2"><a href="#"><i class="icon fas fa-cog icon2" id=""></i>  <strong>settings   <i class="fas fa-angle-right" id="show_iconn"></i></strong></a>
 
@@ -113,11 +125,14 @@
         const  short = document.querySelector("#short")
         const  strong = document.querySelectorAll("strong")
         const  showIcon = document.querySelector("#show_icon")
+        const  showIcon3 = document.querySelector("#show_icon3")
         const  showIcon1 = document.querySelector("#show_iconn")
         const  icon1 = document.querySelector(".icon1")
         const  icon2 = document.querySelector(".icon2")
+        const  icon3 = document.querySelector(".icon3")
         const  showHidddenNav = document.querySelector(".showHidddenNav")
         const  showHidddenNav1 = document.querySelector(".showHidddenNav1")
+        const  showHiddenProduct = document.querySelector(".showHiddenProduct")
 
         // mobile toggle
         const  ul = document.querySelector(".navbar_container")
@@ -155,6 +170,16 @@
 
                 }else{
                     showIcon1.className = "fas fa-angle-right"
+
+                }
+        })
+            icon3.addEventListener("click", (e)=>{
+                showHiddenProduct.classList.toggle("showHiddenProduct")
+                if(showHiddenProduct.classList.contains("showHiddenProduct")){
+                    showIcon3.className = "fas fa-angle-down"
+
+                }else{
+                    showIcon3.className = "fas fa-angle-right"
 
                 }
         })

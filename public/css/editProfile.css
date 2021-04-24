@@ -43,7 +43,7 @@ body{
     border: 2px solid #eee;
     height: 300px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 .edit_container > div div{

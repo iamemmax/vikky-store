@@ -456,7 +456,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
             error.push({msg: "unable to update account"})
 
         }else{
-            await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{firstname, lastname:lastname, email:email, phone:phone, gender:gender, dob:dob}}, (err, data)=>{
+            await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{firstname:firstname, lastname:lastname, email:email, phone:phone, gender:gender, dob:dob}}, (err, data)=>{
                 if(err)console.log(err);
 
                 if(data){
@@ -502,6 +502,28 @@ UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
 })
 
 
+UserRouter.put("/dashboard/:id/address", async (req, res) =>{
+    let error = []
+
+    let {firstname, lastname, country, phone, address, state, city, lg, direction} = req.body
+        if(!firstname || !lastname || !country || !phone || !address || !city || !lg || !state){
+            error.push({msg: "please filled all field"})
+           
+        }
+        
+        if(error.length > 0){
+            error.push({msg: "unable to update account"})
+        }else{
+            await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{firstname:firstname, lastname:lastname, city:city, phone:phone, country:country, lg:lg, address:address, state:state, direction:direction}}, (err, data)=>{
+                if(err)console.log(err);
+
+                if(data){
+                    res.redirect(`/users/dashboard/${req.user.id}`)
+                    console.log("success");
+                }
+            }, {new:true})
+        }
+})
 
     
 

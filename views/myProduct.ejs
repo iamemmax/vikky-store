@@ -1,0 +1,27 @@
+<div class="mostPouplar_container" style="border: 2px solid #eee; width: 100%;">  
+<div class="popular">
+
+        <% products.forEach(product => { %>
+            
+            <div class="pro_img mycategory" data-name="<%= product.categories %>">
+                
+                <a href="/product/<%= product.slug %> ">
+                    <img src="/img/upload/<%= product.myfiles[0].filename %> " alt="">
+                    
+                    <h2><%= product.productName %> </h2>
+                </a>
+            
+          
+               <p id="amount">&#8358 <%= product.amount %> </p>
+
+               <div class="button" style="display: inline; margin-left: 5px;">
+                   
+                  <button id="button"> <a href="/product/edit/<%= product.id %> "><i class="fas fa-edit"></i></a></button>
+                  <form action="/product/del/<%=product.id %>?_method=DELETE" method="POST">
+                   <button type="submit"><i class="fas fa-trash"></i></button>
+                </form>
+                </div>
+            </div>
+            <% }) %>       
+</div>
+</div>

@@ -9,15 +9,31 @@ const auth  = require("../config/auth")
 
 
 productRouter.get("/new", auth, async(req, res) =>{
-    let cart = await cartSchema.findOne({userId:req.user.id}).populate("productId")
-    // let mycart = await cart.userCart.map(c => c.quantity)
+    let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+        if(err)console.log(err);
+     }).populate("userCart.productId userId")
+     if(cart){
+         let myCart = cart[0].userCart.map(c => c.quantity)
+         let totalQty = myCart.reduce((a, b) => a + b, 0)
 
-    res.render("newProduct", {
-        title: "Upload new product",
-        user:req.user,
-        cart,
-     
-    })
+         res.render("newProduct", {
+            title: "Upload new product",
+            user:req.user,
+            cart,
+            totalQty
+         
+        })
+     }else{
+        res.render("newProduct", {
+            title: "Upload new product",
+            user:req.user,
+            cart,
+         
+        })
+     }
+   
+
+    
 })
 
 
@@ -30,8 +46,15 @@ const storage = multer.diskStorage({
         cb(null, "./public/img/upload/")
     }
 })
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image')) {
+      cb(null, true);
+    } else {
+      cb(new AppError('Not an image! Please upload an image.', 400), false);
+    }
+  };
 
-const upload = multer({storage:storage}).array("myfiles", 5)
+const upload = multer({storage:storage,fileFilter:multerFilter}).array("myfiles", 5)
 
 
 productRouter.post("/new", upload, async (req, res) =>{
@@ -108,6 +131,7 @@ productRouter.get("/:slug", auth, async(req, res) =>{
 
         res.render("singleProduct", {
             title: single.productName.slug,
+
             single,
             user:req.user,
             cart,
@@ -134,7 +158,123 @@ productRouter.get("/:slug", auth, async(req, res) =>{
 })
 
 
+// get user product
+
+productRouter.get("/myproduct/:id", auth, async (req, res) =>{
+    let products = await productSchema.find({postedBy:req.params.id})
+    let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+        if(err)console.log(err);
+     }).populate("userCart.productId userId")
+     if(cart){
+         let myCart = cart[0].userCart.map(c => c.quantity)
+         let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+
+            res.render("myProduct", {
+                title:"my product",
+                user:req.user,
+                cart,
+                totalQty,
+                products
+            })
+
+        }else{
+            res.render("myProduct", {
+                title:"my product",
+                user:req.user,
+                cart,
+                totalQty,
+                products
+            })
+        }
+     
+    
+
+})
+
+productRouter.get("/edit/:id", auth, async (req, res) =>{
+    let products = await productSchema.findOne({_id:req.params.id})
+    let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+        if(err)console.log(err);
+     }).populate("userCart.productId userId")
+     if(cart){
+         let myCart = cart[0].userCart.map(c => c.quantity)
+         let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+
+            res.render("editMyProduct", {
+                title:"edit product",
+                user:req.user,
+                cart,
+                totalQty,
+                products
+            })
+
+        }else{
+            res.render("editMyProduct", {
+                title:"edit product",
+                user:req.user,
+                cart,
+                totalQty,
+                products
+            })
+        }
+        
+    
+
+})
+
+// edit products by rightful owner
+
+
+
+
+// edit product by user
+productRouter.put("/edit/:id", auth, async(req, res) =>{
+    let {productName, amount, brand, categories, color, sizes, description} = req.body
+    let myfiles = req.files
+    try {
+        let myfileArray = [];
+        
+
+           productSchema.findOneAndUpdate({"_id":req.params.id}, {
+             $set:{
+                productName:productName,
+                amount: amount,
+                description: description,
+                categories : categories,
+                sizes: sizes,
+                color: color,
+                brand : brand,
+                // "myfiles.$": myfileArray,
+                "postedBy":req.user.id,
+          }
+        
+        
+        
+        }, (err, data) =>{
+            if(err)console.log(err);
+            if(data){
+                res.redirect(`/product/myproduct/${req.user.id}`)
+            }
+      }, {new:true});
+    } catch (error) {
+        console.log(error);
+    }
+
+})
 
          
+// delete product by user
+productRouter.delete("/del/:id", async(req, res) =>{
+    await productSchema.findOneAndDelete({_id:req.params.id}, (err, data) =>{
+        if(err)console.log(err);
+        if(data){
+            req.flash("success", "product deleted successfully")
+            res.redirect(`/product/myproduct/${req.user.id}`)
+        }
+    })
+})
+
 module.exports = productRouter
 

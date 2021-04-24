@@ -28,6 +28,30 @@ const User = new mongoose.Schema({
         type: String
     },
 
+    address:{
+        type: String
+
+    },
+    direction:{
+        type: String
+
+    },
+    country:{
+        type: String
+
+    },
+    state:{
+        type: String
+
+    },
+    lg:{
+        type: String
+
+    },
+    city:{
+        type: String
+
+    },
     password:{
         type:String,
         require:true

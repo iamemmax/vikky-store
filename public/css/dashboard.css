@@ -103,7 +103,13 @@ body{
     transition: height .5s ease;
 
 }
-#show_icon, #show_iconn{
+.showHiddenProduct{
+    height: auto !important;
+    transition: height .5s ease;
+
+}
+/* */
+#show_icon, #show_iconn, #show_icon3{
     position: absolute;
     /* top: -1rem; */
     margin-top: 15px;
