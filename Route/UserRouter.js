@@ -280,7 +280,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
             res.render("dashboard", {
                 title: "Dashboard",
                 user:req.user,
-                layout:"layout",
+                layout:Layout,
                 layout:true,
                 cart,
                 totalQty
@@ -420,7 +420,10 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
             user:req.user,
             error,
             cart,
-            totalQty
+            totalQty,
+            layout: true,
+
+
         })
 
     }else{
@@ -487,13 +490,17 @@ UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
             title: "Edit Address",
             user:req.user,
             cart,
-            totalQty
+            totalQty,
+            layout: true,
+
         })
     }else{
         res.render("address", {
             title: "Edit Address",
             user:req.user,
-            cart
+            cart,
+            layout: true,
+
             
         })
     }
@@ -546,13 +553,17 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
                 title: "Edit user",
                 user:req.user,
                 cart,
-                totalQty
+                totalQty,
+                layout: true,
+
             })
         }else{
             res.render("editProfile", {
                 title: "Edit user",
                 user:req.user,
-                cart
+                cart,
+                layout: true,
+
                 
             })
         }

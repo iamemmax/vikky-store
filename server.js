@@ -21,11 +21,12 @@ const app = express()
 
 
 app.set("view engine", "ejs")
+app.set('layout', 'my-default-layout'); // defaults to 'layout'
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
-
 app.use(Layout)
+
 app.use(methodOverride("_method"))
 app.use(session({
     secret:"emmalex",

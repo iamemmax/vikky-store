@@ -20,7 +20,8 @@ productRouter.get("/new", auth, async(req, res) =>{
             title: "Upload new product",
             user:req.user,
             cart,
-            totalQty
+            totalQty,
+            layout:true
          
         })
      }else{
@@ -28,6 +29,8 @@ productRouter.get("/new", auth, async(req, res) =>{
             title: "Upload new product",
             user:req.user,
             cart,
+            layout:true
+
          
         })
      }
@@ -175,7 +178,9 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                products
+                products,
+                layout:true
+
             })
 
         }else{
@@ -184,7 +189,9 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                products
+                products,
+                layout:true
+
             })
         }
      
@@ -207,7 +214,9 @@ productRouter.get("/edit/:id", auth, async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                products
+                products,
+                layout:true
+
             })
 
         }else{
@@ -216,6 +225,7 @@ productRouter.get("/edit/:id", auth, async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
+                layout:true,
                 products
             })
         }
