@@ -277,7 +277,6 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
     if(cart){
         let myCart = cart[0].userCart.map(c => c.quantity)
         let totalQty = myCart.reduce((a, b) => a + b, 0)
-
             res.render("dashboard", {
                 title: "user dashboard",
                 user:req.user,
@@ -289,7 +288,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         })
     }else{
         res.render("dashboard", {
-            title: "dashboard",
+            title: "Dashboard",
             user:req.user,
             layout:Layout,
             layout:true,
@@ -506,6 +505,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
     let error = []
 
     let {firstname, lastname, country, phone, address, state, city, lg, direction} = req.body
+
         if(!firstname || !lastname || !country || !phone || !address || !city || !lg || !state){
             error.push({msg: "please filled all field"})
            
@@ -558,8 +558,6 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
         }
         
     })
-
-
 
 
         
