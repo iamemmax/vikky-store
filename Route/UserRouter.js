@@ -280,7 +280,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
             res.render("dashboard", {
                 title: "Dashboard",
                 user:req.user,
-                layout:'layout',
+                layout:Layout,
                 layout:true,
                 cart,
                 totalQty

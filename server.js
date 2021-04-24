@@ -16,29 +16,28 @@ const UserSchema = require("./model/UserSchema")
 const Layout = require("express-layouts")
 
 const app = express()
-app.use(flash())
 
 
-require("./config/passport")(passport)
+
+
 app.set("view engine", "ejs")
-app.set('layout', 'layout'); // defaults to 'layout'
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
+
 app.use(Layout)
 app.use(methodOverride("_method"))
-
-
 app.use(session({
-    secret: 'iam untouchable',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        expires:108000000
-    }
+    secret:"emmalex",
+    cookie:{maxAge: 600000000000000},
+    resave:true,
+    saveUninitialized:true
 }))
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
+require("./config/passport")(passport)
 
 
 
