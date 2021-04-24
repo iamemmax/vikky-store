@@ -16,7 +16,7 @@ productRouter.get("/new", auth, async(req, res) =>{
          let myCart = cart[0].userCart.map(c => c.quantity)
          let totalQty = myCart.reduce((a, b) => a + b, 0)
 
-         res.render("newProduct", {
+         res.render("add-product", {
             title: "Upload new product",
             user:req.user,
             cart,
