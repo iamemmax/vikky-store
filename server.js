@@ -16,12 +16,13 @@ const UserSchema = require("./model/UserSchema")
 const Layout = require("express-layouts")
 
 const app = express()
+app.use(flash())
 
 
 require("./config/passport")(passport)
-
-// app.set('layout', 'layout'); // defaults to 'layout'
+app.set('views', 'views');
 app.set("view engine", "ejs")
+app.set('layout', 'layout'); // defaults to 'layout'
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
@@ -39,7 +40,6 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash())
 
 
 
