@@ -20,7 +20,6 @@ app.use(flash())
 
 
 require("./config/passport")(passport)
-app.set('views', 'views');
 app.set("view engine", "ejs")
 app.set('layout', 'layout'); // defaults to 'layout'
 app.use(express.static(path.join(__dirname, "public")))
