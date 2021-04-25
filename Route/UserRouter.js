@@ -277,7 +277,9 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
     if(cart){
         let myCart = cart[0].userCart.map(c => c.quantity)
         let totalQty = myCart.reduce((a, b) => a + b, 0)
-            res.render("dashboard", {
+           
+        
+        res.render("dashboard", {
                 title: "Dashboard",
                 user:req.user,
                 layout:Layout,
@@ -290,7 +292,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         res.render("dashboard", {
             title: "Dashboard",
             user:req.user,
-            layout:'layout',
+            layout:layout,
             layout: true,
             cart
           
