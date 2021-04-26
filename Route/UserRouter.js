@@ -329,7 +329,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
             title: "Dashboard",
             user:req.user,
             layout:Layout,
-            layout: true,
+           
             cart
           
         })
@@ -373,7 +373,6 @@ UserRouter.get("/dashboard/change-pass/:id", auth, async (req, res) =>{
             title : "change password",
             user:req.user,
             error,
-            layout: true,
             user:req.user,
             cart
         })
@@ -459,7 +458,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
             error,
             cart,
             totalQty,
-            layout: true,
+            
 
 
         })
@@ -468,7 +467,6 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
         res.render("edit", {
             title: "Edit",
             user:req.user,
-            layout: true,
             error,
             
         })
@@ -529,7 +527,6 @@ UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
             user:req.user,
             cart,
             totalQty,
-            layout: true,
 
         })
     }else{
@@ -537,7 +534,6 @@ UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
             title: "Edit Address",
             user:req.user,
             cart,
-            layout: true,
 
             
         })
@@ -592,7 +588,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                layout: true,
+               
 
             })
         }else{
@@ -600,7 +596,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
                 title: "Edit user",
                 user:req.user,
                 cart,
-                layout: true,
+                
 
                 
             })
@@ -624,7 +620,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                layout: true,
+                
 
             })
         }else{
@@ -632,7 +628,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
                 title: "freaky-store upload profile img",
                 user:req.user,
                 cart,
-                layout: true,
+               
 
                 
             })
