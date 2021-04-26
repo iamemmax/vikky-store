@@ -17,11 +17,11 @@ const stripe = require("stripe")(Secret_key)
 
 // get cart items
 cartRouter.get("/:id", auth, async(req, res)=>{
-    let cart = await CartSchema.find({userId:req.user.id}, (err)=>{
+    let cart = await CartSchema.findOne({userId:req.user.id}, (err)=>{
         console.log(err);
     }).populate("userCart.productId userId")
     if(cart){
-        let myCart = cart[0].userCart.map(c => c.quantity)
+        let myCart = cart.userCart.map(c => c.quantity)
         let totalQty = myCart.reduce((a, b) => a + b, 0)
 
         res.render("mycart", {

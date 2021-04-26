@@ -339,7 +339,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
 
 
 
-console.log(cart);
+
 
 })
 
@@ -350,7 +350,7 @@ console.log(cart);
 
 UserRouter.get("/dashboard/change-pass/:id", auth, async (req, res) =>{
     let error  = []
-    let cart = await cartSchema.find({userId:req.user.id}, (err)=>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err)=>{
     
     }).populate("userCart.productId userId")
     if(cart){
@@ -446,11 +446,11 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
     UserRouter.get("/account/:id",  auth, async(req, res) =>{
 
         let error =  []
-        let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+        let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
             if(err)console.log(err);
          }).populate("userCart.productId userId")
          if(cart){
-             let myCart = cart[0].userCart.map(c => c.quantity)
+             let myCart = cart.userCart.map(c => c.quantity)
              let totalQty = myCart.reduce((a, b) => a + b, 0)
 
         res.render("edit", {
@@ -516,11 +516,11 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
 // edit address
 
 UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
-    let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
         if(err)console.log(err);
      }).populate("userCart.productId userId")
      if(cart){
-         let myCart = cart[0].userCart.map(c => c.quantity)
+         let myCart = cart.userCart.map(c => c.quantity)
          let totalQty = myCart.reduce((a, b) => a + b, 0)
 
 
@@ -579,11 +579,11 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
 
     UserRouter.get("/dashboard/:id/edit-profile", auth, async(req, res) =>{
 
-        let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+        let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
             if(err)console.log(err);
          }).populate("userCart.productId userId")
          if(cart){
-             let myCart = cart[0].userCart.map(c => c.quantity)
+             let myCart = cart.userCart.map(c => c.quantity)
              let totalQty = myCart.reduce((a, b) => a + b, 0)
     
     
@@ -611,11 +611,11 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
 
     // upload profile image
     UserRouter.get("/dashboard/:id/upload-img", auth, async(req, res)=>{
-        let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+        let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
             if(err)console.log(err);
          }).populate("userCart.productId userId")
          if(cart){
-             let myCart = cart[0].userCart.map(c => c.quantity)
+             let myCart = cart.userCart.map(c => c.quantity)
              let totalQty = myCart.reduce((a, b) => a + b, 0)
     
     

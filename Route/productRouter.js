@@ -9,11 +9,11 @@ const auth  = require("../config/auth")
 
 
 productRouter.get("/new", auth, async(req, res) =>{
-    let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
         if(err)console.log(err);
      }).populate("userCart.productId userId")
      if(cart){
-         let myCart = cart[0].userCart.map(c => c.quantity)
+         let myCart = cart.userCart.map(c => c.quantity)
          let totalQty = myCart.reduce((a, b) => a + b, 0)
 
          res.render("add-product", {
@@ -25,7 +25,7 @@ productRouter.get("/new", auth, async(req, res) =>{
          
         })
      }else{
-        res.render("newProduct", {
+        res.render("add-product", {
             title: "Upload new product",
             user:req.user,
             cart,
@@ -177,11 +177,11 @@ productRouter.get("/:slug", auth, async(req, res) =>{
 
 productRouter.get("/myproduct/:id", auth, async (req, res) =>{
     let products = await productSchema.find({postedBy:req.params.id})
-    let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
         if(err)console.log(err);
      }).populate("userCart.productId userId")
      if(cart){
-         let myCart = cart[0].userCart.map(c => c.quantity)
+         let myCart = cart.userCart.map(c => c.quantity)
          let totalQty = myCart.reduce((a, b) => a + b, 0)
 
 
@@ -200,8 +200,7 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
                 title:"my product",
                 user:req.user,
                 cart,
-                totalQty,
-                products,
+                 products,
                 layout:true
 
             })
@@ -213,11 +212,11 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
 
 productRouter.get("/edit/:id", auth, async (req, res) =>{
     let products = await productSchema.findOne({_id:req.params.id})
-    let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
         if(err)console.log(err);
      }).populate("userCart.productId userId")
      if(cart){
-         let myCart = cart[0].userCart.map(c => c.quantity)
+         let myCart = cart.userCart.map(c => c.quantity)
          let totalQty = myCart.reduce((a, b) => a + b, 0)
 
 
