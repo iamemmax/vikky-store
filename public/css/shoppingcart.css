@@ -21,7 +21,7 @@ table, td, th {
     margin: 0px auto;
   }
   th{
-    background-color: #eee;
+    background-color: #f2f2f2;
     text-transform: uppercase;
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
@@ -94,12 +94,24 @@ input[type="button"]{
   background-color: #fff;
   height: 30px;
   padding: 0;
-  width: 70px;
+  width: 65px;
   font-size: 14px;
   
 }
 @media screen and (max-width:768px) {
-  table{
-    width: 100%;
+  table table, td, th{
+    width: 50%;
+    
+  }
+
+  #name{
+    width: 200px;
+  }
+  #color, #size{
+    background-color: #fff;
+   
+    width: 50px;
+    
+    
   }
 }
