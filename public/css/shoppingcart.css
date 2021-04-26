@@ -29,7 +29,7 @@ table, td, th {
   }
   
   th, td {
-    padding: 15px;
+    padding: 10px;
     font-size: 14px;
     font-weight: 500;
     
@@ -67,6 +67,8 @@ td select{
 .count{
   font-display: flex !important;
   text-align: center;
+  width: 100%;
+  
 }
 .count input[type="text"]{
   width: 30px;
@@ -79,15 +81,23 @@ input[type="button"]{
   outline: none;
   color: #fff;
   /* padding: 5px; */
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background-color: #333;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   align-self: center;
 }
 
+#color, #size{
+  background-color: #fff;
+  height: 30px;
+  padding: 0;
+  width: 70px;
+  font-size: 14px;
+  
+}
 @media screen and (max-width:768px) {
   table{
     width: 100%;

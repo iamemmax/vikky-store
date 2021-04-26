@@ -89,6 +89,10 @@ cartRouter.put("/update/:id",  async(req, res) =>{
       let  productId = req.params.id
     let price = req.body.price
        let quantity = req.body.quantity
+       let color = req.body.color
+       let sizes = req.body.sizes
+
+   
     
     let cart = await CartSchema.findOne({userId:req.user.id}, (err, data)=>{
         if(err)console.log(err);
@@ -100,6 +104,8 @@ cartRouter.put("/update/:id",  async(req, res) =>{
                     "$set":{
                         "userCart.$":{
                             quantity:quantity,
+                            sizes:sizes,
+                            color:color,
                             productId:editproduct.productId,
                             price:parseInt(price * quantity),
                             totalPrice: price += price
@@ -131,7 +137,9 @@ cartRouter.post("/:id", auth,(req, res)=>{
     const createCart = {
         productId:req.params.id,
         price:parseInt(req.body.price),
-        quantity:req.body.quantity
+        quantity:req.body.quantity,
+        sizes:req.body.sizes,
+        color:req.body.color
     }
 
 CartSchema.findOne({userId:req.user._id}).exec((err, cart)=>{

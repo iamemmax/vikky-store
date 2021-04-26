@@ -89,6 +89,12 @@ input[type="file"]{
 }
 
 
+.hideSize{
+    display: none !important;
+}
+.showSize{
+    display: block !important;
+}
 @media screen and (max-width:768px) {
     .uploadProduct{
         width: 400px;

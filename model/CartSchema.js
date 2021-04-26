@@ -29,6 +29,11 @@ const cartSchema = new mongoose.Schema({
         type:String,
         
     },
+
+    sizes:{
+        type:String,
+
+    },
      
 addedAt:{
     type : Date,

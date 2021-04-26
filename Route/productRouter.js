@@ -61,10 +61,17 @@ const upload = multer({storage:storage,fileFilter:multerFilter}).array("myfiles"
 
 
 productRouter.post("/new", upload, async (req, res) =>{
+    let error = []
     let {productName, amount, brand, description, categories, sizes, color} = req.body
     let myfiles = req.files
     // let {filename:myfiles} = req.files
-    
+    console.log(sizes);
+
+    if(!productName || !amount || !brand || !description || !categories || !sizes || !color || !myfiles){
+
+        error.push({msg: "all field are important"})
+       res.redirect("/product/new")
+    }
     
     try {
         let myfileArray = [];
@@ -85,6 +92,11 @@ productRouter.post("/new", upload, async (req, res) =>{
              myfileArray.push( dbFile)
       });
 
+
+      if(error.length > 0){
+          error.push({msg: "error"})
+          res.redirect("/product/new")
+      }else{
 
             let product = new productSchema({
                 productName,
@@ -111,7 +123,7 @@ productRouter.post("/new", upload, async (req, res) =>{
                 }
             })
     
-        
+      }
     } catch (error) {
         console.log(error);
     }
