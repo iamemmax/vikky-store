@@ -33,7 +33,7 @@
 
                                 <ul class="showHidddenNav">
                                     <li><a href="/users/dashboard/<%=user.id%>/edit-profile "><i class="icon fas fa-edit"></i>  <strong>Edit profile</strong></a></li>
-                                    <li><a href="#"><i class="icon fas fa-upload"></i>  <strong>profile Image</strong></a></li>
+                                    <li><a href="/users//dashboard/<%= user.id %>/upload-img"><i class="icon fas fa-upload"></i>  <strong>profile Image</strong></a></li>
                             <li><a href="#"><i class="icon fas fa-map-marker"></i>  <strong>Delivery Address</strong></a></li>
                             </ul>
                             </li>
@@ -81,7 +81,10 @@
                             </form>
                         </div>
                         <div class="welcomeUser">
-                            <img src="/img/<%= user.userImg %> " alt="" id="userImg">
+                            
+                                 <img src="/img/userImg/<%= user.userImg %> " alt="" id="userImg">
+
+                               
                             <p> <% if(user.firstname == "" || user.firstname == undefined){ %>  
                                     <%= user.username %> 
                                 <% }else{ %> 

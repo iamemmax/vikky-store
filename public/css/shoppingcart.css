@@ -21,7 +21,7 @@ table, td, th {
     margin: 0px auto;
   }
   th{
-    background-color: #f2f2f2;
+    background-color: #eee;
     text-transform: uppercase;
     font-weight: 700;
     font-family: 'Roboto', sans-serif;

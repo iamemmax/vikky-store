@@ -9,7 +9,43 @@ const LocalStrategy = require('passport-local').Strategy;
 const auth = require("../config/auth")
 const UserSchema = require("../model/UserSchema")
 const Layout = require("express-layouts")
+const multer = require("multer")
 const UserRouter = express.Router()
+
+
+
+
+
+
+
+
+const storage = multer.diskStorage({
+    filename: function(req, file, cb){
+        cb(null, Date.now() + "--"+ file.originalname )
+    },
+
+    destination:function(req, file, cb){
+        cb(null, "./public/img/userImg/")
+    }
+})
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image')) {
+      cb(null, true);
+    } else {
+      cb(new AppError('Not an image! Please upload an image.', 400), false);
+    }
+  };
+
+const upload = multer({storage:storage,fileFilter:multerFilter})
+
+
+
+
+
+
+
+
+
 
 
 UserRouter.get("/register",  (req, res) =>{
@@ -573,5 +609,60 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
     })
 
 
+    // upload profile image
+    UserRouter.get("/dashboard/:id/upload-img", auth, async(req, res)=>{
+        let cart = await cartSchema.find({userId:req.user.id}, (err, data)=>{
+            if(err)console.log(err);
+         }).populate("userCart.productId userId")
+         if(cart){
+             let myCart = cart[0].userCart.map(c => c.quantity)
+             let totalQty = myCart.reduce((a, b) => a + b, 0)
+    
+    
+            res.render("profileImg", {
+                title: "freaky-store upload profile img",
+                user:req.user,
+                cart,
+                totalQty,
+                layout: true,
+
+            })
+        }else{
+            res.render("profileImg", {
+                title: "freaky-store upload profile img",
+                user:req.user,
+                cart,
+                layout: true,
+
+                
+            })
+        }
         
+    })
+
+        
+
+    
+UserRouter.put("/dashboard/:id/upload-img", upload.single("userImg"), async(req, res) =>{
+    let uploadImg = await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{userImg:req.file.filename}}, (err, done)=>{
+        if(err)console.log(err);
+        if(done){
+            res.redirect(`/users/dashboard/${req.user.id}`)
+
+        }
+    })
+})
+
+UserRouter.put("/dashboard/:id/r-img", async(req, res) =>{
+
+let uploadImg = await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{userImg:"default.png"}}, (err, done)=>{
+        if(err)console.log(err);
+        if(done){
+            res.redirect(`/users/dashboard/${req.user.id}`)
+
+        }
+    })
+})
+
+
 module.exports = UserRouter
