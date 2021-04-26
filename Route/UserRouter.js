@@ -318,8 +318,6 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         res.render("dashboard", {
                 title: "Dashboard",
                 user:req.user,
-                layout:Layout,
-                layout:true,
                 cart,
                 totalQty
            
@@ -328,7 +326,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         res.render("dashboard", {
             title: "Dashboard",
             user:req.user,
-            layout:Layout,
+           
            
             cart
           
