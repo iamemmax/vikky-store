@@ -75,6 +75,7 @@ app.get("/",   auth, async(req, res) =>{
       if(err){
           console.log(err);
       }
+      console.log(cart);
       if(cart){
         let myCart = cart.userCart.map(c => c.quantity)
         let totalQty = myCart.reduce((a, b) => a + b, 0)

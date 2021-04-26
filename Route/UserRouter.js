@@ -307,11 +307,11 @@ UserRouter.get("/logout", auth, (req, res)=>{
 
 UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
 
-    let cart = await cartSchema.find({userId:req.user.id}, (err)=>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err)=>{
         
     }).populate("userCart.productId userId")
     if(cart){
-        let myCart = cart[0].userCart.map(c => c.quantity)
+        let myCart = cart.userCart.map(c => c.quantity)
         let totalQty = myCart.reduce((a, b) => a + b, 0)
            
         
@@ -328,7 +328,7 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         res.render("dashboard", {
             title: "Dashboard",
             user:req.user,
-            layout:layout,
+            layout:Layout,
             layout: true,
             cart
           
