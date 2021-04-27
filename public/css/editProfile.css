@@ -89,10 +89,11 @@ body{
 
 .editInfo span{
     /* border: red 2px solid; */
-    width: 200px;
+    width: 45%;
     position: absolute;
-    left: 10rem;
+    left: 9rem;
     font-weight: 400;
+    overflow: scroll;
 }
 
 .edit_container .editInfo p > i{
