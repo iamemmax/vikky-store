@@ -13,19 +13,19 @@ const LocalStrategy = require('passport-local').Strategy;
 const productSchema = require("./model/productSchema")
 const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
-const Layout = require("express-layouts")
+const Layout = require("express-ejs-layouts")
 
 const app = express()
 
 
 
 
-app.set("view engine", "ejs")
-app.set('layout', 'layout'); // defaults to 'layout'; 
+app.use(Layout)
+app.set('layout', './layout')
+app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
-app.use(Layout)
 
 app.use(methodOverride("_method"))
 app.use(session({
