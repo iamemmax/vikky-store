@@ -1,6 +1,6 @@
 <div class="account_form">
+    <h2>Account Information</h2>
     <form action="/users/account/<%= user.id %>?_method=PUT" method="POST">
-        <h2>Account Information</h2>
         <div class="firstname">
             <input type="text" name="firstname" placeholder="firstname" value="<%= user.firstname%>"  required>
             <label for="password" class="label-name">
@@ -15,7 +15,7 @@
             </label>
         </div>
         <div class="username">
-            <input type="text" name="username" placeholder="username" value="<%= user.username%>" disabled required>
+            <input type="text" name="username" placeholder="username" value="<%= user.username%>" disabled required style="background-color: unset;">
             <label for="password" class="label-name">
                 username
             </label>
@@ -32,6 +32,14 @@
                 phone
             </label>
         </div>
+        
+        <div class="dob">
+            <input type="date" name="dob"  value="<%= user.dob%>" required>
+            <label for="password" class="label-name">
+                Date of Birth
+            </label>
+        </div>
+
         <div class="dob">
            <select name="gender" id="">
                <option value="none"<%= user.gender == 'none' ? 'selected' : ""%>>none</option>
@@ -41,12 +49,19 @@
            </select>
            <label for="">gender</label>
         </div>
-        <div class="dob">
-            <input type="date" name="dob"  value="<%= user.dob%>" required>
-            <label for="password" class="label-name">
-                Date of Birth
-            </label>
+
+        <div class="status">
+           <select name="marital" id="">
+               <option value="none"<%= user.gender == 'none' ? 'selected' : ""%>>none</option>
+               <option value="single" <%= user.gender == 'single' ? 'selected' : ""%>>Male</option>
+               <option value="married" <%= user.gender == 'married' ? 'selected' : ""%>>married</option>
+               <option value="others" <%= user.others == 'others' ? 'selected' : ""%>>others</option>
+           </select>
+           <label for="">Status</label>
         </div>
+        
+        
+        
 
         
 

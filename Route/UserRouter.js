@@ -466,6 +466,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
             title: "Edit",
             user:req.user,
             error,
+            cart
             
         })
         console.log(cart);
@@ -543,9 +544,9 @@ UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
 UserRouter.put("/dashboard/:id/address", async (req, res) =>{
     let error = []
 
-    let {firstname, lastname, country, phone, address, state, city, lg, direction} = req.body
+    let { country, address, state, city, lg, direction, facebook, zip} = req.body
 
-        if(!firstname || !lastname || !country || !phone || !address || !city || !lg || !state){
+        if(!country ||  !address || !city || !lg || !state){
             error.push({msg: "please filled all field"})
            
         }
@@ -553,7 +554,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
         if(error.length > 0){
             error.push({msg: "unable to update account"})
         }else{
-            await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{firstname:firstname, lastname:lastname, city:city, phone:phone, country:country, lg:lg, address:address, state:state, direction:direction}}, (err, data)=>{
+            await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{city:city, country:country, lg:lg, address:address, state:state, direction:direction, facebook:facebook, zip:zip}}, (err, data)=>{
                 if(err)console.log(err);
 
                 if(data){

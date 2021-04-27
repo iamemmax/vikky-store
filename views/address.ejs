@@ -1,43 +1,33 @@
 <div class="account_form">
+    <h2>Contact Information</h2>
     <form action="/users/dashboard/<%= user.id %>/address?_method=PUT" method="POST">
-        <h2>Account Information</h2>
-        <div class="firstname">
-            <input type="text" name="firstname" placeholder="firstname" value="<%= user.firstname%>"  required>
-            <label for="password" class="label-name">
-                Firstname
-            </label>
-        </div>
-
-        <div class="lastname">
-            <input type="text" name="lastname" placeholder="lastname" value="<%= user.lastname%>" required>
-            <label for="password" class="label-name">
-                lastname
-            </label>
-        </div>
         
-            <div class="phone">
-            <input type="number" name="phone" placeholder="phone" value="<%= user.phone%>" required>
-            <label for="password" class="label-name">
-                phone
-            </label>
-            </div>
+
+    
 
         <div class="street">
-            <input type="text" name="address"  value="<%= user.address%>" placeholder="street Address" required>
+            <input type="text" name="address"  value="<%= user.address%>"  required>
             <label for="password" class="label-name">
                  Address
             </label>
         </div>
         <div class="city">
-            <input type="text" name="city"  value="<%= user.city%>" placeholder="city " required>
+            <input type="text" name="city"  value="<%= user.city%>" required>
             <label for="password" class="label-name">
                  city
+            </label>
+        </div>
+
+        <div class="Zip Code">
+            <input type="text" name="zip"  value="<%= user.zip%>" required>
+            <label for="password" class="label-name">
+                Zip Code
             </label>
         </div>
         <div class="direction">
             <input type="text" name="direction"  value="<%= user.direction%>" placeholder="direction" >
             <label for="password" class="label-name">
-                direction <span>(optional)</span>
+                Nearest Bus-stop <span>(optional)</span>
             </label>
         </div>
 
@@ -112,13 +102,19 @@
                     <option value="Yobe"  <%= user.state == 'Yobe' ? 'selected' : ""%>>Yobe</option>
                     <option value="Zamfara"  <%= user.state == 'Zamfara' ? 'selected' : ""%>>Zamfara</option>
                 </select>
-                <label for="password" class="label-name">state</label>
+                <label for="state" class="label-name">state</label>
             </div>
 
             <div class="lg">
                 <input type="text" name="lg" id="lg" placeholder="local government" value="<%=user.lg %>">
-            <label for="password" class="label-name">
-                Date of Birth
+            <label for="lg" class="label-name">
+                Local Govt
+            </label>
+        </div>
+            <div class="facebook">
+                <input type="text" name="facebook" id="facebook"  value="<%=user.facebook %>">
+            <label for="lg" class="label-name">
+                facebook username
             </label>
         </div>
         

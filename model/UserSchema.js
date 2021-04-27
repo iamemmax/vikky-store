@@ -40,6 +40,14 @@ const User = new mongoose.Schema({
         type: String
 
     },
+    zip:{
+        type: String
+
+    },
+    facebook:{
+        type: String
+
+    },
     state:{
         type: String
 

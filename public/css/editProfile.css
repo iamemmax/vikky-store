@@ -9,45 +9,52 @@
 }
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: #fff;
 
 }
 
 
 .edit_container{
     position: relative;
-    height: 500px;
-    width: 100%;
+    height: 700px;
+    /* width: 100%; */
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-flow: row wrap;
-    margin-top: 3rem;
-    /* max-width: 100%; */
-    box-shadow: 0px 0px 1px 1px #eee;
+    margin-top:  0rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px #eee;
+    background-color: #fff;
     padding: 20px;
 }
  .edit_container > h2{
      position: absolute;
-     top: 0;
-     padding: 10px 30px;
+     top: -15px;
+     text-align: center;
+     padding: 40px;
      width: 100%;
      font-size: 20px;
-    border-bottom: 2px solid #eee;
+    /* border-bottom: 1px solid #eee; */
+    font-weight: 500;
 
      
  }
 
 .edit_container > div{
-    width: 500px;
-    margin: 10px;
-    border: 2px solid #eee;
-    height: 300px;
+    width: 49%;
+    margin: 5px;
+    border:  1px solid rgba(187, 187, 187, 0.664);
+    height: 450px;
     display: flex;
     flex-direction: column; 
 }
 
 .edit_container > div div{
 
+    padding: 10px;
+    width: 100%;
+    
 }
 .edit_container .editHeader{
     position: relative;
@@ -56,20 +63,51 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(187, 187, 187, 0.664);
 }
 
 .edit_container .editHeader h2{
     font-size: 16px;
+    padding: 5px ;
 }
 
 .edit_container .editInfo{
     position: relative;
+    padding: 10px;
+   
 }
 
 .edit_container .editInfo p{
     padding: 10px;
     font-size: 14px;
+    line-height: 27px;
+    font-weight: 600;
+    display: flex;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.editInfo span{
+    /* border: red 2px solid; */
+    width: 200px;
+    position: absolute;
+    left: 10rem;
+    font-weight: 400;
+}
+
+.edit_container .editInfo p > i{
+   
+    border-radius: 100%;
+    background-color: black;
+    color: #fff;
+    width: 25px;
+    margin-right: 1rem;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 25px;
+    margin-top: -3px;
 }
 .editHeader a{
     color: #ff4a57;
@@ -79,17 +117,176 @@ body{
     position: absolute;
     bottom: 0;
     padding: 10px;
+    margin-top: 7rem;
     text-decoration: none;
     color: #ff4a57;
     font-weight: 500;
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width:1000px) {
+
+    body{
+        background-color: #fff;
+    }
    .edit_container{
     width: 100%;
-    height: auto;
+    margin-top: 1rem !important;
+    height: auto !important;
+    box-shadow: unset;
     }
     .edit_container div{
-        width: 400px;
+        width: 100%;
+        position: absolute;
+        top: 2rem;
+    }
+    .edit_container > h2{
+       margin-top: -5px;
+        padding: 20px;
     }
     
+
+    .edit_container .editHeader{
+        position: relative;
+       height: 20px !important;
+       
+      
+    
+}
+
+.editHeader :is(h2, a){
+    margin-top: -2rem !important;
+    
+}
+#password{
+   bottom: 2rem;
+} 
+
+}
+
+
+
+
+/* account info form */
+
+.account_form{
+
+width: 100%;
+position: relative;
+height: auto;
+}
+
+.account_form form{
+ 
+    width: 95%;
+    margin: 0px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-top: .1rem;
+    position: relative;
+}
+
+.account_form form div{
+    width: 45%;
+    margin: 5px;
+    margin-top: 2rem;
+}
+
+.account_form div  input, select{
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0px;
+    width: 100%;
+    background-color: unset;
+    line-height: 15px;
+    margin-top: 20px;
+
+}
+
+.account_form form label{
+    position: absolute;
+    left: 0;
+    /* display: none; */
+    padding: 10px 0px !important;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: -10px;
+}
+
+.account_form h2{
+    text-align: center;
+    padding: 10px;
+    margin-top: 2rem;
+    z-index: 9 !important;
+}
+
+
+
+.account_form button{
+    position: absolute;
+    bottom: -4rem;
+    background-color: #ff4a57;
+    width: 100%;
+    padding: 10px;
+    color: #eee;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.account_form button:hover{
+   background-color: #333;
+   color: #ff4a57;
+}
+
+
+
+
+
+
+
+@media screen and (min-width:1001px) and (max-width:1300px) {
+
+    body{
+        background-color: #fff;
+    }
+   .edit_container{
+    width: 100%;
+    margin-top: 1rem !important;
+    height: auto !important;
+    box-shadow: unset;
+    }
+    .edit_container div{
+        width: 45%;
+        position: absolute;
+        top: 2rem;
+    }
+    .edit_container > h2{
+       margin-top: -5px;
+        padding: 20px;
+        margin-top: 10px;
+    }
+    
+
+    .edit_container .editHeader{
+        position: relative;
+       height: 20px !important;
+       
+      
+    
+}
+
+.editHeader :is(h2, a){
+    margin-top: -2rem !important;
+    
+}
+#password{
+   bottom: 2rem;
+} 
+
+
+
+
 }

@@ -1,8 +1,8 @@
 <%- include("./partials/_header") %> 
 
 
+<% if(totalQty) {%> 
 <div class="cart">
-    <% if(cart.length != null) {%> 
     <h2>My Shopping cart</h2>
 <table>
 
@@ -168,12 +168,9 @@
                 <tr>
                 </tr>
                     
-                    </table>
-<% }else{ %> 
-        
-    <h2>No Item found</h2>
-    <% } %> 
-</div>
+        </table>
+    </div>
+
 
     <div class="paynow">
         <% cart.map(carts => { %>
@@ -189,15 +186,19 @@
          data-currency ="usd"
          data-name="<%= user.username %> "
          data-description="purchase from freaky-store"
-         data-amount="<%=total %>"
+         data-amount="<%=total * 100 / 381.00 %>"
          data-Locale="auto">
          
 
          </script>
          </form>  
+        </div>
          <% }) %> 
-    </div>
 
+    <% }else{ %> 
+        
+        <h2 style="width: 100%;text-align: center;padding-top: 3rem">No Item found</h2>
+    <% } %> 
 
 <script>
     const addUp = document.querySelectorAll(".add")

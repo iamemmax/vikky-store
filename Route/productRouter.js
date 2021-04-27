@@ -28,9 +28,7 @@ productRouter.get("/new", auth, async(req, res) =>{
         res.render("add-product", {
             title: "Upload new product",
             user:req.user,
-            cart,
-          
-
+            cart
          
         })
      }
