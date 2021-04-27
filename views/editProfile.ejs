@@ -11,8 +11,8 @@
                 <p><i class="fas fa-users"></i> Lastname: <span><%= user.lastname %></span>  </p>
                 <p><i class="fas fa-user"></i> Username: <span><%= user.username %></span>  </p>
                 <p><i class="fas fa-envelope"></i> Email: <span style="text-transform: lowercase;">
-                  <% if(user.email.length > 12){ %> 
-                    <%= user.email.substr(0, 10)%> ....
+                  <% if(user.email.length > 20){ %> 
+                    <%= user.email.substr(0, 18)%> ....
                     <% }else{ %> 
                       <%= user.email%>
                     <% } %> 
@@ -45,7 +45,7 @@
                
                 <p> <i class="fas fa-map-marker-alt"></i> Address: 
                   <span> <% if(user.address.length > 20){ %> 
-                    <%= user.address.substr(0, 15)%> ....
+                    <%= user.address.substr(0,20 )%> ...
                     <% }else{ %> 
                       <%= user.address%>
                     <% } %>  </span>  </p>
@@ -56,7 +56,7 @@
                 <p> <i class="fas fa-map-marker"></i> Direction: <span>
                   
                   <% if(user.direction.length > 20){ %> 
-                    <%= user.direction.substr(0, 12)%> ...
+                    <%= user.direction.substr(0, 20)%> ...
                     <% }else{ %> 
                       <%= user.direction%>
                     <% } %>  </span>  </p>               
