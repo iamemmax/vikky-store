@@ -11,8 +11,8 @@
                 <p><i class="fas fa-users"></i> Lastname: <span><%= user.lastname %></span>  </p>
                 <p><i class="fas fa-user"></i> Username: <span><%= user.username %></span>  </p>
                 <p><i class="fas fa-envelope"></i> Email: <span style="text-transform: lowercase;">
-                  <% if(user.email.length > 20){ %> 
-                    <%= user.email.substr(0, 18)%> ....
+                  <% if(user.email.length > 25){ %> 
+                    <%= user.email.substr(0, 23)%> ...
                     <% }else{ %> 
                       <%= user.email%>
                     <% } %> 
@@ -44,8 +44,8 @@
                 <div class="editInfo">
                
                 <p> <i class="fas fa-map-marker-alt"></i> Address: 
-                  <span> <% if(user.address.length > 20){ %> 
-                    <%= user.address.substr(0,20 )%> ...
+                  <span> <% if(user.address.length > 25){ %> 
+                    <%= user.address.substr(0,25 )%> ...
                     <% }else{ %> 
                       <%= user.address%>
                     <% } %>  </span>  </p>
@@ -55,13 +55,13 @@
                 <p> <i class="fas fa-map-marker"></i> Local Govt: <span><%= user.lg %>  </span>  </p>
                 <p> <i class="fas fa-map-marker"></i> Direction: <span>
                   
-                  <% if(user.direction.length > 20){ %> 
-                    <%= user.direction.substr(0, 20)%> ...
+                  <% if(user.direction.length > 25){ %> 
+                    <%= user.direction.substr(0, 25)%> ...
                     <% }else{ %> 
                       <%= user.direction%>
                     <% } %>  </span>  </p>               
                 <p> <i class="fas fa-map-pin"></i> zip-code: <span><%= user.zip %>  </span>  </p>
-                <p> <i class="fab fa-facebook-f"></i> facebook: <span><%= user.facebook %>  </span>  </p>
+                <p> <i class="fab fa-facebook-f"></i> facebook: <span style="text-transform: lowercase;"><%= user.facebook %>  </span>  </p>
 
                
                 </div>
