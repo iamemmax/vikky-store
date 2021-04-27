@@ -93,7 +93,6 @@ body{
     position: absolute;
     left: 9rem;
     font-weight: 400;
-    overflow: scroll;
 }
 
 .edit_container .editInfo p > i{
@@ -112,6 +111,7 @@ body{
 }
 .editHeader a{
     color: #ff4a57;
+    margin-right: 2rem !important;
 }
 
 #password{
@@ -157,6 +157,7 @@ body{
 
 .editHeader :is(h2, a){
     margin-top: -2rem !important;
+    
     
 }
 #password{
