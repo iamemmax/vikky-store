@@ -1,6 +1,14 @@
 const mongoose = require("mongoose")
 // const passportLocalMongoose = require("passport-local-mongoose")
+const findOrCreate = require("mongoose-findorcreate")
 const User = new mongoose.Schema({
+    googleId:{
+        type:String
+    },
+    facebookId:{
+        type:String
+    },
+
     firstname:{
         type:String
     },
@@ -80,7 +88,7 @@ const User = new mongoose.Schema({
     },
 
 })
-
+User.plugin(findOrCreate);
 
 // User.plugin(passportLocalMongoose);
 

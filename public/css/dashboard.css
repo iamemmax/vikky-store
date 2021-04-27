@@ -312,6 +312,9 @@ body{
 
 }
 @media screen and (max-width:1000px) {
+    #displayName{
+        display: none;
+    }
     .dashboard_container  .container_body{
    
         position: absolute;

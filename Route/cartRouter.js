@@ -17,6 +17,7 @@ const stripe = require("stripe")(Secret_key)
 
 // get cart items
 cartRouter.get("/:id", auth, async(req, res)=>{
+    let error = []
     let cart = await CartSchema.find({userId:req.user.id}, (err)=>{
         console.log(err);
     }).populate("userCart.productId userId")
@@ -34,14 +35,17 @@ cartRouter.get("/:id", auth, async(req, res)=>{
            
         })
     }else{
-        res.render("index", {
-            title : "Homepage",
-            user: req.user,
-            cart,
+        error.push({msg: "cart empty"})
+        res.render("/")
+        // res.render("index", {
+        //     title : "Homepage",
+        //     user: req.user,
+        //     cart,
             
             
-           
-        })
+            
+        // })
+        
     }
     
    

@@ -144,6 +144,8 @@ body{
     position: absolute;
     width: 30px;
     margin-top: -8px;
+    border-radius: 100%;
+    right:5.5rem;
  
 }
 

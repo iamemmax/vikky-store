@@ -82,11 +82,32 @@
                         </div>
                         <div class="welcomeUser">
                             
-                                 <img src="/img/userImg/<%= user.userImg %> " alt="" id="userImg">
+                            <% if(!user){ %> 
+                                <li><a href="/"><i class="fas fa-user"></i></a> </li>
+                                <% }else if(user.facebookId != undefined || user.facebookId != null){ %>
+                                    <img src="<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" >
+                
+                                <% }else{ %> 
+                                    <li><a href="/"></a></li>
+                                    
+                                            <img src="/img/userImg/<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" >
+                                            
+                                            
+                                              
+                                        <% } %> 
 
                                
-                            
+                            <p id="displayName"> <% if(user.firstname == "" || user.firstname == undefined){ %>  
+                                    <%= user.username.substr(0, 20) %> 
+                                <% }else{ %> 
+                                    <%= user.firstname %> 
+                                    <% } %>  <i class="fas fa-angle-down"></i></p>
                         </div>
+
+
+
+
+                        
                         <div class="cart">
                             <% if(cart){ %> 
                            <li><a href="/users/cart/<%= user.id %>"> <i class="fa fa-shopping-cart"></i><span id="cart-no"> <%= totalQty %> </span></a></li>

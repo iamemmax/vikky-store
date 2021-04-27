@@ -10,6 +10,7 @@ const CartSchema = require("./model/CartSchema")
 const Product = require("./model/productSchema")
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
+
 const productSchema = require("./model/productSchema")
 const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
@@ -44,6 +45,7 @@ require("./config/passport")(passport)
 
 
 
+
 mongoose.connect(process.env.db_url, {
     useNewUrlParser:true, useCreateIndex:true, useUnifiedTopology:true,useFindAndModify:false
 }, (err)=>{
@@ -53,6 +55,8 @@ mongoose.connect(process.env.db_url, {
         console.log("database connected successfully");
     }
 })
+
+
 
 
 passport.serializeUser(function(user, done) {
@@ -66,16 +70,17 @@ passport.deserializeUser(function(id, done) {
    });
 
    
+   
 app.get("/",   auth, async(req, res) =>{
     let products =  await productSchema.find((err, data) =>{
         if(err)throw err
     })
-
+let error = []
   await CartSchema.findOne({userId:req.user.id}, (err, cart)=>{
       if(err){
           console.log(err);
       }
-      console.log(cart);
+    //   console.log(cart);
       if(cart){
         let myCart = cart.userCart.map(c => c.quantity)
         let totalQty = myCart.reduce((a, b) => a + b, 0)
@@ -90,6 +95,8 @@ app.get("/",   auth, async(req, res) =>{
     
         })
       }else{
+
+       
         res.render("index", {
             title:"Homepage",
             user:req.user,

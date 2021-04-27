@@ -6,10 +6,12 @@ const cartSchema = require("../model/CartSchema")
 const productSchema = require("../model/productSchema")
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
+
 const auth = require("../config/auth")
 const UserSchema = require("../model/UserSchema")
 const Layout = require("express-layouts")
 const multer = require("multer")
+const { authenticate } = require("passport")
 const UserRouter = express.Router()
 
 
@@ -324,8 +326,6 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
         res.render("dashboard", {
             title: "Dashboard",
             user:req.user,
-           
-           
             cart
           
         })
@@ -656,6 +656,36 @@ let uploadImg = await UserSchema.findOneAndUpdate({_id:req.params.id}, {$set:{us
         }
     })
 })
+
+
+
+
+// google authentication
+UserRouter.get('/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+UserRouter.get('/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    
+    res.redirect('/');
+  });
+
+
+
+//   facebook authenticate
+
+
+UserRouter.get('/facebook',
+  passport.authenticate('facebook', { scope : ['email'] }));
+
+UserRouter.get('/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+ 
+    res.redirect('/');
+  });
+
 
 
 module.exports = UserRouter

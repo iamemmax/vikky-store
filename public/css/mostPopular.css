@@ -6,6 +6,7 @@
     position: relative;
     overflow: hidden;
     text-align: center;
+    margin-bottom: 1rem;
 }
 .mostPouplar_container .categories{
     padding: 10px;
@@ -57,13 +58,14 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .mostPouplar_container .popular div{
     box-shadow: 0px 1px 1px  2px #eee;
     width: 225px;
     border-radius: 5px;
-    margin: 8px;
+    margin: 5px;
     height: 270px;
     object-fit: cover;
     border-radius: 5px;
@@ -96,14 +98,16 @@
     text-align: center;
     
 }
-.popular p{
-    /* border: 2px solid red; */
+.popular div p{
     padding:  10px;
     width: 100%;
     text-align: center;
     font-size: 14px;
     font-weight: 400;
-    margin-top: -5px;
+    /* margin-top: -1rem !important; */
+
+
+
 }
 .popular a{
     text-decoration: none;
@@ -129,7 +133,8 @@
     border: none;
     outline: none;
     cursor: pointer;
-    margin-top: -.5rem;
+    margin-top: -1.5rem;
+    margin-bottom: 10px;
     
 }
 .popular  button:hover{
@@ -139,6 +144,19 @@
     
 }
 
+.rating{
+    position: relative;
+    color: #ff4a57;
+    font-size: 12px;
+    display: inline-block !important;
+    height: 10px !important;
+    background-color: unset;
+    box-shadow: unset !important;
+    margin-top: 2px !important;
+
+    
+}
+ 
 
 @media screen and (max-width:768px) {
     .mostPouplar_container{
@@ -171,7 +189,7 @@
     .popular p{
         /* border: 2px solid red; */
         font-size: 14px;
-        margin-top: -5px;
+        margin-top: -10px !important;
     }
     .popular a{
         text-decoration: none;

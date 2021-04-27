@@ -189,8 +189,8 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                products,
-                layout:true
+                products
+               
 
             })
 
@@ -199,8 +199,8 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
                 title:"my product",
                 user:req.user,
                 cart,
-                 products,
-                layout:true
+                 products
+                
 
             })
         }
