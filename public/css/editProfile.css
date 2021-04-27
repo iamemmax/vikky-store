@@ -132,6 +132,8 @@ body{
     margin-top: 1rem !important;
     height: auto !important;
     box-shadow: unset;
+    padding: 0;
+    margin: 0;
     }
     .edit_container div{
         width: 100%;
@@ -186,7 +188,7 @@ height: auto;
 }
 
 .account_form form div{
-    width: 45%;
+    width: 47%;
     margin: 5px;
     margin-top: 2rem;
 }
@@ -199,6 +201,7 @@ height: auto;
     background-color: unset;
     line-height: 15px;
     margin-top: 20px;
+    color: rgb(110, 109, 109);
 
 }
 

@@ -217,7 +217,7 @@ body{
     margin: 3px;
 }
 .headerNav .search{
-    width: 45%;
+    width: 60%;
     position: relative;
     border: none !important;
 }
@@ -391,9 +391,13 @@ body{
         display: flex !important;
     }
 
+    #userImg{
+       position: absolute;
+       left: -.5rem;
+    }
 
     .headerNav .search{
-        width: 40%;
+        width: 50%;
         
     }
 
