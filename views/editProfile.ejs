@@ -11,8 +11,8 @@
                 <p><i class="fas fa-users"></i> Lastname: <span><%= user.lastname %></span>  </p>
                 <p><i class="fas fa-user"></i> Username: <span><%= user.username %></span>  </p>
                 <p><i class="fas fa-envelope"></i> Email: <span style="text-transform: lowercase;">
-                  <% if(user.email.length > 25){ %> 
-                    <%= user.email.substr(0, 24)%> ...
+                  <% if(user.email.length > 20){ %> 
+                    <%= user.email.substr(0, 20)%> ...
                     <% }else{ %> 
                       <%= user.email%>
                     <% } %> 
@@ -44,8 +44,8 @@
                 <div class="editInfo">
                
                 <p> <i class="fas fa-map-marker-alt"></i> Address: 
-                  <span> <% if(user.address.length > 23){ %> 
-                    <%= user.address.substr(0,24)%> ...
+                  <span> <% if(user.address.length > 20){ %> 
+                    <%= user.address.substr(0,20)%> ...
                     <% }else{ %> 
                       <%= user.address%>
                     <% } %>  </span>  </p>
@@ -55,8 +55,8 @@
                 <p> <i class="fas fa-map-marker"></i> Local Govt: <span><%= user.lg %>  </span>  </p>
                 <p> <i class="fas fa-map-marker"></i> Direction: <span>
                   
-                  <% if(user.direction.length > 23){ %> 
-                    <%= user.direction.substr(0, 24)%> ...
+                  <% if(user.direction.length > 20){ %> 
+                    <%= user.direction.substr(0, 20)%> ...
                     <% }else{ %> 
                       <%= user.direction%>
                     <% } %>  </span>  </p>               

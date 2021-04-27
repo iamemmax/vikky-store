@@ -17,6 +17,7 @@ body{
 .uploadProduct{
     position: relative;
     width: 90%;
+    /* height: 900px; */
     max-width: 100%;
     /* margin-top: 5rem; */
     border-radius: 5px;
@@ -73,7 +74,7 @@ input[type="file"]{
 
 .uploadProduct  button[type="submit"]{
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
     border: none;
     outline: none;
     height: 45px;
@@ -86,6 +87,7 @@ input[type="file"]{
     /* border-radius: 20px; */
     font-weight: 600;
     border-radius: 5px;
+    margin-bottom: 2rem;
 }
 
 
