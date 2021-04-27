@@ -21,7 +21,7 @@ const app = express()
 
 
 app.use(Layout)
-// app.set('layout', '../layout')
+app.set('layout', './layouts/dashboard-layout')
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({extended:false}))
