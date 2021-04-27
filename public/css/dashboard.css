@@ -342,10 +342,10 @@ body{
         height: 99vh;
         z-index: 9999 !important;
         top: 0;
-        display: block;
         left: 0;
         clip-path: circle(0 at 0% -90%);
         transition: clip-path .7s ease;
+
     }
     .rightNav{
         position: absolute;

@@ -16,21 +16,21 @@ body{
 /* upload product */
 .uploadProduct{
     position: relative;
-    width: 500px;
+    width: 90%;
     max-width: 100%;
-    margin: 0px auto;
-    margin-top: 5rem;
-    box-shadow: 0px 0px  1px 2px #eee;
+    /* margin-top: 5rem; */
     border-radius: 5px;
     padding: 10px 20px;
 }
 
 .uploadProduct form{
-    width: 100%;
+    box-shadow: 0px 0px  1px 2px #eee;
+    margin: 0px auto;
+    width: 500px;
     height: auto;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
 }
 
 .uploadProduct  h2{
@@ -96,7 +96,15 @@ input[type="file"]{
     display: block !important;
 }
 @media screen and (max-width:768px) {
-    .uploadProduct{
-        width: 400px;
+
+    .uploadProduct {
+        /* background-color: red; */
+        width: 98%;
+    }
+    .uploadProduct form{
+        width: 100%;
+        /* background-color: blue; */
+        box-shadow: none;
+        padding: 0;
     }
 }
