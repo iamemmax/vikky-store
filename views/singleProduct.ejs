@@ -1,4 +1,3 @@
-<%- include("./partials/_header") %> 
 <div class="singleProduct">
     <div class="showImg">
         <div class="singleImg">
@@ -14,48 +13,36 @@
 
     <div class="productInfo">
         <h2 id="title"><%= single.productName %> </h2>
-        <div class="amount">
-           <h3>Amount: &#x20A6 <%= single.amount %></h3> 
+        <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
         </div>
-        <p><%= single.description %> </p>
-        <p>Brand: <span><%= single.brand %> </span></p>
+        <div class="amount">
+           <h3>&#x20A6<span><%=single.amount %></span></h3> 
+        </div>
+        <!-- <p><= single.description %> </p> -->
+        <p>Brand:<span><%= single.brand %> </span></p>
 
+        <p>Color:<span><%= single.color %> </span></p> 
     
         <form action="/users/cart/<%= single.id %> " method="POST">
-            <div class="coor"> 
-                <h2>Color:</h2> 
+            
+           
+              <div class="quantity">
                 
-                <select name="color" id="">
-    
-                    <option value="default">default</option>
-                    <option value="red">red</option>
-                    <option value="blue">blue</option>
-                    <option value="green">green</option>
-                    <option value="pink">pink</option>
-            
-                </select>
-    
-            </div>
-            
-            <div class="quantty">
-            <h2>Quantity: </h2>
-            <select name="quantity" id="">
-
-                <option value="1" <%= single.quantity == '1' ? 'selected' : ""%>>1</option>
-                <option value="2" <%= single.quantity == "2" ? 'selected' : "" %> >2</option>
-                <option value="3" <%= single.quantity == "3" ? 'selected' : "" %> >3</option>
-                <option value="4" ><%= single.quantity == "4" ? 'selected' : "" %> 4</option>
-                <option value="5" <%= single.quantity == "5" ? 'selected' : "" %> >5</option>
-                <option value="6" <%= single.quantity == "6" ? 'selected' : "" %> >6</option>
-                <option value="7"  <%= single.quantity == "7" ? 'selected' : "" %> >7</option>
-                <option value="8" <%= single.quantity == "8" ? 'selected' : "" %> >8</option>
-                <option value="9" <%= single.quantity == "9" ? 'selected' : "" %> >9</option>
-                <option value="10" <%= single.quantity == "10" ? 'selected' : "" %>  >10</option>
-            </select>
-
-        </div>
+                <p>quantity : </p>  
+                    <div class="count">
+                        <input type="button"  class="add" value="+">
+                        <input type="text"  value="<%= single.quantity %> " name="quantity" class="show-count">
+                        <input type="button"  class="sub" value="-">
+                        </div>
+                </div> 
 
 <div class="sizes">
+    <p>Sizes : </p>  
     <select name="sizes" id="size">
         <% if(single.categories !== "shoe"){ %> 
         <option value="s" <%= single.sizes == 'L' ?  'selected' : "" %> >S</option>
@@ -122,36 +109,61 @@
 </div>
 
         <input type="hidden" value="<%= single.amount %> " name="price" id="">
+        <input type="hidden" value="<%= single.color %> " name="color" id="">
         
         <div class="submitBtn">
-            <button type="submit">Add to cart</button>
+            <button type="submit">Add to Cart</button>
         </form>
 
 
-            <button type="submit">Buy Now</button>
+            <!-- <button type="submit">Buy Now</button> -->
         </div>
     </div>
 </div>
 
+
+
+
+
+
+
 <script>
-    const add = document.getElementById("add")
-    const sub = document.getElementById("sub")
-    const qty = document.getElementById("qty")
-
-    let click = 0;
-    add.addEventListener("click", (e)=>{
-        qty.value = click +=1
-    })
-
-    sub.addEventListener("click", (e)=>{
-        qty.value = click -- ;
-        
-        if(qty.value <= 1){
-            click = 0;
+    const addUp = document.querySelectorAll(".add")
+    const subUp = document.querySelectorAll(".sub")
+    const qty = document.querySelector("#qty")
+    
+    addUp.forEach(add =>{
+        add.addEventListener("click", (e)=>{
             
-        }
-    })
+            let input = e.target.parentElement.children[1];
+             let inputValue = input.value
+             let newValue = parseInt(inputValue) + 1
+             input.value = newValue
+            
+
+           })
+           
+            
+            
+        })
+
+        subUp.forEach(sub =>{
+            sub.addEventListener("click", (e)=>{
+           
+         let input = e.target.parentElement.children[1];
+         let inputValue = input.value
+         let newValue = parseInt(inputValue) - 1
+         input.value = newValue
+                
+         if(newValue < 1){
+         input.value = 1
+
+         }
+           })
+           
+            
+            
+        })
     
 </script>
 
-<%- include("./partials/_footer") %> 

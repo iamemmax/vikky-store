@@ -29,7 +29,9 @@ productRouter.get("/new", auth, async(req, res) =>{
         res.render("add-product", {
             title: "Upload new product",
             user:req.user,
-            cart
+            cart,
+            layout: "./layouts/dashboard-layout"
+
          
         })
      }
@@ -150,7 +152,9 @@ productRouter.get("/:slug", auth, async(req, res) =>{
             user:req.user,
             cart,
             totalQty,
-            layout:false
+            layout:false,
+            layout: "./layouts/sidebar"
+
              
         
         })
@@ -161,7 +165,8 @@ productRouter.get("/:slug", auth, async(req, res) =>{
             single,
             user:req.user,
             cart,
-            layout:false
+            layout: "./layouts/sidebar"
+
               })
       }
      
@@ -295,6 +300,7 @@ productRouter.delete("/del/:id", async(req, res) =>{
         }
     })
 })
+
 
 module.exports = productRouter
 
