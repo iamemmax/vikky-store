@@ -100,7 +100,7 @@
     width: 270px;
 }
 .sizes select{
-    padding: 5px;
+    padding: 5px 0;
     margin-top: -2px;
     border: 1px solid #ff4a57;
 
@@ -152,27 +152,36 @@
     
     .showImg{
         padding-top: 0 !important;
-        border-bottom: 1px solid #eee;
+        /* border-botto: 1px solid #eee; */
         height: 320px;
         margin-top: -2rem !important;
+       
     }
     .selectImg{
         position: absolute;
         bottom: 3rem;
-        left: 0;
+        left: -1.4rem;
         flex-direction: column;
     }
-
+    
     .selectImg img{
-        width: 25px;
-        height: 25px;
-       
+        width: 25px !important;
+        height: 25px !important;
+        
         padding: 5px;
         
-    
-    
+        
+        
     }
     
+    .showImg img{
+        margin-left: 1.5rem;
+        width: 90%;
+        /* border: 2px solid red; */
+     
+ 
+     
+ }  
  .submitBtn button{
      margin-bottom: 2rem;
  }
