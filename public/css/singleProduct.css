@@ -148,36 +148,56 @@
     width: 100%;
     height: auto;
     margin: 0px auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
     position: relative;
 }
 
 .myProductInfo{
-/* border: 2px solid red; */
-margin-top: -20px;
-width: 95%;
-margin: 0px auto;
-padding-bottom: 2rem;
+    margin-top: -15px;
+    width: 95%;
+    margin: 0px auto;
+    padding-bottom: .5rem;
+
 
 }
+
 
 
 .myProductInfo p{
     font-weight: 500;
-    padding: 10px;
-    line-height: 27px;
-    font-size: 14px;
+    padding: 5px 10px;
+    font-size: 12px;
+    opacity: .6;
     
 }
-
+.shipping, .return{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    padding: 10px;
+    
+}
+.shipping div, .return div{
+    /* border: 2px solid red; */
+    margin: 10px;
+    font-size: 12px;
+}
+.shipping div p, .return div p{
+    font-size: 12px;
+}
+.shipping  i, .return i{
+ 
+    font-size: 40px;
+}
 .moreInfo .infoBtn{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 10px;
     align-items: center;
 }
 .moreInfo .infoBtn > div{
-    margin: 20px;
+    margin: 25px;
+    margin-bottom: 5px;
     font-weight: 500;
     cursor: pointer;
 }
@@ -260,6 +280,8 @@ padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
+    /* height: auto; */
+    padding: 10px;
 }
 .showProductInfoOnmobile div div{
     height: 0;
@@ -271,7 +293,9 @@ padding-bottom: 2rem;
     text-transform: capitalize;
     font-weight: 600;
     border: 2px solid #eee;
+    margin: 0px auto;
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 .showProductInfoOnmobile  i{
     float: right;
