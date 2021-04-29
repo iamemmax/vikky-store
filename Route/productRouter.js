@@ -194,7 +194,8 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                products
+                products,
+                layout: "./layouts/dashboard-layout"
                
 
             })
@@ -204,7 +205,9 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
                 title:"my product",
                 user:req.user,
                 cart,
-                 products
+                 products,
+                 layout: "./layouts/dashboard-layout"
+
                 
 
             })
@@ -230,7 +233,7 @@ productRouter.get("/edit/:id", auth, async (req, res) =>{
                 cart,
                 totalQty,
                 products,
-                layout:true
+               
 
             })
 
@@ -240,7 +243,6 @@ productRouter.get("/edit/:id", auth, async (req, res) =>{
                 user:req.user,
                 cart,
                 totalQty,
-                layout:true,
                 products
             })
         }

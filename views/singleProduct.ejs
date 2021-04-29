@@ -121,10 +121,90 @@
     </div>
 </div>
 
+<div class="moreInfo">
+    <div class="infoBtn">
+        <!-- <div class="des1 active " data-select="all"> All</div> -->
+        <div class="des1 description active" data-select="description">Description</div>
+        <div class="des1" data-select="shipping">Shipping  </div>
+        <div class="des1" data-select="Warranty">Warranty </div>
+        <div class="des1" data-select="return">Return Policy </div>
+        <div class="des1" data-select="review">Review </div>
+    </div>
+
+    <div class="myProductInfo">
+        <div class="description  showInfo" data-select="description">
+            <p><%= single.description %> </p>
+        </div>
+            <div class="shipping  showInfo" data-select="shipping">
+                
+                  <p>  Delivery</p>
+                   <p>Estimated delivery time: 1 - 9 days
+                </p>
+            </div>
+    
+            <div class="waranty  showInfo" data-select="Warranty">
+                <p>Warranty information unavailable for this item.</p>
+            </div>
+    
+            <div class="return  showInfo" data-select="return">
+                <p>7 Day Return Guarantee</p>
+                  <p>For more information on the return shipping options, go to freaky-store Return Policy</p>
+            </div>
+        
+            <div class="review  showInfo" data-select="review">
+                <p>No product review yet. Be the first to review this product.</p>
+            </div>
+    </div> 
+</div>
+
+
+<div class="showProductInfoOnmobile">
 
 
 
+    <div id="description">
+        
+        <li data-select="description" class="descriptions">Description <i class="fa fa-angle-right" data-select="description" id="descIcon"></i> </li>
 
+           <div class="des" data-select="description">
+            <p><%= single.description %> </p>
+           </div>
+        </div>
+            <div class="shippings" >
+                <li  data-select="shipping">shipping  <i class="fas fa-angle-right ship"></i></li>
+                
+                <div class="des" data-select="shipping">
+                <p>  Delivery Estimated delivery time: 1 - 9 days </p>
+
+                </div>
+           
+            </div>
+    
+            <div class="warantys">
+                <li  data-select="waranty">waranty <i class="fas fa-angle-right" id="wara"></i></li>
+            <div class="des" data-select="waranty">
+                <p>Warranty information unavailable for this item.</p>
+                
+            </div>           
+         </div>
+    
+            <div class="return" >
+                <li data-select="return" class="returns"> return <i class="fas fa-angle-right" id="return"></i></li>
+            <div class="des" data-select="return">
+                <p>7 Day Return Guarantee</p> 
+                  <p>For more information on the return shipping options, go to freaky-store Return Policy</p>
+
+            </div>               
+            </div>
+            <div class="review">
+                <li data-select="review" class="reviews">review <i class="fas fa-angle-right" id="rew"></i></li>
+                <div class="des" data-select="review">
+                <p>No product review yet. Be the first to review this product.</p>
+
+                </div>
+            </div>
+        
+</div>
 
 
 <script>
@@ -164,6 +244,96 @@
             
             
         })
-    
+
+
+        const infoBtns = document.querySelectorAll(".des1")
+        const showInfos = document.querySelectorAll(".showInfo")
+        const info = document.querySelector(".infoBtn")
+       
+
+      
+        window.onload=function(){
+  document.querySelector(".description").click();
+};
+        infoBtns.forEach(infoBtn =>{
+            infoBtn.addEventListener("click", (e) =>{
+                info.querySelector(".active").classList.remove("active")
+                infoBtn.classList.add("active")
+                showInfos.forEach(showInfo =>{
+                    let infoBtnAttr = infoBtn.getAttribute("data-select")
+                    let showInfoAttr = showInfo.getAttribute("data-select")
+
+                    if(infoBtnAttr == showInfoAttr || infoBtnAttr === "all"){
+                        showInfo.classList.remove("hide")
+                        showInfo.classList.add("show")
+                    }
+                    else{
+                        showInfo.classList.remove("show")
+                        showInfo.classList.add("hide")
+                    }
+                    // if(infoBtnAttr == "all"){
+                    //     console.log(all);
+                    // }
+
+                })
+            })
+        })
+
+
+
+        const liInfo = document.querySelectorAll("li")
+        const newInfo = document.querySelectorAll(".des")
+        const descIcon = document.querySelector("#descIcon")
+        const descBtn = document.querySelector(".descriptions")
+        const shipBtn = document.querySelector(".shippings")
+        const shipIcon = document.querySelector(".ship")
+        const returnBtn = document.querySelector(".returns")
+        const waraBtn = document.querySelector(".warantys")
+        const waraIcon = document.querySelector("#wara")
+        const returnIcon = document.querySelector("#return")
+        const revIcon = document.querySelector("#rew")
+        const revBtn = document.querySelector(".reviews")
+        
+ 
+        
+        const newIcon = document.querySelectorAll(".showProductInfoOnmobile i")
+
+        liInfo.forEach(eachLi =>{
+            eachLi.addEventListener("click", (e) =>{
+                newInfo.forEach(showMobile =>{
+                    newIcon.forEach(changeIcon =>{
+
+                        let mobileSelect = eachLi.getAttribute("data-select")  
+                        let newAttr  = showMobile.getAttribute("data-select")
+                        let changeAttr  = showMobile.getAttribute("data-select")
+                        
+                        if(mobileSelect === newAttr){
+                            showMobile.classList.toggle("showInfo")
+                        }
+                       
+                        
+                    })
+                    
+                })
+            })
+        })
+        
+        descBtn.addEventListener("click", (e) =>{
+                   descIcon.classList.toggle("fa-minus")     
+            })
+
+            shipBtn.onclick =()=>{
+                shipIcon.classList.toggle("fa-minus")
+            }
+            waraBtn.onclick =()=>{
+                waraIcon.classList.toggle("fa-minus")
+            }
+            returnBtn.onclick =()=>{
+                returnIcon.classList.toggle("fa-minus")
+            }
+            revBtn.onclick =()=>{
+                revIcon.classList.toggle("fa-minus")
+            }
 </script>
+
 
