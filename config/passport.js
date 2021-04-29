@@ -59,9 +59,9 @@ module.exports =   function passportAuth (res){
 
     // facebook authentication
     passport.use(new FacebookStrategy({
-        clientID: process.env.FACEBOOK_APP_ID,
-        clientSecret: process.env.facebookSecrete,
-        callbackURL: keys.callbackURL,
+        clientID: keys.FACEBOOK_APP_ID_PRO,
+        clientSecret: keys.facebook_Secrete_PRO,
+        callbackURL: keys.callbackURL_dev,
         profileFields: ['id', 'displayName', 'photos', 'email', 'name', "gender"],
         enableProof: true
       },
