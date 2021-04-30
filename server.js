@@ -15,6 +15,7 @@ const productSchema = require("./model/productSchema")
 const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
 const Layout = require("express-ejs-layouts")
+const { request } = require("http")
 
 const app = express()
 
@@ -164,6 +165,14 @@ app.get("/:q", auth, async(req, res) =>{
     
 })
 
+})
+
+app.get("/privacy", (req, res) =>{
+    res.render("privacy-policy", {
+        title: "privacy-policy",
+        user:req.user,
+        
+    })
 })
 
 // routes

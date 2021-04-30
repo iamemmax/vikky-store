@@ -688,4 +688,64 @@ UserRouter.get('/facebook/callback',
 
 
 
+
+  UserRouter.get("/privacy", auth, async(req, res) =>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
+        if(err)console.log(err);
+     }).populate("userCart.productId userId")
+     if(cart){
+         let myCart = cart.userCart.map(c => c.quantity)
+         let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+    res.render("privacy-policy", {
+        title: "Freaky-stores || privacy-policy",
+        user:req.user,
+        cart,
+        totalQty,
+        layout:false
+
+
+
+        
+    })
+}else{
+    res.render("privacy-policy", {
+        title: "Freaky-stores || privacy-policy",
+        user:req.user,
+        cart,
+        layout:false
+
+        
+    })
+}
+})
+  UserRouter.get("/terms", auth, async(req, res) =>{
+    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
+        if(err)console.log(err);
+     }).populate("userCart.productId userId")
+     if(cart){
+         let myCart = cart.userCart.map(c => c.quantity)
+         let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+    res.render("terms", {
+        title: "Freaky-stores terms and condition",
+        user:req.user,
+        cart,
+        totalQty,
+        layout:false
+
+
+
+        
+    })
+}else{
+    res.render("terms", {
+        title: "Freaky-stores terms and condition",
+        user:req.user,
+        cart,
+         layout:false
+        
+    })
+}
+})
 module.exports = UserRouter

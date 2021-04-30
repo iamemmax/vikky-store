@@ -50,7 +50,7 @@
             <% if(!user){ %> 
                 <li><a href="/"><i class="fas fa-user"></i></a> </li>
                 <% }else if(user.facebookId != undefined || user.facebookId != null){ %>
-                    <img src="<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" >
+                    <img src="<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" class="newfacebook" >
 
                 <% }else{ %> 
                     <li><a href="/"></a></li>
