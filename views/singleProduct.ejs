@@ -42,7 +42,11 @@
                 </div> 
 
 <div class="sizes">
-    <p>Sizes : </p>  
+    <% if(single.categories === "computer" || single.categories === "phone" || single.categories === "electronic"){ %> 
+    
+        <% }else{ %> 
+    
+        <p>Sizes : </p>  
     <select name="sizes" id="size">
         <% if(single.categories !== "shoe"){ %> 
         <option value="s" <%= single.sizes == 'L' ?  'selected' : "" %> >S</option>
@@ -103,6 +107,7 @@
         <option value="49" <%= single.sizes == "49" ?  "selected" : "" %>>49</option>
         <option value="50" <%= single.sizes == "50" ?  "selected" : "" %>>50</option>
 
+        <% } %> 
         <% } %> 
     </select>
 <!--  -->

@@ -66,7 +66,7 @@
     width: 225px;
     border-radius: 5px;
     margin: 5px;
-    height: 270px;
+    height: 290px;
     object-fit: cover;
     border-radius: 5px;
     display: flex;
@@ -118,6 +118,7 @@
     height: 150px;
     object-fit: scale-down;
     /* border: 2px solid red; */
+    margin-top: 5px;
 }
 .popular div button{
     /* margin-top: 1rem; */
@@ -134,7 +135,7 @@
     outline: none;
     cursor: pointer;
     margin-top: -1.5rem;
-    margin-bottom: 10px;
+    /* margin-bottom: 20px; */
     
 }
 .popular  button:hover{
@@ -182,7 +183,7 @@
         box-shadow: 0px 1px 1px  2px #eee;
         width: 145px;
         margin: 8px;
-        height: 240px;
+        height: 270px;
     
     }
 
@@ -194,6 +195,7 @@
     .popular a{
         text-decoration: none;
         color: #222;
+        
     }
     .popular h2{
         margin-top: -10px;
@@ -205,5 +207,8 @@
         height: 140px;
         object-fit: scale-down;
         /* border: 2px solid red; */
+    }
+    .popular div button{
+        
     }
 }

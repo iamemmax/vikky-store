@@ -75,14 +75,15 @@ module.exports =   function passportAuth (res){
     
 
 
+     
 
 
 
     // google authentication
     passport.use(new GoogleStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:5050/users/google/callback",
+        clientID: keys.GOOGLE_CLIENT_ID,
+        clientSecret: keys.GOOGLE_CLIENT_SECRET,
+        callbackURL: keys.callbackURL,
 
       },
       function(accessToken, refreshToken, profile, cb) {

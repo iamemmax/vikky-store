@@ -15,11 +15,14 @@ body{
     grid-template-columns: 75% 25%;
     box-shadow:none !important;
    
-
+    
     
 }
 .sidebar_body{
     background-color: #fff;
+    /* border: 2px solid red; */
+    /* width: 100%; */
+    
 }
 .sidebar_container > div{
     /* background-color: #fff; */
@@ -130,6 +133,11 @@ body{
         display: grid;
         grid-template-columns: 100%;
         
+    }
+
+    .myshoe{
+       margin-top: 1rem !important;
+       /* border: 2px solid red; */
     }
     
 }

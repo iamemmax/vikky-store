@@ -4,7 +4,8 @@
 <% if(totalQty) {%> 
 <div class="cart">
     <h2>My Shopping cart</h2>
-<table>
+    <div class="mytable" style="overflow-x:auto;">
+<table> 
 
             
                 <!-- <th>S/n</th> -->
@@ -66,7 +67,11 @@
                             </select>
                         </td>
                      <td>
+                        <% if(c.productId.categories === "computer" || c.productId.categories === "phone" || c.productId.categories === "electronic"){ %> 
+    
+                            <% }else{ %> 
                          <select name="sizes" id="size">
+                           
                             <% if(c.productId.categories !== "shoe"){ %> 
                             <option value="s" <%= c.sizes == 'L' ?  'selected' : "" %> >S</option>
                             <option value="m" <%= c.sizes == 'M' ?  'selected' : "" %> >M</option>
@@ -128,6 +133,7 @@
    
                             <% } %> 
                         </select>
+                        <% } %> 
 
                     </td>
                    
@@ -170,9 +176,9 @@
                     
         </table>
     </div>
+</div>
 
-
-    <div class="paynow">
+    <div class="paynow" style="margin-top: 3rem;">
         <% cart.map(carts => { %>
             <% let mycart = carts.userCart %> 
        <% let  total = mycart.reduce((a, b) => a + b.price, 0)%>

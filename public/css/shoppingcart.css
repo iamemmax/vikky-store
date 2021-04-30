@@ -99,19 +99,18 @@ input[type="button"]{
   
 }
 @media screen and (max-width:768px) {
-  table table, td, th{
-    width: 50%;
+  /* table, td, th{
+    width: 300px;
     
   }
 
   #name{
-    width: 200px;
+    width: 200px !important;
   }
   #color, #size{
     background-color: #fff;
-   
-    width: 50px;
+    width: 50px !important;
     
     
-  }
+  } */
 }

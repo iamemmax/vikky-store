@@ -137,7 +137,7 @@
             other.name = "sizes"
             other.classList.remove("hideSize")
             
-            }
+            }  
             else{
                 shoe.classList.remove("hideSize")
                 shoe.name = "sizes"
@@ -147,7 +147,12 @@
 
             }
 
-           
+            if(category.value == "electronic" || category.value == "computer"|| category.value == "phone" || category.value == "category" ){
+                shoe.classList.add("hideSize")
+                other.classList.add("hideSize")
+                shoe.name = "dd"
+
+            }
     })
 
 

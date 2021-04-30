@@ -131,7 +131,38 @@ productRouter.post("/new", upload, async (req, res) =>{
 
 })
 
+productRouter.get("/shoe", auth, async (req, res) =>{
+    let products = await productSchema.find({categories:"shoe"})
 
+    console.log(products);
+    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+      if(cart){
+        let myCart = cart.userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+     res.render("shoe", {
+         title : "myshoe",
+         user:req.user,
+         cart,
+         products,
+         totalQty,
+         layout: "./layouts/sidebar"
+     })
+
+      }else{
+        res.render("shoe", {
+            title : "myshoe",
+            user:req.user,
+            cart,
+            products,
+            layout: "./layouts/sidebar"
+        })
+      }
+
+})
 // get single product
 
 productRouter.get("/:slug", auth, async(req, res) =>{
@@ -152,7 +183,6 @@ productRouter.get("/:slug", auth, async(req, res) =>{
             user:req.user,
             cart,
             totalQty,
-            layout:false,
             layout: "./layouts/sidebar"
 
              
@@ -169,12 +199,9 @@ productRouter.get("/:slug", auth, async(req, res) =>{
 
               })
       }
-     
-    
-    
 
-        // console.log(single);
-})
+    })
+    
 
 
 // get user product
@@ -216,6 +243,8 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
     
 
 })
+
+
 
 productRouter.get("/edit/:id", auth, async (req, res) =>{
     let products = await productSchema.findOne({_id:req.params.id})
