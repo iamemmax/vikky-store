@@ -91,7 +91,9 @@ let error = []
             products,
             cart,
             layout: false,
-            totalQty
+            totalQty,
+            success:req.flash("success"),
+
     
         })
       }else{

@@ -76,8 +76,9 @@ module.exports =   function passportAuth (res){
 
 
      
-
-
+    // App ID 289365682667423
+    // Instagram App Secret
+    // App Secret  ae23c331510d534cffa50efb2f3e0d21
 
     // google authentication
     passport.use(new GoogleStrategy({

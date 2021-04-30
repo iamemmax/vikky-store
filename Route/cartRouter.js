@@ -31,7 +31,8 @@ cartRouter.get("/:id", auth, async(req, res)=>{
             cart,
             key:Publishable,
             layout: false,
-            totalQty
+            totalQty,
+            success:req.flash("success")
            
         })
     }else{
@@ -170,6 +171,10 @@ CartSchema.findOne({userId:req.user._id}).exec((err, cart)=>{
                     console.log(err);
                 }
                 if(_cart){
+                    console.log(_cart);
+                    req.flash("success", `product already added exists in the cart`)
+                    console.log(`product already exist added in the cart`);
+                    console.log(req.user);
                     res.redirect("/")
                 }
               })
@@ -184,6 +189,9 @@ CartSchema.findOne({userId:req.user._id}).exec((err, cart)=>{
                       console.log(err);
                   }
                   if(_cart){
+                    req.flash("success", `product added successfully`)
+                    console.log(`product added successfully`);
+
                       res.redirect("/")
                   }
               })
@@ -203,6 +211,8 @@ CartSchema.findOne({userId:req.user._id}).exec((err, cart)=>{
                 console.log(err);
             }
             if(cart){
+                req.flash("success", `product added successfully`)
+                console.log(`product added successfully`);
                 res.redirect("/")
             }
         })

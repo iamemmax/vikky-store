@@ -148,26 +148,28 @@ body{
     right:5.5rem;
  
 }
-
+.showSearch{
+    display: none;
+}
 /* mobile view */
 @media (max-width:1100px){
     
 #userImg{
-    margin-top: -3px;
+    margin-top: -1px;
     width: 20px;
-    margin-left: 10px;
+    margin-left: -1px !important;
     
  
 }
 
     .container > .header{
        
-        height: 14vh;
+        height: 11vh;
     }
     .logo{
         /* border: 2px solid red; */
         padding: 4px;
-        margin-top: 10px;
+        /* margin-top: 10px; */
 
     }
     .logo a, h1{
@@ -200,11 +202,15 @@ body{
     
     .container  .last {
         position: absolute;
-        right: 1rem;
-        background-color: #333;
+        right: 6rem;
+        /* background-color: #ff4a57; */
         padding: 6px 0px;
         width: 100px;
-        top: 3px;
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        -webkit-transform:  translateY(-50%);
+        -moz-transform:  translateY(-50%);
     }
    
     .last i{
@@ -217,10 +223,29 @@ body{
 
     .search{
        
-        width: 60%;
-        position: absolute;
-        left: 25%;
+        /* width: 60%; */
+        position: fixed;
+        /* left: 25%; */
         top: 25px;
+        top: 6rem;
+        display: none;
+        width: 90%;
+        padding: 10px;
+        left: 0;
+        background-color: #ff4a57;
+        border-radius: 10px;
+        left: 5%;
+    }
+    .search input{
+        padding: 15px !important;
+    }
+    .search button{
+        background-color: #333 !important;
+        padding: 15px !important;
+
+    }
+    .showSearchOnClick{
+        display: block !important;
     }
     .search input{
         width: 87%;
@@ -242,6 +267,23 @@ body{
         font-size: 14px;
     }
     
+
+    .showSearch{
+        display: block !important;
+        /* border: red 2px solid; */
+        cursor: pointer;
+        position: absolute;
+        right: 4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform:  translateY(-50%);
+        -moz-transform:  translateY(-50%);
+        padding: 10px;
+    }
+    .showSearch i{
+        color: #fff;
+        font-size: 20px;
+    }
     #cart{
       
         padding: 4px 8px;
@@ -256,7 +298,7 @@ body{
         display: flex;
         width: 40px;
         height: 30px;
-        margin-top: 13px;
+        /* margin-top: 13px; */
         justify-content: space-around;
         align-items: center;
         flex-direction: column;
