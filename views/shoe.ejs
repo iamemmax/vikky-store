@@ -6,7 +6,7 @@
 
         <% products.forEach(product => { %>
             
-            <div class="pro_img mycategory"  data-name="<%= product.categories %>">
+            <div class="pro_img mycategory" id="myshoe" data-name="<%= product.categories %>">
                 
                 <a href="/product/<%= product.slug %> ">
                     <img src="/img/upload/<%= product.myfiles[0].filename %> " alt="">
