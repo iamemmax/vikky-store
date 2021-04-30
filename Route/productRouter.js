@@ -144,7 +144,7 @@ productRouter.get("/shoe", auth, async (req, res) =>{
         let totalQty = myCart.reduce((a, b) => a + b, 0)
 
      res.render("shoe", {
-         title : "myshoe",
+         title : "freaky-store || shoes category",
          user:req.user,
          cart,
          products,
@@ -154,7 +154,136 @@ productRouter.get("/shoe", auth, async (req, res) =>{
 
       }else{
         res.render("shoe", {
-            title : "myshoe",
+            title : "freaky-store || shoes category",
+            user:req.user,
+            cart,
+            products,
+            layout: "./layouts/sidebar"
+        })
+      }
+
+})
+
+productRouter.get("/wares", auth, async (req, res) =>{
+    let products = await productSchema.find({categories:"wares"})
+
+    console.log(products);
+    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+      if(cart){
+        let myCart = cart.userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+     res.render("wares", {
+         title : "freaky-store || wares category",
+         user:req.user,
+         cart,
+         products,
+         totalQty,
+         layout: "./layouts/sidebar"
+     })
+
+      }else{
+        res.render("wares", {
+            title : "freaky-store || wares category",
+            user:req.user,
+            cart,
+            products,
+            layout: "./layouts/sidebar"
+        })
+      }
+
+})
+productRouter.get("/phone", auth, async (req, res) =>{
+    let products = await productSchema.find({categories:"phone"})
+
+    console.log(products);
+    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+      if(cart){
+        let myCart = cart.userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+     res.render("phone", {
+         title : "freaky-store || phone category",
+         user:req.user,
+         cart,
+         products,
+         totalQty,
+         layout: "./layouts/sidebar"
+     })
+
+      }else{
+        res.render("phone", {
+            title : "freaky-store || phone category",
+            user:req.user,
+            cart,
+            products,
+            layout: "./layouts/sidebar"
+        })
+      }
+
+})
+productRouter.get("/computer", auth, async (req, res) =>{
+    let products = await productSchema.find({categories:"computer"})
+
+    console.log(products);
+    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+      if(cart){
+        let myCart = cart.userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+     res.render("computer", {
+         title : "freaky-store || computer category",
+         user:req.user,
+         cart,
+         products,
+         totalQty,
+         layout: "./layouts/sidebar"
+     })
+
+      }else{
+        res.render("computer", {
+            title : "freaky-store || computer category",
+            user:req.user,
+            cart,
+            products,
+            layout: "./layouts/sidebar"
+        })
+      }
+
+})
+productRouter.get("/electronic", auth, async (req, res) =>{
+    let products = await productSchema.find({categories:"electronic"})
+
+    console.log(products);
+    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
+        if(err)throw err
+      }).populate("postedBy product")
+     
+      if(cart){
+        let myCart = cart.userCart.map(c => c.quantity)
+        let totalQty = myCart.reduce((a, b) => a + b, 0)
+
+     res.render("electronic", {
+         title : "freaky-store || electronics category",
+         user:req.user,
+         cart,
+         products,
+         totalQty,
+         layout: "./layouts/sidebar"
+     })
+
+      }else{
+        res.render("electronic", {
+            title : "freaky-store || electronics category",
             user:req.user,
             cart,
             products,
