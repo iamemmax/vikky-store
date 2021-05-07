@@ -134,200 +134,88 @@ productRouter.post("/new", upload, async (req, res) =>{
 productRouter.get("/shoe", auth, async (req, res) =>{
     let products = await productSchema.find({categories:"shoe"})
 
-    console.log(products);
-    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
-        if(err)throw err
-      }).populate("postedBy product")
-     
-      if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
-
+   
      res.render("shoe", {
          title : "freaky-store || shoes category",
          user:req.user,
-         cart,
          products,
-         totalQty,
+         
          layout: "./layouts/sidebar"
      })
 
-      }else{
-        res.render("shoe", {
-            title : "freaky-store || shoes category",
-            user:req.user,
-            cart,
-            products,
-            layout: "./layouts/sidebar"
-        })
-      }
-
+      
 })
 
-productRouter.get("/wares", auth, async (req, res) =>{
+productRouter.get("/wares",  async (req, res) =>{
     let products = await productSchema.find({categories:"wares"})
 
-    console.log(products);
-    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
-        if(err)throw err
-      }).populate("postedBy product")
-     
-      if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
+    
 
-     res.render("wares", {
-         title : "freaky-store || wares category",
-         user:req.user,
-         cart,
-         products,
-         totalQty,
-         layout: "./layouts/sidebar"
-     })
-
-      }else{
         res.render("wares", {
             title : "freaky-store || wares category",
             user:req.user,
-            cart,
             products,
             layout: "./layouts/sidebar"
         })
-      }
+      
 
 })
-productRouter.get("/phone", auth, async (req, res) =>{
+productRouter.get("/phone",  async (req, res) =>{
     let products = await productSchema.find({categories:"phone"})
 
-    console.log(products);
-    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
-        if(err)throw err
-      }).populate("postedBy product")
-     
-      if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-     res.render("phone", {
-         title : "freaky-store || phone category",
-         user:req.user,
-         cart,
-         products,
-         totalQty,
-         layout: "./layouts/sidebar"
-     })
-
-      }else{
+   
         res.render("phone", {
             title : "freaky-store || phone category",
             user:req.user,
-            cart,
+            
             products,
             layout: "./layouts/sidebar"
         })
-      }
+      
 
 })
-productRouter.get("/computer", auth, async (req, res) =>{
+productRouter.get("/computer", async (req, res) =>{
     let products = await productSchema.find({categories:"computer"})
 
-    console.log(products);
-    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
-        if(err)throw err
-      }).populate("postedBy product")
-     
-      if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-     res.render("computer", {
-         title : "freaky-store || computer category",
-         user:req.user,
-         cart,
-         products,
-         totalQty,
-         layout: "./layouts/sidebar"
-     })
-
-      }else{
+  
         res.render("computer", {
             title : "freaky-store || computer category",
             user:req.user,
-            cart,
+        
             products,
             layout: "./layouts/sidebar"
         })
-      }
+      
 
 })
 productRouter.get("/electronic", auth, async (req, res) =>{
     let products = await productSchema.find({categories:"electronic"})
 
-    console.log(products);
-    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
-        if(err)throw err
-      }).populate("postedBy product")
-     
-      if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-     res.render("electronic", {
-         title : "freaky-store || electronics category",
-         user:req.user,
-         cart,
-         products,
-         totalQty,
-         layout: "./layouts/sidebar"
-     })
-
-      }else{
+    
         res.render("electronic", {
             title : "freaky-store || electronics category",
             user:req.user,
-            cart,
             products,
             layout: "./layouts/sidebar"
         })
-      }
+      
 
 })
 // get single product
 
-productRouter.get("/:slug", auth, async(req, res) =>{
+productRouter.get("/:slug",  async(req, res) =>{
     let single = await productSchema.findOne({slug:req.params.slug})
 
-    let cart =  await cartSchema.findOne({userId:req.user.id},(err, data) =>{
-        if(err)throw err
-      }).populate("postedBy product")
-     
-      if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-        res.render("singleProduct", {
-            title: single.productName.slug,
-
-            single,
-            user:req.user,
-            cart,
-            totalQty,
-            layout: "./layouts/sidebar"
-
-             
-        
-        })
-
-      }else{
+ 
         res.render("singleProduct", {
             title: single.productName.slug,
             single,
             user:req.user,
-            cart,
+            
             layout: "./layouts/sidebar"
 
               })
-      }
+      
 
     })
     
@@ -377,33 +265,15 @@ productRouter.get("/myproduct/:id", auth, async (req, res) =>{
 
 productRouter.get("/edit/:id", auth, async (req, res) =>{
     let products = await productSchema.findOne({_id:req.params.id})
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-        if(err)console.log(err);
-     }).populate("userCart.productId userId")
-     if(cart){
-         let myCart = cart.userCart.map(c => c.quantity)
-         let totalQty = myCart.reduce((a, b) => a + b, 0)
+   
 
 
             res.render("editMyProduct", {
                 title:"edit product",
                 user:req.user,
-                cart,
-                totalQty,
-                products,
-               
-
-            })
-
-        }else{
-            res.render("editMyProduct", {
-                title:"edit product",
-                user:req.user,
-                cart,
-                totalQty,
                 products
             })
-        }
+        
         
     
 

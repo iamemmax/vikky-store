@@ -1,15 +1,15 @@
 <%- include("./partials/_header") %> 
 
 
-<% if(totalQty) {%> 
+
 <div class="cart">
     <h2>My Shopping cart</h2>
     <div class="mytable" style="overflow-x:auto;">
 <table> 
-
-            
-                <!-- <th>S/n</th> -->
-                <th>Items</th>
+    
+    
+      
+            <th>Items</th>
                 <th id="name">name</th>
                 <th>Amt</th>
                 <th>Qty</th>
@@ -17,196 +17,23 @@
                 <th>size</th>
                 <th>save</th>
                 <th>Clear</th>
+                
+                <div class="showtable" >
+                    
+            </div>  
+        
+  
+               
           
-            <% cart.map(carts => { %>
-                <% let mycart = carts.userCart %> 
-                
-                
-                <%  mycart.map(c =>{ %>
-                    
-                    <tr>
-                        <!-- <td>< c._id %> </td> -->
-                        <td><img src="/img/upload/<%= c.productId.myfiles[0].filename %> " id="cartImg" alt=""></td> 
-                    
-                        <td> <%= c.productId.productName %> </td>
-                        
-                        <td>  &#8358 <%=c.price %> </td>
-                    
 
-
-                        
-                        <td> 
-                        
-                           
-                            <form action="/users/cart/update/<%= c._id %>?_method=PUT" method="POST">
-                    <div class="count">
-                        <input type="button"  class="add" value="+">
-                           <input type="text"  value="<%= c.quantity %> " name="quantity" class="show-count">
-                           <input type="button"  class="sub" value="-">
-                       </div>
-
-                        <input type="hidden" name="id" value="<%= c.productId.id %> ">
-                            <input type="hidden" name="price" value="<%= c.productId.amount %> ">
-
-                        <!-- <button type="submit" id="sub">-</button> -->
-                   
-                     </td>
-                        <td>
-                            <select name="color" id="color">
-                                <option value="all"  <%= c.color == "all" ?  "selected" : "" %>>all</option>
-                                <option value="red"  <%= c.color == "red" ?  "selected" : "" %>>red</option>
-                                <option value="blue"  <%= c.color == "blue" ?  "selected" : "" %>>blue</option>
-                                <option value="pink"  <%= c.color == "pink" ?  "selected" : "" %>>pink</option>
-                                <option value="black"  <%= c.color == "black" ?  "selected" : "" %>>black</option>
-                                <option value="white"  <%= c.color == "white" ?  "selected" : "" %>>white</option>
-                                <option value="green"  <%= c.color == "green" ?  "selected" : "" %>>green</option>
-                               
-                               
+          
+</table>
     
-    
-                            </select>
-                        </td>
-                     <td>
-                        <% if(c.productId.categories === "computer" || c.productId.categories === "phone" || c.productId.categories === "electronic"){ %> 
-    
-                            <% }else{ %> 
-                         <select name="sizes" id="size">
-                           
-                            <% if(c.productId.categories !== "shoe"){ %> 
-                            <option value="s" <%= c.sizes == 'L' ?  'selected' : "" %> >S</option>
-                            <option value="m" <%= c.sizes == 'M' ?  'selected' : "" %> >M</option>
-                            <option value="l" <%= c.sizes == 'L' ?  "selected" : "" %>>L</option>
-                            <option value="xl" <%= c.sizes == "XL" ?  "selected" : "" %>>XL</option>
-                            <option value="xxl" <%= c.sizes == "XXL" ?  "selected" : "" %>>XXL</option>
-                            <option value="xxxl" <%= c.sizes == "XXXL" ?  "selected" : "" %>>XXXL</option>
-                           <% }else{ %> 
-                            <option value="1" <%= c.sizes == '1' ?  'selected' : "" %> >1</option>
-                            <option value="2" <%= c.sizes == '2' ?  'selected' : "" %> >2</option>
-                            <option value="3" <%= c.sizes == '3' ?  "selected" : "" %>>3</option>
-                            <option value="4" <%= c.sizes == "4" ?  "selected" : "" %>>4</option>
-                            <option value="5" <%= c.sizes == "5" ?  "selected" : "" %>>5</option>
-                            <option value="6" <%= c.sizes == "6" ?  "selected" : "" %>>6</option>
-                            <option value="7" <%= c.sizes == "7" ?  "selected" : "" %>>7</option>
-                            <option value="8" <%= c.sizes == "8" ?  "selected" : "" %>>8</option>
-                            <option value="9" <%= c.sizes == "9" ?  "selected" : "" %>>9</option>
-                            <option value="10" <%= c.sizes == "10" ?  "selected" : "" %>>10</option>
-                            <option value="11" <%= c.sizes == "11" ?  "selected" : "" %>>11</option>
-                            <option value="12" <%= c.sizes == "12" ?  "selected" : "" %>>12</option>
-                            <option value="13" <%= c.sizes == "13" ?  "selected" : "" %>>13</option>
-                            <option value="14" <%= c.sizes == "14" ?  "selected" : "" %>>14</option>
-                            <option value="15" <%= c.sizes == "15" ?  "selected" : "" %>>15</option>
-                            <option value="16" <%= c.sizes == "16" ?  "selected" : "" %>>16</option>
-                            <option value="17" <%= c.sizes == "17" ?  "selected" : "" %>>17</option>
-                            <option value="18" <%= c.sizes == "18" ?  "selected" : "" %>>18</option>
-                            <option value="19" <%= c.sizes == "19" ?  "selected" : "" %>>19</option>
-                            <option value="20" <%= c.sizes == "20" ?  "selected" : "" %>>20</option>
-                            <option value="21" <%= c.sizes == "21" ?  "selected" : "" %>>21</option>
-                            <option value="22" <%= c.sizes == "22" ?  "selected" : "" %>>22</option>
-                            <option value="23" <%= c.sizes == "23" ?  "selected" : "" %>>23</option>
-                            <option value="24" <%= c.sizes == "24" ?  "selected" : "" %>>24</option>
-                            <option value="25" <%= c.sizes == "25" ?  "selected" : "" %>>25</option>
-                            <option value="26" <%= c.sizes == "26" ?  "selected" : "" %>>26</option>
-                            <option value="27" <%= c.sizes == "27" ?  "selected" : "" %>>27</option>
-                            <option value="28" <%= c.sizes == "28" ?  "selected" : "" %>>28</option>
-                            <option value="29" <%= c.sizes == "29" ?  "selected" : "" %>>29</option>
-                            <option value="30" <%= c.sizes == "30" ?  "selected" : "" %>>30</option>
-                            <option value="31" <%= c.sizes == "31" ?  "selected" : "" %>>31</option>
-                            <option value="32" <%= c.sizes == "32" ?  "selected" : "" %>>32</option>
-                            <option value="33" <%= c.sizes == "33" ?  "selected" : "" %>>33</option>
-                            <option value="34" <%= c.sizes == "34" ?  "selected" : "" %>>34</option>
-                            <option value="35" <%= c.sizes == "35" ?  "selected" : "" %>>35</option>
-                            <option value="36" <%= c.sizes == "36" ?  "selected" : "" %>>36</option>
-                            <option value="37" <%= c.sizes == "37" ?  "selected" : "" %>>37</option>
-                            <option value="38" <%= c.sizes == "38" ?  "selected" : "" %>>38</option>
-                            <option value="39" <%= c.sizes == "39" ?  "selected" : "" %>>39</option>
-                            <option value="40" <%= c.sizes == "40" ?  "selected" : "" %>>40</option>
-                            <option value="41" <%= c.sizes == "41" ?  "selected" : "" %>>41</option>
-                            <option value="42" <%= c.sizes == "42" ?  "selected" : "" %>>42</option>
-                            <option value="43" <%= c.sizes == "43" ?  "selected" : "" %>>43</option>
-                            <option value="44" <%= c.sizes == "44" ?  "selected" : "" %>>44</option>
-                            <option value="45" <%= c.sizes == "45" ?  "selected" : "" %>>45</option>
-                            <option value="46" <%= c.sizes == "46" ?  "selected" : "" %>>46</option>
-                            <option value="47" <%= c.sizes == "47" ?  "selected" : "" %>>47</option>
-                            <option value="48" <%= c.sizes == "48" ?  "selected" : "" %>>48</option>
-                            <option value="49" <%= c.sizes == "49" ?  "selected" : "" %>>49</option>
-                            <option value="50" <%= c.sizes == "50" ?  "selected" : "" %>>50</option>
-   
-                            <% } %> 
-                        </select>
-                        <% } %> 
-
-                    </td>
-                   
-                   
-
-                    <td> 
-                        <button type="submit"><i class="fa fa-long-arrow-alt-right" data-id="<%= c._id %> "></i></button>
-                       </form>
-                    
-                   </td>
-
-
-
-
-                        <!-- remove cart -->
-                    <td>
-                        <form action="/users/cart/delete/<%= c._id%>?_method=PUT" method="POST">
-                            <input type="hidden" name="id" value="<%= c._id %> ">
-                            <input type="hidden" name="productId" value="<%= c.productId.id %> ">
-                            <input type="hidden" name="price" value="<%= c.price %> ">
-                            <input type="hidden" name="quantity" value="<%= c.quantity %>">
-                            <button type="submit"><i class="fa fa-times"></i></button>
-                    </form>
-                    </td>
-                </tr> 
-                
-                <% }) %>
-                <tr>
-                    <th id="totalPrice">Total price</th>
-                    <td><% let total = mycart.reduce((a, b) => a + b.price, 0)%> 
-                       
-                      <h3>  &#8358 <%= total %> </h3>
-
-                    <% }) %> 
-                    
-                    
-                </tr>
-                <tr>
-                </tr>
-                    
-        </table>
     </div>
 </div>
 
-    <div class="paynow" style="margin-top: 3rem;">
-        <% cart.map(carts => { %>
-            <% let mycart = carts.userCart %> 
-       <% let  total = mycart.reduce((a, b) => a + b.price, 0)%>
-          
-        <form action="/users/cart/<%= user.id %>/payment" method="POST">
-            <input type="hidden"  name="amount" value="<%=total %>">
-        <script
-            src="//checkout.stripe.com/v2/checkout.js"
-         class="stripe-button"
-         data-key="<%= key %>" 
-         data-currency ="usd"
-         data-name="<%= user.username %> "
-         data-description="purchase from freaky-store"
-         data-amount="<%=total * 100 / 381.00 %>"
-         data-Locale="auto">
-         
-
-         </script>
-         </form>  
-        </div>
-         <% }) %> 
-
-    <% }else{ %> 
-        
-        <h2 style="width: 100%;text-align: center;padding-top: 3rem">No Item found</h2>
-    <% } %> 
-
 <script>
+   function increase(){
     const addUp = document.querySelectorAll(".add")
     const subUp = document.querySelectorAll(".sub")
     const qty = document.querySelector("#qty")
@@ -243,6 +70,7 @@
             
             
         })
+   }
     
 </script>
 

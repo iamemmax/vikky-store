@@ -72,53 +72,26 @@ passport.deserializeUser(function(id, done) {
 
    
    
-app.get("/",   auth, async(req, res) =>{
+app.get("/",   async(req, res) =>{
     let products =  await productSchema.find((err, data) =>{
         if(err)throw err
     })
 let error = []
-  await CartSchema.findOne({userId:req.user.id}, (err, cart)=>{
-      if(err){
-          console.log(err);
-      }
-    //   console.log(cart);
-      if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
+  
+
           
         res.render("index", {
             title:"Homepage",
             user:req.user,
             products,
-            cart,
             layout: false,
-            totalQty,
-            success:req.flash("success"),
+           
+            success:req.flash("success")   
+      
+  })
 
-    
-        })
-      }else{
-
+  
        
-        res.render("index", {
-            title:"Homepage",
-            user:req.user,
-            products,
-            cart,
-            layout: false,
-            
-    
-          
-        })
-    
-      }
-  }).populate("productId")
-
-  
-     
-  
-   
-    
    
 })
 
@@ -148,20 +121,7 @@ app.get("/:q", auth, async(req, res) =>{
       
           })
 
-        }else{
-            res.render("search", {
-                user:req.user,
-                title: "search",
-                cart,
-                search,
-                query,
-                  layout: false,
-                  
-          
-              })
-     
         }
-
     
 })
 

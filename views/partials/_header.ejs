@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/uploadform.css">
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -73,22 +74,12 @@
                 <!-- <li><a href="/"><i class="fas fa-heart"></i></a></li> -->
               
                     
-                <% if(cart){ %> 
+               
          
               
-                        <li><a href="/users/cart/<%= user.id %> "><i class="fas fa-shopping-cart">
-                            
-                            
-                             
-                             </i><span id="cart"> <%= totalQty %> </span></a> </li> 
-                           
-                     <% }else{ %>         
-                        <li><a href="javascript:void()"><i class="fas fa-shopping-cart">
-                            
-                            
-                             
-                        </i><span id="cart"> 0 </span></a> </li> 
-                        <% } %> 
+                                
+                        <li class="cartNumber"><a href="/users/cart"><i class="lni lni-cart"></i><span id="cart"> 0 </span></a> </li> 
+                       
                            
                         
                     </div>
@@ -117,7 +108,7 @@
 <div class="removeOnclick"></div>
 
 <div class="rightNavInfo">
-    <li><a href="/users/dashboard/<%= user.id %> ">Account</a></li>
+    <li><a href="/users/dashboard/ ">Account</a></li>
     <li><a href="/product/new">New product</a></li>
     <li><a href="#">Order</a></li>
     <li><a href="/users/logout">Logout</a></li>
@@ -173,28 +164,28 @@
 
     
         let openRightNav = document.querySelector("#userImg")
-let rightNavInfo = document.querySelector(".rightNavInfo")
-let removeRightNav = document.querySelector(".removeRightNav")
+    let rightNavInfo = document.querySelector(".rightNavInfo")
+    let removeRightNav = document.querySelector(".removeRightNav")
 
-    openRightNav.addEventListener("click", (e) =>{
-    e.preventDefault()
-    rightNavInfo.classList.toggle("show")
-    removeRightNav.style.display = "block"
-    
-})
-removeRightNav.addEventListener("click", (e) =>{
-    removeRightNav.style.display = "none"
-    rightNavInfo.classList.remove("show")
+        openRightNav.addEventListener("click", (e) =>{
+        e.preventDefault()
+        rightNavInfo.classList.toggle("show")
+        removeRightNav.style.display = "block"
+        
+    })
+    removeRightNav.addEventListener("click", (e) =>{
+        removeRightNav.style.display = "none"
+        rightNavInfo.classList.remove("show")
 
 
-})
+    })
 
-const searchBar = document.querySelector(".search")
-const searchBtn = document.querySelector("#search")
+    const searchBar = document.querySelector(".search")
+    const searchBtn = document.querySelector("#search")
 
-searchBtn.addEventListener("click", (e) =>{
-    searchBar.classList.toggle("showSearchOnClick")
-})
+    searchBtn.addEventListener("click", (e) =>{
+        searchBar.classList.toggle("showSearchOnClick")
+    })
 </script>
 
 
