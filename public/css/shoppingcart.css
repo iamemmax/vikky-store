@@ -1,116 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-.cart h2{
-    padding: 30px 20px;
-    width: 100%;
-    font-family: 'Roboto', sans-serif;
 
-    text-align: center;
-    
 
+
+.mytable{
+  width: 800px;
+  margin: 0px auto;
+  margin-top: 2rem;
 }
-
-table, td, th {  
-    border: 1px solid #ddd;
-    text-align: center;
-  }
+.mycart{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  flex-flow: row wrap;
   
-  table {
-    border-collapse: collapse;
-    width: 70%;
-    margin: 0px auto;
-  }
-  th{
-    background-color: #f2f2f2;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: 'Roboto', sans-serif;
-
-  }
-  
-  th, td {
-    padding: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    
-    
-  }
-  
-  
-  #name{
-    width: 300px;
-  }
-tr, td img{
-    width: 40px ;
-}
-tr, td button{
-  background: unset;
-  border: none;
-  outline: none;
-}
-td i{
-  font-size: 16px;
-  cursor: pointer;
-  color: #ff4a57;
-}
-td select{
- 
-  outline: none;
-  width: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  border: 1px solid #222;
-  border-radius: 3px;
 }
 
-/* count */
-.count{
-  font-display: flex !important;
+.mycart img{
+  width: 70px;
+}
+
+.mycart input{
+  width: 50px;
   text-align: center;
-  width: 100%;
-  
-}
-.count input[type="text"]{
-  width: 30px;
-  text-align: center;
-  border: none;
-  padding: 5px;
-}
-input[type="button"]{
-  border: none;
-  outline: none;
-  color: #fff;
-  /* padding: 5px; */
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #333;
-  cursor: pointer;
-  font-size: 18px;
-  align-self: center;
 }
 
-#color, #size{
-  background-color: #fff;
-  height: 30px;
-  padding: 0;
-  width: 65px;
-  font-size: 14px;
-  
-}
+
+
+
 @media screen and (max-width:768px) {
-  /* table, td, th{
-    width: 300px;
-    
+  .mytable{
+    width: 100%;
+    padding: 10px;
   }
-
-  #name{
-    width: 200px !important;
+  .mycart{
+    border: 2px solid #eee;
   }
-  #color, #size{
-    background-color: #fff;
-    width: 50px !important;
-    
-    
-  } */
 }

@@ -23,7 +23,7 @@ let productImg = e.target.parentElement.children[0].children[0].src;
 let productId = e.target.parentElement.children[3].value;
 let productName = e.target.parentElement.children[0].children[1].innerText;
 let productPrice = e.target.parentElement.children[2].innerText.replace("$", "");
-let productTotalPrice = e.target.parentElement.children[2].innerText.replace("$", "");
+let totalPrice = e.target.parentElement.children[2].innerText.replace("$", "");
 let productQty = 1
 let ProductSize =  e.target.parentElement.children[6].value;
 let productColor = e.target.parentElement.children[7].value;
@@ -41,7 +41,7 @@ let product = {
     productQty,
     productColor,
     ProductSize,
-    productTotalPrice
+    totalPrice
 }
 
 let cartItems = JSON.parse(localStorage.getItem("carts"))
@@ -51,15 +51,15 @@ let cartItems = JSON.parse(localStorage.getItem("carts"))
         cartItems.forEach(items =>{
             if(product.productId == items.productId){
                 product.productQty = items.productQty += 1,
-                product.productTotalPrice = Number(items.productPrice * items.productQty)
+                product.totalPrice = Number(items.productPrice * items.productQty)
             }else{
                 pushProducts.push(items)
             }
         })
         pushProducts.push(product)
     }
-    localStorage.setItem("carts", JSON.stringify(pushProducts))
     window.location.reload()
+    localStorage.setItem("carts", JSON.stringify(pushProducts))
 }
 
 
@@ -86,7 +86,7 @@ function getCartNumber(){
 function displayCart(){
     
     let cartItems = JSON.parse(localStorage.getItem("carts"))
-    let table = document.querySelector("table")
+    let table = document.querySelector(".mytable")
    
     let html = ""
     cartItems.forEach(items =>{
@@ -94,36 +94,31 @@ function displayCart(){
           html += `
         
                     
-              <tr>
-        <td><input type="hidden" value="${items.productId}" id=""></td>    
-                    <td>  <img src="${items.productImg}" alt=""></td> 
-                    <td><p>${items.productName}</p></td>
-                    <td><p>${items.productPrice}</p></td>
-                    <td><p>${items.productColor}</p></td>
-                    <td><p>${items.ProductSize}</p></td>
-                    <td>
-                    <div class="count">
+              <div class="mycart">
+        <input type="hidden" value="${items.productId}" id="">    
+                      <img src="${items.productImg}" alt=""> 
+                    <p>${items.productName}</p>
+                    <p>$${items.productPrice}</p>
+                    <p>${items.productColor}</p>
+                    <p>${items.ProductSize}</p>
+                    <input type="number"  value="${items.productQty}" class="show-count" id="qty">
+                   <p>${items.totalPrice}</p>
+                   
+                    <button type="Button" class="removeButton"><i class="lni lni-close"></i></button>
                     
-                        <input type="button"  class="add" value="+">
-                            <input type="text"  value="${items.productQty}" class="show-count" id="qty">
-                            <input type="button"  class="sub" value="-">
-                        </div>
-                    </td>
-                    
-                    <td><p class="totalprice">${items.productTotalPrice}</p></td>
-                    <td><button type="Button" class="removeButton"><i class="lni lni-close"></i></button></td>
 
-                </tr>
+                </dicv>
         `
     })
 
   table.innerHTML = html
-  increase()
+//   increase()
 
 }
 
 
 displayCart()
+
 
 
 // remove cart
@@ -133,30 +128,70 @@ let removeButton = document.querySelectorAll(".removeButton")
         removeBtn.addEventListener("click", (e)=>{
             console.log();
             let cartItems = JSON.parse(localStorage.getItem("carts"))
-                cartItems.forEach(items =>{
-                    if(items.productId != e.target.parentElement.parentElement.parentElement.children[0].children[0].value){
-                        pushProducts.push(items)
-                    }
+            cartItems.forEach(items =>{
+                if(items.productId != e.target.parentElement.parentElement.parentElement.children[0].children[0].value){
+                    pushProducts.push(items)
+                }
                 })
                 localStorage.setItem("carts", JSON.stringify(pushProducts))
                 window.location.reload()
-
-        })
-    })
-                                                                  
-
-
-
-    // update total price
-
-    const updateQty = ()  =>{
-        const totalValue = document.querySelectorAll(".add")
-        
-        totalValue.forEach(totalPriceValue =>{
-            totalPriceValue.addEventListener("click", (e) =>{
-               console.log(e.target.parentElement.children[1].value);
+                
             })
         })
-    }
+        
+    
 
-    updateQty()
+
+
+
+
+
+// update total price
+
+function updateQty(){
+    const totalContent = document.querySelectorAll(".show-count")
+    const king = document.querySelector(".king")
+   
+    totalContent.forEach(allTotherPrice =>{
+        allTotherPrice.addEventListener("click", (e)=>{
+            
+            let priceContent = e.target.parentElement.children[7]
+           
+            console.log();
+            let cartItems = JSON.parse(localStorage.getItem("carts"))
+            cartItems.forEach(items =>{
+            
+               if(items.productId == e.target.parentElement.children[0].value){
+                 priceContent.innerText = items.productPrice * e.target.value;
+                 items.productQty = e.target.value
+                 pushProducts.push(items)
+                
+                  if(isNaN(e.target.value) || e.target.value <= 0){
+                      e.target.value = 1
+                  }
+                  
+               }
+            })
+  
+        })
+    })
+      }
+      
+      
+      
+      updateQty()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
