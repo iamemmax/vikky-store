@@ -102,7 +102,7 @@ function displayCart(){
                     <p>${items.productColor}</p>
                     <p>${items.ProductSize}</p>
                     <input type="number"  value="${items.productQty}" class="show-count" id="qty">
-                   <p>${items.totalPrice}</p>
+                   <p class="totalprice">$${items.totalPrice}</p>
                    
                     <button type="Button" class="removeButton"><i class="lni lni-close"></i></button>
                     
@@ -162,19 +162,21 @@ function updateQty(){
             cartItems.forEach(items =>{
             
                if(items.productId == e.target.parentElement.children[0].value){
-                 priceContent.innerText = items.productPrice * e.target.value;
+                 priceContent.innerText = "$"+items.productPrice * e.target.value;
                  items.productQty = e.target.value
                  pushProducts.push(items)
                 
-                  if(isNaN(e.target.value) || e.target.value <= 0){
-                      e.target.value = 1
+                 if(isNaN(e.target.value) || e.target.value <= 0){
+                     e.target.value = 1
                   }
                   
                }
             })
-  
+            
+            grandTotal()
         })
     })
+
       }
       
       
@@ -183,9 +185,25 @@ function updateQty(){
 
 
 
+let grandtotal = document.querySelector(".grandTotal span")
 
-
-
+      function grandTotal(){
+        let tot = 0
+    
+    
+    
+           let totalprice = document.querySelectorAll(".totalprice")
+           totalprice.forEach(addGrandTotal =>{
+               
+               grandtotalContent = Number(addGrandTotal.innerText.replace("$", ""))
+               tot += grandtotalContent
+               
+            })
+            console.log(tot);
+       
+            grandtotal.innerText = "$"+ tot
+    }
+    grandTotal()
 
 
 
