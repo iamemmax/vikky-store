@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/css/shoppingcart.css">
     <link rel="stylesheet" href="/css/uploadform.css">
     <link rel="stylesheet" href="/css/sidebar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 </head>
 <body>
@@ -28,13 +28,13 @@
         </div>
         <div class="navigation">
                 <nav>
-            <ul class="nav-ul">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/product/wares">Wares</a></li>
-                <li><a href="/product/computer">Computers</a></li>
-                <li><a href="/product/shoe">Shoes</a></li>
-                <li><a href="/product/phone">Phones</a></li>
-                <li><a href="/product/electronic">Elecronics</a></li>
+            <ul class="nav-ul" id="ul">
+                <li id="link" ><a href="/" class="active">Home</a></li>
+                <li id="link"><a href="/product/wares">Wares</a></li>
+                <li id="link"><a href="/product/computer">Computers</a></li>
+                <li id="link"><a href="/product/shoe">Shoes</a></li>
+                <li id="link"><a href="/product/phone">Phones</a></li>
+                <li id="link"><a href="#">Elecronics</a></li>
                 
             </ul>
         </nav>
@@ -49,7 +49,7 @@
         <div class="last">
             
             <% if(!user){ %> 
-                <li><a href="/"><i class="fas fa-user"></i></a> </li>
+                <li><a href="javascript:void()"><i class="fas fa-user"></i></a> </li>
                 <% }else if(user.facebookId != undefined || user.facebookId != null){ %>
                     <img src="<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" class="newfacebook" >
 
@@ -118,13 +118,21 @@
 
 
 
-
 <script>
+    const searchBar = document.querySelector(".search")
+    const searchBtn = document.querySelector("#search")
     const ul = document.querySelector('.nav-ul') 
-    const li = document.querySelectorAll("li")
+
+searchBtn.addEventListener("click", (e) =>{
+        searchBar.classList.toggle("showSearchOnClick")
+        
+    })
+
+
+   
+    
     const navbar = document.querySelector(".navbar")
     const removeOnclick = document.querySelector(".removeOnclick")
-
     navbar.addEventListener("click", (e)=>{
         ul.classList.add("showNav")
         navbar.style.display = "none"
@@ -153,12 +161,7 @@
 
         }) 
 
-        li.forEach(el =>{
-           el.addEventListener("click", e =>{
-            ul.querySelector(".active").classList.remove("active")
-            el.classList.add("active")
-           })
-        })
+       
     
         // removeNav.classList.add("removeNavbar")
 
@@ -180,16 +183,27 @@
 
     })
 
-    const searchBar = document.querySelector(".search")
-    const searchBtn = document.querySelector("#search")
-
-    searchBtn.addEventListener("click", (e) =>{
-        searchBar.classList.toggle("showSearchOnClick")
-    })
+    
 </script>
 
 
     
-    
 
-    
+
+<script>
+   
+    let Ulnavbar = document.querySelector('#ul') 
+     let myLink = document.querySelectorAll("#ul li a")
+   console.log(myLink);
+     
+     myLink.forEach(link =>{
+        link.addEventListener("click", (e) =>{
+            console.log(link);
+            Ulnavbar.querySelector(".active").classList.remove("active")
+            link.classList.add("active")
+        })
+     })
+ 
+ 
+ 
+ </script>

@@ -95,20 +95,14 @@ let error = []
    
 })
 
-app.get("/:q", auth, async(req, res) =>{
+app.get("/:q",  async(req, res) =>{
    let query = req.query.q
 
     let regex = new RegExp(query, "i")
     let search =  await productSchema.find({productName:regex})
 
 
-    await CartSchema.findOne({userId:req.user.id}, (err, cart)=>{
-        if(err){
-            console.log(err);
-        }
-        if(cart){
-          let myCart = cart.userCart.map(c => c.quantity)
-          let totalQty = myCart.reduce((a, b) => a + b, 0)
+    
             
           res.render("search", {
             user:req.user,
@@ -117,13 +111,11 @@ app.get("/:q", auth, async(req, res) =>{
             search,
             query,
               layout: false,
-              totalQty
+              
       
           })
 
-        }
-    
-})
+       
 
 })
 

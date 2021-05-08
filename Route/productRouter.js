@@ -131,7 +131,7 @@ productRouter.post("/new", upload, async (req, res) =>{
 
 })
 
-productRouter.get("/shoe", auth, async (req, res) =>{
+productRouter.get("/shoe", async (req, res) =>{
     let products = await productSchema.find({categories:"shoe"})
 
    
@@ -188,7 +188,7 @@ productRouter.get("/computer", async (req, res) =>{
       
 
 })
-productRouter.get("/electronic", auth, async (req, res) =>{
+productRouter.get("/electronic",  async (req, res) =>{
     let products = await productSchema.find({categories:"electronic"})
 
     

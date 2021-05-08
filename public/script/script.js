@@ -83,7 +83,7 @@ function getCartNumber(){
     
 // display products added in the cart 
 
-function displayCart(){
+const  displayCart = () =>{
     
     let cartItems = JSON.parse(localStorage.getItem("carts"))
     let table = document.querySelector(".mytable")
@@ -101,7 +101,11 @@ function displayCart(){
                     <p>$${items.productPrice}</p>
                     <p>${items.productColor}</p>
                     <p>${items.ProductSize}</p>
-                    <input type="number"  value="${items.productQty}" class="show-count" id="qty">
+
+                    
+                    <input type="number"  value="${items.productQty}" name="quantity" class="show-count" id="qty">
+                
+                  
                    <p class="totalprice">$${items.totalPrice}</p>
                    
                     <button type="Button" class="removeButton"><i class="lni lni-close"></i></button>
@@ -111,9 +115,9 @@ function displayCart(){
         `
     })
 
-  table.innerHTML = html
-//   increase()
-
+    table.innerHTML = html
+    
+    // increase()
 }
 
 
@@ -124,15 +128,19 @@ displayCart()
 // remove cart
 
 let removeButton = document.querySelectorAll(".removeButton")
-    removeButton.forEach(removeBtn => {
-        removeBtn.addEventListener("click", (e)=>{
-            console.log();
-            let cartItems = JSON.parse(localStorage.getItem("carts"))
+removeButton.forEach(removeBtn => {
+    removeBtn.addEventListener("click", (e)=>{
+        
+           
+    let cartItems = JSON.parse(localStorage.getItem("carts"))
+         
             cartItems.forEach(items =>{
-                if(items.productId != e.target.parentElement.parentElement.parentElement.children[0].children[0].value){
-                    pushProducts.push(items)
+            
+                if( e.target.parentElement.parentElement.children[0].value != items.productId ){
+                   pushProducts.push(items)
                 }
-                })
+            })
+               
                 localStorage.setItem("carts", JSON.stringify(pushProducts))
                 window.location.reload()
                 
@@ -150,18 +158,18 @@ let removeButton = document.querySelectorAll(".removeButton")
 
 function updateQty(){
     const totalContent = document.querySelectorAll(".show-count")
-    const king = document.querySelector(".king")
+    
    
     totalContent.forEach(allTotherPrice =>{
-        allTotherPrice.addEventListener("click", (e)=>{
+        allTotherPrice.addEventListener("change", (e)=>{
             
             let priceContent = e.target.parentElement.children[7]
-           
-            console.log();
             let cartItems = JSON.parse(localStorage.getItem("carts"))
+            console.log(priceContent);
             cartItems.forEach(items =>{
-            
+               
                if(items.productId == e.target.parentElement.children[0].value){
+                   
                  priceContent.innerText = "$"+items.productPrice * e.target.value;
                  items.productQty = e.target.value
                  pushProducts.push(items)
@@ -172,9 +180,9 @@ function updateQty(){
                   
                }
             })
-            
             grandTotal()
         })
+            
     })
 
       }
@@ -199,7 +207,7 @@ let grandtotal = document.querySelector(".grandTotal span")
                tot += grandtotalContent
                
             })
-            console.log(tot);
+            // console.log(tot);
        
             grandtotal.innerText = "$"+ tot
     }
@@ -212,4 +220,4 @@ let grandtotal = document.querySelector(".grandTotal span")
 
 
 
-
+    

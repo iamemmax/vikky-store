@@ -7,6 +7,7 @@
   width: 800px;
   margin: 0px auto;
   margin-top: 2rem;
+  overflow-x: auto;
 }
 .mycart{
   display: flex;
@@ -43,10 +44,53 @@
 
 @media screen and (max-width:768px) {
   .mytable{
-    width: 100%;
+
     padding: 10px;
   }
   .mycart{
-    border: 2px solid #eee;
+    width: 500px;
+    margin-top: 10px;
+    
   }
+  .mycart p{
+    /* border: 2px solid #eee; */
+ 
+    font-size: 14px;
+  }
+}
+
+
+ .count{
+     /* background-color: rgba(0, 0, 0, 0.281);   */
+     display: flex; 
+     justify-content: center;
+     align-items: center;
+     padding: 10px;
+}
+.count > .add, .sub{
+    border: none;
+    outline: none;
+    background-color: #222;
+    /* padding: 5px; */
+    color: #fff;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 100%;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+.count > input[type="text"]{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    /* margin: 10px; */
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
 }
