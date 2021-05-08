@@ -107,7 +107,7 @@ app.get("/:q",  async(req, res) =>{
           res.render("search", {
             user:req.user,
             title: "search",
-            cart,
+          
             search,
             query,
               layout: false,
