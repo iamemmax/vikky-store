@@ -2,64 +2,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 
-
-.mytable{
-  width: 800px;
-  margin: 0px auto;
-  margin-top: 2rem;
-  overflow-x: auto;
-}
-.mycart{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width:100%;
-  flex-flow: row wrap;
-  
-}
-
-.mycart img{
-  width: 70px;
-}
-
-.mycart input{
-  width: 50px;
+#table-header{
+  width: 100%;
   text-align: center;
-}
-
-.mycart button{
-  border: none;
-  outline: none;
-  color: #ff4a57;
-  background-color: unset;
-}
-.grandTotal{
-  /* background-color: red; */
-  padding: 10px;
-  width: 300px;
-  margin: 0px auto;
+  padding: 20px 0px 0px 20px;
   margin-top: 3rem;
 }
 
+table{
+ box-shadow: 1px 2px 2px 5px #eee;
+  margin: 0px auto;
+  overflow-x: auto;
+  width: 800px;
+  padding: 10px;
+  margin-top: 2rem;
 
-@media screen and (max-width:768px) {
-  .mytable{
-
-    padding: 10px;
-  }
-  .mycart{
-    width: 500px;
-    margin-top: 10px;
-    
-  }
-  .mycart p{
-    /* border: 2px solid #eee; */
- 
-    font-size: 14px;
-  }
+}
+tbody{
+  counter-reset: rowNumber;
 }
 
+tbody tr::before {
+  /* display: table-cell; */
+  counter-increment: rowNumber;
+  content: counter(rowNumber) "";
+  /* padding-right: 0.6em; */
+  text-align: right;
+}
 
+table tbody img{
+  width: 70px;
+}
+table thead tr td{
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+
+}
+tbody{
+  text-align: center;
+}
+tbody input{
+  width: 50px !important;
+}
+
+tfoot{
+  text-align: right;
+
+}
+
+tfoot tr td{
+  padding: 10px;
+}
  .count{
      /* background-color: rgba(0, 0, 0, 0.281);   */
      display: flex; 

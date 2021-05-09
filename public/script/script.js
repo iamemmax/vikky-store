@@ -83,40 +83,40 @@ function getCartNumber(){
     
 // display products added in the cart 
 
+let table = document.getElementsByTagName("tbody")[0]
 const  displayCart = () =>{
-    
+  
+
     let cartItems = JSON.parse(localStorage.getItem("carts"))
-    let table = document.querySelector(".mytable")
-   
-    let html = ""
-    cartItems.forEach(items =>{
-        
-          html += `
-        
-                    
-              <div class="mycart">
-        <input type="hidden" value="${items.productId}" id="">    
-                      <img src="${items.productImg}" alt=""> 
-                    <p>${items.productName}</p>
-                    <p>$${items.productPrice}</p>
-                    <p>${items.productColor}</p>
-                    <p>${items.ProductSize}</p>
-
-                    
-                    <input type="number"  value="${items.productQty}" name="quantity" class="show-count" id="qty">
-                
-                  
-                   <p class="totalprice">$${items.totalPrice}</p>
-                   
-                    <button type="Button" class="removeButton"><i class="lni lni-close"></i></button>
-                    
-
-                </dicv>
-        `
-    })
-
-    table.innerHTML = html
     
+    
+    
+    cartItems.forEach(items =>{
+        let tr = document.createElement("tr")
+        
+        tr.innerHTML =  `   
+         <td"></td>
+         <td><input type="hidden" value="${items.productId}" id=""> </td>   
+        <td>  <img src="${items.productImg}" alt=""> </td>
+        <td> <p>${items.productName}</p></td>
+        <td><p>$${items.productPrice}</p></td>
+        <td> <p>${items.productColor}</p></td>
+        <td> <p>${items.ProductSize}</p></td>
+        
+        
+        <td><input type="number"  value="${items.productQty}" name="quantity" class="show-count" id="qty"></td>
+        
+        
+        <td> <p class="totalprice">$${items.totalPrice}</p></td>
+        
+        <td>  <button type="Button" class="removeButton"><i class="lni lni-close"></i></button></td>
+        
+               
+                `
+                table.append(tr)
+            })
+
+   
     // increase()
 }
 
@@ -131,12 +131,12 @@ let removeButton = document.querySelectorAll(".removeButton")
 removeButton.forEach(removeBtn => {
     removeBtn.addEventListener("click", (e)=>{
         
-           
-    let cartItems = JSON.parse(localStorage.getItem("carts"))
+        let cartItems = JSON.parse(localStorage.getItem("carts"))
+        console.log( );
          
             cartItems.forEach(items =>{
             
-                if( e.target.parentElement.parentElement.children[0].value != items.productId ){
+                if( e.target.parentElement.parentElement.parentElement.children[1].children[0].value != items.productId ){
                    pushProducts.push(items)
                 }
             })
@@ -145,6 +145,7 @@ removeButton.forEach(removeBtn => {
                 window.location.reload()
                 
             })
+            getCartNumber()
         })
         
     
@@ -193,7 +194,8 @@ function updateQty(){
 
 
 
-let grandtotal = document.querySelector(".grandTotal span")
+let grandtotal = document.querySelector(".total")
+console.log(grandtotal.children);
 
       function grandTotal(){
         let tot = 0
@@ -209,7 +211,7 @@ let grandtotal = document.querySelector(".grandTotal span")
             })
             // console.log(tot);
        
-            grandtotal.innerText = "$"+ tot
+            grandtotal.innerHTML = "$"+ tot
     }
     grandTotal()
 

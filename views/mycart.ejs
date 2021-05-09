@@ -2,44 +2,52 @@
 
 
 
-<div class="cart">
-    <h2>My Shopping cart</h2>
-    <div class="mtable" style="overflow-x:auto;">
-<!-- <table> 
+<div class="cart" style="overflow-x: auto;">
+    <h2 id="table-header">My Shopping cart</h2>
+    
+<table class="cart-table"> 
     
     
       <thead>
           <tr>
-            <th>Items</th>
-                <th id="name">name</th>
-                <th>Amt</th>
-                <th>Qty</th>
-                <th>color</th>
-                <th>size</th>
-                <th>save</th>
-                <th>Clear</th>
+            <td>s/n</td>
+            <td>img</td>
+                <td id="name">name</td>
+                <td>Amt</td>
+                <td>color</td>
+                <td>size</td>
+                <td>Qty</td>
+                <td>Total price</td>
+
+                <td>remove</td>
          </tr>
         </thead>       
-                <div class="showtable" >
-                    
-            </div>  
-        
+                
+
+        <tbody>
+
+        </tbody>
   
+        <tfoot>
+          <tr>
+              <td colspan="10">Grand Total <span class="total"></span></td>
+          </tr>
+
+        </tfoot>
                
           
 
           
-</table> -->
+</table>
     
-<div class="mytable">
+<!-- <div class="mytable">
 
 </div>
 
-<div class="grandTotal">
-    <h2>Grand Total <span></span></h2>
-</div>
+<div >
+</div> -->
     </div>
-</div>
+<!-- </div> -->
 
 <script>
    function increase(){
