@@ -35,7 +35,10 @@
                 <li id="link"><a href="/product/shoe">Shoes</a></li>
                 <li id="link"><a href="/product/phone">Phones</a></li>
                 <li id="link"><a href="/product/electronic">Elecronics</a></li>
-                
+                <% if(!user){ %> 
+                    <!-- <li><a href="/users/Register">Register</a></li> -->
+                    <li><a href="/users/Login">Login</a></li>
+            <% } %> 
             </ul>
         </nav>
     </div>
@@ -61,13 +64,7 @@
                             
                               
                         <% } %> 
-                        <ul id="pages">
-                            <% if(!user){ %> 
-                                <li><a href="/users/Register">Register</a></li>
-                                <li><a href="/users/Login">Login</a></li>
-                        <% } %> 
-                        
-                    </ul>
+                        <!--  -->
                     
                 </li>
                 
@@ -106,13 +103,14 @@
     
 </section>
 <div class="removeOnclick"></div>
-
+<% if(user){ %> 
 <div class="rightNavInfo">
-    <li><a href="/users/dashboard/ ">Account</a></li>
+    <li><a href="/users/dashboard/<%= user.id %>  ">Account</a></li>
     <li><a href="/product/new">New product</a></li>
     <li><a href="#">Order</a></li>
     <li><a href="/users/logout">Logout</a></li>
 </div>
+<% } %> 
 <div class="removeRightNav"></div>
 
 

@@ -11,7 +11,7 @@ const auth = require("../config/auth")
 const UserSchema = require("../model/UserSchema")
 const Layout = require("express-layouts")
 const multer = require("multer")
-const { authenticate } = require("passport")
+//const { authenticate } = require("passport")
 const UserRouter = express.Router()
 
 
@@ -309,27 +309,14 @@ UserRouter.get("/logout", auth, (req, res)=>{
 
 UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
 
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err)=>{
-        
-    }).populate("userCart.productId userId")
-    if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
-        res.render("dashboard", {
-                title: "Dashboard",
-                user:req.user,
-                cart,
-                totalQty
-           
-        })
-    }else{
+    
         res.render("dashboard", {
             title: "Dashboard",
             user:req.user,
-            cart
+           
           
         })
-    }
+    
     
    
 
@@ -346,33 +333,16 @@ UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
 
 UserRouter.get("/dashboard/change-pass/:id", auth, async (req, res) =>{
     let error  = []
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err)=>{
+   
+
+        res.render("change-pass", {
+            title : "change password",
+            user:req.user,
+            error,
+            user:req.user,
+           
+        })
     
-    }).populate("userCart.productId userId")
-    if(cart){
-        let myCart = cart.userCart.map(c => c.quantity)
-        let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-        res.render("change-pass", {
-            title : "change password",
-            user:req.user,
-            error,
-            layout: true,
-            user:req.user,
-            cart,
-            totalQty
-
-        })
-    }else{
-
-        res.render("change-pass", {
-            title : "change password",
-            user:req.user,
-            error,
-            user:req.user,
-            cart
-        })
-    }
 
     console.log(cart);
 })
@@ -441,34 +411,14 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
     UserRouter.get("/account/:id",  auth, async(req, res) =>{
 
         let error =  []
-        let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-            if(err)console.log(err);
-         }).populate("userCart.productId userId")
-         if(cart){
-             let myCart = cart.userCart.map(c => c.quantity)
-             let totalQty = myCart.reduce((a, b) => a + b, 0)
-
+       
         res.render("edit", {
             title: "Edit",
             user:req.user,
-            error,
-            cart,
-            totalQty,
-            
-
-
-        })
-
-    }else{
-        res.render("edit", {
-            title: "Edit",
-            user:req.user,
-            error,
-            cart
-            
+            error
         })
         console.log(cart);
-    }
+    
     })
 
 
@@ -511,30 +461,16 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
 // edit address
 
 UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-        if(err)console.log(err);
-     }).populate("userCart.productId userId")
-     if(cart){
-         let myCart = cart.userCart.map(c => c.quantity)
-         let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-
+    
+   
         res.render("address", {
             title: "Edit Address",
             user:req.user,
-            cart,
-            totalQty,
-
-        })
-    }else{
-        res.render("address", {
-            title: "Edit Address",
-            user:req.user,
-            cart,
+          
 
             
         })
-    }
+    
     
 })
 
@@ -572,64 +508,32 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
 
     UserRouter.get("/dashboard/:id/edit-profile", auth, async(req, res) =>{
 
-        let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-            if(err)console.log(err);
-         }).populate("userCart.productId userId")
-         if(cart){
-             let myCart = cart.userCart.map(c => c.quantity)
-             let totalQty = myCart.reduce((a, b) => a + b, 0)
-    
-    
+        
             res.render("editProfile", {
                 title: "Edit user",
                 user:req.user,
-                cart,
-                totalQty,
-               
-
-            })
-        }else{
-            res.render("editProfile", {
-                title: "Edit user",
-                user:req.user,
-                cart,
+            
                 
 
                 
             })
-        }
+        
         
     })
 
 
     // upload profile image
     UserRouter.get("/dashboard/:id/upload-img", auth, async(req, res)=>{
-        let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-            if(err)console.log(err);
-         }).populate("userCart.productId userId")
-         if(cart){
-             let myCart = cart.userCart.map(c => c.quantity)
-             let totalQty = myCart.reduce((a, b) => a + b, 0)
-    
-    
+        
             res.render("profileImg", {
                 title: "freaky-store upload profile img",
                 user:req.user,
-                cart,
-                totalQty,
                 
-
-            })
-        }else{
-            res.render("profileImg", {
-                title: "freaky-store upload profile img",
-                user:req.user,
-                cart,
                
 
                 
             })
-        }
+        
         
     })
 
@@ -690,62 +594,27 @@ UserRouter.get('/facebook/callback',
 
 
   UserRouter.get("/privacy", auth, async(req, res) =>{
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-        if(err)console.log(err);
-     }).populate("userCart.productId userId")
-     if(cart){
-         let myCart = cart.userCart.map(c => c.quantity)
-         let totalQty = myCart.reduce((a, b) => a + b, 0)
-
+    
+     
     res.render("privacy-policy", {
         title: "Freaky-stores || privacy-policy",
         user:req.user,
-        cart,
-        totalQty,
-        layout:false
-
-
-
-        
-    })
-}else{
-    res.render("privacy-policy", {
-        title: "Freaky-stores || privacy-policy",
-        user:req.user,
-        cart,
+     
         layout:false
 
         
     })
-}
+
 })
   UserRouter.get("/terms", auth, async(req, res) =>{
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-        if(err)console.log(err);
-     }).populate("userCart.productId userId")
-     if(cart){
-         let myCart = cart.userCart.map(c => c.quantity)
-         let totalQty = myCart.reduce((a, b) => a + b, 0)
-
+    
     res.render("terms", {
         title: "Freaky-stores terms and condition",
         user:req.user,
-        cart,
-        totalQty,
-        layout:false
-
-
-
         
-    })
-}else{
-    res.render("terms", {
-        title: "Freaky-stores terms and condition",
-        user:req.user,
-        cart,
          layout:false
         
     })
-}
+
 })
 module.exports = UserRouter

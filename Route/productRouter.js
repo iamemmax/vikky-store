@@ -9,32 +9,16 @@ const auth  = require("../config/auth")
 
 
 productRouter.get("/new", auth, async(req, res) =>{
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-        if(err)console.log(err);
-     }).populate("userCart.productId userId")
-     if(cart){
-         let myCart = cart.userCart.map(c => c.quantity)
-         let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-         res.render("add-product", {
-            title: "Upload new product",
-            user:req.user,
-            cart,
-            totalQty,
-            layout: "./layouts/dashboard-layout"
-            
-         
-        })
-     }else{
+    
         res.render("add-product", {
             title: "Upload new product",
             user:req.user,
-            cart,
+        
             layout: "./layouts/dashboard-layout"
 
-         
+        
         })
-     }
+     
    
 
     
@@ -225,37 +209,17 @@ productRouter.get("/:slug",  async(req, res) =>{
 
 productRouter.get("/myproduct/:id", auth, async (req, res) =>{
     let products = await productSchema.find({postedBy:req.params.id})
-    let cart = await cartSchema.findOne({userId:req.user.id}, (err, data)=>{
-        if(err)console.log(err);
-     }).populate("userCart.productId userId")
-     if(cart){
-         let myCart = cart.userCart.map(c => c.quantity)
-         let totalQty = myCart.reduce((a, b) => a + b, 0)
-
-
+   
             res.render("myProduct", {
                 title:"my product",
                 user:req.user,
-                cart,
-                totalQty,
                 products,
-                layout: "./layouts/dashboard-layout"
-               
-
-            })
-
-        }else{
-            res.render("myProduct", {
-                title:"my product",
-                user:req.user,
-                cart,
-                 products,
                  layout: "./layouts/dashboard-layout"
 
                 
 
             })
-        }
+        
      
     
 
