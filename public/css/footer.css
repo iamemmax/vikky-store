@@ -1,0 +1,275 @@
+.footer_general_container{
+	position: relative;
+	top:  40rem;
+	
+}
+
+.footer_middle_ontainer{
+	position: absolute;
+	bottom: 0;
+}
+
+.footer{
+	/* border: 2px solid red; */
+	height: 100px;
+	width: 100%;
+	/* position: absolute;
+	bottom: 0; */
+	/* display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: center; */
+	
+}
+.footer_top{
+	background: #d3d3d3;
+	width: 100% !important;
+	height: 100px !important;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	position: relative;
+	align-items: left !important;
+}
+.footer_top div{
+	/* border: 2px solid red; */
+	width:335px !important;
+	height: 80px !important;
+	display: flex;
+	justify-content: space-between;
+	justify-content: left;
+	
+}
+.footer_top .qq22{
+	
+	width: 400px !important;
+	/* border: 2px solid blue !important; */
+	display: flex;
+	flex-flow: wrap;
+	flex: 3;
+	justify-content: space-around;
+	align-items: center;
+}
+.footer_top .qq22  h2{
+	padding: 10px 10px 10px 0;
+	font-size: 16px;
+	font-weight: 800;
+	position: relative;
+	/* border: 2px solid green; */
+	width: 100%;
+	top: .5rem;
+}
+.foot_top4  input[type="text"]{
+	border: none !important;
+	width: 300px;
+	height: 45px;
+	position: relative;
+	top: 1.5rem;
+	padding-left: 20px;
+	outline:none;
+}
+.foot_top4  button{
+	border: none !important;
+	width: 100px;
+	height: 45px;
+	position: relative;
+	top: 1.5rem;
+	right: 2rem;
+	background: #911820;
+	color: #fff;
+}
+/* the font awesome */
+.footer_top .qq{
+	padding: 10px;
+	/* border: 2px solid blue !important; */
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: relative;
+	top: 0.6rem;
+}
+.footer_top .qq i{
+	width: 50px;
+	height: 50px;
+	background: #911820;
+	color: #e7e7e7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50px;
+}
+
+
+.footer_container{
+	/* border: 2px solid blue; */
+	width: 100% !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: row wrap;
+	padding: 10px;
+	height: 350px;
+}
+.footer_container div{
+	/* border: 2px solid red; */
+	width: 240px;
+	margin: 10px;
+	height: 300px;
+}
+.footer_container div h2{
+	padding: 10px;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 700;
+}
+.footer_container div a{
+	padding: 20px;
+	font-size: 14px;
+	color: #444;
+	font-weight: 600;
+	line-height: 35px;
+	opacity: .8;
+}
+.footer_container div a:hover{
+	text-decoration: underline;
+	opacity: 1;
+	color: #111;
+}
+.footer_container div i{
+	background: #911820;
+	color: #fff;
+	line-height: 22px;
+	position: relative;
+	margin: 10px;
+	top: 2rem;
+	width: 30px;
+	font-size: 18px;
+	text-align: center;
+	padding: 5px;
+	height: 30px;
+	border-radius: 50px;
+
+	
+}
+.footer_last{
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	background: rgb(194, 193, 193);
+}
+.footer_last p{
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.footer_top .qq22  p{
+	font-size: 12px;
+	font-weight: 700;
+	position: relative;
+	/* bottom: 1rem; */
+	width: 100% !important;
+
+}	
+
+
+
+@media screen and (max-width:768px){
+    
+
+.footer_middle_ontainer{
+	position: absolute;
+	bottom: 0;
+    display:none;
+}
+
+.footer_top{
+	
+	height: auto !important;
+}
+.foot_top div{
+    margin:10px;
+}
+ .qq{
+    position:relative;
+    left:-3rem;
+    /* background:red; */
+}
+
+
+.foot_top4  button{
+	
+	background: #c71f2a;
+	font-size: 156x;
+	font-weight: 700;
+}
+
+
+
+
+
+.footer_container{
+	/* border: 2px solid blue; */
+	margin-top: 14rem;
+	
+	padding: 10px;
+	height: auto;
+	
+}
+.footer_container div{
+	/* border: 2px solid red; */
+	width: 160px;
+	margin: 5px;
+	height: auto;
+}
+.footer_container div h2{
+	padding: 10px;
+
+	font-size: 12px;
+	
+}
+.footer_container div a{
+	padding: 20px 10px;
+	font-size: 12px;
+	
+	
+}
+.foot5{
+	width: 300px;
+	/* border: #111 1px solid; */
+	position: relative;
+	left: 5rem;
+	top: -5rem;
+}
+.footer_container div i{
+	background: #c71f2a;
+	
+	line-height: 15px;
+	margin: 5px;
+	top:0px;
+	width: 25px;
+	font-size: 12px;
+	padding: 5px;
+	height: 25px;
+	
+
+	
+}
+.foot2{
+	position: relative;
+	top: -2rem;
+}
+.foot4{
+	position: relative;
+	top: -5rem;
+}
+
+}
+
+
+
+
+
+
+
+

@@ -6,6 +6,8 @@
     align-items: center;
     position: relative;
     flex-flow: row wrap;
+    margin-top :5rem;
+    margin-bottom :5rem;
     
 }
 .topSelling_container h2{
@@ -21,12 +23,12 @@
 }
 .topImgCon{
     display: flex;
-    column-count: 6;
+    /* column-count: 2; */
     column-gap: 10px;
     width: 100%;
     justify-content: center;
     align-items: center;
-    /* position: relative; */
+    position: relative;
     flex-flow: row wrap;
     position: absolute;
     /* left: 0; */
@@ -34,11 +36,10 @@
 .topImgCon > div{
     /* border: 2px solid #333; */
     height: 250px;
-    margin-top: 4rem;
+    margin:8px;
     pointer-events: visible;
-    width: 200px;
+    width: 390px;
     background-color: rgb(243, 243, 243);
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,10 +51,13 @@
 .topImgCon div  img{
     width: 180px;
     height: 180px;
+    transition:transform .7s ease;
+
 }
 
 .topImgCon  .moreInfo{
     display: none;
+    border:none;
 }
 .topImgCon > div:hover img{
     width: 200px;
@@ -64,6 +68,7 @@
     font-weight: 500;
     font-size: 16px;
     text-transform: capitalize;
+    transition:transform .7s ease;
     
 }
 .topImgCon > div:hover  h3{
@@ -79,7 +84,9 @@ font-weight: 500;
     width: 60%;
     padding: 5px;
     text-align: center;
+    border:none;
     transition: all .6s ease;
+    box-shadow:unset;
 }
 .moreInfo p{
     font-weight: 600;
@@ -92,9 +99,10 @@ font-weight: 500;
     padding: 10px;
     text-decoration: none;
     font-size: 16px;
-    color: #000;
+    color: #eee;
     border-radius: 5px;
     font-weight: 400;
+    transition:background .5s ease;
 }
 .moreInfo a:hover{
     background-color: #333;

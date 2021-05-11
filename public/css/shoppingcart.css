@@ -2,28 +2,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 
+
+.cart{
+  width: 100%;
+}
 #table-header{
   width: 100%;
   text-align: center;
   padding: 20px 0px 0px 20px;
   margin-top: 3rem;
+ 
+  position: absolute;
 }
 
-table{
+/* table{
  box-shadow: 1px 2px 2px 5px #eee;
   margin: 0px auto;
   overflow-x: auto;
-  width: 800px;
-  padding: 10px;
-  margin-top: 2rem;
+  width: 700px;
+  border-collapse: collapse; 
+  margin-top: 8rem;
 
-}
-tbody{
-  counter-reset: rowNumber;
+} */
+
+table { 
+  position: relative;
+  width: 700px; 
+  margin: 0px auto;
+  margin-top: 8rem;
+  border-collapse: collapse; 
 }
 
+/* Zebra striping */
+thead tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: center; 
+}
 tbody tr::before {
   /* display: table-cell; */
+  
   counter-increment: rowNumber;
   content: counter(rowNumber) "";
   /* padding-right: 0.6em; */
@@ -31,61 +57,46 @@ tbody tr::before {
 }
 
 table tbody img{
-  width: 70px;
+  width: 50px;
 }
-table thead tr td{
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: capitalize;
+tbody tr td:last-child{
+  display: none !important;
+}
+
+
+tbody{
+  counter-reset: rowNumber;
   text-align: center;
+  margin-top:7rem !important;
+  
+  
+}
+tbody select{
+  background-color: unset;
+ 
+}
+tbody button{
+background-color: unset;
+outline: none;
+border: none;
 
 }
-tbody{
-  text-align: center;
+tbody button i{
+  color: tomato;
 }
 tbody input{
   width: 50px !important;
+  text-align: center;
 }
 
 tfoot{
-  text-align: right;
+  text-align: right !important;
+  
+  
 
 }
 
 tfoot tr td{
   padding: 10px;
 }
- .count{
-     /* background-color: rgba(0, 0, 0, 0.281);   */
-     display: flex; 
-     justify-content: center;
-     align-items: center;
-     padding: 10px;
-}
-.count > .add, .sub{
-    border: none;
-    outline: none;
-    background-color: #222;
-    /* padding: 5px; */
-    color: #fff;
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 100%;
-    font-size: 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-}
-.count > input[type="text"]{
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    /* margin: 10px; */
-    outline: none;
-    border: none;
-    border-radius: 5px;
-
-}
+ 

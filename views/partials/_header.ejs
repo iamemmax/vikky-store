@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/shoppingcart.css">
     <link rel="stylesheet" href="/css/uploadform.css">
     <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
@@ -110,8 +111,8 @@
     <li><a href="#">Order</a></li>
     <li><a href="/users/logout">Logout</a></li>
 </div>
-<% } %> 
 <div class="removeRightNav"></div>
+<% } %> 
 
 
 
@@ -167,6 +168,7 @@ searchBtn.addEventListener("click", (e) =>{
         let openRightNav = document.querySelector("#userImg")
     let rightNavInfo = document.querySelector(".rightNavInfo")
     let removeRightNav = document.querySelector(".removeRightNav")
+    console.log(removeRightNav);
 
         openRightNav.addEventListener("click", (e) =>{
         e.preventDefault()

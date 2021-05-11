@@ -27,6 +27,7 @@ let totalPrice = e.target.parentElement.children[2].innerText.replace("$", "");
 let productQty = 1
 let ProductSize =  e.target.parentElement.children[6].value;
 let productColor = e.target.parentElement.children[7].value;
+let productCategory = e.target.parentElement.children[8].value;
 
 
 
@@ -41,9 +42,10 @@ let product = {
     productQty,
     productColor,
     ProductSize,
-    totalPrice
+    totalPrice,
+    productCategory
 }
-
+console.log(product);
 let cartItems = JSON.parse(localStorage.getItem("carts"))
     if(cartItems === null){
         pushProducts.push(product)
@@ -95,12 +97,21 @@ const  displayCart = () =>{
         let tr = document.createElement("tr")
         
         tr.innerHTML =  `   
-         <td"></td>
-         <td><input type="hidden" value="${items.productId}" id=""> </td>   
+        <td"></td>
         <td>  <img src="${items.productImg}" alt=""> </td>
         <td> <p>${items.productName}</p></td>
         <td><p>$${items.productPrice}</p></td>
-        <td> <p>${items.productColor}</p></td>
+           <td> <select name="color" id="">
+        <option value="color" ${items.productColor == 'color' ? 'selected' : ""}>color</option>
+        <option value="all" ${items.productColor == 'all' ? 'selected' : ""}>all</option>
+        <option value="red" ${items.productColor == 'red' ? 'selected' : ""}>red</option>
+        <option value="blue" ${items.productColor == 'blue' ? 'selected' : ""}>blue</option>
+        <option value="pink" ${items.productColor == 'pink' ? 'selected' : ""}>pink</option>
+        <option value="black" ${items.productColor == 'black' ? 'selected' : ""}>black</option>
+        <option value="white" ${items.productColor == 'white' ? 'selected' : ""}>white</option>
+        <option value="green" ${items.productColor == 'green' ? 'selected' : ""}>green</option>
+        </select> </td>
+       
         <td> <p>${items.ProductSize}</p></td>
         
         
@@ -110,6 +121,7 @@ const  displayCart = () =>{
         <td> <p class="totalprice">$${items.totalPrice}</p></td>
         
         <td>  <button type="Button" class="removeButton"><i class="lni lni-close"></i></button></td>
+        <td><input type="hidden" value="${items.productId}" id="productId"> </td>   
         
                
                 `
@@ -132,11 +144,10 @@ removeButton.forEach(removeBtn => {
     removeBtn.addEventListener("click", (e)=>{
         
         let cartItems = JSON.parse(localStorage.getItem("carts"))
-        console.log( );
          
             cartItems.forEach(items =>{
             
-                if( e.target.parentElement.parentElement.parentElement.children[1].children[0].value != items.productId ){
+                if( e.target.parentElement.parentElement.parentElement.children[9].children[0].value != items.productId ){
                    pushProducts.push(items)
                 }
             })
@@ -146,13 +157,34 @@ removeButton.forEach(removeBtn => {
                 
             })
             getCartNumber()
+            //  updateQty()
+
         })
         
     
 
 
 
+        let grandtotal = document.querySelector(".total")
 
+
+        function grandTotal(){
+          let tot = 0
+      
+      
+          let totalprice = document.querySelectorAll(".totalprice")
+             totalprice.forEach(addGrandTotal =>{
+                 
+                 grandtotalContent = Number(addGrandTotal.innerText.replace("$", ""))
+                 tot += grandtotalContent
+                 
+              })
+              // console.log(tot);
+         
+              grandtotal.innerHTML = "$"+ tot
+      }
+      grandTotal()
+  
 
 
 // update total price
@@ -160,60 +192,43 @@ removeButton.forEach(removeBtn => {
 function updateQty(){
     const totalContent = document.querySelectorAll(".show-count")
     
-   
+    
     totalContent.forEach(allTotherPrice =>{
         allTotherPrice.addEventListener("change", (e)=>{
+            let target = e.target.parentElement.parentElement
+            let ProdutId = target.children[9].children[0].value;
             
-            let priceContent = e.target.parentElement.children[7]
+            let priceContent = e.target.parentElement.parentElement.children[7]
             let cartItems = JSON.parse(localStorage.getItem("carts"))
-            console.log(priceContent);
+            // console.log(priceContent);
             cartItems.forEach(items =>{
-               
-               if(items.productId == e.target.parentElement.children[0].value){
-                   
-                 priceContent.innerText = "$"+items.productPrice * e.target.value;
-                 items.productQty = e.target.value
-                 pushProducts.push(items)
                 
+                if(items.productId == ProdutId){
+                    
+                    priceContent.innerText = "$"+items.productPrice * e.target.value;
+                    items.productQty = e.target.value
+                 pushProducts.push(items)
+                 
                  if(isNaN(e.target.value) || e.target.value <= 0){
                      e.target.value = 1
-                  }
-                  
-               }
+                    }
+                    
+                }
+                grandTotal()
             })
-            grandTotal()
-        })
             
+        }) 
+        
     })
-
-      }
-      
-      
-      
-      updateQty()
-
-
-
-let grandtotal = document.querySelector(".total")
-console.log(grandtotal.children);
-
-      function grandTotal(){
-        let tot = 0
     
-    
-    
-           let totalprice = document.querySelectorAll(".totalprice")
-           totalprice.forEach(addGrandTotal =>{
-               
-               grandtotalContent = Number(addGrandTotal.innerText.replace("$", ""))
-               tot += grandtotalContent
-               
-            })
-            // console.log(tot);
-       
-            grandtotal.innerHTML = "$"+ tot
-    }
-    grandTotal()
+}
+
+
+
+updateQty()
+
+
+
 
 
 
