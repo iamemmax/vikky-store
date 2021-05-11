@@ -16,7 +16,7 @@
     font-size: 30px;
 }
 .topSelling_container > span{
-    border: 2px #ff4a57 solid;
+    border: 2px #911820 solid;
     position: absolute;
     width: 70px;
     top: 4.5rem;
@@ -95,7 +95,7 @@ font-weight: 500;
     padding-bottom: 20px;
 }
 .moreInfo a{
-    background-color: #ff4a57;
+    background-color: #911820;
     padding: 10px;
     text-decoration: none;
     font-size: 16px;
@@ -126,15 +126,15 @@ font-weight: 500;
         top: -20.4rem;
     }
     .topImgCon{
-        /* border: 2px solid red; */
         column-count: 2;
-        column-gap: 12px;
+        column-gap: 5px;
         width: 100%;
         margin-top: 3rem;
-      
+        
     }
     .topImgCon > div{
-        width: 160px;
+        /* border: 2px solid red; */
+        width: 140px;
         height: 200px;
         margin-top: 10px;
         
@@ -156,14 +156,14 @@ font-weight: 500;
     }
     .topImgCon > div h3{
         font-weight: 500;
-        font-size: 16px;
-        margin-top: -1rem;
+        font-size: 14px;
+        margin-top: 1rem;
         text-transform: capitalize;
         /* border: 2px solid #333; */
         
     }
     .topImgCon > div:hover  h3{
-        margin-top: -1.5rem;  
+        margin-top: -1.3rem;  
         font-weight: 500;   
         
         

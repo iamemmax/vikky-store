@@ -169,16 +169,16 @@
 	position: relative;
 	/* bottom: 1rem; */
 	width: 100% !important;
-
+	
 }	
 
 
 
 @media screen and (max-width:768px){
-    
-
-.footer_middle_ontainer{
-	position: absolute;
+	
+	
+	.footer_middle_ontainer{
+		position: absolute;
 	bottom: 0;
     display:none;
 }
@@ -192,15 +192,24 @@
 }
  .qq{
     position:relative;
-    left:-3rem;
+    left:-1rem;
     /* background:red; */
+
+	
 }
 
+.qq i{
+	font-size: 12px !important;
+	width: 30px !important;
+	height: 30px !important;
+	position: relative;
+	top: -.1rem;
+}
 
 .foot_top4  button{
 	
 	background: #c71f2a;
-	font-size: 156x;
+	font-size: 15px;
 	font-weight: 700;
 }
 
@@ -236,9 +245,9 @@
 }
 .foot5{
 	width: 300px;
-	/* border: #111 1px solid; */
+	border: #111 1px solid;
 	position: relative;
-	left: 5rem;
+	left: 4rem;
 	top: -5rem;
 }
 .footer_container div i{
@@ -257,11 +266,14 @@
 }
 .foot2{
 	position: relative;
-	top: -2rem;
+	top: -1rem;
 }
 .foot4{
 	position: relative;
 	top: -5rem;
+}
+.footer_last{
+	width: 99%;
 }
 
 }

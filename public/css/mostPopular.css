@@ -19,16 +19,17 @@
 }
 .categories > div{
     border: 1px solid rgba(218, 215, 215, 0.603);
-    width: 85px;
+    width: 90px;
+    font-size: 16px !important;
+    text-transform: capitalize;
     margin: 10px;
     outline: none;
     font-weight: 600;
     /* background-color: #ff4a57; */
+
     padding: 5px 10px;
     cursor: pointer;
-    font-size: 14px;
-    text-transform: capitalize;
-    text-align: center;
+    font-size: 12px;
 
 }
 .mostPouplar_container >.categories div:is(:hover, .active){
@@ -126,7 +127,7 @@
 .popular div button{
     /* margin-top: 1rem; */
     text-decoration: none;
-    background-color: #ff4a57;
+    background-color: #911820;
     width: 100px;
     padding: 7px 10px;
     text-align: center;
@@ -168,15 +169,14 @@
     }
 
     .categories{
-        width: 100%;
+
         /* border: 2px solid red; */
         display: flex;
         flex-wrap: wrap;
     }
     .categories > div{
-       font-size: 16px;
-        margin: 5px;
-        font-size: 12px;
+       font-size: 12px !important;
+        margin: 5px !important;
         width: 70px;
        
 
@@ -186,19 +186,18 @@
     }
     .mostPouplar_container .popular div{
         box-shadow: 0px 1px 1px  2px #eee;
-        width: 143px;
-        margin: 10px;
+        width: 130px !important;
+        margin: 5px;
         height: 270px;
-        
-    }
     
+    }
+
     .popular p{
         /* border: 2px solid red; */
         font-size: 14px;
-        margin-top: -10px !important;
+        margin-top: -3px !important;
     }
     .popular a{
-        /* font-size: 10px; */
         text-decoration: none;
         color: #222;
         
@@ -218,6 +217,13 @@
         
     }
 
+
+    .rating{
+      
+        margin-top: -8px !important;
+    
+        
+    }
 
     /* myshoe categories */
 #myshoe{
