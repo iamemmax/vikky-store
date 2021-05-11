@@ -33,7 +33,7 @@
 
 }
 .mostPouplar_container >.categories div:is(:hover, .active){
-    background-color: #ff4a57;
+    background-color: #af2b34;
     color: #eee;
     transition: all .5s ease-in;
 }
@@ -47,7 +47,7 @@
         font-weight: 600;
     }
     .mostPouplar_container > span{
-        border: 2px #ff4a57 solid;
+        border: 2px #af2b34 solid;
         position: absolute;
         width: 70px;
         top: 4.5rem;
@@ -127,7 +127,7 @@
 .popular div button{
     /* margin-top: 1rem; */
     text-decoration: none;
-    background-color: #911820;
+    background-color: #af2b34;
     width: 100px;
     padding: 7px 10px;
     text-align: center;
@@ -151,7 +151,7 @@
 
 .rating{
     position: relative;
-    color: #ff4a57;
+    color: #af2b34;
     font-size: 12px;
     display: inline-block !important;
     height: 10px !important;
@@ -186,9 +186,10 @@
     }
     .mostPouplar_container .popular div{
         box-shadow: 0px 1px 1px  2px #eee;
-        width: 130px !important;
-        margin: 5px;
+        width: 140px !important;
+        margin: 10px;
         height: 270px;
+        /* background-color: red; */
     
     }
 

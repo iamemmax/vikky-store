@@ -1,14 +1,9 @@
-.footer_general_container{
+
+.footer_box{
 	position: relative;
-	top:  40rem;
-	
-}
+	top: 30rem;
 
-.footer_middle_ontainer{
-	position: absolute;
-	bottom: 0;
 }
-
 .footer{
 	/* border: 2px solid red; */
 	height: 100px;
@@ -245,7 +240,7 @@
 }
 .foot5{
 	width: 300px;
-	border: #111 1px solid;
+	/* border: #111 1px solid; */
 	position: relative;
 	left: 4rem;
 	top: -5rem;
