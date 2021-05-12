@@ -124,7 +124,7 @@ productRouter.get("/shoe", async (req, res) =>{
          user:req.user,
          products,
          
-         layout: "./layouts/sidebar"
+         layout: "./layouts/search-category"
      })
 
       
@@ -139,7 +139,7 @@ productRouter.get("/wares",  async (req, res) =>{
             title : "freaky-store || wares category",
             user:req.user,
             products,
-            layout: "./layouts/sidebar"
+            layout: "./layouts/search-category"
         })
       
 
@@ -153,7 +153,7 @@ productRouter.get("/phone",  async (req, res) =>{
             user:req.user,
             
             products,
-            layout: "./layouts/sidebar"
+            layout: "./layouts/search-category"
         })
       
 
@@ -167,7 +167,7 @@ productRouter.get("/computer", async (req, res) =>{
             user:req.user,
         
             products,
-            layout: "./layouts/sidebar"
+            layout: "./layouts/search-category"
         })
       
 
@@ -180,7 +180,7 @@ productRouter.get("/electronic",  async (req, res) =>{
             title : "freaky-store || electronics category",
             user:req.user,
             products,
-            layout: "./layouts/sidebar"
+            layout: "./layouts/search-category"
         })
       
 
@@ -196,7 +196,7 @@ productRouter.get("/:slug",  async(req, res) =>{
             single,
             user:req.user,
             
-            layout: "./layouts/sidebar"
+            layout: "./layouts/search-category"
 
               })
       

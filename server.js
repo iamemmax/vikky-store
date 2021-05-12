@@ -107,10 +107,9 @@ app.get("/:q",  async(req, res) =>{
           res.render("search", {
             user:req.user,
             title: "search",
-          
             search,
             query,
-              layout: false,
+            layout: "./layouts/search-category"
               
       
           })

@@ -1,3 +1,8 @@
+body{
+    margin-bottom: 24rem !important;
+    position: relative;
+    min-height: 100%;
+}
 
 .banner{
     position: relative;

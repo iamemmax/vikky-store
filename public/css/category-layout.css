@@ -1,0 +1,35 @@
+.category_container{
+    /* border: 2px solid red; */
+    height: auto;
+    display: grid;
+    grid-template-columns: 10% 88.5%;
+    grid-gap: 1rem;
+    position: relative;
+    margin-bottom: 30rem;
+    /* z-index: 999; */
+}
+
+.category_container > div{
+    /* border: 2px solid red; */
+}
+.category_container .category_body{
+    position: absolute;
+    /* left: 17rem; */
+    right: 0;
+    width: 1050px;
+    /* height: 100vh; */
+    
+}
+
+.category_container .category_sidebar{
+    position: absolute;
+    height: 100vh;
+    left: 0;
+    background: #fff;
+    box-shadow: 0px 5px 3px 3px #eee;
+    width:200px;
+    margin-bottom: 3rem;
+    
+
+    
+}

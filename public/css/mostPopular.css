@@ -165,7 +165,7 @@
 
 @media screen and (max-width:768px) {
     .mostPouplar_container{
-        margin-top: 22rem;
+        margin-top: 5rem;
     }
 
     .categories{
@@ -197,6 +197,7 @@
         /* border: 2px solid red; */
         font-size: 14px;
         margin-top: -3px !important;
+        padding: 5px !important;
     }
     .popular a{
         text-decoration: none;
@@ -215,7 +216,7 @@
         /* border: 2px solid red; */
     }
     .popular div button{
-        
+        margin-top: 3px;
     }
 
 

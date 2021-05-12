@@ -1,102 +1,156 @@
 .Top_advert_container{
-    /* border: 2px solid red; */
+    padding: 10px;
+    background: linear-gradient(rgba(46, 2, 2, 0.719), rgb(0, 0, 0)),url("../img/starry-sky-1654074_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-blend-mode: color;
     height: 300px;
-    width: 90%;
-    margin: 0px auto;
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
-    flex-flow: row wrap;
-}
-
-.adwrappper{
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
-    flex-flow: row wrap;
-    background-color: #ff4a57;
-    width: 100%;
-}
-.adwrappper > div{
-    width: 600px;
-    overflow: hidden;
-    /* border: 2px solid blue; */
-    height: 280px;
+    opacity: .9;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
+    width: 100%;
+   
+
+}
+
+.Top_advert_container div{
+    /* border: 3px solid #eee; */
+    height: 300px;
+    width: 45%;
+ 
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
     flex-direction: column;
 }
 
-.imgAdvert{
-   
-}
-.adwrappper  img{
-    width:350px;
+.Top_advert_container div img{
+    width: 80%;
 }
 
-.adwrappper > div p{
-    font-size: 25px;
-    width: 60%;
+.Top_advert_container .adtext {
+    height: 280px !important;
+    border: none;
+    /* background-color: red; */
+}
+.Top_advert_container div h2{
     color: #eee;
-}
-.adwrappper > div h2{
-    text-align: left;
-    font-size: 35px;
-    padding: 10px;
-    text-transform: capitalize;
-}
-.adwrappper div span{
-    width: 60%;
-    line-height: 30px;
-    color: #ddd;
-}
-@media screen and (max-width:768px) {
-    .adwrappper
-    {
-        margin-top: 24rem !important;
-    height: 220px;
-    position: relative;
+    font-size: 30px;
+    font-weight: 500;
+    opacity: .8;
+    padding: 10px 0;
 
+}
+.Top_advert_container div p{
+    font-size: 16px;
+    line-height: 27px;
+    color: #fff;
+    opacity: .6;
+}
+.Top_advert_container button{
+    width: 170px;
+    font-size: 16px;
+    padding: 13px;
+    margin-top: 1rem;
+    font-weight: 600;
+    background-color: #af2b34;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #eee;
+    transition: background .5s ease;
+    -o-transition: background .5s ease;
+    -webkit-transition: background .5s ease;
+    -moz-transition: background .5s ease;
+
+}
+.Top_advert_container button:hover{
+    background: #a54148;
+}
+
+
+
+@media screen and (max-width:768px) {
+    .Top_advert_container{
+        display: block !important;
+        height: auto;
+        margin-top: 25rem;
     }
 
-
-    .adwrappper > div{
-        width: 200px;
+    .Top_advert_container div{
+        width: 100%;
+        height: auto;
+    }
+    .Top_advert_container .adtext {
+        height: auto !important;
         
     }
-    .adwrappper  img{
-        width:170px;
-        position: absolute;
-        left: 0;
+
+    .Top_advert_container div img{
+        width: 100%;
     }
 
-    .adwrappper > div p{
-        font-size: 16px;
-        width: 100%;
-        position: absolute;
-        top: 20px;
-        left: 0;
-        text-align: center;
-    }
-    .adwrappper > div h2{
-        text-align: center;
-        width: 100%;
-        font-size: 20px;
+    .Top_advert_container button{
+        margin-bottom: 3rem;
         padding: 10px;
-        text-transform: capitalize;
-        position: absolute;
-        top: 40px;
-        left: 0;
+        width: 130px;
+    }
+    .Top_advert_container div h2{
+        width: 95%;
+        margin: 0px auto;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .Top_advert_container div p{
+        width: 95%;
+        margin: 0px auto;
+        font-size: 14px;
+        /* line-height: 30px; */
+    }
+}
+
+
+
+@media screen and (min-width:750px) and (max-width:1200px) {
+    .Top_advert_container{
+        display: flex !important;
+        height: auto;
+        margin-top: 20rem;
     }
 
-    .adwrappper div span{
-        width: 50%;
-        line-height: 30px;
-        color: #ddd;
-        position: absolute;
-        left: 50%;
-        top: 6rem;
+    .Top_advert_container div{
+        width: 45%;
+        height: auto;
     }
+    .Top_advert_container .adtext {
+        height: auto !important;
+        
+    }
+
+    .Top_advert_container div img{
+        width: 100%;
+    }
+
+    .Top_advert_container button{
+        margin-bottom: 3rem;
+        padding: 10px;
+        width: 130px;
+    }
+    .Top_advert_container div h2{
+        width: 95%;
+        margin: 0px auto;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .Top_advert_container div p{
+        width: 95%;
+        margin: 0px auto;
+        font-size: 14px;
+         line-height: 30px; 
+    } 
 }
