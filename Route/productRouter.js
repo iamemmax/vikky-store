@@ -196,7 +196,7 @@ productRouter.get("/:slug",  async(req, res) =>{
             single,
             user:req.user,
             
-            layout: "./layouts/search-category"
+            layout: "./layouts/sidebar"
 
               })
       

@@ -97,6 +97,7 @@ let error = []
 
 app.get("/:q",  async(req, res) =>{
    let query = req.query.q
+   console.log(query);
 
     let regex = new RegExp(query, "i")
     let search =  await productSchema.find({productName:regex})
@@ -131,7 +132,7 @@ app.use("/users", require("./Route/UserRouter"))
 app.use("/product", require("./Route/productRouter"))
 app.use("/users/cart", require("./Route/cartRouter"))
 
-const PORT = process.env.PORT || 5050
+const PORT = process.env.PORT || 5070
 app.listen(PORT, () =>{
     console.log(`server started at port ${PORT}`);
 })
