@@ -119,12 +119,12 @@ productRouter.get("/shoe", async (req, res) =>{
     let products = await productSchema.find({categories:"shoe"})
 
    
-     res.render("shoe", {
+     res.render("categories/shoe", {
          title : "freaky-store || shoes category",
          user:req.user,
          products,
          
-         layout: "./layouts/search-category"
+         layout: "././layouts/search-category"
      })
 
       
@@ -135,11 +135,11 @@ productRouter.get("/wares",  async (req, res) =>{
 
     
 
-        res.render("wares", {
+        res.render("categories/wares", {
             title : "freaky-store || wares category",
             user:req.user,
             products,
-            layout: "./layouts/search-category"
+            layout: "././layouts/search-category"
         })
       
 
@@ -148,12 +148,12 @@ productRouter.get("/phone",  async (req, res) =>{
     let products = await productSchema.find({categories:"phone"})
 
    
-        res.render("phone", {
+        res.render("categories/phone", {
             title : "freaky-store || phone category",
             user:req.user,
             
             products,
-            layout: "./layouts/search-category"
+            layout: "././layouts/search-category"
         })
       
 
@@ -162,12 +162,12 @@ productRouter.get("/computer", async (req, res) =>{
     let products = await productSchema.find({categories:"computer"})
 
   
-        res.render("computer", {
+        res.render("categories/computer", {
             title : "freaky-store || computer category",
             user:req.user,
         
             products,
-            layout: "./layouts/search-category"
+            layout: "././layouts/search-category"
         })
       
 
@@ -176,11 +176,11 @@ productRouter.get("/electronic",  async (req, res) =>{
     let products = await productSchema.find({categories:"electronic"})
 
     
-        res.render("electronic", {
+        res.render("categories/electronic", {
             title : "freaky-store || electronics category",
             user:req.user,
             products,
-            layout: "./layouts/search-category"
+            layout: "././layouts/search-category"
         })
       
 

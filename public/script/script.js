@@ -45,7 +45,9 @@ let product = {
     totalPrice,
     productCategory
 }
-console.log(product);
+
+
+
 let cartItems = JSON.parse(localStorage.getItem("carts"))
     if(cartItems === null){
         pushProducts.push(product)
@@ -137,6 +139,31 @@ displayCart()
 
 
 
+        // update total price
+        let grandtotal = document.querySelector(".total")
+
+
+        function grandTotal(){
+            let tot = 0
+            
+            
+            
+            let totalprice = document.querySelectorAll(".totalprice")
+            totalprice.forEach(addGrandTotal =>{
+                
+                grandtotalContent = Number(addGrandTotal.innerText.replace("$", ""))
+                tot += grandtotalContent
+                
+            })
+            console.log(tot);
+            
+            grandtotal.innerText = "$"+ tot
+        }
+
+        grandTotal()
+    
+
+    
 // remove cart
 
 let removeButton = document.querySelectorAll(".removeButton")
@@ -156,85 +183,47 @@ removeButton.forEach(removeBtn => {
                 window.location.reload()
                 
             })
-            getCartNumber()
-            //  updateQty()
+            updateQty()
 
         })
         
+
     
-
-
-
-        let grandtotal = document.querySelector(".total")
-
-
-        function grandTotal(){
-          let tot = 0
-      
-      
-          let totalprice = document.querySelectorAll(".totalprice")
-             totalprice.forEach(addGrandTotal =>{
-                 
-                 grandtotalContent = Number(addGrandTotal.innerText.replace("$", ""))
-                 tot += grandtotalContent
-                 
-              })
-              // console.log(tot);
-         
-              grandtotal.innerHTML = "$"+ tot
-      }
-      grandTotal()
-  
-
-
-// update total price
-
-function updateQty(){
-    const totalContent = document.querySelectorAll(".show-count")
-    
-    
-    totalContent.forEach(allTotherPrice =>{
-        allTotherPrice.addEventListener("change", (e)=>{
-            let target = e.target.parentElement.parentElement
-            let ProdutId = target.children[9].children[0].value;
-            
-            let priceContent = e.target.parentElement.parentElement.children[7]
-            let cartItems = JSON.parse(localStorage.getItem("carts"))
-            // console.log(priceContent);
-            cartItems.forEach(items =>{
+    function updateQty(){
+            const totalContent = document.querySelectorAll(".show-count")
+            totalContent.forEach(totalPrice =>{
+                totalPrice.addEventListener("change", (e) =>{
+                    let target = e.target.parentElement.parentElement
+                    let priceContent = target.children[7]
+                    let productQty = target.children[6].children[0]
+                    let productId = target.children[2]
                 
-                if(items.productId == ProdutId){
+                    // get items from storage
+                    let cartItems = JSON.parse(localStorage.getItem("carts"))
+                        cartItems.forEach(items =>{
+                            if(items.productName === productId.innerText){
+                                priceContent.innerHTML = "$" + Number(items.productPrice * e.target.value)
+                                productQty.value = e.target.value
+                                // pushProducts.push(items)  
+                                // localStorage.setItem("carts", JSON.stringify(pushProducts))
+
+                                
+                                if(isNaN(e.target.value) || e.target.value <= 0){
+                                    e.target.value = 1
+                                }
+                            }
+                        })
+                        
+                        grandTotal()
+                    })
                     
-                    priceContent.innerText = "$"+items.productPrice * e.target.value;
-                    items.productQty = e.target.value
-                 pushProducts.push(items)
-                 
-                 if(isNaN(e.target.value) || e.target.value <= 0){
-                     e.target.value = 1
-                    }
-                    
-                }
-                grandTotal()
-            })
-            
-        }) 
+                })
+                
+    
+        }
+    updateQty()
+
+
+
         
-    })
-    
-}
-
-
-
-updateQty()
-
-
-
-
-
-
-
-
-
-
-
-    
+        

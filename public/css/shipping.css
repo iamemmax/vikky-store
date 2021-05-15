@@ -71,5 +71,15 @@
     .shipping_container{
         height: auto;
         margin: 5px;
+       
     }
+    
+    .shipping_container div{
+      
+       
+        height: auto;
+       
+       
+    }
+    
 }

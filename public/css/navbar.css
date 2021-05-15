@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -31,12 +32,21 @@ body{
     width: 90%;
     margin: 0px auto;
 }
+.logo{
+    border-left: 5px solid #ff4a57;
+    padding-left: 4px;
+    height: 25px;
+    position: relative;
+
+}
 .logo a, h1{
     text-decoration: none;
     color: #eee;
     font-size: 27px;
     font-family: 'Lobster', cursive;
     font-weight: 500;
+    margin-top: -.3rem;
+    /* border: 2px solid red; */
 }
 
 .container .header .navigation ul , .last{
@@ -80,6 +90,7 @@ body{
    
   background-color: #ff4a57 !important;
   color:#fff;
+
 
     
 }
@@ -153,7 +164,7 @@ body{
     display: none;
 }
 /* mobile view */
-@media (max-width:1100px){
+@media screen and (max-width:1100px){
     
 #userImg{
     margin-top: -1px;
@@ -183,12 +194,12 @@ body{
 
     .container .header .navigation ul{
         display: block;
-        padding: 10px;
+        padding: 5px;
         position: absolute;
         background-color: #222;
         width: 50%;
         left: 0;
-        top: 14vh;
+        top: 11vh;
         height: 86vh;
         transform: translateX(-100%);
         transition: transform .5s ease-in;
@@ -200,9 +211,19 @@ body{
     }
     .container .navigation a{
         display: block;
-        line-height: 50px;
+        line-height: 35px;
+        font-weight: 500;
     }
     
+    .header .active{
+   
+        background-color: #ff4a57 !important;
+        color:#fff;
+        padding: 5px !important;
+        
+      
+          
+      }
     .container  .last {
         position: absolute;
         right: 7rem;
@@ -214,6 +235,9 @@ body{
         transform: translateY(-50%);
         -webkit-transform:  translateY(-50%);
         -moz-transform:  translateY(-50%);
+        -o-transform:  translateY(-50%);
+        -ms-transform:  translateY(-50%);
+    
     }
    
     .last i{
@@ -322,7 +346,6 @@ body{
         
     }
     .removeNavbar{
-        /* border: 2px solid red; */
         display: flex !important;
         margin-left: 5px !important;
         cursor: pointer;
@@ -334,7 +357,9 @@ body{
     }
     .removeNav i{
         color: #eee;
+        /* border: 2px solid red; */
         font-size: 25px;
+        margin-top: -13px !important;
 
     }
 
@@ -393,4 +418,35 @@ body{
     display: none;
     /* border: blue 2px solid; */
     height: 90vh;
+}
+@media screen and (min-width:800px) and (max-width:1100px) {
+.last{
+        position: relative;
+        right:  9rem !important;
+    }
+    #search{
+        position: relative;
+        right:  2rem !important;
+    }
+}
+
+@media screen and (min-width:800px) and (max-width:1300px) {
+    
+    
+    .search{
+        width: 240px;
+        /* right:  1rem !important; */
+
+        position: relative;
+        
+    }
+    .container .header .navigation a, .last a{
+      
+        font-size: 14px;
+        margin: 2px;
+        font-weight: 500;
+      
+      
+    
+    }
 }

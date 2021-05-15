@@ -21,7 +21,6 @@
     /* border: 3px solid #eee; */
     height: 300px;
     width: 45%;
- 
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
