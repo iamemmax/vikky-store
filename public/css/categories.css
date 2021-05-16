@@ -82,6 +82,11 @@
 
 
 @media screen and (max-width:768px) {
+    .feature_categories{
+        position: relative;
+        top:10rem;
+        margin-bottom: -3rem !important;
+    }
     .categories{
         width: 100%;
         /* border: 2px solid red; */
