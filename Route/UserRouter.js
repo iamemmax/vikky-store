@@ -94,6 +94,19 @@ UserRouter.post("/register", (req, res) =>{
                 console.log("choose a username")
                 
             }
+            
+            
+            function ValidateEmail(mail) 
+            {
+             if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
+              {
+                return (true)
+              }
+              error.push({msg: "You have entered an invalid email address!"})
+                return (false)
+            }
+            
+            ValidateEmail()
             // check if email exist
        User.findOne({email:email}, (err, result) =>{
            if(err) throw err
@@ -221,6 +234,19 @@ UserRouter.post("/login", (req, res, next) =>{
         console.log( "Please fill all field")
        
     }
+    
+    function ValidateEmail(mail) 
+    {
+     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
+      {
+        return (true)
+      }
+      error.push({msg: "You have entered an invalid email address!"})
+        return (false)
+    }
+    
+    ValidateEmail()
+    
     if(error.length > 0){
         res.render("Login", {
             title:"Login Account",

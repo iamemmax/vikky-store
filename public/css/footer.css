@@ -1,9 +1,10 @@
 
 .footer_box{
-	position: relative;
-	top: 20rem;
+	position: absolute;
+	bottom:  0 ;
 	background-color: #fff;
 	z-index: 99;
+	top:  300rem;
 
 }
 .footer{

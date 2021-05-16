@@ -132,10 +132,27 @@ productRouter.get("/categories/shoe", async (req, res) =>{
 
 productRouter.get("/categories/fashion",  async (req, res) =>{
     let products = await productSchema.find({categories:"wares"})
+    
+    
+    
+        res.render("categories/fashion", {
+            title : "freaky-store || fashion category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+        
+        
+    })
+
+
+    productRouter.get("/categories/generator",  async (req, res) =>{
+    let cat = [ "wares", "computer","shoe"] 
+    let products = await productSchema.find({categories:cat})
 
     
 
-        res.render("categories/fashion", {
+        res.render("categories/general-wares", {
             title : "freaky-store || fashion category",
             user:req.user,
             products,
@@ -144,6 +161,99 @@ productRouter.get("/categories/fashion",  async (req, res) =>{
       
 
 })
+    productRouter.get("/categories/generator",  async (req, res) =>{
+    
+    let products = await productSchema.find({categories:"generator"})
+
+    
+
+        res.render("categories/generator", {
+            title : "freaky-store || generator category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+    productRouter.get("/categories/bag",  async (req, res) =>{
+    
+    let products = await productSchema.find({categories:"bag"})
+
+    
+
+        res.render("categories/bag", {
+            title : "freaky-store || bag category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+
+    productRouter.get("/categories/sew-machine",  async (req, res) =>{
+    
+    let products = await productSchema.find({categories:"printer"})
+
+    
+
+        res.render("categories/printer", {
+            title : "freaky-store || printer category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+    productRouter.get("/categories/sew-machine",  async (req, res) =>{
+    
+    let products = await productSchema.find({categories:"sew-machine"})
+
+    
+
+        res.render("categories/sew-machine", {
+            title : "freaky-store || sew-machine category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+    productRouter.get("/categories/small-appliance",  async (req, res) =>{
+    
+    let products = await productSchema.find({categories:"small-appliance"})
+
+    
+
+        res.render("categories/small-appliance", {
+            title : "freaky-store || small-appliance category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+    productRouter.get("/categories/large-appliance",  async (req, res) =>{
+    
+    let products = await productSchema.find({categories:"large-appliance"})
+
+    
+
+        res.render("categories/large-appliance", {
+            title : "freaky-store || large-appliance category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+
+
 productRouter.get("/categories/phone",  async (req, res) =>{
     let products = await productSchema.find({categories:"phone"})
 
