@@ -146,7 +146,7 @@ productRouter.get("/categories/fashion",  async (req, res) =>{
     })
 
 
-    productRouter.get("/categories/generator",  async (req, res) =>{
+    productRouter.get("/categories/fashions",  async (req, res) =>{
     let cat = [ "wares", "computer","shoe"] 
     let products = await productSchema.find({categories:cat})
 

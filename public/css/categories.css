@@ -70,7 +70,7 @@
     -moz-box-shadow: 0px 0px 0px 2px #eee;
     -o-box-shadow: 0px 0px 0px 2px #eee;
 }
-.categories  a{
+.categories  a, p{
     text-align: center;
     text-decoration: none;
     margin-top: 20px;
@@ -106,5 +106,12 @@
         width: 120px;
         height: 110px;
     }
+    .categories  p{
+
+        margin-top: 2rem !important;
+      
+    
+    }
+    
     
 }

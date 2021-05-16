@@ -4,7 +4,7 @@
 	bottom:  0 ;
 	background-color: #fff;
 	z-index: 99;
-	top:  400rem;
+	top:  250rem;
 
 }
 .footer{
@@ -173,7 +173,9 @@
 
 
 @media screen and (max-width:768px){
-	
+	.footer_box{
+		top: 400rem;
+	}
 	
 	.footer_middle_ontainer{
 		position: absolute;
