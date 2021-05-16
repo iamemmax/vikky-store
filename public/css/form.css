@@ -77,6 +77,8 @@ body{
     transition: transform .5s ease;
     -webkit-transition: transform .5s ease;
     -moz-transition: transform .5s ease;
+    -o-transition: transform .5s ease;
+    -ms-transition: transform .5s ease;
 }
 
 form label::after{
@@ -92,6 +94,8 @@ form label::after{
     transform: translateY(-74%);
     -webkit-transform: translateY(-74%);
     -moz-transform: translateY(-74%);    
+    -ms-transform: translateY(-74%);    
+    -o-transform: translateY(-74%);    
     padding: 10px 20px;
     font-weight: 600;
     font-size: 14px;

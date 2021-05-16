@@ -79,8 +79,21 @@
     flex-direction: column;
     background-color: rgb(243, 243, 243);
     align-items: center;
+    transition: transform .5s ease;
+    -webkit-transition: transform .5s ease;
+    -moz-transition: transform .5s ease;
+    -ms-transition: transform .5s ease;
+    -o-transition: transform .5s ease;
+    /* overflow: hidden; */
 
     
+}
+.mostPouplar_container .popular div:hover{
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
 }
 .popular .hide{
     display: none !important;

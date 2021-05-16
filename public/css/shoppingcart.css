@@ -64,6 +64,12 @@ tbody tr td:last-child{
 }
 
 
+
+tbody tr td:is(:nth-child(10), :nth-child(11), :nth-child(12), :nth-child(13), :nth-child(14) ){
+  display: none !important;
+  
+}
+
 tbody{
   counter-reset: rowNumber;
   text-align: center;
@@ -100,3 +106,75 @@ tfoot tr td{
   padding: 10px;
 }
  
+
+
+.loginUser{
+  position: fixed;
+  background-color: rgb(65, 70, 97);
+  width: 100%;
+  display: flex;
+  top: 0;
+  height: 100Vh;
+  padding: 10px;
+  left: 0;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+
+  
+  transition: transform .5s ease;
+  -webkit-transition: transform .5s ease;
+  -moz-transition: transform .5s ease;
+  -ms-transition: transform .5s ease;
+  -o-transition: transform .5s ease;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.userLogin{
+background-color: #eee;
+border-radius: 3px;
+width: 400px;
+height: 200px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.showLogin{
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+
+}
+
+.loginUser .button{
+  display: flex;
+  margin: 10px;
+  justify-content: space-around;
+  width: 150px;
+}
+.loginUser p{
+  padding: 10px;
+  font-size: 18px;
+}
+.loginUser .button  button, .button > a{
+  outline: none;
+  font-size: 14px;
+  text-transform: capitalize;
+  background-color: #333;
+  padding: 8px 10px;
+  color: #eee;
+  border: none;
+  cursor: pointer;
+  margin-top: .2rem;
+}
+
+.button a{
+  text-decoration: none;
+  background-color: rgb(97, 2, 2);
+}

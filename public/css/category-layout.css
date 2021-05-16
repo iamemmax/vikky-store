@@ -36,7 +36,7 @@
 
 .category_container .category_sidebar{
     position: absolute;
-    height: 100vh;
+    height: auto;
     left: 0;
     background: #fff;
     /* box-shadow: 0px 5px 3px 3px #eee; */
@@ -62,4 +62,29 @@
     line-height: 30px;
     color: #222;
     font-size: 14px;
+}
+
+
+
+@media screen and (max-width:768px) {
+    .category_container{
+        margin-bottom:200rem;
+    }
+    .category_container .category_body{
+       
+        width: 68%;
+       height: auto;
+       
+        
+    }
+
+    .category_sidebar{
+      /* position: fixed !important; */
+       overflow-y: auto;
+       left: 0;
+        height: 100%;
+        width:30% !important;
+        
+        
+    }
 }

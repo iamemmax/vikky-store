@@ -23,15 +23,22 @@ cartRouter.get("/",  async(req, res)=>{
             layout: false,
            
             success:req.flash("success")
+
            
         })
  
+      
     
     
    
 
 })
 
+
+cartRouter.post("/", async(req, res) =>{
+    let {userId, productId, myfiles, price, color, quantity, sizes, totalPrice} = req.body
+    console.log(req.body);
+})
 
 // purchase
 

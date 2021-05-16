@@ -7,19 +7,19 @@
     position: relative;
     flex-flow: row wrap;
     margin-top :5rem;
-    margin-bottom :5rem;
+    margin-bottom :15rem;
     
 }
 .topSelling_container h2{
     position: absolute;
-    top: 2rem;
+    top: 0rem;
     font-size: 30px;
 }
 .topSelling_container > span{
     border: 2px #911820 solid;
     position: absolute;
     width: 70px;
-    top: 4.5rem;
+    top: 2.5rem;
 }
 .topImgCon{
     display: flex;
@@ -32,6 +32,7 @@
     flex-flow: row wrap;
     position: absolute;
     /* left: 0; */
+    margin-top: 19rem;
 }
 .topImgCon > div{
     /* border: 2px solid #333; */
@@ -115,6 +116,7 @@ font-weight: 500;
     .topSelling_container{
         height: auto;
         margin-top: 26rem;
+        margin-bottom: -1rem;
     }
     .topSelling_container h2{
         position: absolute;
@@ -129,7 +131,7 @@ font-weight: 500;
         column-count: 2;
         column-gap: 5px;
         width: 100%;
-        margin-top: 3rem;
+        margin-top: 2rem;
         
     }
     .topImgCon > div{

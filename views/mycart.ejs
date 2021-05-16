@@ -3,11 +3,13 @@
 
 
 <div class="cart" style="overflow-x: auto;">
-    
-    <h2 id="table-header">My Shopping cart</h2>
+  
+  <h2 id="table-header">My Shopping cart</h2>
+  <form action="/users/cart" method="POST">
     <table class="cart-table"> 
     
     
+
       <thead>
           <tr>
             <td>s/n</td>
@@ -23,7 +25,6 @@
          </tr>
         </thead>       
                 
-
         <tbody>
 
         </tbody>
@@ -34,20 +35,38 @@
           </tr>
 
         </tfoot>
-               
-          
 
-          
-</table>
+        
+        
+        
+      </table>
+      <!-- <input type="hidden" name="userId" value="<ser.id %> " id=""> -->
+      <button> <a href="/">Continue shopping</a></button>
+      <% if(!user){ %> 
+      <p id="notLogging">Checkout</p>
+      <% }else{ %> 
+        <button type="submit" id="checkout">Checkout</button>
+
+        <% } %> 
+    </form>
     
-<!-- <div class="mytable">
+
+
+<div class="loginUser">
+  <div class="userLogin">
+  <P>Please login to checkout</P>
+  <div class="button">
+
+    <button id="removeSlideShow" type="submit">cancel</button>
+    <a href="/users/login">Login</a>
+  </div>
+</div>
+
+</div>
+  
 
 </div>
 
-<div >
-</div> -->
-    </div>
-<!-- </div> -->
 
 <script>
    function increase(){
@@ -89,6 +108,25 @@
         })
    }
     
+
+</script>
+
+<script>
+  let notLogging = document.getElementById("notLogging")
+  let removeSlideShow = document.getElementById("removeSlideShow")
+  let loginUser = document.querySelector(".loginUser")
+  console.log(removeSlideShow);
+  notLogging.addEventListener("click", (e) =>{
+    loginUser.classList.add("showLogin")
+
+
+  })
+  removeSlideShow.addEventListener("click", (e) =>{
+    loginUser.classList.remove("showLogin")
+
+
+
+  })
 </script>
 
 <%- include("./partials/_footer") %> 

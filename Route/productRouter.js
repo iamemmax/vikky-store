@@ -115,7 +115,7 @@ productRouter.post("/new", upload, async (req, res) =>{
 
 })
 
-productRouter.get("/shoe", async (req, res) =>{
+productRouter.get("/categories/shoe", async (req, res) =>{
     let products = await productSchema.find({categories:"shoe"})
 
    
@@ -130,13 +130,13 @@ productRouter.get("/shoe", async (req, res) =>{
       
 })
 
-productRouter.get("/wares",  async (req, res) =>{
+productRouter.get("/categories/fashion",  async (req, res) =>{
     let products = await productSchema.find({categories:"wares"})
 
     
 
-        res.render("categories/wares", {
-            title : "freaky-store || wares category",
+        res.render("categories/fashion", {
+            title : "freaky-store || fashion category",
             user:req.user,
             products,
             layout: "././layouts/search-category"
@@ -144,7 +144,7 @@ productRouter.get("/wares",  async (req, res) =>{
       
 
 })
-productRouter.get("/phone",  async (req, res) =>{
+productRouter.get("/categories/phone",  async (req, res) =>{
     let products = await productSchema.find({categories:"phone"})
 
    
@@ -158,7 +158,7 @@ productRouter.get("/phone",  async (req, res) =>{
       
 
 })
-productRouter.get("/computer", async (req, res) =>{
+productRouter.get("/categories/computer", async (req, res) =>{
     let products = await productSchema.find({categories:"computer"})
 
   
@@ -172,12 +172,92 @@ productRouter.get("/computer", async (req, res) =>{
       
 
 })
-productRouter.get("/electronic",  async (req, res) =>{
+productRouter.get("/categories/electronic",  async (req, res) =>{
     let products = await productSchema.find({categories:"electronic"})
 
     
         res.render("categories/electronic", {
             title : "freaky-store || electronics category",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+
+productRouter.get("/categories/small",  async (req, res) =>{
+    let products = await productSchema.find({sizes:"s"})
+
+    
+        res.render("sizes/small", {
+            title : "freaky-store || small search",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+
+productRouter.get("/categories/medium",  async (req, res) =>{
+    let products = await productSchema.find({sizes:"m"})
+
+    
+        res.render("sizes/medium", {
+            title : "freaky-store || medium search",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+productRouter.get("/categories/large",  async (req, res) =>{
+    let products = await productSchema.find({sizes:"l"})
+
+    
+        res.render("sizes/large", {
+            title : "freaky-store || large search",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+productRouter.get("/categories/xl",  async (req, res) =>{
+    let products = await productSchema.find({sizes:"xl"})
+
+    
+        res.render("sizes/xl", {
+            title : "freaky-store || xl search",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+productRouter.get("/categories/xxl",  async (req, res) =>{
+    let products = await productSchema.find({sizes:"xxl"})
+
+    
+        res.render("sizes/xxl", {
+            title : "freaky-store || xxl search",
+            user:req.user,
+            products,
+            layout: "././layouts/search-category"
+        })
+      
+
+})
+productRouter.get("/categories/xxxl",  async (req, res) =>{
+    let products = await productSchema.find({sizes:"xxxl"})
+
+    
+        res.render("sizes/xxxl", {
+            title : "freaky-store || xxxl search",
             user:req.user,
             products,
             layout: "././layouts/search-category"

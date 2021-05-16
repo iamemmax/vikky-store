@@ -100,9 +100,9 @@ const  displayCart = () =>{
         
         tr.innerHTML =  `   
         <td"></td>
-        <td>  <img src="${items.productImg}" alt=""> </td>
-        <td> <p>${items.productName}</p></td>
-        <td><p>$${items.productPrice}</p></td>
+        <td>  <img src="${items.productImg}" name="myfiles" alt=""> </td>
+        <td> <p name="productName">${items.productName}</p></td>
+        <td><p name="price">$${items.productPrice}</p></td>
            <td> <select name="color" id="">
         <option value="color" ${items.productColor == 'color' ? 'selected' : ""}>color</option>
         <option value="all" ${items.productColor == 'all' ? 'selected' : ""}>all</option>
@@ -114,7 +114,7 @@ const  displayCart = () =>{
         <option value="green" ${items.productColor == 'green' ? 'selected' : ""}>green</option>
         </select> </td>
        
-        <td> <p>${items.ProductSize}</p></td>
+        <td> <p name="amount">${items.ProductSize}</p></td>
         
         
         <td><input type="number"  value="${items.productQty}" name="quantity" class="show-count" id="qty"></td>
@@ -123,7 +123,12 @@ const  displayCart = () =>{
         <td> <p class="totalprice">$${items.totalPrice}</p></td>
         
         <td>  <button type="Button" class="removeButton"><i class="lni lni-close"></i></button></td>
-        <td><input type="hidden" value="${items.productId}" id="productId"> </td>   
+        <td><input type="hidden" name="productName" value="${items.productName}" id="productId"> </td>   
+        <td><input type="hidden" name="productId" value="${items.productId}" id="productId"> </td>   
+        <td><input type="hidden" name="price" value="${items.productPrice}" id="productId"> </td>   
+        <td><input type="hidden" name="productImg" value="${items.productImg}" id="productId"> </td>   
+        <td><input type="hidden" name="productSizes" value="${items.ProductSize}" id="productId"> </td>   
+        <td><input type="hidden" name="totalPrice" value="${items.totalPrice}" id="productId"> </td>   
         
                
                 `
@@ -139,28 +144,7 @@ displayCart()
 
 
 
-        // update total price
-        let grandtotal = document.querySelector(".total")
-
-
-        function grandTotal(){
-            let tot = 0
-            
-            
-            
-            let totalprice = document.querySelectorAll(".totalprice")
-            totalprice.forEach(addGrandTotal =>{
-                
-                grandtotalContent = Number(addGrandTotal.innerText.replace("$", ""))
-                tot += grandtotalContent
-                
-            })
-            console.log(tot);
-            
-            grandtotal.innerText = "$"+ tot
-        }
-
-        grandTotal()
+       
     
 
     
@@ -183,7 +167,7 @@ removeButton.forEach(removeBtn => {
                 window.location.reload()
                 
             })
-            updateQty()
+            // updateQty()
 
         })
         
@@ -195,26 +179,28 @@ removeButton.forEach(removeBtn => {
                 totalPrice.addEventListener("change", (e) =>{
                     let target = e.target.parentElement.parentElement
                     let priceContent = target.children[7]
-                    let productQty = target.children[6].children[0]
-                    let productId = target.children[2]
+                    let productQty = target.children[6].children[0].value
+                    let productId = target.children[9].children[0].value
+                    console.log(productId);
                 
                     // get items from storage
                     let cartItems = JSON.parse(localStorage.getItem("carts"))
                         cartItems.forEach(items =>{
-                            if(items.productName === productId.innerText){
+                            if(items.productId === productId){
                                 priceContent.innerHTML = "$" + Number(items.productPrice * e.target.value)
                                 productQty.value = e.target.value
-                                // pushProducts.push(items)  
-                                // localStorage.setItem("carts", JSON.stringify(pushProducts))
 
+                                
                                 
                                 if(isNaN(e.target.value) || e.target.value <= 0){
                                     e.target.value = 1
                                 }
                             }
+                            grandPrice();
+                            pushProducts.push(items)  
+                            localStorage.setItem("carts", JSON.stringify(pushProducts))
                         })
                         
-                        grandTotal()
                     })
                     
                 })
@@ -223,7 +209,25 @@ removeButton.forEach(removeBtn => {
         }
     updateQty()
 
-
-
+    
+    // update total price
+    
+    
+    let grandtotal = document.querySelector(".total")
+    function grandPrice(){
+    let tot = 0
+    
+    
+    
+    let totalprice = document.querySelectorAll(".totalprice")
+    totalprice.forEach(addGrandTotal =>{
         
+        grandtotalContent = Number(addGrandTotal.innerText.replace("$", ""))
+        tot += grandtotalContent
         
+    })
+    // console.log(tot);
+    
+    grandtotal.innerText = "$"+ tot
+}
+grandPrice()
