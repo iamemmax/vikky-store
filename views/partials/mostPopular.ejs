@@ -63,10 +63,12 @@
     const cartItem = document.querySelectorAll(".mycategory")
     const category = document.querySelector(".categories")
     
+    console.log(category);
     catBtn.forEach(categBtn =>{
         categBtn.addEventListener("click", (e)=>{
             category.querySelector(".active").classList.remove("active")
             categBtn.classList.add("active")
+            
 
            let cateAttribute = categBtn.getAttribute("data-name")
            
@@ -85,4 +87,5 @@
            })
         })
     })
+
 </script>
