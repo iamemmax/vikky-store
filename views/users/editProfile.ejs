@@ -44,22 +44,31 @@
                 <div class="editInfo">
                
                 <p> <i class="fas fa-map-marker-alt"></i> Address: 
-                  <span> <% if(user.address.length > 20){ %> 
-                    <%= user.address.substr(0, 20)%> ...
-                    <% }else{ %> 
-                      <%= user.address%>
-                    <% } %>  </span>  </p>
+
+                  <span> <% if(user.address != undefined || user.address != null) {%>  
+                    <% if(user.address.length > 20){ %> 
+                      <%= user.address.substr(0, 20)%> ...
+                      <% }else{ %> 
+                        <%= user.address%>
+                      <% } %> 
+                  <% } %> 
+                  
+                  </span>  </p>
                 <p> <i class="fas fa-flag"></i> Country: <span><%= user.country %></span>  </p>
                 <p> <i class="fas fa-map-marked-alt"></i> State: <span><%= user.state %></span>  </p>
                 <p> <i class="fas fa-location-arrow"></i> City: <span><%= user.city %>  </span>  </p>
                 <p> <i class="fas fa-map-marker"></i> Local Govt: <span><%= user.lg %>  </span>  </p>
                 <p> <i class="fas fa-map-marker"></i> Direction: <span>
                   
-                  <% if(user.direction.length > 20){ %> 
+                  <span> <% if(user.direction != undefined || user.direction != null) {%>  
+
+                <% if(user.direction.length > 20){ %> 
                     <%= user.direction.substr(0, 20)%> ...
                     <% }else{ %> 
-                      <%= user.direction%>
-                    <% } %>  </span>  </p>               
+                      <%= user.direction %>
+                    <% } %> 
+                    <% } %> 
+                  </span>  </p>               
                 <p> <i class="fas fa-map-pin"></i> zip-code: <span><%= user.zip %>  </span>  </p>
                 <p> <i class="fab fa-facebook-f"></i> facebook: <span style="text-transform: lowercase;"><%= user.facebook %>  </span>  </p>
 

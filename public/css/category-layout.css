@@ -50,9 +50,11 @@
     padding: 10px 30px;
 }
 .category_sidebar div p{
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     text-transform: uppercase;
+    text-align: left;
+    padding-bottom: 10px;
 }
 .category_sidebar div li{
     list-style: none;

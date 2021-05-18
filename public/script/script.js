@@ -18,6 +18,7 @@ addBtn.forEach(addToCartBtn =>{
 })
 
 function addtocart(e){
+    
     // get product info by clicking on the add to cart btn
 let productImg = e.target.parentElement.children[0].children[0].src;
 let productId = e.target.parentElement.children[3].value;
@@ -47,7 +48,7 @@ let product = {
 }
 
 
-
+console.log(product);
 let cartItems = JSON.parse(localStorage.getItem("carts"))
     if(cartItems === null){
         pushProducts.push(product)

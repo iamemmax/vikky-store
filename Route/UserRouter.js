@@ -233,21 +233,23 @@ UserRouter.post("/login", (req, res, next) =>{
         error.push({msg: "Please fill all field"})
         console.log( "Please fill all field")
        
-    }else{
+    }
 
         
-        function ValidateEmail(mail) 
-        {
-            if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
-            {
-                return (true)
-            }
-            error.push({msg: "You have entered an invalid email address!"})
-            return (false)
-        }
+     
+        //     function ValidateEmail(mail) {
         
-        ValidateEmail()
-    }
+        //     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
+        //     {
+        //         return (true)
+        //     }
+        //     error.push({msg: "You have entered an invalid email address!"})
+        //     return (false)
+        // }
+        
+        // ValidateEmail()
+        
+    
     
     if(error.length > 0){
         res.render("Login", {
@@ -338,7 +340,7 @@ UserRouter.get("/logout", auth, (req, res)=>{
 UserRouter.get("/dashboard/:id", auth, async (req, res) =>{
 
     
-        res.render("dashboard", {
+        res.render("./users/dashboard", {
             title: "Dashboard",
             user:req.user,
            
@@ -388,7 +390,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
             error.push({msg: "password not match"})  
         }
         if(error.length > 0){
-            res.render("change-pass", {
+            res.render("./users/change-pass", {
                 title:"change password",
                 user:req.user.id,
                 error,
@@ -440,7 +442,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
 
         let error =  []
        
-        res.render("edit", {
+        res.render("./users/edit", {
             title: "Edit",
             user:req.user,
             error
@@ -457,7 +459,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
         let {firstname, lastname, email, phone, dob, gender} = req.body
         if(!firstname || !lastname || !email || !phone || !gender){
             error.push({msg: "please filled all field"})
-            res.render("edit", {
+            res.render("./users/edit", {
                 title: "Edit Account",
                 user:req.user,
                  error,
@@ -491,7 +493,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
 UserRouter.get("/dashboard/:id/address", auth, async(req, res) =>{
     
    
-        res.render("address", {
+        res.render("./users/address", {
             title: "Edit Address",
             user:req.user,
           
@@ -537,7 +539,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
     UserRouter.get("/dashboard/:id/edit-profile", auth, async(req, res) =>{
 
         
-            res.render("editProfile", {
+            res.render("./users/editProfile", {
                 title: "Edit user",
                 user:req.user,
             
@@ -553,7 +555,7 @@ UserRouter.put("/dashboard/:id/address", async (req, res) =>{
     // upload profile image
     UserRouter.get("/dashboard/:id/upload-img", auth, async(req, res)=>{
         
-            res.render("profileImg", {
+            res.render("./users/profileImg", {
                 title: "freaky-store upload profile img",
                 user:req.user,
                 
