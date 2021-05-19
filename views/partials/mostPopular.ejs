@@ -23,9 +23,9 @@
             <div class="pro_img mycategory" data-name="<%= product.categories %>">
                 
                 <a href="/product/<%= product.slug %> ">
-                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="">
+                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
                     
-                    <h2><%= product.productName.substr(0,15) %> </h2>
+                    <h2 class="product-name"><%= product.productName.substr(0,15) %> </h2>
                 </a>
                 
                 <div class="rating">
@@ -35,15 +35,15 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p id="amount">$<%= product.amount %> </p>
+                <p id="amount" class="product-price">&#8358 <%= product.amount %> </p>
           
-
+             
         
-                        <input type="hidden"    value="<%= product.id %> ">
+                        <input type="hidden"    value="<%= product.id %> " class="product-id">
                         <input type="hidden"  name="price"  value="<%= product.amount %> ">
-                        <input type="hidden" name="quantity" value="1" id="">
-                        <input type="hidden" name="sizes" value="<%= product.sizes %>" id="">
-                        <input type="hidden" name="color" value="<%= product.color %>" id="">
+                        <input type="hidden" name="quantity" value="1" id="" class="product-quantity">
+                        <input type="hidden" name="sizes" value="<%= product.sizes %>" id="" class="product-size">
+                        <input type="hidden" name="color" value="<%= product.color %>" id="" class="product-color">
                         
                         <input type="hidden" name="categories" value="<%= product.categories %>" id="">
                         <button type="button" id="button" class="addBtn">Add to cart</button>
@@ -54,6 +54,75 @@
 </div>
 </div>
 
+
+
+<!-- mycart items -->
+<div class="cart_conntaianer">
+    <div class="cart" style="overflow-x: auto;">
+  
+    <h2 id="table-header">My Shopping cart</h2>
+    <form action="/users/cart" method="POST">
+      <table class="cart-table"> 
+      
+      
+  
+        <thead>
+            <tr>
+              <td>s/n</td>
+              <td>img</td>
+              <td id="name">name</td>
+              <td>Amt</td>
+              <td>color</td>
+              <td>size</td>
+              <td>Qty</td>
+              <td>Total price</td>
+  
+              <td>remove</td>
+           </tr>
+          </thead>       
+                  
+          <tbody>
+  
+          </tbody>
+    
+          <tfoot>
+            <tr>
+                <td colspan="10">Grand Total <span class="total"></span></td>
+            </tr>
+  
+          </tfoot>
+  
+          
+          
+          
+        </table>
+        <!-- <input type="hidden" name="userId" value="<ser.id %> " id=""> -->
+        <button> <a href="/">Continue shopping</a></button>
+        <% if(!user){ %> 
+        <p id="notLogging">Checkout</p>
+        <% }else{ %> 
+          <button type="submit" id="checkout">Checkout</button>
+  
+          <% } %> 
+      </form>
+      
+  
+  
+  <div class="loginUser">
+    <div class="userLogin">
+    <P>Please login to checkout</P>
+    <div class="button">
+  
+      <button id="removeSlideShow" type="submit">cancel</button>
+      <a href="/users/login">Login</a>
+    </div>
+  </div>
+  
+  </div>
+    
+  
+  </div>
+</div>
 
 
 
@@ -88,4 +157,86 @@
         })
     })
 
+
+
+
+
 </script>
+<!-- // my shopping cart script -->
+
+
+<script>
+    function increase(){
+     const addUp = document.querySelectorAll(".add")
+     const subUp = document.querySelectorAll(".sub")
+     const qty = document.querySelector("#qty")
+     
+     addUp.forEach(add =>{
+         add.addEventListener("click", (e)=>{
+             
+             let input = e.target.parentElement.children[1];
+              let inputValue = input.value
+              let newValue = parseInt(inputValue) + 1
+              input.value = newValue
+             
+ 
+            })
+            
+             
+             
+         })
+ 
+         subUp.forEach(sub =>{
+             sub.addEventListener("click", (e)=>{
+            
+          let input = e.target.parentElement.children[1];
+          let inputValue = input.value
+          let newValue = parseInt(inputValue) - 1
+          input.value = newValue
+                 
+          if(newValue < 1){
+          input.value = 1
+ 
+          }
+            })
+            
+             
+             
+         })
+    }
+     
+ 
+ </script>
+ 
+ <script>
+   let notLogging = document.getElementById("notLogging")
+   let removeSlideShow = document.getElementById("removeSlideShow")
+   let loginUser = document.querySelector(".loginUser")
+   console.log(removeSlideShow);
+   notLogging.addEventListener("click", (e) =>{
+     loginUser.classList.add("showLogin")
+ 
+ 
+   })
+   removeSlideShow.addEventListener("click", (e) =>{
+     loginUser.classList.remove("showLogin")
+ 
+ 
+ 
+   })
+ </script>
+
+
+
+
+<!-- show cart items -->
+<script>
+    let cartNumber = document.querySelector(".cartNumber")
+    let cart_conntaianer = document.querySelector(".cart_conntaianer")
+    cartNumber.addEventListener("click", (e) =>{
+        cart_conntaianer.classList.toggle("showLogin")
+            
+        })
+    
+    
+     </script>

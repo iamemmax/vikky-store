@@ -5,7 +5,7 @@
 <div class="cart" style="overflow-x: auto;">
   
   <h2 id="table-header">My Shopping cart</h2>
-  <form action="/users/cart" method="POST">
+  <!-- <form action="/users/cart" method="POST"> -->
     <table class="cart-table"> 
     
     
@@ -48,7 +48,7 @@
         <button type="submit" id="checkout">Checkout</button>
 
         <% } %> 
-    </form>
+    <!-- </form> -->
     
 
 
@@ -69,49 +69,49 @@
 
 
 <script>
-   function increase(){
-    const addUp = document.querySelectorAll(".add")
-    const subUp = document.querySelectorAll(".sub")
-    const qty = document.querySelector("#qty")
+  //  function increase(){
+  //   const addUp = document.querySelectorAll(".add")
+  //   const subUp = document.querySelectorAll(".sub")
+  //   const qty = document.querySelector("#qty")
     
-    addUp.forEach(add =>{
-        add.addEventListener("click", (e)=>{
+  //   addUp.forEach(add =>{
+  //       add.addEventListener("click", (e)=>{
             
-            let input = e.target.parentElement.children[1];
-             let inputValue = input.value
-             let newValue = parseInt(inputValue) + 1
-             input.value = newValue
+  //           let input = e.target.parentElement.children[1];
+  //            let inputValue = input.value
+  //            let newValue = parseInt(inputValue) + 1
+  //            input.value = newValue
             
 
-           })
+  //          })
            
             
             
-        })
+  //       })
 
-        subUp.forEach(sub =>{
-            sub.addEventListener("click", (e)=>{
+  //       subUp.forEach(sub =>{
+  //           sub.addEventListener("click", (e)=>{
            
-         let input = e.target.parentElement.children[1];
-         let inputValue = input.value
-         let newValue = parseInt(inputValue) - 1
-         input.value = newValue
+  //        let input = e.target.parentElement.children[1];
+  //        let inputValue = input.value
+  //        let newValue = parseInt(inputValue) - 1
+  //        input.value = newValue
                 
-         if(newValue < 1){
-         input.value = 1
+  //        if(newValue < 1){
+  //        input.value = 1
 
-         }
-           })
+  //        }
+  //          })
            
             
             
-        })
-   }
-    
-
-</script>
-
-<script>
+  //       })
+  //  }
+  
+  
+  
+ </script> 
+  <!-- <script>
   let notLogging = document.getElementById("notLogging")
   let removeSlideShow = document.getElementById("removeSlideShow")
   let loginUser = document.querySelector(".loginUser")
@@ -127,6 +127,6 @@
 
 
   })
-</script>
+</script> -->
 
 <%- include("./partials/_footer") %> 
