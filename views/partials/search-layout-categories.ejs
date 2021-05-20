@@ -1,29 +1,13 @@
-<div class="mostPouplar_container">
-    <h2>Most Popular</h2>
-    <span></span>
-
- 
-        
-    <div class="categories">
-
-        <div class="cart active" data-name="all">All</div> 
-        <div class="cart" data-name="shoe">Shoe</div> 
-        <div class="cart" data-name="wares">Wares</div> 
-        <div class="cart" data-name="computer">computer</div> 
-        <div class="cart" data-name="phone">Phones</div> 
-        <div class="cart" data-name="electronic">electronic</div> 
+<div class="mostPouplar_container myshoe" style="padding: 0;">
+   
     
-</div>
-    
-
-    <div class="popular">
-
+    <div class="popular " style=" width: 100%; margin: 0;padding: 0;">
         <% products.forEach(product => { %>
             
             <div class="pro_img mycategory" data-name="<%= product.categories %>">
                 
                 <a href="/product/<%= product.slug %> ">
-                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
+                    <img src="/img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
                     
                     <h2 class="product-name"><%= product.productName.substr(0,15) %> </h2>
                 </a>
@@ -123,4 +107,5 @@
   
   </div>
 </div>
+
 

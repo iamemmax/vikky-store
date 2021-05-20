@@ -1,6 +1,5 @@
 <div class="mostPouplar_container">
-    <h2>Most Popular</h2>
-    <span></span>
+    
 
  
         
@@ -23,7 +22,7 @@
             <div class="pro_img mycategory" data-name="<%= product.categories %>">
                 
                 <a href="/product/<%= product.slug %> ">
-                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
+                    <img src="/img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
                     
                     <h2 class="product-name"><%= product.productName.substr(0,15) %> </h2>
                 </a>
@@ -123,4 +122,6 @@
   
   </div>
 </div>
+
+
 

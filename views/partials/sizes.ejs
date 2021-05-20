@@ -1,29 +1,13 @@
-<div class="mostPouplar_container">
-    <h2>Most Popular</h2>
-    <span></span>
-
- 
-        
-    <div class="categories">
-
-        <div class="cart active" data-name="all">All</div> 
-        <div class="cart" data-name="shoe">Shoe</div> 
-        <div class="cart" data-name="wares">Wares</div> 
-        <div class="cart" data-name="computer">computer</div> 
-        <div class="cart" data-name="phone">Phones</div> 
-        <div class="cart" data-name="electronic">electronic</div> 
+<div class="mostPouplar_container myshoe" style="padding: 0;">
+   
     
-</div>
-    
-
-    <div class="popular">
-
+    <div class="popular " style=" width: 100%; margin: 0;padding: 0;">
         <% products.forEach(product => { %>
             
             <div class="pro_img mycategory" data-name="<%= product.categories %>">
                 
                 <a href="/product/<%= product.slug %> ">
-                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
+                    <img src="/img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
                     
                     <h2 class="product-name"><%= product.productName.substr(0,15) %> </h2>
                 </a>
@@ -54,6 +38,49 @@
 </div>
 </div>
 
+
+<div class="mostPouplar_container myshoe" style="padding: 0;">
+   
+    
+    <div class="popular " style=" width: 100%; margin: 0;padding: 0;">
+        
+
+        <% products.forEach(product => { %>
+            
+            <div class="pro_img mycategory" data-name="<%= product.categories %>">
+                
+                <a href="/product/<%= product.slug %> ">
+                    <img src="/img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
+
+                    
+                    <h2><%= product.productName.substr(0,15) %> </h2>
+                </a>
+                
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p id="amount" class="product-price">&#8358 <%= product.amount %> </p>
+
+          
+
+                <input type="hidden"    value="<%= product.id %> " class="product-id">
+                <input type="hidden"  name="price"  value="<%= product.amount %> ">
+                <input type="hidden" name="quantity" value="1" id="" class="product-quantity">
+                <input type="hidden" name="sizes" value="<%= product.sizes %>" id="" class="product-size">
+                <input type="hidden" name="color" value="<%= product.color %>" id="" class="product-color">
+                
+                <input type="hidden" name="categories" value="<%= product.categories %>" id="">
+                <button type="button" id="button" class="addBtn">Add to cart</button>
+                
+                        
+            </div>
+            <% }) %>       
+</div>
+</div>
 
 
 <!-- mycart items -->
@@ -123,4 +150,11 @@
   
   </div>
 </div>
+
+
+
+
+
+
+
 

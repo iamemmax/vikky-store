@@ -12,12 +12,12 @@ function ready(){
     });
     loadCart()
     removeCart()
-    updateCartQty()
+    // updateCartQty()
 }
 
 let pushProduct = [];
 
-function addItemsToCart (productInfo){
+function addItemsToCart (event){
     let target = event.target.parentElement
     let itemImg = target.getElementsByClassName("product-img")[0].src
     let itemName = target.getElementsByClassName("product-name")[0].innerText
@@ -197,7 +197,10 @@ qty.forEach(itemQtys =>{
         if(isNaN(event.target.value) || event.target.value <= 0){
             event.target.value = 1
         }
+
         let target = event.target.parentElement.parentElement
+        let productId = target.getElementsByClassName("productId")[0].value
+
         let quantity = target.getElementsByClassName("show-count")[0].value
      
 
@@ -206,9 +209,17 @@ qty.forEach(itemQtys =>{
         total  =  parseFloat(price * quantity)
     
         let totalPrice = target.getElementsByClassName("totalprice")[0].innerText = "\u20A6" + total
+       
+        let cartItems = JSON.parse(localStorage.getItem("carts"))
+        if(cartItems){
+            cartItems.forEach(mycart =>{
+                if(mycart.itemId == productId){
+                   mycart.itemQty = event.target.value
+                }
+            })
+            localStorage.setItem("carts", JSON.stringify(cartItems))
+        }
         
-        
-
        
            
 
@@ -236,36 +247,36 @@ function grandTotal(){
     }
  
 
-    function updateCartQty(){
-        let qty = document.querySelectorAll(".show-count")
-        qty.forEach(itemqty =>{
-            itemqty.addEventListener("change", (e)=>{
+    // function updateCartQty(){
+    //     let qty = document.querySelectorAll(".show-count")
+    //     qty.forEach(itemqty =>{
+    //         itemqty.addEventListener("change", (e)=>{
 
                 
                 
-                let target = e.target.parentElement.parentElement.parentElement
-                // let quantity = target.getElementsByClassName("show-count")
+    //             let target = e.target.parentElement.parentElement.parentElement
+    //             // let quantity = target.getElementsByClassName("show-count")
 
-                let productIds = target.querySelectorAll(".productId")
-                productIds.forEach(productId =>{
+    //             let productIds = target.querySelectorAll(".productId")
+    //             productIds.forEach(productId =>{
                     
                     
-                    let products = getProductFromCart()
-                    if(e.target.value > 1){
+    //                 let products = getProductFromCart()
+    //                 if(e.target.value > 1){
                         
-                        products.forEach(product =>{
-                         if(product.itemId == productId.value){
-                        return    product.itemQty = e.target.value
+    //                     products.forEach(product =>{
+    //                      if(product.itemId != productId.value){
+    //                     return    product.itemQty = e.target.value
                         
-                    }
-                })       
+    //                 }
+    //             })       
                 
                 
-            }
-            localStorage.setItem("carts", JSON.stringify(product))
+    //             localStorage.setItem("carts", JSON.stringify(products))
+    //         }
                     
-                })
-            })
+    //             })
+    //         })
             
-        })
-    }
+    //     })
+    // }
