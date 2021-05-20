@@ -12,6 +12,7 @@ function ready(){
     });
     loadCart()
     removeCart()
+    updateCartQty()
 }
 
 let pushProduct = [];
@@ -121,33 +122,7 @@ function loadCart(){
 
  
 
-//  function removeCart(){
-//     let removeCart = document.querySelectorAll(".removeButton")
-//     removeCart.forEach(removeBtn =>{
-//         console.log(removeBtn);
-//         removeBtn.addEventListener("click", removeCartItems)
-//     })
-    
-// }
-// // 09079345111
-
-// function removeCartItems(){
-//          let target =  event.target.parentElement.parentElement.parentElement
-      
-//     target.remove()
-//     let products = getProductFromCart()
-//     let updateProduct = products.filter(product =>{
-//         console.log(product);
-//         return product.itemId == parseInt(event.target.itemId)
-
-//     })
-//     localStorage.setItem("carts", JSON.stringify(updateProduct))
-     
-        
-//         updateCart()
-//         grandTotal()
-      
-// }
+ // // 09079345111
 
 // get total number of qty in the cart
 
@@ -157,11 +132,15 @@ function loadCart(){
 function getCartNumber(){
     let cartNumber = document.querySelector(".cartNumber span")
     let qty = document.querySelectorAll(".show-count")
-    
     let total = 0
-       qty.forEach(itemQty =>{
-          total += Number(itemQty.value)
-       })
+    
+let cartItems = JSON.parse(localStorage.getItem("carts"))
+ let  = cartItems.filter(carts =>{
+     console.log(carts.itemQty.length);
+     total += parseFloat(carts.itemQty.length)
+ })
+       
+     
        cartNumber.innerText = total
 
 
@@ -178,7 +157,7 @@ function getCartNumber(){
 function removeCart(){
     let removeCart = document.querySelectorAll(".remove-Button")
     removeCart.forEach(removeBtn =>{
-        console.log(removeBtn);
+        // console.log(removeBtn);
         removeBtn.addEventListener("click", removeCartItems)
     })
 }
@@ -187,7 +166,7 @@ function removeCart(){
 function removeCartItems(e){
     let target =  e.target.parentElement.parentElement.parentElement
     let productId = target.getElementsByClassName("productId")[0].value
-    console.log(productId);
+    // console.log(productId);
    target.remove()
 let products = getProductFromCart()
 let updateProduct = products.filter(product =>{
@@ -198,7 +177,7 @@ localStorage.setItem("carts", JSON.stringify(updateProduct))
    
    updateCart()
    grandTotal()
- 
+   getCartNumber()
 }
 
 // update cartqty
@@ -214,12 +193,13 @@ qty.forEach(itemQtys =>{
 }
 
 
-    function changeCartNumber(){
+    function changeCartNumber(event){
         if(isNaN(event.target.value) || event.target.value <= 0){
             event.target.value = 1
         }
         let target = event.target.parentElement.parentElement
         let quantity = target.getElementsByClassName("show-count")[0].value
+     
 
         let price = target.getElementsByClassName("price")[0].innerText.replace("\u20A6", "") 
 
@@ -227,14 +207,16 @@ qty.forEach(itemQtys =>{
     
         let totalPrice = target.getElementsByClassName("totalprice")[0].innerText = "\u20A6" + total
         
-    
+        
 
-  
+       
+           
 
    
     // let myprice = itemprice   
     
     grandTotal()
+    getCartNumber()
 
 }
 
@@ -247,9 +229,43 @@ function grandTotal(){
           
             tt = Number(productPrice.innerText.replace("\u20A6", ""))
             total += tt
-            console.log(total);
+            
         })
        
         cartTotal.innerText = "\u20A6"+ total
     }
  
+
+    function updateCartQty(){
+        let qty = document.querySelectorAll(".show-count")
+        qty.forEach(itemqty =>{
+            itemqty.addEventListener("change", (e)=>{
+
+                
+                
+                let target = e.target.parentElement.parentElement.parentElement
+                // let quantity = target.getElementsByClassName("show-count")
+
+                let productIds = target.querySelectorAll(".productId")
+                productIds.forEach(productId =>{
+                    
+                    
+                    let products = getProductFromCart()
+                    if(e.target.value > 1){
+                        
+                        products.forEach(product =>{
+                         if(product.itemId == productId.value){
+                        return    product.itemQty = e.target.value
+                        
+                    }
+                })       
+                
+                
+            }
+            localStorage.setItem("carts", JSON.stringify(product))
+                    
+                })
+            })
+            
+        })
+    }
