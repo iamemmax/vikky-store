@@ -96,17 +96,17 @@ UserRouter.post("/register", (req, res) =>{
             }
             
             
-            function ValidateEmail(mail) 
-            {
-             if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
-              {
-                return (true)
-              }
-              error.push({msg: "You have entered an invalid email address!"})
-                return (false)
-            }
+            // function ValidateEmail(mail) 
+            // {
+            //  if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
+            //   {
+            //     return (true)
+            //   }
+            //   error.push({msg: "You have entered an invalid email address!"})
+            //     return (false)
+            // }
             
-            ValidateEmail()
+            // ValidateEmail()
             // check if email exist
        User.findOne({email:email}, (err, result) =>{
            if(err) throw err
