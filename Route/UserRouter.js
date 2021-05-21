@@ -241,7 +241,7 @@ UserRouter.post("/login", (req, res, next) =>{
         
         //     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
         //     {
-        //         return (true)
+        //         return (true) 
         //     }
         //     error.push({msg: "You have entered an invalid email address!"})
         //     return (false)

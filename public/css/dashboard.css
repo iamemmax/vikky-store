@@ -406,3 +406,63 @@ body{
 
     
 }
+
+
+
+
+
+
+.uploadImg{
+    position: relative;
+    width: 400px;
+    padding: 10px;
+    margin: 0px auto !important;
+    margin-top: 3rem !important;
+    border: 2px solid #eee;
+    box-shadow: 1px 1px 1px 2px #eee;
+    height: 200px !important;
+}
+
+.uploadImg h2{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.uploadImg form{
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    position: relative; 
+}
+.uploadImg form input[type="file"]{
+    width: 100%;
+    padding: 10px;
+    background-color: #eee;
+}
+.form-button{
+    display: flex;
+    /* width: ; */
+    /* padding: 10px; */
+    margin-top: 20px;
+    justify-content: space-around;
+}
+.form-button button{
+    border: none;
+    outline: none;
+    width: 180px;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #b92933;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+.form-button .remove{
+    background-color: #333;
+}

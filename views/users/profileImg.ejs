@@ -1,11 +1,14 @@
+
 <div class="uploadImg">
     <h2>Upload profile Img</h2>
     <form action="/users/dashboard/<%= user.id %>/upload-img?_method=PUT" method="POST" enctype="multipart/form-data">
         <input type="file" name="userImg">
+        <div class="form-button">
         <button type="submit">Upload</button>
     </form>
     <form action="/users/dashboard/<%= user.id %>/r-img?_method=PUT" method="POST" enctype="multipart/form-data">
 
-        <button type="submit">Remove</button>
-        </form>
+        <button type="submit" class="remove">Remove</button>
+        </form></div>
 </div>
+
