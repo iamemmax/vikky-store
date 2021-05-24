@@ -95,17 +95,17 @@ let error = []
        
    
 })
+//   sk_live_3e4e523e433f60e0bd727d466f32ec5be694556c
 app.post("/", (req, res) =>{
-  
-  axios.post("https://api.paystack.co/transaction/initialize", {
-     data:{
+    axios.post("https://api.paystack.co/transaction/initialize", {
+        data:{
         "email": req.body.email,
         "amount": "500000",
         "currency": "NGN",
         "metadata": {
              "custom_fields": [
                 {
-                    Authorization: 'Bearer sk_live_3e4e523e433f60e0bd727d466f32ec5be694556c',
+                    Authorization: 'Bearer ',
                     'Content-Type': 'application/json',
                     "display_name":"mobile number",
                     "variable_name": "mobile number",

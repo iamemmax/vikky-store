@@ -1,18 +1,18 @@
 <div class="singleProduct">
     <div class="showImg">
         <div class="singleImg">
-        <img src="../img/upload/<%= single.myfiles[0].filename %> " alt="<%= single.myfiles[0].filename %>" id="show_img">
+        <img src="../img/upload/<%= single.myfiles[0].filename %> " alt="<%= single.myfiles[0].filename %>" id="show_img" class="product-img">
         </div>
     <div class="selectImg">
         <% single.myfiles.map(selectedImg =>{ %>
-            <img src="../img/upload/<%= selectedImg.filename %> " class="select_img" alt="<%= selectedImg.filename %> ">
+            <img src="../img/upload/<%= selectedImg.filename %> " class="select_img" alt="<%= selectedImg.filename %> " class="product-img">
             
             <%  }) %> 
     </div>
     </div>
 
     <div class="productInfo">
-        <h2 id="title"><%= single.productName %> </h2>
+        <h2 id="title" class="product-name"><%= single.productName %> </h2>
         <div class="rating">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -21,16 +21,14 @@
             <i class="fas fa-star"></i>
         </div>
         <div class="amount">
-           <h3>&#x20A6<span><%=single.amount %></span></h3> 
+           <h3 class="product-price">&#x20A6<span><%=single.amount %></span></h3> 
         </div>
         <!-- <p><= single.description %> </p> -->
         <p>Brand:<span><%= single.brand %> </span></p>
 
         <p>Color:<span><%= single.color %> </span></p> 
     
-        <form action="/users/cart/<%= single.id %> " method="POST">
-            
-           
+       
               <div class="quantity">
                 
                 <p>quantity : </p>  
@@ -117,8 +115,8 @@
         <input type="hidden" value="<%= single.color %> " name="color" id="">
         
         <div class="submitBtn">
-            <button type="submit">Add to Cart</button>
-        </form>
+            <button type="submit" class="addBtn">Add to Cart</button>
+        
 
 
             <!-- <button type="submit">Buy Now</button> -->
@@ -230,7 +228,7 @@
             
             let input = e.target.parentElement.children[1];
              let inputValue = input.value
-             let newValue = parseInt(inputValue) + 1
+             let newValue = parseInt(inputValue) +=1
              input.value = newValue
             
 
@@ -245,7 +243,7 @@
            
          let input = e.target.parentElement.children[1];
          let inputValue = input.value
-         let newValue = parseInt(inputValue) - 1
+         let newValue = parseInt(inputValue) -= 1
          input.value = newValue
                 
          if(newValue < 1){
