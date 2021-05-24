@@ -1,18 +1,18 @@
 <div class="singleProduct">
     <div class="showImg">
         <div class="singleImg">
-        <img src="../img/upload/<%= single.myfiles[0].filename %> " alt="<%= single.myfiles[0].filename %>" id="show_img" class="product-img">
+        <img src="../img/upload/<%= single.myfiles[0].filename %> " alt="<%= single.myfiles[0].filename %>" id="show_img">
         </div>
     <div class="selectImg">
         <% single.myfiles.map(selectedImg =>{ %>
-            <img src="../img/upload/<%= selectedImg.filename %> " class="select_img" alt="<%= selectedImg.filename %> " class="product-img">
+            <img src="../img/upload/<%= selectedImg.filename %> " class="select_img" alt="<%= selectedImg.filename %> ">
             
             <%  }) %> 
     </div>
     </div>
 
     <div class="productInfo">
-        <h2 id="title" class="product-name"><%= single.productName %> </h2>
+        <h2 id="title"><%= single.productName %> </h2>
         <div class="rating">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -21,14 +21,16 @@
             <i class="fas fa-star"></i>
         </div>
         <div class="amount">
-           <h3 class="product-price">&#x20A6<span><%=single.amount %></span></h3> 
+           <h3>&#x20A6<span><%=single.amount %></span></h3> 
         </div>
         <!-- <p><= single.description %> </p> -->
         <p>Brand:<span><%= single.brand %> </span></p>
 
         <p>Color:<span><%= single.color %> </span></p> 
     
-       
+        <form action="/users/cart/<%= single.id %> " method="POST">
+            
+           
               <div class="quantity">
                 
                 <p>quantity : </p>  
@@ -115,8 +117,8 @@
         <input type="hidden" value="<%= single.color %> " name="color" id="">
         
         <div class="submitBtn">
-            <button type="submit" class="addBtn">Add to Cart</button>
-        
+            <button type="submit">Add to Cart</button>
+        </form>
 
 
             <!-- <button type="submit">Buy Now</button> -->
@@ -218,133 +220,5 @@
 </div>
 
 
-<script>
-    const addUp = document.querySelectorAll(".add")
-    const subUp = document.querySelectorAll(".sub")
-    const qty = document.querySelector("#qty")
-    
-    addUp.forEach(add =>{
-        add.addEventListener("click", (e)=>{
-            
-            let input = e.target.parentElement.children[1];
-             let inputValue = input.value
-             let newValue = parseInt(inputValue) +=1
-             input.value = newValue
-            
-
-           })
-           
-            
-            
-        })
-
-        subUp.forEach(sub =>{
-            sub.addEventListener("click", (e)=>{
-           
-         let input = e.target.parentElement.children[1];
-         let inputValue = input.value
-         let newValue = parseInt(inputValue) -= 1
-         input.value = newValue
-                
-         if(newValue < 1){
-         input.value = 1
-
-         }
-           })
-           
-            
-            
-        })
-
-
-        const infoBtns = document.querySelectorAll(".des1")
-        const showInfos = document.querySelectorAll(".showInfo")
-        const info = document.querySelector(".infoBtn")
-       
-
-      
-        window.onload=function(){
-  document.querySelector(".description").click();
-};
-        infoBtns.forEach(infoBtn =>{
-            infoBtn.addEventListener("click", (e) =>{
-                info.querySelector(".active").classList.remove("active")
-                infoBtn.classList.add("active")
-                showInfos.forEach(showInfo =>{
-                    let infoBtnAttr = infoBtn.getAttribute("data-select")
-                    let showInfoAttr = showInfo.getAttribute("data-select")
-
-                    if(infoBtnAttr == showInfoAttr || infoBtnAttr === "all"){
-                        showInfo.classList.remove("hide")
-                        showInfo.classList.add("show")
-                    }
-                    else{
-                        showInfo.classList.remove("show")
-                        showInfo.classList.add("hide")
-                    }
-                    // if(infoBtnAttr == "all"){
-                    //     console.log(all);
-                    // }
-
-                })
-            })
-        })
-
-
-
-        const liInfo = document.querySelectorAll("li")
-        const newInfo = document.querySelectorAll(".des")
-        const descIcon = document.querySelector("#descIcon")
-        const descBtn = document.querySelector(".descriptions")
-        const shipBtn = document.querySelector(".shippings")
-        const shipIcon = document.querySelector(".ship")
-        const returnBtn = document.querySelector(".returns")
-        const waraBtn = document.querySelector(".warantys")
-        const waraIcon = document.querySelector("#wara")
-        const returnIcon = document.querySelector("#return")
-        const revIcon = document.querySelector("#rew")
-        const revBtn = document.querySelector(".reviews")
-        
- 
-        
-        const newIcon = document.querySelectorAll(".showProductInfoOnmobile i")
-
-        liInfo.forEach(eachLi =>{
-            eachLi.addEventListener("click", (e) =>{
-                newInfo.forEach(showMobile =>{
-                    newIcon.forEach(changeIcon =>{
-
-                        let mobileSelect = eachLi.getAttribute("data-select")  
-                        let newAttr  = showMobile.getAttribute("data-select")
-                        let changeAttr  = showMobile.getAttribute("data-select")
-                        
-                        if(mobileSelect === newAttr){
-                            showMobile.classList.toggle("showInfo")
-                        }
-                       
-                        
-                    })
-                    
-                })
-            })
-        })
-        
-        descBtn.addEventListener("click", (e) =>{
-                   descIcon.classList.toggle("fa-minus")     
-            })
-
-            shipBtn.onclick =()=>{
-                shipIcon.classList.toggle("fa-minus")
-            }
-            waraBtn.onclick =()=>{
-                waraIcon.classList.toggle("fa-minus")
-            }
-            returnBtn.onclick =()=>{
-                returnIcon.classList.toggle("fa-minus")
-            }
-            revBtn.onclick =()=>{
-                revIcon.classList.toggle("fa-minus")
-            }
-</script>
 
 

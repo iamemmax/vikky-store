@@ -192,7 +192,7 @@ body{
     }
     .logo a, h1{
         
-        font-size: 25px;
+        font-size: 20px;
        
     }
 
@@ -230,7 +230,7 @@ body{
       }
     .container  .last {
         position: absolute;
-        right: 7rem;
+        right: 5rem;
         /* background-color: #ff4a57; */
         padding: 6px 0px;
         width: 100px;
