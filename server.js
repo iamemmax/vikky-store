@@ -15,9 +15,10 @@ const productSchema = require("./model/productSchema")
 const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
 const Layout = require("express-ejs-layouts")
-const { request } = require("http")
-
+// const { request } = require("http")
+const axios = require("axios")
 const app = express()
+
 
 
 
@@ -94,6 +95,42 @@ let error = []
        
    
 })
+app.post("/", (req, res) =>{
+  
+  axios.post("https://api.paystack.co/transaction/initialize", {
+     data:{
+        "email": req.body.email,
+        "amount": "500000",
+        "currency": "NGN",
+        "metadata": {
+             "custom_fields": [
+                {
+                    Authorization: 'Bearer sk_live_3e4e523e433f60e0bd727d466f32ec5be694556c',
+                    'Content-Type': 'application/json',
+                    "display_name":"mobile number",
+                    "variable_name": "mobile number",
+                    "value": req.body.phone,
+
+                }
+            ],
+            
+               
+              
+        }
+     },
+    
+     
+ }).then(res => console.log(res.data))
+ .catch(err => console.log(err))
+})
+
+
+
+
+
+
+
+
 
 app.get("/:q",  async(req, res) =>{
    let query = req.query.q

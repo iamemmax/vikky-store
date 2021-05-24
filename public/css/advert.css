@@ -5,7 +5,7 @@
     background-size: cover;
     background-position: top center;
     background-blend-mode: color;
-    height: 300px;
+    height: 350px;
     opacity: .9;
     position: relative;
     display: flex;
@@ -50,6 +50,7 @@
     line-height: 27px;
     color: #fff;
     opacity: .6;
+    text-align: left;
 }
 .Top_advert_container button{
     width: 170px;

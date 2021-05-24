@@ -15,11 +15,13 @@
     top: 0rem;
     font-size: 30px;
 }
-.topSelling_container > span{
-    border: 2px #911820 solid;
+.topSelling_container > #span{
+    border: 1px #911820 solid;
     position: absolute;
     width: 70px;
     top: 2.5rem;
+    padding: none !important;
+  
 }
 .topImgCon{
     display: flex;
@@ -47,8 +49,11 @@
     border-radius: 5px;
     flex-direction: column;
     box-shadow: 0px 0px 2px #ecebebd5;
+    position: relative;
+    border-radius:10px;
     
 }
+
 .topImgCon div  img{
     width: 180px;
     height: 180px;
@@ -56,7 +61,7 @@
 
 }
 
-.topImgCon  .moreInfo{
+.topImgCon  div :is(p, button){
     display: none;
     border:none;
 }
@@ -67,6 +72,7 @@
 }
 .topImgCon > div h3{
     font-weight: 500;
+    text-align: center;
     font-size: 16px;
     text-transform: capitalize;
     transition:transform .7s ease;
@@ -79,7 +85,7 @@ font-weight: 500;
 
 }
 
-.topImgCon > div:hover .moreInfo{
+.topImgCon > div:hover :is(p, button){
     display: block;
     margin-top: 0rem;
     width: 60%;
@@ -89,15 +95,15 @@ font-weight: 500;
     transition: all .6s ease;
     box-shadow:unset;
 }
-.moreInfo p{
+.topImgCon   p{
     font-weight: 600;
     font-size: 16px;
     padding: 10px;
     padding-bottom: 20px;
 }
-.moreInfo button{
+.topImgCon  button{
     background-color: #911820;
-    padding: 10px;
+    padding: 10px !important;
     text-decoration: none;
     font-size: 16px;
     color: #eee;
@@ -107,8 +113,9 @@ font-weight: 500;
     border: none;
     cursor: pointer;
     transition:background .5s ease;
+    width: 120px !important;
 }
-.moreInfo button:hover{
+.topImgCon div button:hover{
     background-color: #333;
     color: #eee;
 }
@@ -130,7 +137,7 @@ font-weight: 500;
         top: -20.4rem;
     }
     .topImgCon{
-        column-count: 2;
+        /* column-count: 2; */
         column-gap: 5px;
         width: 100%;
         margin-top: 3rem;
@@ -138,7 +145,7 @@ font-weight: 500;
     }
     .topImgCon > div{
         /* border: 2px solid red; */
-        width: 140px;
+        width: 42%;
         height: 200px;
         margin-top: 10px;
         
@@ -150,7 +157,7 @@ font-weight: 500;
         
     }
     
-    .topImgCon  .moreInfo{
+    .topImgCon  :is(p, button){
         display: none;
     }
     .topImgCon > div:hover img{
@@ -163,7 +170,7 @@ font-weight: 500;
         font-size: 14px;
         margin-top: 1rem;
         text-transform: capitalize;
-        /* border: 2px solid #333; */
+       color: #333;
         
     }
     .topImgCon > div:hover  h3{
@@ -173,19 +180,19 @@ font-weight: 500;
         
     }
     
-    .topImgCon > div:hover .moreInfo{
+    .topImgCon > div:hover :is(p, button){
         display: block;
-        margin-top: -.2rem;
-        padding: 5px;
+        margin-top: -.1rem;
+        padding: 5px !important;
         /* border:2px solid red; */
         width: 100%;
       
     }
-    .moreInfo p{
+    .topImgCon div p{
         font-size: 16px;
         padding-bottom: 10px;
     }
-    .moreInfo a{
+    .topImgCon div a{
         padding: 5px 10px;
         font-size: 14px;
         color: #eee;

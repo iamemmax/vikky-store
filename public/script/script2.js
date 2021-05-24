@@ -2,7 +2,7 @@
 
 
 
-  function addToCart(){
+  // function addToCart(){
  
     const catBtn = document.querySelectorAll(".cart")
     const cartItem = document.querySelectorAll(".mycategory")
@@ -80,25 +80,8 @@
              
          })
     }
-     
+    increase()
  
- 
-   let notLogging = document.getElementById("notLogging")
-   let removeSlideShow = document.getElementById("removeSlideShow")
-   let loginUser = document.querySelector(".loginUser")
-   console.log(removeSlideShow);
-   notLogging.addEventListener("click", (e) =>{
-     loginUser.classList.add("showLogin")
- 
- 
-   })
-   removeSlideShow.addEventListener("click", (e) =>{
-     loginUser.classList.remove("showLogin")
- 
- 
- 
-   })
-
 
 
 
@@ -108,14 +91,33 @@
     let cartNumber = document.querySelector(".cartNumber")
     let cart_conntaianer = document.querySelector(".cart_conntaianer")
     cartNumber.addEventListener("click", (e) =>{
-        cart_conntaianer.classList.add("showLogin")
-            
+        cart_conntaianer.classList.add("mm")
+          
         })
     
     
     
-  }
+  // }
 
 
 
-  addToCart()
+  // addToCart()
+
+
+  
+ 
+  let notLogging = document.getElementById("notLogging")
+  let removeSlideShow = document.getElementById("removeSlideShow")
+  let loginUser = document.querySelector(".loginUser")
+
+  notLogging.addEventListener("click", (e) =>{
+    loginUser.classList.add("showLogin")
+
+
+  })
+  removeSlideShow.addEventListener("click", (e) =>{
+    loginUser.classList.remove("showLogin")
+
+
+
+  })

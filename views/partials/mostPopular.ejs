@@ -61,7 +61,7 @@
     <div class="cart" style="overflow-x: auto;">
   
     <h2 id="table-header">My Shopping cart</h2>
-    <form action="/users/cart" method="POST">
+    <form action="/" method="POST">
       <table class="cart-table"> 
       
       
@@ -86,11 +86,19 @@
           </tbody>
     
           <tfoot>
+        
             <tr>
-                <td colspan="10">Grand Total <span class="total"></span></td>
-            </tr>
-  
-          </tfoot>
+                <td><input type="hidden" name="email" value=" <% if(user){%>
+                 <%= user.email %> <%} %>" id=""></td>
+                <td><input type="hidden" name="phone" value=" <% if(user){%>
+                 <%= user.phone %> <%} %>" id=""></td>
+                <td colspan="10">Grand Total <span class="total" name="grand"></span></td>
+               
+               
+              </tr>
+              
+            </tfoot>
+          
   
           
           

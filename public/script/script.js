@@ -92,7 +92,7 @@ html.innerHTML = `
 <td><input type="hidden" name="price" value="${items.itemPrice}" id="productId"> </td>   
 <td><input type="hidden" name="productImg" value="${items.itemImg}" id="productId"> </td>   
 <td><input type="hidden" name="productSizes" value="${items.itemSize}" id="productId"> </td>   
-<td><input type="hidden" name="totalPrice" value="${items.itemtotalPrice}" id="productId"> </td>   
+<td><input type="hidden" name="totalPrice" value="${parseInt(items.itemtotalPrice)}" id="productId"> </td>   
 
 `
 
@@ -206,7 +206,7 @@ qty.forEach(itemQtys =>{
 
         let price = target.getElementsByClassName("price")[0].innerText.replace("\u20A6", "") 
 
-        total  =  parseFloat(price * quantity)
+        total  =  price * quantity
     
         let totalPrice = target.getElementsByClassName("totalprice")[0].innerText = "\u20A6" + total
        
@@ -246,37 +246,3 @@ function grandTotal(){
         cartTotal.innerText = "\u20A6"+ total
     }
  
-
-    // function updateCartQty(){
-    //     let qty = document.querySelectorAll(".show-count")
-    //     qty.forEach(itemqty =>{
-    //         itemqty.addEventListener("change", (e)=>{
-
-                
-                
-    //             let target = e.target.parentElement.parentElement.parentElement
-    //             // let quantity = target.getElementsByClassName("show-count")
-
-    //             let productIds = target.querySelectorAll(".productId")
-    //             productIds.forEach(productId =>{
-                    
-                    
-    //                 let products = getProductFromCart()
-    //                 if(e.target.value > 1){
-                        
-    //                     products.forEach(product =>{
-    //                      if(product.itemId != productId.value){
-    //                     return    product.itemQty = e.target.value
-                        
-    //                 }
-    //             })       
-                
-                
-    //             localStorage.setItem("carts", JSON.stringify(products))
-    //         }
-                    
-    //             })
-    //         })
-            
-    //     })
-    // }

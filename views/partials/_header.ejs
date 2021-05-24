@@ -28,7 +28,7 @@
 <section class="container"> 
     <div class="header">
         <div class="logo">
-            <a href="/"><h1>E-Shop</h1></a>
+            <a href="/"><h1><i class="lni lni-cart-full"></i>Freaky-store</h1></a>
         </div>
         <div class="navigation">
                 <nav>
@@ -61,28 +61,26 @@
                     <img src="<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" class="newfacebook" >
 
                 <% }else{ %> 
-                    <li><a href="/"></a></li>
+                  
                     
                             <img src="/img/userImg/<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" >
                             
                             
                               
-                        <% } %> 
-                        <!--  -->
+                     <% } %> 
+                   
                     
-                </li>
+           
                 
-                <!-- <li><a href="/"><i class="fas fa-heart"></i></a></li> -->
+             
               
                     
                
-         
-              
-                                
-                        <li class="cartNumber" style="cursor: pointer; z-index: 99999 !important;"><i class="lni lni-cart" style="color: #fff;" ></i><span id="cart" style="color: #fff;"> </span></li> 
-                       
-                           
-                        
+       
+
+                
+                <li class="cartNumber" style="cursor: pointer;"><i class="lni lni-cart" style="color: #fff;"></i><span id="cart" style="color: #fff;"> 0 </span></li> 
+                  
                     </div>
                     
                     
@@ -100,7 +98,8 @@
                 <div class="removeNav">
                     <i class="fas fa-times"></i>
                 </div>
-                
+
+              
     </div>
     
     

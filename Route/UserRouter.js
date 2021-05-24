@@ -374,7 +374,7 @@ UserRouter.get("/dashboard/change-pass/:id", auth, async (req, res) =>{
         })
     
 
-    console.log(cart);
+    
 })
 
 UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
@@ -447,7 +447,7 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
             user:req.user,
             error
         })
-        console.log(cart);
+     
     
     })
 
