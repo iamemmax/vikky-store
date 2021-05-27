@@ -22,13 +22,13 @@ function addItemsToCart (event){
     let itemImg = target.getElementsByClassName("product-img")[0].src
     let itemName = target.getElementsByClassName("product-name")[0].innerText
     let itemPrice = target.getElementsByClassName("product-price")[0].innerText.replace("\u20A6", "")
-    let itemtotalPrice = target.getElementsByClassName("product-price")[0].innerText.replace("\u20A6", "")
     let itemQty = target.getElementsByClassName("product-quantity")[0].value
+    let itemtotalPrice = target.getElementsByClassName("product-price")[0].innerText.replace("\u20A6", "") * itemQty
     let itemId = target.getElementsByClassName("product-id")[0].value
     let itemColor = target.getElementsByClassName("product-color")[0].value
     let itemSize = target.getElementsByClassName("product-size")[0].value
     // console.log(itemColor, itemId, itemSize);
-    
+ 
     
     let items = {
         itemId, 
@@ -40,6 +40,7 @@ function addItemsToCart (event){
         itemSize,
         itemtotalPrice
     }
+    console.log(items);
     addProductToCart(items);
     // getCartNumber(items)
     updateCart()

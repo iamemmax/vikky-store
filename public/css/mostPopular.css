@@ -167,7 +167,7 @@ body{
     
 }
 
-.rating{
+.ratings{
     position: relative;
     color: #af2b34;
     font-size: 12px;
@@ -239,7 +239,7 @@ body{
     }
 
 
-    .rating{
+    .ratings{
       
         margin-top: -8px !important;
     

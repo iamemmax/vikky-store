@@ -4,7 +4,7 @@ body{
 .sidebar_wrapper {
     width: 100%;
     position: relative;
-    background-color: #eee;
+    
 }   
 .sidebar_container{
     position: relative;
@@ -36,7 +36,8 @@ body{
 .sidebar1{
     background-color: #fff;
     /* padding: px; */
-    height: 350px;
+    height: auto !important;
+  
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -114,6 +115,7 @@ body{
     width: 100%;
     margin-top: 10px;
     border-radius: 5px;
+    border-top: 2px solid #eee;
 }
 
 

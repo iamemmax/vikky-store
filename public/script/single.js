@@ -1,3 +1,13 @@
+const showImg = document.getElementById("show_img")
+const bannerImg = document.querySelectorAll(".select_banner_img")
+bannerImg.forEach(singleImg =>{
+    singleImg.addEventListener("click", (e) =>{
+        showImg.src = e.target.src
+    })
+})
+
+
+
 let addUpQty = document.querySelectorAll(".add")
 let subUpQty = document.querySelectorAll(".sub")
 let qtty = document.querySelector("#qty")
@@ -7,7 +17,7 @@ addUpQty.forEach(add =>{
         
         let input = e.target.parentElement.children[1];
          let inputValue = input.value
-         let newValue = parseInt(inputValue) + 1
+         let newValue = parseInt(inputValue) += 1
          input.value = newValue
         
 
@@ -22,7 +32,7 @@ addUpQty.forEach(add =>{
        
      let input = e.target.parentElement.children[1];
      let inputValue = input.value
-     let newValue = parseInt(inputValue) - 1
+     let newValue = parseInt(inputValue) -= 1
      input.value = newValue
             
      if(newValue < 1){

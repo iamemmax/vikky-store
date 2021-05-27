@@ -10,7 +10,7 @@ const CartSchema = require("./model/CartSchema")
 const Product = require("./model/productSchema")
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
-
+const cors = require("cors")
 const productSchema = require("./model/productSchema")
 const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
@@ -23,6 +23,7 @@ const app = express()
 
 
 
+app.use(cors())
 app.use(Layout)
 app.set('layout', './layouts/dashboard-layout')
 app.set('view engine', 'ejs')
@@ -90,37 +91,28 @@ let error = []
             success:req.flash("success")   
       
   })
-
+//   sk_live_3e4e523e433f60e0bd727d466f32ec5be694556c
   
        
    
 })
-//   sk_live_3e4e523e433f60e0bd727d466f32ec5be694556c
-app.post("/", (req, res) =>{
-    axios.post("https://api.paystack.co/transaction/initialize", {
-        data:{
+
+  
+app.post("/",  async(req, res) =>{
+ 
+    let  data = {
         "email": req.body.email,
         "amount": "500000",
         "currency": "NGN",
-        "metadata": {
-             "custom_fields": [
-                {
-                    Authorization: 'Bearer ',
-                    'Content-Type': 'application/json',
-                    "display_name":"mobile number",
-                    "variable_name": "mobile number",
-                    "value": req.body.phone,
-
-                }
-            ],
-            
-               
-              
-        }
-     },
-    
-     
- }).then(res => console.log(res.data))
+        
+     }
+     const headers = {
+        // 'Authorization': 'Bearer ',
+        'Content-Type': 'application/json'
+      }
+  await axios.post("https://api.paystack.co/transaction/initialize", headers, data)
+ .then(res => res.json())
+ .then(response => console.log(response.request))
  .catch(err => console.log(err))
 })
 
