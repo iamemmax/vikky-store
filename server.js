@@ -16,7 +16,7 @@ const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
 const Layout = require("express-ejs-layouts")
 // const { request } = require("http")
-const axios = require("axios")
+const axios = require("axios").default
 const app = express()
 
 
@@ -91,31 +91,19 @@ let error = []
             success:req.flash("success")   
       
   })
-//   sk_live_3e4e523e433f60e0bd727d466f32ec5be694556c
   
        
    
 })
 
   
-app.post("/",  async(req, res) =>{
- 
-    let  data = {
-        "email": req.body.email,
-        "amount": "500000",
-        "currency": "NGN",
-        
-     }
-     const headers = {
-        // 'Authorization': 'Bearer ',
-        'Content-Type': 'application/json'
-      }
-  await axios.post("https://api.paystack.co/transaction/initialize", headers, data)
- .then(res => res.json())
- .then(response => console.log(response.request))
- .catch(err => console.log(err))
-})
+app.get("/", async (req, res) =>{
+ let response = await  axios.get("https://jsonplaceholder.typicode.com/posts")
 
+
+     console.log(response.data);
+ 
+})
 
 
 

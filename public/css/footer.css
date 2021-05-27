@@ -5,12 +5,12 @@
 	background-color: #fff;
 	z-index: 99;
 	top:  250rem;
+	width: 100% !important;
 
 }
 .footer{
-	/* border: 2px solid red; */
 	height: 100px;
-	width: 100%;
+	width: 100%  !important;
 	/* position: absolute;
 	bottom: 0; */
 	/* display: flex;

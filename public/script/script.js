@@ -25,6 +25,7 @@ function addItemsToCart (event){
     let itemQty = target.getElementsByClassName("product-quantity")[0].value
     let itemtotalPrice = target.getElementsByClassName("product-price")[0].innerText.replace("\u20A6", "") * itemQty
     let itemId = target.getElementsByClassName("product-id")[0].value
+
     let itemColor = target.getElementsByClassName("product-color")[0].value
     let itemSize = target.getElementsByClassName("product-size")[0].value
     // console.log(itemColor, itemId, itemSize);
@@ -247,3 +248,12 @@ function grandTotal(){
         cartTotal.innerText = "\u20A6"+ total
     }
  
+
+
+
+       // pageoader
+       const loader = document.querySelector(".pageloader")
+       window.addEventListener("load", (e) =>{
+        loader.classList.add("fadeIn")
+       })
+     

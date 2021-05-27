@@ -134,7 +134,7 @@ font-weight: 500;
     }
     .topSelling_container > span{
         
-        top: -20.4rem;
+        top: -20.4rem !important;
     }
     .topImgCon{
         /* column-count: 2; */
