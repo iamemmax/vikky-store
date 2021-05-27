@@ -288,8 +288,32 @@
     
     .right_product{
         height: 400px !important;
+        width: 100% !important;
+        /* border: 2px solid red; */
+        margin: 0 !important;
+        padding-left: 0 !important;
     }
-    
+    .right_product h2{
+         /* 0 !important; */
+        font-size: 16px;
+        width: 100%;
+        line-height: 20px;
+        padding-left: 0 !important;
+        
+    }
+    .ratings{
+        padding-left: 0 !important;
+
+    }
+    .right_product h3{
+        font-size: 15px;
+        padding-left: 0 !important;
+
+    }
+    .right_product p{
+        padding-left: 0 !important;
+
+    }
     .showImg{
         padding-top: 0 !important;
         /* border: 1px solid #eee; */
@@ -302,15 +326,21 @@
         height: 100px !important;
         flex-direction: row;
         position: absolute !important;
-        top: 12rem !important;
+        top: 10rem !important;
         left: 0;
         margin: 0;
         padding-left: 0;
     }
+    .selectImg p{
+        width: 140px;
+    }
    
+    .sizes{
+        width: 260px !important;
+    }
     .singleProduct .submitBtn, .buynow button{
         background-color: #ff4a57;
-        width: 97%;
+        width: 46%;
         padding: 10px 15px !important;
         border-radius: 20px;
         margin: 0px auto;
@@ -318,7 +348,7 @@
         border: none;
         height: 45px !important;
         margin-left: 0rem;
-        font-size: 20px;
+        font-size: 16px;
         color: #fff;
         cursor: pointer;
         z-index: 9999;
@@ -330,25 +360,28 @@
         -moz-transition: border .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         -ms-transition: border .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
-
+    
     .submitBtn:hover{
         border: 2px solid #000;
         background-color: unset;
         color: #000;
     }
-
+    
     .buynow button{
         background-color: #fff;
         color: #222;
         border: 2px solid #ff4a57;
-        width: 97%;
+        width: 46%;
         transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         -o-transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         -webkit-transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         -moz-transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         -ms-transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    
+        position: absolute;
+        right: 10px;
+        bottom:  0px;
+        
         margin-top:5px;
     }
     .buynow button:hover{
