@@ -1,13 +1,31 @@
 const showImg = document.getElementById("show_img")
 const bannerImg = document.querySelectorAll(".select_banner_img")
+const previewImg = document.getElementById("show_imgg")
+const imgPreview = document.querySelector(".imgPreview")
+const closePreview = document.getElementById("close-preview")
 bannerImg.forEach(singleImg =>{
     singleImg.addEventListener("click", (e) =>{
         showImg.src = e.target.src
+        previewImg.src = e.target.src
     })
 })
 
 
 
+
+
+
+
+
+
+showImg.addEventListener("click", (e) =>{
+    imgPreview.classList.add("showPreviewContainer")
+
+})
+closePreview.addEventListener("click", (e) =>{
+    imgPreview.classList.remove("showPreviewContainer")
+
+})
 let addUpQty = document.querySelectorAll(".add")
 let subUpQty = document.querySelectorAll(".sub")
 let qtty = document.querySelector("#qty")

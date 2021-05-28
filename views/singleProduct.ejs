@@ -116,6 +116,26 @@
 
 
 
+        <div class="imgPreview">
+            <div class="previewImg">
+                <i class="lni lni-close" id="close-preview"></i>
+               
+                    <div class="singleImg showPreview">
+                        <img src="../img/upload/<%= single.myfiles[0].filename %> " alt="<%= single.myfiles[0].filename %>" id="show_imgg" class="product-img">
+                    </div>
+          
+                    <div class="selecImg select_banner_img selectPreview">
+                            <% single.myfiles.map(selectedImg =>{ %>
+                                <img src="../img/upload/<%= selectedImg.filename %> " class="select_img " alt="<%= selectedImg.filename %> ">
+                                
+                                <%  }) %> 
+                    </div>
+            </div>
+
+
+        </div>
+
+
 
 
 
