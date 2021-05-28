@@ -10,7 +10,7 @@ const auth  = require("../config/auth")
 
 productRouter.get("/new", auth, async(req, res) =>{
     
-        res.render("add-product", {
+        res.render("./users/add-product", {
             title: "Upload new product",
             user:req.user,
         
@@ -42,17 +42,16 @@ const multerFilter = (req, file, cb) => {
     }
   };
 
-const upload = multer({storage:storage,fileFilter:multerFilter}).array("myfiles", 5)
+const upload = multer({storage:storage,fileFilter:multerFilter}).array("myfiles", 7)
 
 
 productRouter.post("/new", upload, async (req, res) =>{
     let error = []
     let {productName, amount, brand, description, categories, sizes, color} = req.body
     let myfiles = req.files
-    // let {filename:myfiles} = req.files
-    console.log(sizes);
+    
 
-    if(!productName || !amount || !brand || !description || !categories || !sizes || !color || !myfiles){
+    if(!productName || !amount ||  !description || !categories || !sizes || !color || !myfiles){
 
         error.push({msg: "all field are important"})
        res.redirect("/product/new")
@@ -383,6 +382,7 @@ productRouter.get("/:slug",  async(req, res) =>{
  
         res.render("singleProduct", {
             title: single.productName.slug,
+            // title: "single productName.slug",
             single,
             user:req.user,
             
@@ -400,7 +400,7 @@ productRouter.get("/:slug",  async(req, res) =>{
 productRouter.get("/myproduct/:id", auth, async (req, res) =>{
     let products = await productSchema.find({postedBy:req.params.id})
    
-            res.render("myProduct", {
+            res.render("./users/myProduct", {
                 title:"my product",
                 user:req.user,
                 products,
@@ -422,7 +422,7 @@ productRouter.get("/edit/:id", auth, async (req, res) =>{
    
 
 
-            res.render("editMyProduct", {
+            res.render("./users/editMyProduct", {
                 title:"edit product",
                 user:req.user,
                 products

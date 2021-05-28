@@ -12,33 +12,33 @@ const cartRouter = express.Router()
 
 
 // get cart items
-cartRouter.get("/",  async(req, res)=>{
+// cartRouter.get("/",  async(req, res)=>{
     
     
-        res.render("mycart", {
-            title : "my Cart",
-            user: req.user,
+//         res.render("mycart", {
+//             title : "my Cart",
+//             user: req.user,
         
     
-            layout: false,
+//             layout: false,
            
-            success:req.flash("success")
+//             success:req.flash("success")
 
            
-        })
+//         })
  
       
     
     
    
 
-})
+// })
 
 
-cartRouter.post("/", async(req, res) =>{
-    let {userId, productId, myfiles, price, color, quantity, sizes, totalPrice} = req.body
-    console.log(req.body);
-})
+// cartRouter.post("/", async(req, res) =>{
+//     let {userId, productId, myfiles, price, color, quantity, sizes, totalPrice} = req.body
+//     console.log(req.body);
+// })
 
 // purchase
 

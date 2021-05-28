@@ -10,19 +10,22 @@ const User = new mongoose.Schema({
     },
 
     firstname:{
-        type:String
+        type:String,
+        trim:true
     },
     lastname:{
         type:String
     },
     username:{
         type:String,
-        require:true
+        required:true,
+        trim:true
     },
 
     email:{
         type:String,
-        require:true,
+        required:true,
+        trim:true
         
     },
 
@@ -70,7 +73,8 @@ const User = new mongoose.Schema({
     },
     password:{
         type:String,
-        require:true
+        required:[true, "password must not less than 2"],
+        trim:true
     },
 
     createdAt:{

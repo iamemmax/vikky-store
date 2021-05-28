@@ -16,6 +16,8 @@ function ready(){
 }
 
 let pushProduct = [];
+let msg = document.querySelector(".product-added")
+
 
 function addItemsToCart (event){
     let target = event.target.parentElement
@@ -41,7 +43,17 @@ function addItemsToCart (event){
         itemSize,
         itemtotalPrice
     }
-    console.log(items);
+ 
+
+    // @desc show flash msg
+    msg.innerText = `${items.itemName} added successfully`
+        msg.classList.add("showMsg")
+       setTimeout(() => {
+        msg.classList.remove("showMsg")
+       
+       }, 4000);
+
+
     addProductToCart(items);
     // getCartNumber(items)
     updateCart()
@@ -51,6 +63,8 @@ function addItemsToCart (event){
     // saveItemToStorage(productInfo)
 }
 
+
+
 function addProductToCart(items){
     let table = document.getElementsByTagName("tbody")[0]
     let html = document.createElement("tr")
@@ -58,7 +72,15 @@ function addProductToCart(items){
     for (let i = 0; i < productId.length; i++) {
         const buttonId = productId[i];
     if(buttonId.value == items.itemId){
+       msg.innerText = `${items.itemName} already added`
+        msg.classList.add("showMsg")
+       setTimeout(() => {
+        msg.classList.remove("showMsg")
+       
+       }, 4000);
         return
+    }else{
+        
     }
     
 }
@@ -119,7 +141,7 @@ function getProductFromCart(){
 function loadCart(){
     let products = getProductFromCart()
     products.forEach(product => addProductToCart(product))
-
+    
  }
 
  
@@ -172,6 +194,13 @@ function removeCartItems(e){
    target.remove()
 let products = getProductFromCart()
 let updateProduct = products.filter(product =>{
+
+    msg.innerText = `${product.itemName} remove successfully`
+        msg.classList.add("showMsg")
+       setTimeout(() => {
+        msg.classList.remove("showMsg")
+       
+       }, 1000);
    return product.itemId !=  productId
 })
 localStorage.setItem("carts", JSON.stringify(updateProduct))
@@ -249,11 +278,3 @@ function grandTotal(){
     }
  
 
-
-
-       // pageoader
-       const loader = document.querySelector(".pageloader")
-       window.addEventListener("load", (e) =>{
-        loader.classList.add("fadeIn")
-       })
-     

@@ -2,6 +2,13 @@
 
 
 
+       // pageoader
+       const loader = document.querySelector(".pageloader")
+       window.addEventListener("load", (e) =>{
+        loader.classList.add("fadeIn")
+       })
+     
+
   // function addToCart(){
  
     const catBtn = document.querySelectorAll(".cart")

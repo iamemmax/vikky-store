@@ -51,7 +51,7 @@ const upload = multer({storage:storage,fileFilter:multerFilter})
 
 
 UserRouter.get("/register",  (req, res) =>{
-    res.render("Register",{
+    res.render("./auth/Register",{
         title:"Join E-shop",
         user:req.user,
         layout: false,
@@ -62,7 +62,7 @@ UserRouter.get("/register",  (req, res) =>{
 
 
 UserRouter.get("/login", (req, res)=>{
-    res.render("Login", {
+    res.render("./auth/Login", {
         title:"Login Account",
         user: req.user,
         layout: false,
@@ -113,7 +113,7 @@ UserRouter.post("/register", (req, res) =>{
            if(result){   
                error.push({msg: "email already  exist"})
                
-               res.render("Register", {
+               res.render("./auth/Register", {
                 title:"Register user",
                 error,
                 username,
@@ -135,7 +135,7 @@ UserRouter.post("/register", (req, res) =>{
                console.log(err);
                error.push({msg: "username already exist"})
                 
-                res.render("Register", {
+                res.render("./auth/Register", {
                     title:"Register user",
                     error,
                     username,
@@ -152,7 +152,7 @@ UserRouter.post("/register", (req, res) =>{
               
                 error.push({msg: "username already exist"})
                 
-                res.render("Register", {
+                res.render("./auth/Register", {
                     title:"Register user",
                     error,
                     username,
@@ -171,7 +171,7 @@ UserRouter.post("/register", (req, res) =>{
        
        if(error.length > 0){
           
-        res.render("Register", {
+        res.render("./auth/Register", {
             title:"Register user",
             error,
             username,
@@ -252,7 +252,7 @@ UserRouter.post("/login", (req, res, next) =>{
     
     
     if(error.length > 0){
-        res.render("Login", {
+        res.render("./auth/Login", {
             title:"Login Account",
             error,
             email,
@@ -271,7 +271,7 @@ UserRouter.post("/login", (req, res, next) =>{
                 .then(user =>{
                     if(!user){
                         error.push({msg: "incorrect username or password"})
-                        res.render("Login", {
+                        res.render("./auth/Login", {
                             title:"Login Account",
                             error,
                             email,
@@ -292,7 +292,7 @@ UserRouter.post("/login", (req, res, next) =>{
     
                         }else{
                         error.push({msg: "incorrect username or password"})
-                        res.render("Login", {
+                        res.render("./auth/Login", {
                             title:"Login Account",
                             error,
                             email,
