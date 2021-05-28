@@ -359,11 +359,11 @@
    -moz-transform: scale(1);
    -ms-transform: scale(1);
    -o-transform: scale(1);
-   transition: transform .5s ease ;
-   -ms-transition: transform .5s ease ;
-   -o-transition: transform .5s ease ;
-   -webkit-transition: transform .5s ease ;
-   -moz-transition: transform .5s ease ;
+   transition: transform .6s ease ;
+   -ms-transition: transform .6s ease ;
+   -o-transition: transform .6s ease ;
+   -webkit-transition: transform .6s ease ;
+   -moz-transition: transform .6s ease ;
 }
 #close-preview{
     position: absolute;
