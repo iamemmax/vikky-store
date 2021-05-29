@@ -23,7 +23,7 @@
             <div class="pro_img mycategory" data-name="<%= product.categories %>">
                 
                 <a href="/product/<%= product.slug %> ">
-                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img">
+                    <img src="./img/upload/<%= product.myfiles[0].filename %> " alt="" class="product-img" id="">
                    
                     <h2 class="product-name"><%= product.productName.substr(0,15) %> </h2>
                 </a>
@@ -35,7 +35,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p id="amount" class="product-price">&#8358 <%= product.amount %> </p>
+                <p id="amount" class="product-price">&#8358 <%= product.amount %></p>
           
              
         
