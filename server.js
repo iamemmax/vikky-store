@@ -96,14 +96,7 @@ let error = []
    
 })
 
-  
-app.get("/", async (req, res) =>{
- let response = await  axios.get("https://jsonplaceholder.typicode.com/posts")
 
-
-     console.log(response.data);
- 
-})
 
 
 

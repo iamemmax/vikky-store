@@ -56,7 +56,7 @@
         <div class="last">
             
             <% if(!user){ %> 
-                <li><a href="javascript:void()"><i class="fas fa-user"></i></a> </li>
+                <!-- <li><a href="javascript:void()"><i class="fas fa-user"></i></a> </li> -->
                 <% }else if(user.facebookId != undefined || user.facebookId != null){ %>
                     <img src="<%=user.userImg %>" alt="<%= user.userImg %>" style="cursor: pointer;"  id="userImg" class="newfacebook" >
 
@@ -79,7 +79,7 @@
        
 
                 
-                <li class="cartNumber" style="cursor: pointer;"><i class="lni lni-cart" style="color: #fff;"></i><span id="cart" style="color: #fff;"> 0 </span></li> 
+                <li class="cartNumber" style="cursor: pointer;margin-left: 2rem;" ><i class="lni lni-cart" style="color: #fff;"></i><span id="cart" style="color: #fff;"> 0 </span></li> 
                   
                     </div>
                     

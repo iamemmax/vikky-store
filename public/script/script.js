@@ -77,7 +77,7 @@ function addProductToCart(items){
        setTimeout(() => {
         msg.classList.remove("showMsg")
        
-       }, 4000);
+       }, 3000);
         return
     }else{
         
