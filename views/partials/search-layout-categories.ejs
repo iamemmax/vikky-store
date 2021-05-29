@@ -45,7 +45,7 @@
     <div class="cart" style="overflow-x: auto;">
   
     <h2 id="table-header">My Shopping cart</h2>
-    <form action="/users/cart" method="POST">
+    
       <table class="cart-table"> 
       
       
@@ -80,15 +80,16 @@
           
           
         </table>
-        <!-- <input type="hidden" name="userId" value="<ser.id %> " id=""> -->
-        <button> <a href="/">Continue shopping</a></button>
-        <% if(!user){ %> 
-        <p id="notLogging">Checkout</p>
-        <% }else{ %> 
-          <button type="submit" id="checkout">Checkout</button>
-  
+        <div class="cartBtnInfo">
+          <!-- <input type="hidden" name="userId" value="<ser.id %> " id=""> -->
+          <button> <a href="/">Continue shopping</a></button>
+          <% if(!user){ %> 
+          <button id="notLogging" class="CheckoutBTn">Checkout</button>
+          <% }else{ %> 
+            <button type="submit"  class="CheckoutBTn">Checkout</button>
+          </div>
           <% } %> 
-      </form>
+      
       
   
   

@@ -143,7 +143,6 @@
     <div class="cart" style="overflow-x: auto;">
         
     <h2 id="table-header">My Shopping cart</h2>
-    <form action="/" method="POST">
         <table class="cart-table"> 
             
             
@@ -186,17 +185,20 @@
             
             
         </table>
+      
+
         <!-- <input type="hidden" name="userId" value="<ser.id %> " id=""> -->
             <button> <a href="/">Continue shopping</a></button>
             <% if(!user){ %> 
-                <p id="notLogging">Checkout</p>
+                <button id="notLogging" class="CheckoutBTn">Checkout</button>
                 <% }else{ %> 
-                    <button type="submit" id="checkout">Checkout</button>
+                    <button type="submit"  class="CheckoutBTn">Checkout</button>
+       
   
                     <% } %> 
-      </form>
       
-  
+      
+                   
   
   <div class="loginUser">
     <div class="userLogin">

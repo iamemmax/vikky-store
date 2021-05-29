@@ -15,7 +15,6 @@
     
     margin: 10px;
     overflow: hidden;
-    /* border: 2px solid red; */
     height: 500px;
 }
 
@@ -234,9 +233,11 @@
 .myProductInfo p{
     font-weight: 500;
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 25px;
     opacity: .6;
-    text-align: left;
+    text-align: justify;
+   
     
 }
 .shipping, .return{
@@ -441,7 +442,7 @@
     }
     .singleProduct .submitBtn, .buynow button{
         background-color: #ff4a57;
-        width: 200px;
+        width: 150px;
         padding: 10px 15px !important;
         border-radius: 20px;
         margin: 0px auto;
@@ -472,7 +473,7 @@
         background-color: #fff;
         color: #222;
         border: 2px solid #ff4a57;
-        width: 200px;
+        width: 150px;
         transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         -o-transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         transition: background .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
@@ -503,7 +504,7 @@
     flex-direction: column;
     margin-top: 1rem;
     /* height: auto; */
-    padding: 10px;
+    padding: 5px;
 }
 .showProductInfoOnmobile div div{
     height: 0;
@@ -540,7 +541,12 @@
     align-items: center;
     margin-top: 2rem !important;
 }
-
+.showProductInfoOnmobile p{
+   width: 100%;
+   padding: 0;
+   line-height: 25px;
+   text-align: justify;
+}
 }
 
 
