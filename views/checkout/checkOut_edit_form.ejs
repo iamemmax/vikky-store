@@ -21,6 +21,46 @@
 </form>
 </div>
 
+
+<div class="dd">
+    <!-- mycart items -->
+    <div class="cart_conntaianer">
+        <div class="cart" style="overflow-x: auto;">
+      
+        <h2 id="table-header">My Shopping cart</h2>
+        <form action="/cart/mycart" method="POST">
+          <table class="cart-table"> 
+          
+          
+      
+               
+                      
+              <tbody>
+      
+              </tbody>
+        
+              <tfoot>
+            
+                <tr>
+                    <td><input type="hidden" name="email" value=" <% if(user){%>
+                     <%= user.email %> <%} %>" id=""></td>
+                    <td><input type="hidden" name="phone" value=" <% if(user){%>
+                     <%= user.phone %> <%} %>" id=""></td>
+                    <td colspan="10">Grand Total <span class="totall" name="grand"></span></td>
+                    <td colspan="1" style="display: none;">Grand Total    <input type="text"  name="grand" id="" class="total" style="border: none;"> </td>
+                   
+                  </tr>
+                  
+                </tfoot>
+                
+                
+              
+              </table>
+              
+              <table>
+              </table>
+              
+          
 </div>
 
 <%  } %>  
