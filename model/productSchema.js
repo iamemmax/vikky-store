@@ -57,6 +57,11 @@ const productSchema = new mongoose.Schema({
              type:String,
              require:true
 
+         },
+         grand:{
+             type:String,
+             require:true
+
          }
 
          

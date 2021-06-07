@@ -90,6 +90,9 @@ const User = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"products"
     },
+    amount:{
+        type: String
+    }
 
 })
 User.plugin(findOrCreate);

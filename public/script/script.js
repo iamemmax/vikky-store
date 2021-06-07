@@ -264,17 +264,19 @@ qty.forEach(itemQtys =>{
 
 function grandTotal(){
         let cartTotal = document.querySelector(".total")
+        let cartTotalText = document.querySelector(".totall")
     
         let total = 0
         let totalPrice = document.querySelectorAll(".totalprice")
         totalPrice.forEach(productPrice =>{
           
-            tt = Number(productPrice.innerText.replace("\u20A6", ""))
+            tt = parseInt(productPrice.innerText.replace("\u20A6", ""))
             total += tt
             
         })
        
-        cartTotal.innerText = "\u20A6"+ total
+        cartTotalText.innerText = "\u20A6"+ total
+        cartTotal.value = "\u20A6"+ total
     }
  
 

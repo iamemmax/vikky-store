@@ -1,0 +1,29 @@
+<%- include("../partials/_header") %> 
+
+<% if(user){ %> 
+
+<div class="checkoutInfo">
+    <div class="checkform">
+        <form action="/cart/payment" method="POST">
+            <h2>Delivery / Pickup Options</h2>
+    <input type="text" name="" value="<% if(user.firstname !== ""){ %><%=user.firstname %>
+    <%}%>" id="">
+    <input type="text" name="lastname" value="<%= user.lastname %> " id="" placeholder="lastname">
+    <input type="text" name="email" value="<%= user.email %> " id="">
+    <input type="text" name="phone" value="<%= user.phone %> " id="">
+    <input type="text" name="state" value="<%= user.state %>" id="" placeholder="State">
+    <input type="text" name="country" value="<%= user.country %>" id="" placeholder="country">
+    <input type="text" name="address" value="<%= user.address %>" id="" placeholder="address">
+    <input type="hidden" name="grand" value="<%= info.grand %>" id="" placeholder="address">
+  
+        
+    <button type="submit"  class="CheckoutBTn">Continue Checkout</button>
+</form>
+</div>
+
+</div>
+
+<%  } %>  
+
+
+<%- include("../partials/_footer") %> 

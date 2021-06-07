@@ -1,0 +1,9 @@
+<p><%= otp.display_text %> </p>
+<form action="/cart/payment/otp/<%= otp.reference %> " method="POST">
+    <input type="number" name="otp" value="" placeholder="otp" id="">
+    <input type="hidden" name="reference" value="<%= otp.reference %> " placeholder="otp" id="">
+    <button type="submit">Submit OTP</button>
+
+</form>
+
+<!-- 4187451854606763 -->

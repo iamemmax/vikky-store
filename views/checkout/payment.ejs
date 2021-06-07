@@ -1,0 +1,64 @@
+<%- include("../partials/_header") %> 
+
+<div class="payment-box">
+   <div class="payment_card">
+    <h2>select transaction type</h2>
+    <button id="card">Card</button>
+    <button id="bank" >bank</button>
+   </div>
+</div>
+
+
+<div class="card_btn_form">
+    <form action="/cart/payment/<%= id %> " method="POST">
+        <h2>Enter card details</h2>
+        <input type="text" name="cardNumbar" placeholder="Card Number" maxlength="16" id="cNumber" onkeyup="jump(this, 'month')">
+        <div class="expire">
+            <input type="number" name="exp_month" placeholder="MM" id="month" maxlength="2" onkeyup="jump(this, 'year')">
+            <input type="number" name="exp_year" placeholder="YY" id="year" maxlength="2" onkeyup="jump(this, 'cvv')">
+            
+        </div>
+        <input type="text" name="cvv" placeholder="cvv" id="cvv" maxlength="3" onkeyup="jump(this, 'pin')">
+        <input type="password" name="pin" placeholder="card pin" id="pin" maxlength="4">
+        <p id="cvvInfo">?</p>
+        <div class="img">
+            <img src="../.././img/cvvv.png" alt="">
+        </div>
+        <input type="hidden" name="amount" placeholder="amount" value="<%= checkout.amount %> " id=""> 
+
+        <button type="submit">Pay   &#8358 <%=checkout.amount %> </button>
+    </form>
+
+ 
+   
+</div>
+
+
+<script>
+    // show checkout form on clicking on bank btn
+  let  card = document.getElementById("card")
+  let  card_payment_con = document.querySelector(".card_btn_form")
+  card.addEventListener("click", (e) =>{
+   card_payment_con.classList.add("showCard")
+  })
+    // end of show checkout form on clicking on bank btn
+
+
+// card info
+function jump(first, last){
+    if(first.value.length >= first.maxLength){
+        document.getElementById(last).focus()
+    }
+
+}
+
+
+// show cvv number
+const cvvInfo = document.getElementById("cvvInfo") 
+const cvvImg = document.querySelector(".img") 
+cvvInfo.addEventListener("click", (e) =>{
+    cvvImg.classList.toggle("showCvv")
+})
+</script>
+
+<%- include("../partials/_footer") %> 

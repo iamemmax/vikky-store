@@ -1,0 +1,10 @@
+<div class="pin">
+
+    <form action="/cart/payment/pin/<%=pin.reference %> " method="POST">
+        <input type="password" name="pin" placeholder="card pin" id="" maxlength="4">
+        <input type="hidden" name="reference" value="<%= pin.reference %> " placeholder="Enter pin" id="">
+
+        <button type="submit">Pay Now</button>
+    
+        </form>
+</div>

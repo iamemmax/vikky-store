@@ -100,11 +100,6 @@ let error = []
 
 
 
-
-
-
-
-
 app.get("/:q",  async(req, res) =>{
    let query = req.query.q
    console.log(query);
@@ -137,7 +132,7 @@ app.get("/privacy", (req, res) =>{
 // routes
 app.use("/users", require("./Route/UserRouter"))
 app.use("/product", require("./Route/productRouter"))
-app.use("/users/cart", require("./Route/cartRouter"))
+app.use("/cart", require("./Route/cartRouter"))
 
 const PORT = process.env.PORT || 5050
 app.listen(PORT, () =>{

@@ -108,8 +108,8 @@
 
 
 
-  // addToCart()
-
+  
+  
 
   
  
@@ -125,6 +125,5 @@
   removeSlideShow.addEventListener("click", (e) =>{
     loginUser.classList.remove("showLogin")
 
-
-
   })
+

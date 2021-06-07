@@ -3,8 +3,296 @@ const mongoose = require("mongoose")
 const productSchema = require("../model/productSchema")
 const CartSchema = require("../model/CartSchema")
 const UserSchema = require("../model/UserSchema")
+const axios = require("axios").default
+
 const cartRouter = express.Router()
-// const auth require("../config/auth")
+const auth  = require("../config/auth")
+
+
+
+cartRouter.post("/mycart", auth, (req, res) =>{
+ const info = req.body
+ res.render("./checkout/checkOut_edit_form", {
+   title:"update checkout info",
+   user:req.user,
+   info,
+   layout: false
+ })
+})
+
+
+
+    
+
+cartRouter.post("/payment", async(req, res) =>{
+    
+    const url ="https://api.paystack.co/transaction/initialize"
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+
+    },
+  }
+  // Add Your Key Here!!!
+  axios.defaults.headers.common = {
+    "Authorization":`Bearer ${process.env.payStackKey}`,
+  };
+
+  const checkout = await axios({
+    method: "post",
+    url: url,
+    data :{
+        email:req.user.email,
+        amount: req.body.grand.slice(1),
+        currency:"NGN",
+        phone:req.body.phone,
+        channels:["card"],
+        callback_url:"https://checkout.paystack.com/30sohnybslit8cr",
+       
+
+        "metadata":{
+            
+            "custom_fields":[
+              
+              {
+                "display_name":req.user.username,
+                "phone":req.body.phone
+                
+              },
+              
+            ]
+          },
+    
+
+    },
+    config,
+  })
+    
+    
+if(checkout){
+    console.log(checkout);
+
+    res.redirect(`/cart/payment/${checkout.data.data.reference}`)
+}else{
+    console.log("error");
+}
+
+
+
+  
+})
+
+
+cartRouter.get("/payment/:id", auth, async(req, res) =>{
+    const url =`https://api.paystack.co/transaction/verify/${req.params.id}`
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization":`Bearer ${process.env.payStackKey}`,
+      },
+    }
+  
+    // Add Your Key Here!!!
+    // axios.defaults.headers.common = {
+    // };
+
+
+    let smsD = await axios({
+        method: "get",
+        url: url,
+        config,
+      })
+        
+        
+    if(smsD){
+      console.log(smsD.data.data.amount);
+      res.render("./checkout/payment", {
+        title:"payment",
+        user:req.user,
+        layout:false,
+        checkout:smsD.data.data,
+        id:req.params.id
+      })
+        // res.redirect(`/cart/payment/${smsD.data.data.reference}`)
+    }else{
+        console.log("error");
+    }
+    
+   
+})
+
+
+
+
+// charge customer
+
+cartRouter.post("/payment/:id", auth,(req, res) =>{
+
+console.log(req.body);
+  const url ="https://api.paystack.co/charge"
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+
+    },
+  }
+  // Add Your Key Here!!!
+  axios.defaults.headers.common = {
+    "Authorization":`Bearer ${process.env.payStackKey}`,
+  };
+
+   axios({
+    method: "post",
+    url: url,
+    data :{
+        email:req.user.email,
+        amount: req.body.amount,
+        currency:"NGN",
+        
+        
+       
+
+        "metadata":{
+            
+            "custom_fields":[
+              
+              {
+                "display_name":"product payment",  
+              },
+              
+            ]
+          },
+          "card":{
+            "cvv":req.body.cvv,
+            "number":req.body.cardNumbar,
+            "expiry_month":req.body.exp_month,
+            "expiry_year":req.body.exp_year
+          },
+          "pin":req.body.pin
+          
+        
+
+    },
+    config,
+  
+  })
+  .then(resp =>{
+    console.log(resp.data.data);
+    res.render("./checkout/otp",{
+      title:"enter pin",
+      otp:resp.data.data,
+      layout:false,
+      user:req.user
+    })
+    
+  })
+  .catch(err => console.log(err))
+  
+})
+
+
+
+// sumbmit PIN
+// cartRouter.post("/payment/pin/:id", auth, (req, res) =>{
+//   console.log(req.body);
+//   const url ="https://api.paystack.co/charge/submit_pin"
+
+//   const config = {
+//     headers: {
+//       "Content-Type": "application/json",
+
+//     },
+//   }
+//   // Add Your Key Here!!!
+//   axios.defaults.headers.common = {
+//     "Authorization":`Bearer ${process.env.payStackKey}`,
+//   };
+
+//    axios({
+//     method: "post",
+//     url: url,
+//     data :{
+//       pin:req.body.pin,
+//       reference:req.body.reference
+//     },
+//     config,
+  
+//   })
+//   .then(resp =>{
+//     console.log(resp.data.data);
+//     res.render("otp",{
+//       title:"enter otp",
+//       otp:resp.data.data,
+//       layout:false,
+//       user:req.user
+//     })
+    
+//   })
+//   .catch(err => {
+//     console.log(err);
+    
+//   })
+// })
+
+
+
+
+
+// sumbmit otp
+cartRouter.post("/payment/otp/:id", auth, async(req, res) =>{
+  console.log(req.body);
+  const url ="https://api.paystack.co/charge/submit_otp"
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+
+    },
+  }
+  // Add Your Key Here!!!
+  axios.defaults.headers.common = {
+    "Authorization":`Bearer ${process.env.payStackKey}`,
+  };
+
+  try {
+    let setOpt = await axios({
+      method: "post",
+      url: url,
+      data :{
+        otp:req.body.otp,
+        reference:req.body.reference
+      },
+      config,
+    
+    })
+    if(setOpt){
+      console.log(setOpt);
+      res.render("./checkout/message",{
+        title:"freaky",
+        data:setOpt.data.data,
+        layout:false,
+        user:req.user
+      })
+    }
+    
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,13 +1,8 @@
 
-.footer_box{
-	position: absolute;
-	bottom:  0 ;
-	background-color: #fff;
-	z-index: 99;
-	top:  250rem;
-	width: 100% !important;
-
+footer{
+	margin-top: auto;
 }
+
 .footer{
 	height: 100px;
 	width: 100%  !important;
