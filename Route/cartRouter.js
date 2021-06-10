@@ -75,7 +75,7 @@ if(checkout){
 
     res.redirect(`/cart/payment/${checkout.data.data.reference}`)
 }else{
-    console.log("error");
+    console.log(data.message);
 }
 
 
