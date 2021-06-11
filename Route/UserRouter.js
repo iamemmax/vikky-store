@@ -365,7 +365,7 @@ UserRouter.get("/dashboard/change-pass/:id", auth, async (req, res) =>{
     let error  = []
    
 
-        res.render("change-pass", {
+        res.render("./users/change-pass", {
             title : "change password",
             user:req.user,
             error,
@@ -401,8 +401,8 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
            
         }else{
             if(user){
-                 const salt = 10;
-                bcrypt.genSalt(salt,  function(err, salt) {
+                 const hashPass = 10;
+                bcrypt.genSalt(hashPass,  function(err, salt) {
                     bcrypt.hash(password, salt,   function(err, hash) {
                    
                         bcrypt.compare(old, user.password, (err, isMatch) =>{
@@ -425,15 +425,16 @@ UserRouter.post("/dashboard/change-pass/:id", async(req, res)=>{
                     error.push({msg: "user not found"})
                     
                 }
-                        })
-                })
+           })
+     })
           
             
         
     })
 
-            }}
-    })
+ }}
+
+})
 
 
 

@@ -1,10 +1,12 @@
 
 footer{
 	margin-top: auto;
+	position: relative;
+	
 }
 
 .footer{
-	height: 100px;
+	height: 100% !important;
 	width: 100%  !important;
 	/* position: absolute;
 	bottom: 0; */
@@ -48,9 +50,12 @@ footer{
 	font-size: 16px;
 	font-weight: 800;
 	position: relative;
-	/* border: 2px solid green; */
 	width: 100%;
 	top: .5rem;
+}
+.footer_top .qq22 p{
+	text-align: left;
+
 }
 .foot_top4  input[type="text"]{
 	border: none !important;

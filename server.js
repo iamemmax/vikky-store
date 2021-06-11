@@ -102,8 +102,7 @@ let error = []
 
 app.get("/:q",  async(req, res) =>{
    let query = req.query.q
-   console.log(query);
-
+  
     let regex = new RegExp(query, "i")
     let search =  await productSchema.find({productName:regex})
 

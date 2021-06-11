@@ -9,7 +9,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require("mongoose-findorcreate")
 
-module.exports =   function passportAuth (res){
+module.exports = function passportAuth (res){
 
     passport.use(
         new LocalStrategy({
@@ -76,10 +76,8 @@ module.exports =   function passportAuth (res){
 
 
      
-    // App ID 289365682667423
-    // Instagram App Secret
-    // App Secret  ae23c331510d534cffa50efb2f3e0d21
-
+    
+    
     // google authentication
     passport.use(new GoogleStrategy({
         clientID: keys.GOOGLE_CLIENT_ID,

@@ -101,7 +101,7 @@
                                         <% } %> 
 
                                
-                            <p id="displayName"> <% if(user.firstname == "" || user.firstname == undefined){ %>  
+                            <p id="displayName"> <% if(user.firstname === "" || user.firstname === undefined){ %>  
                                     <%= user.username.substr(0, 20) %> 
                                 <% }else{ %> 
                                     <%= user.firstname %> 

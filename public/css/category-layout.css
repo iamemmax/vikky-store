@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,700;1,900&display=swap');
+.category_wrapper{
+    position: relative;
+    width: 100% !important;
+    height: 100%;
+}
 
 .category_container{
  position: relative;
@@ -10,9 +15,6 @@
  margin-bottom: 3rem !important;
 }
 
-.category_container > div{
-    
-}
 
 .category_container .category_sidebar{
     box-shadow: 0px 2px 0px 2px #eee;
@@ -36,6 +38,11 @@
     line-height: 30px;
     font-weight: 400;
     font-size: 16px;
+}
+.category_body{
+    /* height: 100% !important; */
+    position: relative;
+
 }
 
 @media screen and (max-width:768px) {
