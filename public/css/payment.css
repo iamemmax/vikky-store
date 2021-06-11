@@ -61,7 +61,8 @@
 }
 .card_btn_form form{
     background-color: #fff;
-    width: 450px;
+    width: 400px;
+    max-width: 100%;
     height: 500px;
     padding: 20px;
     margin: 0px auto;
@@ -158,4 +159,13 @@
     /* display: none; */
     width: 100%;
    
+}
+
+.otp{
+    display: flex;
+    justify-content: center;
+    
+}
+.otp  form input{
+    width: 50px !important;
 }

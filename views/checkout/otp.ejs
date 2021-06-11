@@ -1,9 +1,27 @@
-<p><%= otp.display_text %> </p>
-<form action="/cart/payment/otp/<%= otp.reference %> " method="POST">
-    <input type="number" name="otp" value="" placeholder="otp" id="">
-    <input type="hidden" name="reference" value="<%= otp.reference %> " placeholder="otp" id="">
-    <button type="submit">Submit OTP</button>
+<p style="text-align: center;"><%= otp.display_text %> </p>
+<div class="otp">
+    <form action="/cart/payment/otp/<%= otp.reference %> " method="POST">
+        <h2>Enter OTP</h2>
+        <input type="text" name="otp" maxlength="1"  id="otp1" onkeyup="jump(this, 'otp2')">
+        <input type="text" name="otp" maxlength="1"  id="otp2" onkeyup="jump(this, 'otp3')">
+        <input type="text" name="otp" maxlength="1"  id="otp3"  onkeyup="jump(this, 'otp4')">
+        <input type="text" name="otp" maxlength="1"  id="otp4"  onkeyup="jump(this, 'otp5')">
+        <input type="text" name="otp" maxlength="1"  id="otp5"  onkeyup="jump(this, 'otp6')">
+        <input type="text" name="otp" maxlength="1"  id="otp6">
+       
+        <input type="hidden" name="reference" value="<%= otp.reference %> " placeholder="otp" id="">
+        <button type="submit">Submit OTP</button>
+    
+    </form>
+</div>
 
-</form>
 
+<script>
+   function jump(first, last){
+    if(first.value.length >= first.maxLength){
+        document.getElementById(last).focus()
+    }
+
+}
+</script>
 <!-- 4187451854606763 -->
