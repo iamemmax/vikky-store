@@ -43,9 +43,10 @@
 }
 
 .feature_categories .category > div{
-    width: 250px;
+    width: 220px;
     height: 200px;
     display: flex;
+    /* border: 2px solid red !important; */
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
