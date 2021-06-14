@@ -284,7 +284,8 @@
 
 
 .showProductInfoOnmobile{
-    display: none;
+    display: none !important;
+    background-color: black !important;
 }
 
 /* image preview */
@@ -505,6 +506,7 @@
     margin-top: 1rem;
     /* height: auto; */
     padding: 5px;
+    background-color: green;
 }
 .showProductInfoOnmobile div div{
     height: 0;

@@ -25,12 +25,12 @@ body{
     
 }
 .sidebar_container > div{
-    /* background-color: #fff; */
     margin: 5px;
 }
 
 .sidebar{
     box-shadow: 0px 0px 2px 2px #eee ;
+    width: 100%;
 
 }
 .sidebar1{

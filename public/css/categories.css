@@ -43,7 +43,7 @@
 }
 
 .feature_categories .category > div{
-    width: 260px;
+    width: 250px;
     height: 200px;
     display: flex;
     justify-content: space-around;
@@ -59,7 +59,7 @@
 }
 
 .category div img{
-    width: 150px;
+    width: 140px;
     height: 130px;
 }
 

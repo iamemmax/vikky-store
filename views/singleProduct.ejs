@@ -1,3 +1,4 @@
+
 <div class="singleProduct">
     <div class="showImg">
         <div class="singleImg">
@@ -132,105 +133,18 @@
                     </div>
             </div>
 
-
-        </div>
-
+</div>
 
 
 
 
-        <div class="dd">
-            <!-- mycart items -->
-            <div class="cart_conntaianer">
-                <div class="cart">
-              
-                <h2 id="table-header">My Shopping cart</h2> <br>
-                <form action="/cart/mycart" method="POST">
-                  <table class="cart-table"> 
-                  
-                  
-              
-                    <thead>
-                        <tr>
-                          <td>s/n</td>
-                          <td>img</td>
-                          <td id="name">name</td>
-                          <td>Amt</td>
-                          <td>color</td>
-                          <td>size</td>
-                          <td>Qty</td>
-                          <td>Total price</td>
-              
-                          <td>remove</td>
-                       </tr>
-                      </thead>       
-                              
-                      <tbody>
-              
-                      </tbody>
-                
-                      <tfoot>
-                    
-                        <tr>
-                            <td><input type="hidden" name="email" value=" <% if(user){%>
-                             <%= user.email %> <%} %>" id=""></td>
-                            <td><input type="hidden" name="phone" value=" <% if(user){%>
-                             <%= user.phone %> <%} %>" id=""></td>
-                            <td colspan="10">Grand Total <span class="totall" name="grand"></span></td>
-                            <td colspan="1" style="display: none;">Grand Total    <input type="text"  name="grand" id="" class="total" style="border: none;"> </td>
-                           
-                          </tr>
-                          
-                        </tfoot>
-                        
-                        
-                      
-                      </table>
-                      
-                      <table>
-                      </table>
-                      
-                      <div class="cartBtnInfo">
-                        <!-- <input type="hidden" name="userId" value="<ser.id %> " id=""> -->
-                            <button> <a href="/">Continue shopping</a></button>
-                            <% if(!user){ %> 
-                              <button id="notLogging" class="CheckoutBTn">Checkout</button>
-                    <% }else{ %> 
-                      <button type="submit"  class="CheckoutBTn">Checkout</button>
-            
-                     
-                    </div>
-                    <% } %> 
-                  </form>
-            
-                  
-              
-              
-              <div class="loginUser">
-                <div class="userLogin">
-                <P>Please login to checkout</P>
-                <div class="button">
-              
-                  <button id="removeSlideShow" type="submit">cancel</button>
-                <a href="/users/login">Login</a>
-                </div>
-              </div>
-              
-              </div>
-                
-              
-              </div>
-            </div>
-         </div>            
-          <script>
-            const checkoutBtn = document.getElementById("showDeliveryForm")
-            const checkoutInfo = document.querySelector(".checkoutInfo")
-            checkoutBtn.addEventListener("click", (e) =>{
-              checkoutInfo.classList.add("showInfo")
-          
-            })
 
-</script>
+
+</div>
+
+<!-- </div> -->
+
+
 
 
 
@@ -330,6 +244,91 @@
         
 </div>
 
+<div class="dd">
+    <!-- mycart items -->
+    <div class="cart_conntaianer">
+        <div class="cart" style="overflow-x: auto;">
+      
+        <h2 id="table-header">My Shopping cart</h2>
+        <form action="/cart/mycart" method="POST">
+          <table class="cart-table"> 
+          
+          
+      
+            <thead>
+                <tr>
+                  <td>s/n</td>
+                  <td>img</td>
+                  <td id="name">name</td>
+                  <td>Amt</td>
+                  <td>color</td>
+                  <td>size</td>
+                  <td>Qty</td>
+                  <td>Total price</td>
+      
+                  <td>remove</td>
+               </tr>
+              </thead>       
+                      
+              <tbody>
+      
+              </tbody>
+        
+              <tfoot>
+            
+                <tr>
+                    <td><input type="hidden" name="email" value=" <% if(user){%>
+                     <%= user.email %> <%} %>" id=""></td>
+                    <td><input type="hidden" name="phone" value=" <% if(user){%>
+                     <%= user.phone %> <%} %>" id=""></td>
+                    <td colspan="10">Grand Total <span class="totall" name="grand"></span></td>
+                    <td colspan="1" style="display: none;">Grand Total    <input type="text"  name="grand" id="" class="total" style="border: none;"> </td>
+                   
+                  </tr>
+                  
+                </tfoot>
+                
+                
+              
+              </table>
+              
+              
+              
+              <div class="cartBtnInfo">
+                <!-- <input type="hidden" name="userId" value="<ser.id %> " id=""> -->
+                    <button> <a href="/">Continue shopping</a></button>
+                    <% if(!user){ %> 
+                      <button id="notLogging" class="CheckoutBTn">Checkout</button>
+            <% }else{ %> 
+              <button type="submit"  class="CheckoutBTn">Checkout</button>
+    
+             
+            </div>
+            <% } %> 
+          </form>
+    
+          
+      
+      
+      <div class="loginUser">
+        <div class="userLogin">
+        <P>Please login to checkout</P>
+        <div class="button">
+      
+          <button id="removeSlideShow" type="submit">cancel</button>
+        <a href="/users/login">Login</a>
+        </div>
+      </div>
+      
+      </div>
+        
+      </div>
+      </div>
+    </div>
+    
+    </div>
 
 
 
+
+    

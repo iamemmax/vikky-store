@@ -75,9 +75,11 @@ passport.deserializeUser(function(id, done) {
    
    
 app.get("/",   async(req, res) =>{
+    const {page = 1, limit = 20} = req.query
     let products =  await productSchema.find((err, data) =>{
+
         if(err)throw err
-    })
+    }).limit(limit * 1).skip((page - 1) * limit)
 let error = []
   
 
