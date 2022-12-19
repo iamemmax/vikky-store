@@ -49,15 +49,6 @@ mongoose.connect(process.env.db_url, {
 })
 
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
-       });
-   });
    
 app.get("/",   async(req, res) =>{
     const {page = 1, limit = 20} = req.query
