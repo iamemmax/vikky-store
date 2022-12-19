@@ -16,13 +16,7 @@ const auth = require("./config/auth")
 const UserSchema = require("./model/UserSchema")
 const Layout = require("express-ejs-layouts")
 // const { request } = require("http")
-const axios = require("axios").default
 const app = express()
-
-
-
-
-
 app.use(cors())
 app.use(Layout)
 app.set('layout', './layouts/dashboard-layout')
@@ -44,11 +38,6 @@ app.use(passport.session());
 
 require("./config/passport")(passport)
 
-
-
-
-
-
 mongoose.connect(process.env.db_url, {
     useNewUrlParser:true, useCreateIndex:true, useUnifiedTopology:true,useFindAndModify:false
 }, (err)=>{
@@ -60,8 +49,6 @@ mongoose.connect(process.env.db_url, {
 })
 
 
-
-
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
@@ -71,8 +58,6 @@ passport.deserializeUser(function(id, done) {
         done(err, user);
        });
    });
-
-   
    
 app.get("/",   async(req, res) =>{
     const {page = 1, limit = 20} = req.query
@@ -81,9 +66,7 @@ app.get("/",   async(req, res) =>{
         if(err)throw err
     }).limit(limit * 1).skip((page - 1) * limit)
 let error = []
-  
-
-          
+            
         res.render("index", {
             title:"Homepage",
             user:req.user,
@@ -97,10 +80,6 @@ let error = []
        
    
 })
-
-
-
-
 
 app.get("/:q",  async(req, res) =>{
    let query = req.query.q
@@ -117,9 +96,6 @@ app.get("/:q",  async(req, res) =>{
               
       
           })
-
-       
-
 })
 
 app.get("/privacy", (req, res) =>{
